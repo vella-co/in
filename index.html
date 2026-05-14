@@ -1,37 +1,149 @@
-<!DOCTYPE html><html lang='en'>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset='UTF-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0'>
-<title>Vella Co. Premium Streetwear</title>
-<style>
-body{margin:0;font-family:Arial;background:#000;color:#fff}
-header{background:#111;padding:20px;text-align:center;border-bottom:1px solid #d4af37}
-.logo{font-size:32px;color:#d4af37;font-weight:bold}
-.hero{text-align:center;padding:50px;background:linear-gradient(black,#222)}
-.hero h1{font-size:48px}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;padding:30px}
-.card{background:#111;border:1px solid #d4af37;border-radius:15px;padding:15px;text-align:center}
-.card img{width:100%;border-radius:10px}
-.price{color:#d4af37;font-size:20px}
-button{background:#25D366;color:#fff;border:none;padding:12px 20px;border-radius:25px;cursor:pointer;font-weight:bold}
-footer{text-align:center;padding:20px;background:#111}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vella Co. Clothing Store</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: #111;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #f5c542;
+        }
+        nav {
+            cursor: pointer;
+        }
+        .search-cart {
+            display: flex;
+            align-items: center;
+        }
+        input[type="text"] {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .cart {
+            margin-left: 20px;
+            cursor: pointer;
+        }
+        .banner {
+            background: #333;
+            text-align: center;
+            padding: 60px 20px;
+            margin: 20px 0;
+            font-size: 28px;
+            background: linear-gradient(to right, #000, #444);
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px 20px;
+        }
+        .product-card {
+            background: #111;
+            border: 1px solid #f5c542;
+            border-radius: 15px;
+            padding: 15px;
+            width: 250px;
+            text-align: center;
+        }
+        .product-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .product-card h3 {
+            margin: 10px 0 5px 0;
+        }
+        .product-card p {
+            margin: 5px 0;
+            color: #f5c542;
+            font-size: 18px;
+        }
+        footer {
+            background: #111;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #aaa;
+        }
+        /* Product detail page styling */
+        .product-detail {
+            padding: 40px;
+            text-align: center;
+        }
+        .product-detail img {
+            width: 300px;
+            border-radius: 15px;
+        }
+        .product-detail h2 {
+            margin: 20px 0 10px 0;
+        }
+        .product-detail p {
+            color: #f5c542;
+            font-size: 22px;
+        }
+        .similar-products {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px 0;
+        }
+    </style>
 </head>
 <body>
-<div style='background:#d4af37;color:#000;text-align:center;padding:10px;font-weight:bold'>FLAT 40% OFF | FREE SHIPPING</div>
-<header><div class='logo'>VELLA CO.</div><p>Premium Oversized Streetwear</p><div style='margin-top:10px'>MEN | WOMEN | NEW DROP</div></header>
-<section class='hero'><h1>NEW DROP 2026</h1><p>Oversized Streetwear Built For The Bold</p></section>
-<section class='products'>
-<div class='card'><img src='images/t1.jpg'><h3>Oversized Black Tee</h3><p class='price'>₹999</p><button onclick="order('Oversized Black Tee')">Order on WhatsApp</button></div>
-<div class='card'><img src='images/t2.jpg'><h3>Gold Signature Tee</h3><p class='price'>₹1199</p><button onclick="order('Gold Signature Tee')">Order on WhatsApp</button></div>
-<div class='card'><img src='images/t3.jpg'><h3>Minimal White Tee</h3><p class='price'>₹899</p><button onclick="order('Minimal White Tee')">Order on WhatsApp</button></div>
-<div class='card'><img src='images/t4.jpg'><h3>Street Drop Tee</h3><p class='price'>₹1099</p><button onclick="order('Street Drop Tee')">Order on WhatsApp</button></div>
-<div class='card'><img src='images/t5.jpg'><h3>Classic Vella Tee</h3><p class='price'>₹949</p><button onclick="order('Classic Vella Tee')">Order on WhatsApp</button></div>
-<div class='card'><img src='images/t6.jpg'><h3>Premium Luxe Tee</h3><p class='price'>₹1299</p><button onclick="order('Premium Luxe Tee')">Order on WhatsApp</button></div>
-</section>
-<footer>© 2026 Vella Co.</footer>
-<script>
-function order(product){window.open(`https://wa.me/91YOURNUMBER?text=Hi, I want to order ${product}`,'_blank');}
-</script>
-</body>
-</html>
+    <header>
+        <div class="logo">Vella Co.</div>
+        <nav id="menu">Menu</nav>
+        <div class="search-cart">
+            <input type="text" placeholder="Search products...">
+            <div class="cart">Cart (0)</div>
+        </div>
+    </header>
+    <section class="banner">
+        <h2>New Collection Launch</h2>
+        <p>Check out our latest streetwear collection!</p>
+    </section>
+    <section class="products">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <a href="product1.html">
+                <img src="images/product1.jpg" alt="Product 1">
+                <h3>Classic Black Tee</h3>
+                <p>₹999</p>
+            </a>
+        </div>
+        <!-- Product 2 -->
+        <div class="product-card">
+            <a href="product2.html">
+                <img src="images/product2.jpg" alt="Product 2">
+                <h3>Gold Signature Tee</h3>
+                <p>₹1199</p>
+            </a>
+        </div>
+        <!-- Product 3 -->
+        <div class="product-card">
+            <a href="product3.html">
+                <img src="images/product3.jpg" alt="Product 3">
+                <h3>Minimal White Tee</h3>
+                <p>₹899</p>
+            </a>
+        </div>
+        <!-- Product 4 -->
+        <div class="product-card">
+            <a href="product
