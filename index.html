@@ -1,149 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vella Co. Clothing Store</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background: #111;
-        }
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #f5c542;
-        }
-        nav {
-            cursor: pointer;
-        }
-        .search-cart {
-            display: flex;
-            align-items: center;
-        }
-        input[type="text"] {
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            width: 200px;
-        }
-        .cart {
-            margin-left: 20px;
-            cursor: pointer;
-        }
-        .banner {
-            background: #333;
-            text-align: center;
-            padding: 60px 20px;
-            margin: 20px 0;
-            font-size: 28px;
-            background: linear-gradient(to right, #000, #444);
-        }
-        .products {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            padding: 40px 20px;
-        }
-        .product-card {
-            background: #111;
-            border: 1px solid #f5c542;
-            border-radius: 15px;
-            padding: 15px;
-            width: 250px;
-            text-align: center;
-        }
-        .product-card img {
-            width: 100%;
-            border-radius: 10px;
-        }
-        .product-card h3 {
-            margin: 10px 0 5px 0;
-        }
-        .product-card p {
-            margin: 5px 0;
-            color: #f5c542;
-            font-size: 18px;
-        }
-        footer {
-            background: #111;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            color: #aaa;
-        }
-        /* Product detail page styling */
-        .product-detail {
-            padding: 40px;
-            text-align: center;
-        }
-        .product-detail img {
-            width: 300px;
-            border-radius: 15px;
-        }
-        .product-detail h2 {
-            margin: 20px 0 10px 0;
-        }
-        .product-detail p {
-            color: #f5c542;
-            font-size: 22px;
-        }
-        .similar-products {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px 0;
-        }
-    </style>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>Vella Co.</title>
+<style>
+body{margin:0;font-family:Arial;background:#000;color:#fff}
+header{display:flex;justify-content:space-between;align-items:center;padding:15px 25px;background:#111;position:sticky;top:0}
+.logo{font-size:28px;color:#d4af37;font-weight:bold}
+.search{padding:10px;width:250px;border:none;border-radius:6px}
+.menu{cursor:pointer;font-size:24px}
+.cart{cursor:pointer}
+#sidebar{display:none;position:fixed;left:0;top:0;width:250px;height:100%;background:#111;padding:20px;z-index:1000}
+#sidebar a{display:block;color:#fff;text-decoration:none;padding:12px 0}
+.banner{height:300px;background:linear-gradient(45deg,#000,#333);display:flex;justify-content:center;align-items:center;font-size:40px;color:#d4af37}
+.products{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;padding:20px}
+.card{background:#111;border:1px solid #d4af37;border-radius:15px;padding:15px;text-align:center;cursor:pointer}
+.card img{width:100%;height:300px;object-fit:cover;border-radius:10px}
+.price{color:#d4af37}
+footer{background:#111;text-align:center;padding:20px}
+#detailPage{display:none;padding:20px}
+#detailPage img{width:300px;border-radius:15px}
+button{padding:12px 20px;background:#25D366;border:none;color:#fff;border-radius:20px;cursor:pointer}
+</style>
 </head>
 <body>
-    <header>
-        <div class="logo">Vella Co.</div>
-        <nav id="menu">Menu</nav>
-        <div class="search-cart">
-            <input type="text" placeholder="Search products...">
-            <div class="cart">Cart (0)</div>
-        </div>
-    </header>
-    <section class="banner">
-        <h2>New Collection Launch</h2>
-        <p>Check out our latest streetwear collection!</p>
-    </section>
-    <section class="products">
-        <!-- Product 1 -->
-        <div class="product-card">
-            <a href="product1.html">
-                <img src="images/product1.jpg" alt="Product 1">
-                <h3>Classic Black Tee</h3>
-                <p>₹999</p>
-            </a>
-        </div>
-        <!-- Product 2 -->
-        <div class="product-card">
-            <a href="product2.html">
-                <img src="images/product2.jpg" alt="Product 2">
-                <h3>Gold Signature Tee</h3>
-                <p>₹1199</p>
-            </a>
-        </div>
-        <!-- Product 3 -->
-        <div class="product-card">
-            <a href="product3.html">
-                <img src="images/product3.jpg" alt="Product 3">
-                <h3>Minimal White Tee</h3>
-                <p>₹899</p>
-            </a>
-        </div>
-        <!-- Product 4 -->
-        <div class="product-card">
-            <a href="product
+<div id='sidebar'>
+<h2>Categories</h2>
+<a href='#'>T-Shirts</a>
+<a href='#'>Shirts</a>
+<a href='#'>Pants</a>
+<a href='#'>Gym Wear</a>
+<a href='#' onclick='toggleMenu()'>Close</a>
+</div>
+<header>
+<div class='menu' onclick='toggleMenu()'>☰</div>
+<div class='logo'>VELLA CO.</div>
+<input class='search' id='search' onkeyup='searchProduct()' placeholder='Search Product'>
+<div class='cart'>🛒 Cart</div>
+</header>
+<div id='homePage'>
+<div class='banner'>NEW DROP</div>
+<div class='products' id='productGrid'>
+</div>
+<footer>Vella Co. | Premium Streetwear</footer>
+</div>
+<div id='detailPage'>
+<button onclick='goHome()'>Back</button>
+<h1 id='pname'></h1>
+<img id='pimg'>
+<h2 id='pprice'></h2>
+<button onclick='orderNow()'>Order on WhatsApp</button>
+<h3>Similar Products</h3>
+<div class='products' id='similar'></div>
+<footer>Vella Co.</footer>
+</div>
+<script>
+const products=[
+{name:'Shadow Tee',price:'₹999',img:'images/t1.jpg'},
+{name:'Noir Fit',price:'₹1099',img:'images/t2.jpg'},
+{name:'Void Black',price:'₹1199',img:'images/t3.jpg'},
+{name:'Gold Drop',price:'₹1299',img:'images/t4.jpg'},
+{name:'Street Core',price:'₹999',img:'images/t5.jpg'},
+{name:'Gym Flex',price:'₹899',img:'images/t6.jpg'}];
+function loadProducts(list=products){document.getElementById('productGrid').innerHTML=list.map((p,i)=>`<div class='card' onclick='showDetail(${i})'><img src='${p.img}'><h3>${p.name}</h3><p class='price'>${p.price}</p></div>`).join('');}
+function showDetail(i){let p=products[i];document.getElementById('homePage').style.display='none';document.getElementById('detailPage').style.display='block';document.getElementById('pname').innerText=p.name;document.getElementById('pimg').src=p.img;document.getElementById('pprice').innerText=p.price;document.getElementById('similar').innerHTML=products.filter((_,x)=>x!==i).slice(0,4).map((s,j)=>`<div class='card'><img src='${s.img}'><h3>${s.name}</h3></div>`).join('');}
+function goHome(){detailPage.style.display='none';homePage.style.display='block';}
+function toggleMenu(){sidebar.style.display=sidebar.style.display==='block'?'none':'block';}
+function searchProduct(){let v=search.value.toLowerCase();loadProducts(products.filter(p=>p.name.toLowerCase().includes(v)));}
+function orderNow(){window.open('https://wa.me/91YOURNUMBER');}
+loadProducts();
+</script>
+</body>
+</html>
