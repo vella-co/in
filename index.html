@@ -49,7 +49,7 @@ CUSTOM FLOATING TOAST ALERT
 }
 
 /* =========================
-HEADER SECTION (FIXED ALIGNMENT)
+HEADER SECTION
 ========================= */
 header{
     width:100%;
@@ -81,13 +81,23 @@ header{
 }
 
 .search-icon-btn {
-    font-size: 18px;
-    cursor: pointer;
     background: transparent;
     border: none;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.search-icon-btn svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: #111111;
+    stroke-width: 2.3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .cart-btn-nav{
@@ -108,6 +118,99 @@ header{
     font-size:11px;
     padding:2px 7px;
     border-radius:50%;
+}
+
+/* ========================================================
+✨ SEARCH ENGINE OVERLAY BAR (GEMINI COLOR MIX THEME)
+======================================================== */
+.search-overlay-bar {
+    display: none;
+    width: 100%;
+    padding: 4px; 
+    position: relative;
+    background: #ffffff;
+}
+
+/* Moving Gemini Aura Core Gradient Border Flow */
+.search-overlay-bar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 1;
+    padding: 2px; 
+    border-bottom: 3px solid transparent;
+    background: linear-gradient(300deg, #4285f4, #9b51e0, #ea4335, #fbbc05, #4285f4);
+    background-size: 400% 400%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: geminiGradientMotion 6s linear infinite;
+}
+
+@keyframes geminiGradientMotion {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.search-inner-padding-box {
+    padding: 12px 20px;
+    width: 100%;
+    background: #ffffff;
+    position: relative;
+    z-index: 2;
+}
+
+.search-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.search-wrapper input {
+    width: 100%;
+    padding: 11px 45px 11px 42px;
+    border: 1px solid #e2e8f0;
+    border-radius: 30px;
+    font-size: 13px;
+    outline: none;
+    background: #f8fafc;
+    transition: all 0.3s ease;
+}
+
+.search-wrapper input:focus {
+    border-color: #9b51e0;
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(155, 81, 224, 0.1);
+}
+
+.search-wrapper .input-glass-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+}
+
+.search-wrapper .input-glass-icon svg {
+    width: 16px;
+    height: 16px;
+    stroke: #718096;
+    stroke-width: 2.5;
+}
+
+.search-wrapper .clear-search {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #a0aec0;
+    cursor: pointer;
+    padding: 2px;
 }
 
 /* =========================
@@ -255,7 +358,7 @@ PRODUCTS GRID SYSTEM
 }
 
 /* =========================
-PAGINATION CONTROLS (PART 1 OF 2)
+PAGINATION CONTROLS
 ========================= */
 .pagination-wrapper {
     display: flex;
@@ -497,7 +600,6 @@ CHECKOUT MODAL FORM
     font-size: 13px;
     outline: none;
     color: #111111;
-    transition: border-color 0.2s;
 }
 
 .modal-content input:focus, .modal-content textarea:focus, .modal-content select:focus {
@@ -505,7 +607,6 @@ CHECKOUT MODAL FORM
     background: #ffffff;
 }
 
-/* Confirm Order Button Modified to Sleek Bold Black */
 .modal-content button {
     width: 100%;
     padding: 14px;
@@ -519,15 +620,10 @@ CHECKOUT MODAL FORM
     border-radius: 8px;
     cursor: pointer;
     margin-top: 5px;
-    transition: opacity 0.2s;
-}
-
-.modal-content button:hover {
-    opacity: 0.9;
 }
 
 /* =========================
-FOOTER (NO SOCIAL ICONS)
+FOOTER
 ========================= */
 footer{
     text-align: center;
@@ -548,23 +644,43 @@ footer{
 <body>
 
 <div id="customToast">
-    <span id="toastIcon">⚠️</span> <span id="toastText">Alert message setup</span>
+    <span id="toastIcon">⚠️</span> <span id="toastText">Alert Message</span>
 </div>
 
 <header>
-    <div class="logo" onclick="backToHomeDirect()">VELLA CO.</div>
+    <div class="logo" onclick="navigateToSection('homePage')">VELLA CO.</div>
     <div class="header-right">
-        <button class="search-icon-btn" onclick="triggerToast('Search feature coming soon!', '🔍')">🔍</button>
         
-        <div class="cart-btn-nav" onclick="openCartPage()">
+        <button class="search-icon-btn" onclick="toggleSearchBar()" aria-label="Search items">
+            <svg viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+        </button>
+        
+        <div class="cart-btn-nav" onclick="navigateToSection('cartPage')">
             <span>Cart</span>
             <span class="cart-count" id="cartBadgeCount">0</span>
         </div>
     </div>
 </header>
 
-<div id="homePage">
+<div class="search-overlay-bar" id="searchBarContainer">
+    <div class="search-inner-padding-box">
+        <div class="search-wrapper">
+            <div class="input-glass-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </div>
+            <input type="text" id="storeSearchInput" placeholder="Search premium items (e.g. Polo, White, Black)..." onkeyup="executeSearchFilter()">
+            <span class="clear-search" onclick="clearSearchField()">✖</span>
+        </div>
+    </div>
+</div>
 
+<div id="homePage">
     <div class="promo-banner-section">
         <div class="banner-slider">
             <div class="slide-poster active bg-banner-1" id="bSlide0">
@@ -582,11 +698,11 @@ footer{
         </div>
     </div>
 
-    <div class="section-title">Our Exclusive Collection</div>
+    <div class="section-title" id="gridSectionTitle">Our Exclusive Collection</div>
     
     <div class="products-grid" id="mainProductsContainer"></div>
 
-    <div class="pagination-wrapper">
+    <div class="pagination-wrapper" id="paginationControlsContainer">
         <div class="pagination-btn disabled" id="prevPageBtn" onclick="changeStorePage('prev')">← Prev</div>
         <div class="page-indicator" id="pageNumberIndicator">Part 1 of 2</div>
         <div class="pagination-btn" id="nextPageBtn" onclick="changeStorePage('next')">Next →</div>
@@ -594,8 +710,8 @@ footer{
 </div>
 
 <div id="productPage">
-    <div class="back-btn" onclick="backToHomeDirect()">⬅ Back to Store</div>
-    <img id="viewProductImg" class="main-product-img" src="" alt="product image preview">
+    <div class="back-btn" onclick="navigateToSection('homePage')">⬅ Back to Store</div>
+    <img id="viewProductImg" class="main-product-img" src="" alt="product image">
     
     <div class="details-wrapper">
         <h2 class="details-title" id="viewProductTitle"></h2>
@@ -627,7 +743,7 @@ footer{
 </div>
 
 <div id="cartPage">
-    <div class="back-btn" onclick="backToHomeDirect()">⬅ Back to Store</div>
+    <div class="back-btn" onclick="navigateToSection('homePage')">⬅ Back to Store</div>
     <h3 style="margin-bottom:15px;">Your Current Cart Layout</h3>
     <div id="cartItemsList"></div>
     <div class="cart-total-box">Total Value: ₹<span id="cartTotalPrice">0</span></div>
@@ -661,7 +777,7 @@ footer{
 </footer>
 
 <script>
-// FLOATING MODULAR NOTIFICATION ALERTS CONTROLLER
+// TOAST ALERT MANAGER
 function triggerToast(message, icon = "⚠️") {
     const toast = document.getElementById("customToast");
     document.getElementById("toastIcon").innerText = icon;
@@ -673,9 +789,8 @@ function triggerToast(message, icon = "⚠️") {
     }, 3000);
 }
 
-// 12 PRODUCTS DATABANK FOR PAGE 1 AND PAGE 2 SEPARATION
+// 12 PRODUCTS DATA SOURCE
 const products = [
-    // PAGE 1 PRODUCTS (Items 1 to 6)
     { id: 1, name: "Men White Solid Polo Neck Collar T-shirt", price: 909, mrp: 1299, discount: "30% OFF", image: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=500", colors: ["White", "Pink", "Olive"] },
     { id: 2, name: "Men White Printed Stretchable Round Neck T-shirt", price: 1234, mrp: 1899, discount: "35% OFF", image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500", colors: ["White", "Black"] },
     { id: 3, name: "Men Maroon Solid Round Crew Neck T-shirt", price: 699, mrp: 999, discount: "30% OFF", image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=500", colors: ["Maroon", "Black"] },
@@ -683,8 +798,7 @@ const products = [
     { id: 5, name: "Men Black Graphic Print Regular Fit Polo", price: 979, mrp: 1399, discount: "30% OFF", image: "https://images.unsplash.com/photo-1503341455253-b2bc71f093b1?w=500", colors: ["Black", "Grey"] },
     { id: 6, name: "Men Light Blue Stripe Polo Neck T-shirt", price: 1899, mrp: 1999, discount: "5% OFF", image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=500", colors: ["Light Blue", "Pink"] },
     
-    // PAGE 2 PRODUCTS (Items 7 to 12)
-    { id: 7, name: "Men Premium Charcoal Grey Polo T-shirt", price: 1199, mrp: 1699, discount: "29% OFF", image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=500", colors: ["Grey", "Black"] },
+ { id: 7, name: "Men Premium Charcoal Grey Polo T-shirt", price: 1199, mrp: 1699, discount: "29% OFF", image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=500", colors: ["Grey", "Black"] },
     { id: 8, name: "Men Urban Navy Blue Slim Fit Polo", price: 849, mrp: 1199, discount: "30% OFF", image: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=500", colors: ["Navy Blue", "White"] },
     { id: 9, name: "Men Pastel Pink Luxury Cotton Tee", price: 799, mrp: 1299, discount: "38% OFF", image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=500", colors: ["Pink", "White"] },
     { id: 10, name: "Men Mustard Yellow Graphic Print Polo", price: 929, mrp: 1499, discount: "38% OFF", image: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=500", colors: ["Yellow", "Black"] },
@@ -698,21 +812,108 @@ let chosenColor = null;
 let chosenSize = null;
 let currentStorePage = 1; 
 const itemsPerPage = 6;
+let activeSearchMode = false;
 
-// FIXED DISPATCHER ROUTE SWITCHER (PREVENTS CLOSING SYSTEM ACCIDENTS)
-function backToHomeDirect() {
-    showSection('homePage');
-}
+/* ========================================================
+📱 HARDWARE BACK BUTTON SYSTEM (ULTRA ROBUST FIX)
+======================================================== */
+// Reset state loop logic during initial dynamic load
+window.addEventListener('DOMContentLoaded', () => {
+    window.history.replaceState({ sectionId: 'homePage' }, document.title, window.location.href);
+});
 
-function showSection(id) {
+function navigateToSection(id, isBackButtonAction = false) {
     document.getElementById("homePage").style.display = (id === "homePage") ? "block" : "none";
     document.getElementById("productPage").style.display = (id === "productPage") ? "block" : "none";
     document.getElementById("cartPage").style.display = (id === "cartPage") ? "block" : "none";
     window.scrollTo({top: 0});
+
+    // Handle deep push index states safely
+    if (!isBackButtonAction) {
+        window.history.pushState({ sectionId: id }, document.title, window.location.href);
+    }
 }
 
-// RENDER PRODUCTS ACCORDING TO PAGINATION INDEXES
+// Intercept window event popstate loops directly
+window.addEventListener('popstate', (event) => {
+    if (event.state && event.state.sectionId) {
+        navigateToSection(event.state.sectionId, true);
+    } else {
+        // Fallback condition to block tab dismissal
+        navigateToSection('homePage', true);
+    }
+});
+
+/* ========================================================
+🔍 SEARCH ENGINE ENGINE (GEMINI POWERED ACCENTS DESIGN)
+======================================================== */
+function toggleSearchBar() {
+    const bar = document.getElementById("searchBarContainer");
+    if(bar.style.display === "block") {
+        bar.style.display = "none";
+        clearSearchField();
+    } else {
+        bar.style.display = "block";
+        document.getElementById("storeSearchInput").focus();
+    }
+}
+
+function clearSearchField() {
+    document.getElementById("storeSearchInput").value = "";
+    activeSearchMode = false;
+    document.getElementById("gridSectionTitle").innerText = "Our Exclusive Collection";
+    document.getElementById("paginationControlsContainer").style.display = "flex";
+    renderStorefront();
+}
+
+function executeSearchFilter() {
+    let query = document.getElementById("storeSearchInput").value.toLowerCase().trim();
+    const container = document.getElementById("mainProductsContainer");
+    
+    if(query === "") {
+        activeSearchMode = false;
+        document.getElementById("gridSectionTitle").innerText = "Our Exclusive Collection";
+        document.getElementById("paginationControlsContainer").style.display = "flex";
+        renderStorefront();
+        return;
+    }
+
+    activeSearchMode = true;
+    document.getElementById("gridSectionTitle").innerText = "Search Results";
+    document.getElementById("paginationControlsContainer").style.display = "none"; 
+
+    let filteredItems = products.filter(p => p.name.toLowerCase().includes(query));
+    container.innerHTML = "";
+
+    if(filteredItems.length === 0) {
+        container.innerHTML = "<p style='grid-column: span 2; text-align:center; padding:30px; color:#888;'>No matches found for your search.</p>";
+        return;
+    }
+
+    filteredItems.forEach(p => {
+        container.innerHTML += `
+            <div class="product-card" onclick="openProductDetail(${p.id})">
+                <img src="${p.image}" alt="apparel portfolio">
+                <div class="product-info">
+                    <div class="product-name">${p.name}</div>
+                    <div class="price-container">
+                        <span class="current-price">₹${p.price}</span>
+                        <span class="old-mrp">₹${p.mrp}</span>
+                        <span class="discount-tag">${p.discount}</span>
+                    </div>
+                    <button class="view-btn">View Product</button>
+                </div>
+            </div>
+        `;
+    });
+}
+
+/* ========================================================
+📦 PRODUCT DATA RENDERING ENGINE
+======================================================== */
 function renderStorefront() {
+    if(activeSearchMode) return; 
+
     const container = document.getElementById("mainProductsContainer");
     container.innerHTML = "";
     
@@ -737,7 +938,6 @@ function renderStorefront() {
         `;
     });
 
-  // Control pagination triggers styles states
     document.getElementById("pageNumberIndicator").innerText = `Part ${currentStorePage} of 2`;
     
     if (currentStorePage === 1) {
@@ -749,7 +949,6 @@ function renderStorefront() {
     }
 }
 
-// PAGINATION NAVIGATION CONTROLLER HANDLER
 function changeStorePage(direction) {
     if (direction === 'next' && currentStorePage === 1) {
         currentStorePage = 2;
@@ -762,10 +961,9 @@ function changeStorePage(direction) {
     }
 }
 
-// RUN BASE SETUP INITIALIZER
 renderStorefront();
 
-// RUN AUTOMATIC HERO PROMO ADS SLIDER POSTERS COROUTINE
+// BANNER SLIDER RUNNER
 let activePosterIdx = 0;
 setInterval(() => {
     document.getElementById(`bSlide${activePosterIdx}`).classList.remove("active");
@@ -773,14 +971,15 @@ setInterval(() => {
     document.getElementById(`bSlide${activePosterIdx}`).classList.add("active");
 }, 4000);
 
-// OPEN DYNAMIC SINGLE DETAIL SYSTEM CONTROLLER
+/* ========================================================
+🛍️ SINGLE PRODUCT DETAIL AND VARIANTS LOGIC
+======================================================== */
 function openProductDetail(id) {
     let match = products.find(p => p.id === id);
     targetedProduct = match;
     
     chosenColor = null;
     chosenSize = null;
-    
     document.querySelectorAll(".size-box-opt").forEach(b => b.classList.remove("selected"));
 
     document.getElementById("viewProductImg").src = match.image;
@@ -794,7 +993,7 @@ function openProductDetail(id) {
         colGroup.innerHTML += `<div class="opt-box color-box-opt" onclick="markSelection(this, 'color')">${c}</div>`;
     });
 
-    showSection("productPage");
+    navigateToSection("productPage");
 }
 
 function markSelection(element, type) {
@@ -809,7 +1008,6 @@ function markSelection(element, type) {
     }
 }
 
-// INSERTS ELEMENTS TO BASKET CARTS WITH FLOATING TOASTS SAFETY
 function executeAddToCart() {
     if(!chosenColor || !chosenSize) {
         triggerToast("Please select a Size and Color first!");
@@ -824,7 +1022,7 @@ function executeAddToCart() {
     
     syncCartBadgeState();
     triggerToast("Added to Cart successfully!", "🛍️");
-    backToHomeDirect();
+    navigateToSection('homePage');
 }
 
 function executeBuyNow() {
@@ -848,7 +1046,7 @@ function syncCartBadgeState() {
 }
 
 function openCartPage() {
-    showSection("cartPage");
+    navigateToSection("cartPage");
     const container = document.getElementById("cartItemsList");
     container.innerHTML = "";
     let aggregatedSum = 0;
@@ -885,6 +1083,9 @@ function removeItemFromCart(index) {
     openCartPage();
 }
 
+/* ========================================================
+📋 MODAL CONTROL AND WHATSAPP TRANSMISSION
+======================================================== */
 function openCheckoutModal() {
     if(cartList.length === 0) return;
     document.getElementById("checkoutModal").style.display = "block";
@@ -898,7 +1099,6 @@ function closeModalOutside(e) {
     if(e.target === document.getElementById("checkoutModal")) closeCheckoutModal();
 }
 
-// CHECKOUT SUBMISSION WITH UPGRADED CLEAN PREMIUM TOAST ALERTS System
 function dispatchToWhatsApp() {
     let name = document.getElementById("custName").value.trim();
     let phone = document.getElementById("custMobile").value.trim();
@@ -906,7 +1106,6 @@ function dispatchToWhatsApp() {
     let gen = document.getElementById("custGender").value;
     let state = document.getElementById("custState").value;
 
-    // Fixed validation triggers warning using Premium Toast
     if(!name || !phone || !addr) {
         triggerToast("Please fill all details to continue!");
         return;
@@ -918,7 +1117,7 @@ function dispatchToWhatsApp() {
     });
 
     let finalBill = document.getElementById("cartTotalPrice").innerText;
-    let targetWhatsAppNum = "918929094129"; // <-- Apna Phone number yahan edit karein
+    let targetWhatsAppNum = "919999999999"; 
 
     let fullWhatsAppMessageText = 
         "🛒 *NEW APP ORDER - VELLA CO.* %0A%0A" +
