@@ -110,7 +110,7 @@ display:block;
 .products{
 padding:12px;
 display:grid;
-grid-template-columns: repeat(2, 1fr); /* Default 2 columns like requested image */
+grid-template-columns: repeat(2, 1fr); 
 gap:12px;
 }
 
@@ -227,25 +227,35 @@ margin-bottom:20px;
 font-size: 14px;
 }
 
-.sizes{
+.section-title {
+font-size:15px; 
+font-weight:600; 
+margin-top:15px;
+margin-bottom:8px;
+}
+
+/* Color & Size Option Containers */
+.colors, .sizes {
 display:flex;
 gap:10px;
-margin-top: 10px;
-margin-bottom:25px;
+margin-bottom:20px;
 flex-wrap:wrap;
 }
 
-.size{
-padding:10px 20px;
+.color-opt, .size {
+padding:10px 18px;
 border:1px solid #cccccc;
 border-radius:6px;
 cursor:pointer;
 font-weight: 500;
+font-size: 14px;
 transition: 0.2s;
 color: #111111;
+background: #ffffff;
 }
 
-.size.selected {
+/* Selection classes */
+.color-opt.selected, .size.selected {
 background: #000000;
 color: #ffffff;
 border-color: #000000;
@@ -254,6 +264,7 @@ border-color: #000000;
 .action-buttons{
 display:flex;
 gap:12px;
+margin-top: 10px;
 }
 
 .action-buttons button{
@@ -348,7 +359,7 @@ cursor:pointer;
 }
 
 /* =========================
-CHECKOUT MODAL (FIXED BACKGROUND CLICK)
+CHECKOUT MODAL
 ========================= */
 
 #checkoutForm{
@@ -358,7 +369,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0, 0, 0, 0.6); /* Dim background overlay */
+background:rgba(0, 0, 0, 0.6);
 z-index:5000;
 overflow:auto;
 padding:20px;
@@ -406,7 +417,7 @@ padding:15px;
 margin-top:20px;
 border:none;
 border-radius:8px;
-background:#00e676; /* WhatsApp Green Accent for CTA */
+background:#00e676; 
 color:white;
 font-size:16px;
 font-weight:700;
@@ -415,7 +426,7 @@ box-shadow: 0 4px 10px rgba(0,230,118,0.3);
 }
 
 /* =========================
-FOOTER (SOCIAL LINKS)
+FOOTER (ROUND SOCIAL IMAGES ICON STYLE)
 ========================= */
 
 footer {
@@ -426,27 +437,38 @@ border-top: 1px solid #eeeeee;
 margin-top: 50px;
 }
 
-footer p {
-font-size: 14px;
-color: #666666;
-margin-bottom: 15px;
-}
-
 .social-icons {
 display: flex;
 justify-content: center;
-gap: 25px;
+gap: 18px;
+margin-bottom: 18px;
 }
 
-.social-icons a {
+/* Premium Black Round Badge Styling matching the requested image layout */
+.social-badge {
+width: 44px;
+height: 44px;
+background: #111111;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+color: #ffffff;
 text-decoration: none;
-font-size: 28px;
-transition: transform 0.2s;
-display: inline-block;
+font-size: 20px;
+font-weight: bold;
+transition: transform 0.2s, background 0.2s;
+box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.social-icons a:hover {
-transform: scale(1.2);
+.social-badge:hover {
+transform: scale(1.1);
+background: #000000;
+}
+
+footer p {
+font-size: 13px;
+color: #777777;
 }
 
 /* =========================
@@ -455,7 +477,7 @@ RESPONSIVE FOR DESKTOP
 
 @media(min-width:768px){
 .products{
-grid-template-columns: repeat(4, 1fr); /* 4 columns on desktop */
+grid-template-columns: repeat(4, 1fr); 
 gap:20px;
 padding: 20px;
 }
@@ -524,8 +546,11 @@ Premium quality modern wear with an exceptional comfortable fit.
 Crafted with fine soft fabric for everyday premium styling.
 </div>
 
-<h3 style="font-size:16px;">Select Size</h3>
+<div class="section-title">Select Colour</div>
+<div class="colors" id="colorContainer">
+</div>
 
+<div class="section-title">Select Size</div>
 <div class="sizes">
 <div class="size" onclick="selectSize(this)">S</div>
 <div class="size" onclick="selectSize(this)">M</div>
@@ -612,18 +637,19 @@ Place Order On WhatsApp
 </div>
 
 <footer>
-<p>© 2026 Vella Co. Premium Store. All Rights Reserved.</p>
 <div class="social-icons">
-<a href="#" target="_blank" title="Instagram">📸</a> 
-<a href="#" target="_blank" title="Telegram">✈️</a>
-<a href="#" target="_blank" title="WhatsApp Channel">💬</a>
+<a href="#" target="_blank" class="social-badge" title="Instagram">📸</a> 
+<a href="#" target="_blank" class="social-badge" title="Twitter">🐦</a>
+<a href="#" target="_blank" class="social-badge" title="Telegram">✈️</a>
+<a href="#" target="_blank" class="social-badge" title="WhatsApp Channel">💬</a>
 </div>
+<p>© 2026 Vella Co. Premium Store. All Rights Reserved.</p>
 </footer>
 
 <script>
 
 /* =========================
-PRODUCTS DATA
+PRODUCTS DATA WITH CUSTOM COLOURS LIST
 ========================= */
 
 const products=[
@@ -631,25 +657,29 @@ const products=[
 id:1,
 name:"Men White Solid Polo Neck Collar T-Shirt",
 price:909,
-image:"images/shirt1.jpg"
+image:"images/shirt1.jpg",
+colors: ["White", "Pink", "Olive", "Maroon"] // Aap yaahan apne manpasand colors badal sakte hain
 },
 {
 id:2,
 name:"Men White Printed Stretchable Round Neck T-Shirt",
 price:1234,
-image:"images/shirt2.jpg"
+image:"images/shirt2.jpg",
+colors: ["White", "Black"]
 },
 {
 id:3,
-name:"Men Olive Solid Polo Neck Collar T-Shirt",
-price:974,
-image:"images/shirt3.jpg"
+name:"Men Maroon Solid Round Crew Neck T-Shirt",
+price:699,
+image:"images/shirt3.jpg",
+colors: ["Maroon", "Black", "Navy"]
 },
 {
 id:4,
-name:"Men Light Blue Stripe Polo Neck T-Shirt",
-price:1899,
-image:"images/shirt4.jpg"
+name:"Men Olive Solid Polo Neck Collar T-Shirt",
+price:974,
+image:"images/shirt4.jpg",
+colors: ["Olive", "Pink", "Green", "White"]
 }
 ];
 
@@ -704,6 +734,7 @@ const cartPage=document.getElementById("cartPage");
 
 let currentProduct=null;
 let selectedSizeValue=null;
+let selectedColorValue=null;
 
 function goHome() {
 homePage.style.display="block";
@@ -714,21 +745,28 @@ history.pushState({page:"home"}, "", " ");
 }
 
 /* =========================
-SIZE SELECTION
+COLOR & SIZE SELECTION
 ========================= */
+
+function selectColor(element) {
+const colorElements = document.querySelectorAll('.color-opt');
+colorElements.forEach(el => el.classList.remove('selected'));
+element.classList.add('selected');
+selectedColorValue = element.innerText;
+}
 
 function selectSize(element) {
 const sizeElements = document.querySelectorAll('.size');
 sizeElements.forEach(el => el.classList.remove('selected'));
-
 element.classList.add('selected');
 selectedSizeValue = element.innerText;
 }
 
-function resetSizeSelection() {
+function resetSelections() {
 const sizeElements = document.querySelectorAll('.size');
 sizeElements.forEach(el => el.classList.remove('selected'));
 selectedSizeValue = null;
+selectedColorValue = null;
 }
 
 /* =========================
@@ -739,7 +777,18 @@ function openProduct(id){
 let product=products.find(p=>p.id===id);
 currentProduct=product;
 
-resetSizeSelection();
+resetSelections();
+
+// Inject colors for current product dynamically
+const colorContainer = document.getElementById("colorContainer");
+colorContainer.innerHTML = "";
+if(product.colors && product.colors.length > 0) {
+product.colors.forEach(col => {
+colorContainer.innerHTML += `<div class="color-opt" onclick="selectColor(this)">${col}</div>`;
+});
+} else {
+colorContainer.innerHTML = `<div class="color-opt" onclick="selectColor(this)">Default</div>`;
+}
 
 document.getElementById("productImage").src=product.image;
 document.getElementById("productTitle").innerText=product.name;
@@ -750,7 +799,6 @@ cartPage.style.display="none";
 productPage.style.display="block";
 
 window.scrollTo({top: 0, behavior: 'smooth'});
-
 history.pushState({page:"product"}, "", "#product");
 }
 
@@ -775,25 +823,21 @@ cartPage.style.display="none";
 };
 
 /* =========================
-CART SYSTEM
+CART SYSTEM (ALERTS REMOVED!)
 ========================= */
 
 let cart=[];
 
 function addCurrentToCart(){
-if(!selectedSizeValue){
-alert("Please select a Size first!");
-return;
-}
-
 let productToAdd = {
 ...currentProduct,
-selectedSize: selectedSizeValue
+selectedSize: selectedSizeValue ? selectedSizeValue : "N/A",
+selectedColor: selectedColorValue ? selectedColorValue : "Default"
 };
 
 cart.push(productToAdd);
 updateCart();
-alert(`${productToAdd.name} (Size: ${productToAdd.selectedSize}) added to cart!`);
+// Notice: No alert pop-ups anywhere anymore! Enjoy seamless flow!
 }
 
 function openCart(){
@@ -830,7 +874,9 @@ cartItems.innerHTML += `
 <img src="${item.image}">
 <div class="cart-info">
 <h3>${item.name}</h3>
-<p style="color:#666; font-size:13px; font-weight:500;">Size: ${item.selectedSize}</p>
+<p style="color:#666; font-size:13px; font-weight:500;">
+Colour: ${item.selectedColor} | Size: ${item.selectedSize}
+</p>
 <p style="font-weight:700;">₹${item.price}</p>
 </div>
 </div>
@@ -844,18 +890,14 @@ document.getElementById("cartCount").innerText=cart.length;
 }
 
 /* =========================
-BUY NOW
+BUY NOW (NO ALERTS, DIRECT OPEN)
 ========================= */
 
 function buyNow(){
-if(!selectedSizeValue){
-alert("Please select a Size first!");
-return;
-}
-
 let productToAdd = {
 ...currentProduct,
-selectedSize: selectedSizeValue
+selectedSize: selectedSizeValue ? selectedSizeValue : "N/A",
+selectedColor: selectedColorValue ? selectedColorValue : "Default"
 };
 
 cart=[productToAdd];
@@ -869,7 +911,6 @@ CHECKOUT SYSTEM WITH OUTSIDE CLICK TO CLOSE
 
 function openCheckout(){
 if(cart.length === 0){
-alert("Your cart is empty!");
 return;
 }
 document.getElementById("checkoutForm").style.display="block";
@@ -879,7 +920,6 @@ function closeCheckout(){
 document.getElementById("checkoutForm").style.display="none";
 }
 
-// BUG FIX: Closes form when clicking outside the box
 function closeFormOutside(event) {
 const modal = document.getElementById("checkoutForm");
 if (event.target === modal) {
@@ -905,12 +945,12 @@ return;
 
 let items="";
 cart.forEach((item, idx)=>{
-items += `${idx + 1}. ${item.name} (Size: ${item.selectedSize}) - ₹${item.price}%0A`;
+items += `${idx + 1}. ${item.name}%0A   [Colour: ${item.selectedColor}, Size: ${item.selectedSize}] - ₹${item.price}%0A`;
 });
 
 let total=document.getElementById("totalPrice").innerText;
 
-/* APNA REAL NUMBER DALO YAHA (e.g., 919999999999) */
+/* APNA WHATSAPP NUMBER IDHAR UPDATE KAREIN */
 let phone="919999999999"; 
 
 let message=
@@ -934,4 +974,5 @@ window.open(
 </script>
 
 </body>
-</html>
+  </html>
+  
