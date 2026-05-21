@@ -1,317 +1,583 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sudheer Store</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial, sans-serif;
-    }
+<title>Sudheer Fashion</title>
 
-    body{
-      background:#f5f5f5;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    /* HEADER */
+<style>
 
-    .header{
-      width:100%;
-      background:white;
-      padding:15px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      position:sticky;
-      top:0;
-      z-index:1000;
-      box-shadow:0 2px 10px rgba(0,0,0,0.1);
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
-    .logo{
-      font-size:22px;
-      font-weight:bold;
-      color:#0b3d91;
-    }
+body{
+background:#0d0d0d;
+color:white;
+}
 
-    .icons{
-      display:flex;
-      gap:15px;
-      font-size:22px;
-    }
+/* HEADER */
 
-    /* PRODUCT GRID */
+header{
+width:100%;
+padding:18px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+position:sticky;
+top:0;
+z-index:1000;
+border-bottom:1px solid rgba(255,255,255,0.1);
+}
 
-    .container{
-      padding:15px;
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:15px;
-    }
+.logo{
+font-size:28px;
+font-weight:700;
+letter-spacing:2px;
+color:white;
+}
 
-    .card{
-      background:white;
-      border-radius:12px;
-      overflow:hidden;
-      cursor:pointer;
-      transition:0.3s;
-      box-shadow:0 2px 10px rgba(0,0,0,0.1);
-    }
+.icons{
+display:flex;
+gap:20px;
+font-size:25px;
+cursor:pointer;
+}
 
-    .card:hover{
-      transform:scale(1.03);
-    }
+.cart-count{
+background:red;
+padding:2px 8px;
+border-radius:50%;
+font-size:12px;
+position:absolute;
+margin-top:-10px;
+margin-left:-8px;
+}
 
-    .card img{
-      width:100%;
-      height:250px;
-      object-fit:cover;
-    }
+/* SEARCH */
 
-    .info{
-      padding:10px;
-    }
+.search-box{
+padding:20px;
+}
 
-    .title{
-      font-size:15px;
-      font-weight:bold;
-      margin-bottom:8px;
-    }
+.search-box input{
+width:100%;
+padding:16px;
+border:none;
+outline:none;
+border-radius:15px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+color:white;
+font-size:16px;
+}
 
-    .price{
-      color:green;
-      font-size:18px;
-      font-weight:bold;
-    }
+/* PRODUCTS */
 
-    /* PRODUCT POPUP */
+.container{
+padding:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:25px;
+}
 
-    .popup{
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background:white;
-      z-index:2000;
-      overflow:auto;
-      display:none;
-    }
+.card{
+background:rgba(255,255,255,0.06);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,0.1);
+border-radius:25px;
+overflow:hidden;
+transition:0.4s;
+cursor:pointer;
+}
 
-    .popup img{
-      width:100%;
-      height:400px;
-      object-fit:cover;
-    }
+.card:hover{
+transform:translateY(-8px);
+}
 
-    .popup-content{
-      padding:20px;
-    }
+.card img{
+width:100%;
+height:300px;
+object-fit:cover;
+}
 
-    .popup-title{
-      font-size:24px;
-      font-weight:bold;
-      margin-bottom:10px;
-    }
+.info{
+padding:15px;
+}
 
-    .popup-price{
-      font-size:28px;
-      color:green;
-      margin-bottom:15px;
-    }
+.title{
+font-size:17px;
+font-weight:600;
+margin-bottom:10px;
+}
 
-    .desc{
-      color:#555;
-      line-height:1.6;
-      margin-bottom:20px;
-    }
+.price{
+font-size:22px;
+font-weight:700;
+color:#00ff95;
+margin-bottom:12px;
+}
 
-    .sizes{
-      display:flex;
-      gap:10px;
-      margin-bottom:20px;
-      flex-wrap:wrap;
-    }
+.btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+background:white;
+color:black;
+font-weight:600;
+cursor:pointer;
+}
 
-    .size{
-      border:1px solid #ccc;
-      padding:10px 15px;
-      border-radius:8px;
-      cursor:pointer;
-    }
+/* CART */
 
-    .btns{
-      display:flex;
-      gap:10px;
-    }
+.cart-box{
+position:fixed;
+right:-100%;
+top:0;
+width:350px;
+height:100%;
+background:#111;
+padding:20px;
+overflow:auto;
+transition:0.5s;
+z-index:3000;
+}
 
-    button{
-      flex:1;
-      padding:15px;
-      border:none;
-      border-radius:10px;
-      font-size:16px;
-      font-weight:bold;
-      cursor:pointer;
-    }
+.cart-box.active{
+right:0;
+}
 
-    .cart{
-      background:#111;
-      color:white;
-    }
+.cart-item{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+background:#1a1a1a;
+padding:10px;
+border-radius:15px;
+}
 
-    .buy{
-      background:#0b3d91;
-      color:white;
-    }
+.cart-item img{
+width:80px;
+height:80px;
+object-fit:cover;
+border-radius:10px;
+}
 
-    .close{
-      position:absolute;
-      top:15px;
-      right:20px;
-      font-size:35px;
-      cursor:pointer;
-      color:white;
-      background:rgba(0,0,0,0.5);
-      width:45px;
-      height:45px;
-      border-radius:50%;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
+.checkout-btn{
+width:100%;
+padding:15px;
+margin-top:20px;
+border:none;
+background:#00ff95;
+color:black;
+font-size:18px;
+font-weight:bold;
+border-radius:15px;
+cursor:pointer;
+}
 
-    @media(max-width:600px){
-      .container{
-        grid-template-columns:1fr 1fr;
-      }
+/* POPUP */
 
-      .card img{
-        height:200px;
-      }
-    }
-  </style>
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#000000e8;
+display:none;
+justify-content:center;
+align-items:center;
+z-index:4000;
+padding:20px;
+overflow:auto;
+}
+
+.popup-content{
+width:100%;
+max-width:500px;
+background:#151515;
+border-radius:25px;
+padding:25px;
+}
+
+.popup-content input,
+.popup-content select,
+.popup-content textarea{
+width:100%;
+padding:15px;
+margin-top:15px;
+background:#222;
+border:none;
+border-radius:12px;
+color:white;
+}
+
+.popup-content button{
+width:100%;
+padding:15px;
+margin-top:20px;
+border:none;
+background:#00ff95;
+font-size:18px;
+font-weight:bold;
+border-radius:12px;
+cursor:pointer;
+}
+
+.close{
+float:right;
+font-size:30px;
+cursor:pointer;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+.logo{
+font-size:22px;
+}
+
+.card img{
+height:240px;
+}
+
+.cart-box{
+width:100%;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
-  <!-- HEADER -->
+<header>
 
-  <div class="header">
-    <div class="logo">SUDHEER STORE</div>
+<div class="logo">SUDHEER FASHION</div>
 
-    <div class="icons">
-      🛒
-      ❤️
-      🔍
-    </div>
-  </div>
+<div class="icons">
 
-  <!-- PRODUCTS -->
+<div onclick="openCart()">
+🛒
+<span class="cart-count" id="count">0</span>
+</div>
 
-  <div class="container">
+</div>
 
-    <!-- PRODUCT 1 -->
+</header>
 
-    <div class="card"
-      onclick="openProduct(
-      'images/shirt1.jpg',
-      'Men White Printed Stretchable Round Neck T-Shirt',
-      '₹1,234',
-      'Premium quality stretchable t-shirt with modern design.'
-      )">
+<!-- SEARCH -->
 
-      <img src="images/shirt1.jpg">
+<div class="search-box">
+<input type="text" id="search" placeholder="Search T-Shirts..." onkeyup="searchProduct()">
+</div>
 
-      <div class="info">
-        <div class="title">
-          Men White Printed Stretchable Round Neck T-Shirt
-        </div>
+<!-- PRODUCTS -->
 
-        <div class="price">₹1,234</div>
-      </div>
-    </div>
+<div class="container" id="products">
 
-    <!-- PRODUCT 2 -->
+</div>
 
-    <div class="card"
-      onclick="openProduct(
-      'images/shirt2.jpg',
-      'Men Olive Solid Polo Neck Collar T-shirt',
-      '₹974',
-      'Comfortable polo t-shirt perfect for daily wear.'
-      )">
+<!-- CART -->
 
-      <img src="images/shirt2.jpg">
+<div class="cart-box" id="cartBox">
 
-      <div class="info">
-        <div class="title">
-          Men Olive Solid Polo Neck Collar T-shirt
-        </div>
+<h2>Your Cart</h2>
+<br>
 
-        <div class="price">₹974</div>
-      </div>
-    </div>
+<div id="cartItems"></div>
 
-  </div>
+<h3>Total: ₹<span id="total">0</span></h3>
 
-  <!-- PRODUCT POPUP -->
+<button class="checkout-btn" onclick="openForm()">
+Proceed To Checkout
+</button>
 
-  <div class="popup" id="popup">
+</div>
 
-    <div class="close" onclick="closePopup()">×</div>
+<!-- FORM -->
 
-    <img id="popup-img" src="">
+<div class="popup" id="popup">
 
-    <div class="popup-content">
+<div class="popup-content">
 
-      <div class="popup-title" id="popup-title"></div>
+<div class="close" onclick="closeForm()">×</div>
 
-      <div class="popup-price" id="popup-price"></div>
+<h2>Checkout Details</h2>
 
-      <div class="desc" id="popup-desc"></div>
+<input type="text" id="name" placeholder="Full Name">
 
-      <h3>Select Size</h3>
+<input type="number" id="mobile" placeholder="Mobile Number">
 
-      <div class="sizes">
-        <div class="size">S</div>
-        <div class="size">M</div>
-        <div class="size">L</div>
-        <div class="size">XL</div>
-      </div>
+<textarea id="address" placeholder="Full Address"></textarea>
 
-      <div class="btns">
-        <button class="cart">Add To Cart</button>
-        <button class="buy">Buy Now</button>
-      </div>
+<select id="gender">
+<option>Male</option>
+<option>Female</option>
+<option>Other</option>
+</select>
 
-    </div>
-  </div>
+<select id="state">
 
-  <script>
+<option>Uttar Pradesh</option>
+<option>Delhi</option>
+<option>Maharashtra</option>
+<option>Bihar</option>
+<option>Rajasthan</option>
+<option>Punjab</option>
+<option>Haryana</option>
+<option>Gujarat</option>
+<option>Madhya Pradesh</option>
+<option>West Bengal</option>
+<option>Tamil Nadu</option>
+<option>Karnataka</option>
+<option>Kerala</option>
 
-    function openProduct(image,title,price,desc){
+</select>
 
-      document.getElementById("popup").style.display="block";
+<button onclick="sendWhatsApp()">
+Place Order
+</button>
 
-      document.getElementById("popup-img").src=image;
+</div>
 
-      document.getElementById("popup-title").innerHTML=title;
+</div>
 
-      document.getElementById("popup-price").innerHTML=price;
+<script>
 
-      document.getElementById("popup-desc").innerHTML=desc;
-    }
+/* PRODUCTS */
 
-    function closePopup(){
+let products = [
 
-      document.getElementById("popup").style.display="none";
-    }
+{
+name:"White Printed T-Shirt",
+price:1234,
+image:"images/shirt1.jpg"
+},
 
-  </script>
+{
+name:"Olive Polo T-Shirt",
+price:974,
+image:"images/shirt2.jpg"
+},
+
+{
+name:"Black Premium Polo",
+price:1799,
+image:"images/shirt3.jpg"
+},
+
+{
+name:"Blue Stripe Shirt",
+price:1499,
+image:"images/shirt4.jpg"
+}
+
+];
+
+/* SHOW PRODUCTS */
+
+let productHTML="";
+
+products.forEach((item,index)=>{
+
+productHTML += `
+
+<div class="card">
+
+<img src="${item.image}">
+
+<div class="info">
+
+<div class="title">
+${item.name}
+</div>
+
+<div class="price">
+₹${item.price}
+</div>
+
+<button class="btn" onclick="addToCart(${index})">
+Add To Cart
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("products").innerHTML=productHTML;
+
+/* SEARCH */
+
+function searchProduct(){
+
+let input=document.getElementById("search").value.toLowerCase();
+
+let cards=document.querySelectorAll(".card");
+
+cards.forEach((card,index)=>{
+
+let name=products[index].name.toLowerCase();
+
+if(name.includes(input)){
+
+card.style.display="block";
+
+}else{
+
+card.style.display="none";
+
+}
+
+});
+
+}
+
+/* CART */
+
+let cart=[];
+
+function addToCart(index){
+
+cart.push(products[index]);
+
+updateCart();
+
+}
+
+function updateCart(){
+
+let cartHTML="";
+let total=0;
+
+cart.forEach(item=>{
+
+total += item.price;
+
+cartHTML += `
+
+<div class="cart-item">
+
+<img src="${item.image}">
+
+<div>
+
+<h4>${item.name}</h4>
+
+<p>₹${item.price}</p>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("cartItems").innerHTML=cartHTML;
+
+document.getElementById("total").innerHTML=total;
+
+document.getElementById("count").innerHTML=cart.length;
+
+}
+
+/* OPEN CART */
+
+function openCart(){
+
+document.getElementById("cartBox").classList.toggle("active");
+
+}
+
+/* FORM */
+
+function openForm(){
+
+document.getElementById("popup").style.display="flex";
+
+}
+
+function closeForm(){
+
+document.getElementById("popup").style.display="none";
+
+}
+
+/* WHATSAPP */
+
+function sendWhatsApp(){
+
+let name=document.getElementById("name").value;
+
+let mobile=document.getElementById("mobile").value;
+
+let address=document.getElementById("address").value;
+
+let gender=document.getElementById("gender").value;
+
+let state=document.getElementById("state").value;
+
+let order="";
+
+cart.forEach(item=>{
+
+order += item.name + " - ₹" + item.price + "%0A";
+
+});
+
+let total=document.getElementById("total").innerHTML;
+
+/* APNA WHATSAPP NUMBER YAHA DALO */
+
+let phone="919999999999";
+
+let message=
+
+"🛒 NEW ORDER %0A%0A" +
+
+"Name: " + name + "%0A" +
+
+"Mobile: " + mobile + "%0A" +
+
+"Address: " + address + "%0A" +
+
+"Gender: " + gender + "%0A" +
+
+"State: " + state + "%0A%0A" +
+
+"Products:%0A" + order +
+
+"%0ATotal: ₹" + total;
+
+window.open(
+
+"https://wa.me/" + phone + "?text=" + message,
+
+"_blank"
+
+);
+
+}
+
+</script>
 
 </body>
 </html>
