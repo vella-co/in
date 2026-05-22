@@ -1,20 +1,24 @@
-<!-- REPLACE ONLY THIS CSS PART IN YOUR CODE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VELLA CO.</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Poppins',sans-serif;
--webkit-tap-highlight-color:transparent;
 }
 
 body{
-background:#f5f7fb;
+background:#f4f6f9;
 color:#111;
 overflow-x:hidden;
 }
-
-/* HEADER */
 
 header{
 position:sticky;
@@ -23,167 +27,77 @@ z-index:1000;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:16px 18px;
-background:rgba(255,255,255,0.9);
-backdrop-filter:blur(12px);
-border-bottom:1px solid #ececec;
+padding:16px;
+background:#ffffffee;
+backdrop-filter:blur(10px);
+border-bottom:1px solid #eee;
 }
 
 .logo{
-font-size:24px;
+font-size:22px;
 font-weight:700;
-letter-spacing:1px;
 }
 
-.header-right{
+.header-icons{
 display:flex;
 gap:16px;
 align-items:center;
 }
 
-.search-icon-btn,
-.cart-icon-btn{
+.icon-btn{
 background:none;
 border:none;
 cursor:pointer;
-position:relative;
+font-size:22px;
 }
 
-.search-icon-btn svg,
-.cart-icon-btn svg{
-width:24px;
-height:24px;
-stroke:#111;
-stroke-width:2.3;
-fill:none;
-}
-
-.cart-count{
-position:absolute;
-top:-6px;
-right:-8px;
-background:#000;
+.banner{
+margin:15px;
+height:180px;
+border-radius:24px;
+background:linear-gradient(135deg,#111,#444);
 color:#fff;
-font-size:10px;
-padding:3px 6px;
-border-radius:50px;
-font-weight:700;
-}
-
-/* SEARCH */
-
-.search-overlay-bar{
-display:none;
-padding:12px 15px;
-background:#fff;
-}
-
-.search-wrapper{
-position:relative;
-}
-
-.search-wrapper input{
-width:100%;
-padding:14px 45px;
-border-radius:50px;
-border:none;
-background:#f2f4f7;
-font-size:13px;
-outline:none;
-}
-
-.input-glass-icon{
-position:absolute;
-top:50%;
-left:16px;
-transform:translateY(-50%);
-}
-
-.input-glass-icon svg{
-width:16px;
-height:16px;
-stroke:#777;
-}
-
-.clear-search{
-position:absolute;
-right:18px;
-top:50%;
-transform:translateY(-50%);
-font-size:14px;
-cursor:pointer;
-}
-
-/* BANNER */
-
-.promo-banner-section{
-padding:15px;
-}
-
-.banner-slider{
-height:190px;
-border-radius:22px;
-overflow:hidden;
-position:relative;
-box-shadow:0 12px 35px rgba(0,0,0,0.08);
-}
-
-.slide-poster{
-position:absolute;
-width:100%;
-height:100%;
 display:flex;
 flex-direction:column;
 justify-content:center;
 padding:25px;
-color:#fff;
-opacity:0;
-transition:0.4s;
+position:relative;
+overflow:hidden;
 }
 
-.slide-poster.active{
-opacity:1;
-}
-
-.bg-banner-1{
-background:linear-gradient(135deg,#111,#333);
-}
-
-.bg-banner-2{
-background:linear-gradient(135deg,#4f46e5,#7c3aed);
-}
-
-.bg-banner-3{
-background:linear-gradient(135deg,#ec4899,#f43f5e);
-}
-
-.slide-poster h2{
-font-size:24px;
-font-weight:700;
+.banner h1{
+font-size:28px;
+line-height:1.3;
 margin-bottom:10px;
 }
 
-.slide-poster p{
+.banner p{
 font-size:13px;
-line-height:1.6;
-color:#f1f1f1;
+color:#eee;
+margin-bottom:15px;
 }
 
-/* SECTION */
+.banner button{
+width:130px;
+padding:12px;
+border:none;
+border-radius:12px;
+background:#fff;
+font-weight:700;
+cursor:pointer;
+}
 
 .section-title{
-padding:5px 18px 14px;
-font-size:15px;
+padding:5px 18px 15px;
+font-size:16px;
 font-weight:700;
 }
-
-/* PRODUCTS */
 
 .products-grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:14px;
-padding:0 15px 25px;
+padding:0 14px 30px;
 }
 
 .product-card{
@@ -191,10 +105,8 @@ background:#fff;
 border-radius:22px;
 overflow:hidden;
 box-shadow:0 8px 25px rgba(0,0,0,0.06);
-transition:0.25s;
 cursor:pointer;
-display:flex;
-flex-direction:column;
+transition:0.3s;
 }
 
 .product-card:hover{
@@ -203,72 +115,56 @@ transform:translateY(-4px);
 
 .product-card img{
 width:100%;
-height:230px;
+height:220px;
 object-fit:cover;
 background:#fff;
 }
 
 .product-info{
 padding:12px;
-display:flex;
-flex-direction:column;
-flex-grow:1;
 }
 
 .product-name{
 font-size:13px;
 font-weight:600;
 line-height:1.5;
+min-height:40px;
 margin-bottom:8px;
-min-height:38px;
 }
 
-.price-container{
+.price-row{
 display:flex;
 align-items:center;
-gap:5px;
+gap:6px;
 margin-bottom:12px;
-flex-wrap:wrap;
 }
 
-.current-price{
-font-size:15px;
+.price{
+font-size:16px;
 font-weight:700;
 }
 
-.old-mrp{
+.old-price{
 font-size:11px;
-text-decoration:line-through;
 color:#888;
+text-decoration:line-through;
 }
 
-.discount-tag{
-font-size:11px;
-font-weight:700;
-color:#ff3f6c;
-}
-
-.view-btn{
+.buy-btn{
 width:100%;
-padding:11px;
+padding:12px;
 border:none;
-border-radius:12px;
+border-radius:14px;
 background:#111;
 color:#fff;
 font-size:12px;
-font-weight:600;
+font-weight:700;
 cursor:pointer;
-transition:0.2s;
 }
-
-.view-btn:hover{
-opacity:0.9;
-}
-
-/* PRODUCT PAGE */
 
 #productPage{
-padding-bottom:90px;
+display:none;
+padding-bottom:100px;
 }
 
 .back-btn{
@@ -278,53 +174,44 @@ font-weight:600;
 cursor:pointer;
 }
 
-.main-product-img{
+.product-main-img{
 width:100%;
 height:420px;
 object-fit:cover;
 background:#fff;
 }
 
-.details-wrapper{
-padding:22px;
+.product-details{
 background:#fff;
 margin-top:-25px;
 border-radius:28px 28px 0 0;
+padding:22px;
 position:relative;
-z-index:2;
 }
 
-.details-title{
-font-size:22px;
+.product-details h2{
+font-size:24px;
+margin-bottom:12px;
+}
+
+.product-price{
+font-size:28px;
 font-weight:700;
-margin-bottom:10px;
-}
-
-.details-price-box{
-display:flex;
-align-items:center;
-gap:10px;
 margin-bottom:15px;
 }
 
-.details-price{
-font-size:26px;
-font-weight:700;
-color:#111;
+.product-desc{
+font-size:13px;
+line-height:1.7;
+color:#666;
+margin-bottom:20px;
 }
 
-.details-mrp{
-font-size:15px;
-color:#888;
-text-decoration:line-through;
-}
-
-.select-title{
+.option-title{
 font-size:13px;
 font-weight:700;
 margin-bottom:10px;
 margin-top:18px;
-text-transform:uppercase;
 }
 
 .option-group{
@@ -333,310 +220,310 @@ gap:10px;
 flex-wrap:wrap;
 }
 
-.opt-box{
+.option-box{
 padding:10px 16px;
 border-radius:12px;
 border:1px solid #ddd;
 font-size:13px;
+font-weight:600;
 cursor:pointer;
 background:#fff;
-font-weight:600;
-transition:0.2s;
 }
 
-.opt-box.selected{
+.option-box.active{
 background:#111;
 color:#fff;
 border-color:#111;
 }
 
-/* ACTION BUTTONS */
-
-.main-actions{
+.action-buttons{
 display:flex;
 gap:12px;
 margin-top:28px;
 }
 
-.main-actions button{
+.action-buttons button{
 flex:1;
 padding:15px;
 border:none;
-border-radius:14px;
-font-size:14px;
-font-weight:700;
-cursor:pointer;
-}
-
-.add-cart-btn{
-background:#f1f3f5;
-color:#111;
-}
-
-.buy-now-btn{
-background:#111;
-color:#fff;
-}
-
-/* CART */
-
-#cartPage{
-padding:18px;
-}
-
-.cart-item{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:14px;
-background:#fff;
-border-radius:18px;
-margin-bottom:14px;
-box-shadow:0 6px 18px rgba(0,0,0,0.05);
-}
-
-.cart-item-left{
-display:flex;
-gap:12px;
-align-items:center;
-}
-
-.cart-item img{
-width:70px;
-height:70px;
-object-fit:cover;
-border-radius:12px;
-}
-
-.cart-item-info h4{
-font-size:13px;
-margin-bottom:5px;
-}
-
-.cart-item-info p{
-font-size:11px;
-color:#666;
-}
-
-.remove-item-btn{
-background:none;
-border:none;
-font-size:18px;
-cursor:pointer;
-}
-
-.cart-total-box{
-font-size:20px;
-font-weight:700;
-margin-top:25px;
-}
-
-.checkout-trigger-btn{
-width:100%;
-padding:16px;
-border:none;
 border-radius:16px;
-background:#111;
-color:#fff;
-font-size:15px;
-font-weight:700;
-margin-top:18px;
-cursor:pointer;
-}
-
-/* MODAL */
-
-#checkoutModal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.5);
-z-index:9999;
-padding:20px;
-}
-
-.modal-content{
-background:#fff;
-border-radius:24px;
-padding:24px;
-max-width:420px;
-margin:50px auto;
-animation:popup 0.3s ease;
-}
-
-@keyframes popup{
-from{
-transform:scale(0.9);
-opacity:0;
-}
-to{
-transform:scale(1);
-opacity:1;
-}
-}
-
-.modal-content h3{
-margin-bottom:18px;
-font-size:20px;
-}
-
-.modal-content input,
-.modal-content textarea{
-width:100%;
-padding:14px;
-border-radius:14px;
-border:none;
-background:#f4f6f8;
-margin-bottom:14px;
-font-size:13px;
-outline:none;
-}
-
-.modal-content button{
-width:100%;
-padding:15px;
-border:none;
-border-radius:14px;
-background:#111;
-color:#fff;
 font-size:14px;
 font-weight:700;
 cursor:pointer;
 }
 
-/* FOOTER */
+.cart-btn{
+background:#eef2f7;
+}
 
-footer{
-background:#fff;
-padding:30px 20px;
-text-align:center;
-border-top:1px solid #eee;
+.order-btn{
+background:#111;
+color:#fff;
+}
+
+.related-products{
 margin-top:30px;
 }
 
-.footer-socials{
-display:flex;
-justify-content:center;
-gap:18px;
-margin-bottom:16px;
+footer{
+background:#fff;
+padding:35px 20px;
+text-align:center;
+border-top:1px solid #eee;
 }
 
-.footer-socials a{
-width:45px;
-height:45px;
+.footer-icons{
 display:flex;
 justify-content:center;
+gap:16px;
+margin-bottom:18px;
+}
+
+.footer-icons a{
+width:46px;
+height:46px;
+display:flex;
 align-items:center;
+justify-content:center;
 background:#111;
-border-radius:50%;
-text-decoration:none;
 color:#fff;
+text-decoration:none;
+border-radius:50%;
 font-size:18px;
-transition:0.2s;
 }
 
-.footer-socials a:hover{
-transform:translateY(-4px);
-}
-
-footer p{
-font-size:12px;
-color:#777;
-line-height:1.6;
-}
-
-/* TOAST */
-
-#customToast{
+.toast{
 position:fixed;
 top:-100px;
 left:50%;
 transform:translateX(-50%);
 background:#111;
 color:#fff;
-padding:13px 24px;
+padding:14px 24px;
 border-radius:50px;
 font-size:13px;
 font-weight:600;
-z-index:99999;
-transition:0.35s;
-box-shadow:0 10px 30px rgba(0,0,0,0.15);
+transition:0.3s;
+z-index:9999;
 }
 
-#customToast.show{
-top:24px;
+.toast.show{
+top:25px;
 }
-
-/* LIVE POPUP */
-
-#liveSalesNotification{
-position:fixed;
-bottom:-120px;
-left:15px;
-background:#fff;
-padding:14px 18px;
-border-radius:18px;
-box-shadow:0 10px 30px rgba(0,0,0,0.12);
-transition:0.4s;
-z-index:999;
-max-width:300px;
-display:flex;
-gap:10px;
-align-items:flex-start;
-}
-
-#liveSalesNotification.popup-active{
-bottom:18px;
-}
-
-.sales-pulse-dot{
-width:10px;
-height:10px;
-border-radius:50%;
-background:#22c55e;
-animation:pulse 1.5s infinite;
-margin-top:5px;
-}
-
-.sales-content-text{
-font-size:11px;
-line-height:1.6;
-color:#555;
-}
-
-.sales-content-text strong{
-color:#111;
-}
-
-@keyframes pulse{
-0%{transform:scale(0.9);}
-50%{transform:scale(1.4);}
-100%{transform:scale(0.9);}
-}
-
-/* RESPONSIVE */
 
 @media(min-width:768px){
-
 .products-grid{
 grid-template-columns:repeat(4,1fr);
 gap:20px;
 }
 
-.banner-slider{
+.banner{
 height:320px;
 }
 
-.slide-poster h2{
-font-size:38px;
+.banner h1{
+font-size:46px;
 }
-
-.main-product-img{
-height:620px;
-}
-
 }
 </style>
+</head>
+<body>
+
+<div class="toast" id="toast">Added To Cart</div>
+
+<header>
+<div class="logo">VELLA CO.</div>
+
+<div class="header-icons">
+<button class="icon-btn">🔍</button>
+<button class="icon-btn">🛒</button>
+</div>
+</header>
+
+<div id="homePage">
+
+<div class="banner">
+<h1>Premium Fashion Collection</h1>
+<p>Luxury oversized t-shirts & streetwear collection now live.</p>
+<button>Shop Now</button>
+</div>
+
+<div class="section-title">Trending Products</div>
+
+<div class="products-grid" id="productsGrid"></div>
+
+</div>
+
+<div id="productPage">
+<div class="back-btn" onclick="goBackHome()">⬅ Back</div>
+
+<img id="productImage" class="product-main-img" src="">
+
+<div class="product-details">
+<h2 id="productTitle"></h2>
+<div class="product-price" id="productPrice"></div>
+
+<p class="product-desc">
+Premium quality oversized t-shirt with soft cotton fabric and luxury streetwear fit.
+</p>
+
+<div class="option-title">Select Size</div>
+<div class="option-group">
+<div class="option-box active">S</div>
+<div class="option-box">M</div>
+<div class="option-box">L</div>
+<div class="option-box">XL</div>
+</div>
+
+<div class="option-title">Select Color</div>
+<div class="option-group">
+<div class="option-box active">White</div>
+<div class="option-box">Black</div>
+</div>
+
+<div class="action-buttons">
+<button class="cart-btn" onclick="showToast()">Add To Cart</button>
+<button class="order-btn">Buy Now</button>
+</div>
+
+<div class="related-products">
+<div class="section-title" style="padding-left:0">You May Also Like</div>
+<div class="products-grid" id="relatedGrid" style="padding:0"></div>
+</div>
+
+</div>
+</div>
+
+<footer>
+
+<div class="footer-icons">
+<a href="https://instagram.com" target="_blank">📷</a>
+<a href="https://t.me" target="_blank">✈️</a>
+<a href="https://wa.me" target="_blank">💬</a>
+</div>
+
+<p>© 2026 Vella Co. Premium Store. All Rights Reserved.</p>
+
+</footer>
+
+<script>
+const products = [
+{
+id:1,
+name:'Shadow X T-shirt',
+price:'₹999',
+old:'₹1299',
+image:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200&auto=format&fit=crop'
+},
+{
+id:2,
+name:'Samurai Spirit T-shirt',
+price:'₹999',
+old:'₹1299',
+image:'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop'
+},
+{
+id:3,
+name:'Discipline Peak T-shirt',
+price:'₹999',
+old:'₹1299',
+image:'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=1200&auto=format&fit=crop'
+},
+{
+id:4,
+name:'No Limits T-shirt',
+price:'₹999',
+old:'₹1299',
+image:'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop'
+}
+];
+
+const grid = document.getElementById('productsGrid');
+
+products.forEach(product=>{
+
+grid.innerHTML += `
+<div class="product-card" onclick="openProduct(${product.id})">
+<img src="${product.image}">
+<div class="product-info">
+<div class="product-name">${product.name}</div>
+
+<div class="price-row">
+<div class="price">${product.price}</div>
+<div class="old-price">${product.old}</div>
+</div>
+
+<button class="buy-btn">Shop Now</button>
+</div>
+</div>
+`;
+
+});
+
+function openProduct(id){
+
+const product = products.find(p=>p.id===id);
+
+if(!product) return;
+
+document.getElementById('homePage').style.display='none';
+document.getElementById('productPage').style.display='block';
+
+document.getElementById('productImage').src = product.image;
+document.getElementById('productTitle').innerText = product.name;
+document.getElementById('productPrice').innerText = product.price;
+
+const related = document.getElementById('relatedGrid');
+related.innerHTML='';
+
+products.forEach(item=>{
+if(item.id !== id){
+related.innerHTML += `
+<div class="product-card" onclick="openProduct(${item.id})">
+<img src="${item.image}">
+<div class="product-info">
+<div class="product-name">${item.name}</div>
+<div class="price-row">
+<div class="price">${item.price}</div>
+</div>
+<button class="buy-btn">View Product</button>
+</div>
+</div>
+`;
+}
+});
+
+window.scrollTo(0,0);
+}
+
+function goBackHome(){
+document.getElementById('homePage').style.display='block';
+document.getElementById('productPage').style.display='none';
+window.scrollTo(0,0);
+}
+
+function showToast(){
+const toast = document.getElementById('toast');
+toast.classList.add('show');
+
+setTimeout(()=>{
+toast.classList.remove('show');
+},2000);
+}
+
+const optionBoxes = document.querySelectorAll('.option-box');
+
+optionBoxes.forEach(box=>{
+box.addEventListener('click',()=>{
+
+const parent = box.parentElement;
+parent.querySelectorAll('.option-box').forEach(btn=>btn.classList.remove('active'));
+
+box.classList.add('active');
+
+});
+});
+</script>
+
+</body>
+</html>
