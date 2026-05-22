@@ -3,527 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VELLA CO.</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+<title>Vella Co. Premium</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+    /* Premium Modern UI Setup */
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Inter', sans-serif; color: #000000; }
+    body { background: #fdfdfd; }
+    
+    header { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
+    .logo { font-weight: 800; font-size: 24px; letter-spacing: -1px; }
 
-body{
-background:#f4f6f9;
-color:#111;
-overflow-x:hidden;
-}
+    /* Product Grid UI - Inspired by 10718.png */
+    .products-grid { padding: 20px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    .product-card { 
+        background: #ffffff; border: 1px solid #e0e0e0; border-radius: 16px; 
+        padding: 12px; display: flex; flex-direction: column; 
+    }
+    .product-card img { width: 100%; height: 180px; object-fit: contain; margin-bottom: 12px; }
+    .product-name { font-size: 14px; font-weight: 600; margin-bottom: 15px; min-height: 40px; }
+    .shop-btn { 
+        width: 100%; padding: 12px; background: #000000; color: #ffffff; 
+        border: none; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer;
+    }
 
-header{
-position:sticky;
-top:0;
-z-index:1000;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:16px;
-background:#ffffffee;
-backdrop-filter:blur(10px);
-border-bottom:1px solid #eee;
-}
-
-.logo{
-font-size:22px;
-font-weight:700;
-}
-
-.header-icons{
-display:flex;
-gap:16px;
-align-items:center;
-}
-
-.icon-btn{
-background:none;
-border:none;
-cursor:pointer;
-font-size:22px;
-}
-
-.banner{
-margin:15px;
-height:180px;
-border-radius:24px;
-background:linear-gradient(135deg,#111,#444);
-color:#fff;
-display:flex;
-flex-direction:column;
-justify-content:center;
-padding:25px;
-position:relative;
-overflow:hidden;
-}
-
-.banner h1{
-font-size:28px;
-line-height:1.3;
-margin-bottom:10px;
-}
-
-.banner p{
-font-size:13px;
-color:#eee;
-margin-bottom:15px;
-}
-
-.banner button{
-width:130px;
-padding:12px;
-border:none;
-border-radius:12px;
-background:#fff;
-font-weight:700;
-cursor:pointer;
-}
-
-.section-title{
-padding:5px 18px 15px;
-font-size:16px;
-font-weight:700;
-}
-
-.products-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:14px;
-padding:0 14px 30px;
-}
-
-.product-card{
-background:#fff;
-border-radius:22px;
-overflow:hidden;
-box-shadow:0 8px 25px rgba(0,0,0,0.06);
-cursor:pointer;
-transition:0.3s;
-}
-
-.product-card:hover{
-transform:translateY(-4px);
-}
-
-.product-card img{
-width:100%;
-height:220px;
-object-fit:cover;
-background:#fff;
-}
-
-.product-info{
-padding:12px;
-}
-
-.product-name{
-font-size:13px;
-font-weight:600;
-line-height:1.5;
-min-height:40px;
-margin-bottom:8px;
-}
-
-.price-row{
-display:flex;
-align-items:center;
-gap:6px;
-margin-bottom:12px;
-}
-
-.price{
-font-size:16px;
-font-weight:700;
-}
-
-.old-price{
-font-size:11px;
-color:#888;
-text-decoration:line-through;
-}
-
-.buy-btn{
-width:100%;
-padding:12px;
-border:none;
-border-radius:14px;
-background:#111;
-color:#fff;
-font-size:12px;
-font-weight:700;
-cursor:pointer;
-}
-
-#productPage{
-display:none;
-padding-bottom:100px;
-}
-
-.back-btn{
-padding:18px;
-font-size:14px;
-font-weight:600;
-cursor:pointer;
-}
-
-.product-main-img{
-width:100%;
-height:420px;
-object-fit:cover;
-background:#fff;
-}
-
-.product-details{
-background:#fff;
-margin-top:-25px;
-border-radius:28px 28px 0 0;
-padding:22px;
-position:relative;
-}
-
-.product-details h2{
-font-size:24px;
-margin-bottom:12px;
-}
-
-.product-price{
-font-size:28px;
-font-weight:700;
-margin-bottom:15px;
-}
-
-.product-desc{
-font-size:13px;
-line-height:1.7;
-color:#666;
-margin-bottom:20px;
-}
-
-.option-title{
-font-size:13px;
-font-weight:700;
-margin-bottom:10px;
-margin-top:18px;
-}
-
-.option-group{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-}
-
-.option-box{
-padding:10px 16px;
-border-radius:12px;
-border:1px solid #ddd;
-font-size:13px;
-font-weight:600;
-cursor:pointer;
-background:#fff;
-}
-
-.option-box.active{
-background:#111;
-color:#fff;
-border-color:#111;
-}
-
-.action-buttons{
-display:flex;
-gap:12px;
-margin-top:28px;
-}
-
-.action-buttons button{
-flex:1;
-padding:15px;
-border:none;
-border-radius:16px;
-font-size:14px;
-font-weight:700;
-cursor:pointer;
-}
-
-.cart-btn{
-background:#eef2f7;
-}
-
-.order-btn{
-background:#111;
-color:#fff;
-}
-
-.related-products{
-margin-top:30px;
-}
-
-footer{
-background:#fff;
-padding:35px 20px;
-text-align:center;
-border-top:1px solid #eee;
-}
-
-.footer-icons{
-display:flex;
-justify-content:center;
-gap:16px;
-margin-bottom:18px;
-}
-
-.footer-icons a{
-width:46px;
-height:46px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#111;
-color:#fff;
-text-decoration:none;
-border-radius:50%;
-font-size:18px;
-}
-
-.toast{
-position:fixed;
-top:-100px;
-left:50%;
-transform:translateX(-50%);
-background:#111;
-color:#fff;
-padding:14px 24px;
-border-radius:50px;
-font-size:13px;
-font-weight:600;
-transition:0.3s;
-z-index:9999;
-}
-
-.toast.show{
-top:25px;
-}
-
-@media(min-width:768px){
-.products-grid{
-grid-template-columns:repeat(4,1fr);
-gap:20px;
-}
-
-.banner{
-height:320px;
-}
-
-.banner h1{
-font-size:46px;
-}
-}
+    /* Product Detail Page - Clean & Premium */
+    #productPage { display: none; background: #fff; min-height: 100vh; padding: 20px; }
+    .main-img { width: 100%; height: 350px; object-fit: contain; }
+    .details-title { font-size: 22px; font-weight: 700; margin: 20px 0; }
+    .price-tag { font-size: 20px; font-weight: 700; margin-bottom: 20px; }
+    .buy-now-btn { width: 100%; padding: 16px; background: #000000; color: #ffffff; font-weight: 700; border-radius: 12px; border: none; font-size: 15px; cursor: pointer; }
 </style>
 </head>
 <body>
 
-<div class="toast" id="toast">Added To Cart</div>
-
 <header>
-<div class="logo">VELLA CO.</div>
-
-<div class="header-icons">
-<button class="icon-btn">🔍</button>
-<button class="icon-btn">🛒</button>
-</div>
+    <div class="logo">VELLA CO.</div>
 </header>
 
 <div id="homePage">
-
-<div class="banner">
-<h1>Premium Fashion Collection</h1>
-<p>Luxury oversized t-shirts & streetwear collection now live.</p>
-<button>Shop Now</button>
+    <div class="products-grid" id="mainProductsContainer"></div>
 </div>
-
-<div class="section-title">Trending Products</div>
-
-<div class="products-grid" id="productsGrid"></div>
-
-</div>
-
-<div id="productPage">
-<div class="back-btn" onclick="goBackHome()">⬅ Back</div>
-
-<img id="productImage" class="product-main-img" src="">
-
-<div class="product-details">
-<h2 id="productTitle"></h2>
-<div class="product-price" id="productPrice"></div>
-
-<p class="product-desc">
-Premium quality oversized t-shirt with soft cotton fabric and luxury streetwear fit.
-</p>
-
-<div class="option-title">Select Size</div>
-<div class="option-group">
-<div class="option-box active">S</div>
-<div class="option-box">M</div>
-<div class="option-box">L</div>
-<div class="option-box">XL</div>
-</div>
-
-<div class="option-title">Select Color</div>
-<div class="option-group">
-<div class="option-box active">White</div>
-<div class="option-box">Black</div>
-</div>
-
-<div class="action-buttons">
-<button class="cart-btn" onclick="showToast()">Add To Cart</button>
-<button class="order-btn">Buy Now</button>
-</div>
-
-<div class="related-products">
-<div class="section-title" style="padding-left:0">You May Also Like</div>
-<div class="products-grid" id="relatedGrid" style="padding:0"></div>
-</div>
-
-</div>
-</div>
-
-<footer>
-
-<div class="footer-icons">
-<a href="https://instagram.com" target="_blank">📷</a>
-<a href="https://t.me" target="_blank">✈️</a>
-<a href="https://wa.me" target="_blank">💬</a>
-</div>
-
-<p>© 2026 Vella Co. Premium Store. All Rights Reserved.</p>
-
-</footer>
 
 <script>
 const products = [
-{
-id:1,
-name:'Shadow X T-shirt',
-price:'₹999',
-old:'₹1299',
-image:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200&auto=format&fit=crop'
-},
-{
-id:2,
-name:'Samurai Spirit T-shirt',
-price:'₹999',
-old:'₹1299',
-image:'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop'
-},
-{
-id:3,
-name:'Discipline Peak T-shirt',
-price:'₹999',
-old:'₹1299',
-image:'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=1200&auto=format&fit=crop'
-},
-{
-id:4,
-name:'No Limits T-shirt',
-price:'₹999',
-old:'₹1299',
-image:'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop'
-}
+    { id: 1, name: "Men White Solid Polo", price: "₹909", image: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=500" },
+    { id: 2, name: "Men Black Printed Tee", price: "₹1,234", image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500" },
+    { id: 3, name: "Men Maroon Crew Neck", price: "₹699", image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=500" },
+    { id: 4, name: "Men Olive Polo", price: "₹974", image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500" }
 ];
 
-const grid = document.getElementById('productsGrid');
-
-products.forEach(product=>{
-
-grid.innerHTML += `
-<div class="product-card" onclick="openProduct(${product.id})">
-<img src="${product.image}">
-<div class="product-info">
-<div class="product-name">${product.name}</div>
-
-<div class="price-row">
-<div class="price">${product.price}</div>
-<div class="old-price">${product.old}</div>
-</div>
-
-<button class="buy-btn">Shop Now</button>
-</div>
-</div>
-`;
-
-});
-
-function openProduct(id){
-
-const product = products.find(p=>p.id===id);
-
-if(!product) return;
-
-document.getElementById('homePage').style.display='none';
-document.getElementById('productPage').style.display='block';
-
-document.getElementById('productImage').src = product.image;
-document.getElementById('productTitle').innerText = product.name;
-document.getElementById('productPrice').innerText = product.price;
-
-const related = document.getElementById('relatedGrid');
-related.innerHTML='';
-
-products.forEach(item=>{
-if(item.id !== id){
-related.innerHTML += `
-<div class="product-card" onclick="openProduct(${item.id})">
-<img src="${item.image}">
-<div class="product-info">
-<div class="product-name">${item.name}</div>
-<div class="price-row">
-<div class="price">${item.price}</div>
-</div>
-<button class="buy-btn">View Product</button>
-</div>
-</div>
-`;
+function renderProducts() {
+    const container = document.getElementById("mainProductsContainer");
+    products.forEach(p => {
+        container.innerHTML += `
+            <div class="product-card">
+                <img src="${p.image}">
+                <div class="product-name">${p.name}</div>
+                <button class="shop-btn" onclick="alert('Order for ${p.name}')">Shop Now</button>
+            </div>
+        `;
+    });
 }
-});
-
-window.scrollTo(0,0);
-}
-
-function goBackHome(){
-document.getElementById('homePage').style.display='block';
-document.getElementById('productPage').style.display='none';
-window.scrollTo(0,0);
-}
-
-function showToast(){
-const toast = document.getElementById('toast');
-toast.classList.add('show');
-
-setTimeout(()=>{
-toast.classList.remove('show');
-},2000);
-}
-
-const optionBoxes = document.querySelectorAll('.option-box');
-
-optionBoxes.forEach(box=>{
-box.addEventListener('click',()=>{
-
-const parent = box.parentElement;
-parent.querySelectorAll('.option-box').forEach(btn=>btn.classList.remove('active'));
-
-box.classList.add('active');
-
-});
-});
+renderProducts();
 </script>
-
 </body>
 </html>
