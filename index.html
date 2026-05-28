@@ -1,77 +1,26 @@
-<!-- =========================
-VELLA CO. PREMIUM STORE
-FINAL UPDATED VERSION
-========================= -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>VELLA CO.</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Inter',sans-serif;
-scroll-behavior:smooth;
-}
-
-body{
-background:#fff;
-color:#000;
-overflow-x:hidden;
-}
-
-/* LOADER */
-
-.loader{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:#fff;
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:99999;
-}
-
-.loader h1{
-font-size:52px;
-letter-spacing:6px;
-animation:pulse 1s infinite;
-}
-
-@keyframes pulse{
-50%{
-opacity:.3;
-}
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter}
+body{background:#fff;color:#000;overflow-x:hidden}
 
 /* HEADER */
-
 header{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-z-index:999;
-backdrop-filter:blur(10px);
-background:rgba(255,255,255,.92);
+position:fixed;top:0;width:100%;
+background:#fff;
 border-bottom:1px solid #eee;
+z-index:999;
 }
 
 .navbar{
@@ -81,509 +30,63 @@ align-items:center;
 padding:18px 7%;
 }
 
-.logo{
-font-size:30px;
-font-weight:900;
-letter-spacing:4px;
-}
+.logo{font-weight:900;font-size:28px;letter-spacing:3px}
 
 .nav-links{
 display:flex;
-gap:34px;
-align-items:center;
-transition:.4s;
+gap:30px;
 }
 
 .nav-links a{
 text-decoration:none;
 color:#000;
-font-size:15px;
 font-weight:600;
-padding-left:8px;
+padding-left:6px;
 position:relative;
 }
 
 .nav-links a::after{
-content:'';
+content:"";
 position:absolute;
-left:8px;
 bottom:-6px;
-width:50%;
+left:6px;
+width:40%;
 height:2px;
 background:#ddd;
 }
 
-.search-box{
-position:relative;
-width:320px;
-}
-
 .search-box input{
-width:100%;
-padding:13px 45px 13px 18px;
-border-radius:50px;
+padding:10px 16px;
+border-radius:30px;
 border:1px solid #ddd;
 background:#f7f7f7;
 outline:none;
-}
-
-.search-box i{
-position:absolute;
-right:16px;
-top:50%;
-transform:translateY(-50%);
 }
 
 .nav-icons{
 display:flex;
+gap:15px;
 align-items:center;
-gap:20px;
-font-size:22px;
-}
-
-.cart-icon{
-position:relative;
+font-size:20px;
 cursor:pointer;
 }
 
 .cart-count{
-position:absolute;
-top:-8px;
-right:-8px;
-width:20px;
-height:20px;
 background:#000;
 color:#fff;
 border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
 font-size:11px;
-}
-
-.menu-btn{
-display:none;
-font-size:24px;
-cursor:pointer;
-}
-
-/* HERO */
-
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:140px 7% 80px;
-gap:50px;
-}
-
-.hero-text{
-flex:1;
-}
-
-.hero-text h1{
-font-size:82px;
-font-weight:900;
-line-height:1;
-margin-bottom:20px;
-}
-
-.hero-text p{
-font-size:18px;
-line-height:1.8;
-color:#666;
-margin-bottom:35px;
-max-width:560px;
-}
-
-.hero-btn{
-padding:16px 34px;
-border:none;
-background:#000;
-color:#fff;
-border-radius:50px;
-font-weight:700;
-cursor:pointer;
-transition:.3s;
-}
-
-.hero-btn:hover{
-transform:translateY(-5px);
-}
-
-.hero-image{
-flex:1;
-}
-
-.hero-image img{
-width:100%;
-height:720px;
-object-fit:cover;
-border-radius:30px;
-}
-
-/* PRODUCTS */
-
-.products-section{
-padding:80px 7%;
-}
-
-.section-title{
-font-size:42px;
-font-weight:800;
-margin-bottom:40px;
-}
-
-.products{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:30px;
-margin-bottom:40px;
-}
-
-.product-card{
-border:1px solid #eee;
-border-radius:26px;
-overflow:hidden;
-transition:.4s;
-background:#fff;
-}
-
-.product-card:hover{
-transform:translateY(-10px);
-box-shadow:0 20px 50px rgba(0,0,0,.08);
-}
-
-.product-image{
-height:380px;
-overflow:hidden;
-position:relative;
-}
-
-.product-image img{
-width:100%;
-height:100%;
-object-fit:cover;
-transition:.4s;
-}
-
-.product-card:hover img{
-transform:scale(1.08);
-}
-
-.discount{
+padding:2px 6px;
 position:absolute;
-top:15px;
-left:15px;
-background:#000;
-color:#fff;
-padding:7px 14px;
-border-radius:50px;
-font-size:12px;
-font-weight:700;
+margin-left:-10px;
+margin-top:-10px;
 }
 
-.product-info{
-padding:22px;
-}
-
-.product-info h3{
-font-size:20px;
-margin-bottom:10px;
-}
-
-.price{
-display:flex;
-align-items:center;
-gap:10px;
-margin-bottom:15px;
-}
-
-.price span{
-font-size:24px;
-font-weight:800;
-}
-
-.price del{
-color:#888;
-}
-
-.rating{
-color:#ffb400;
-margin-bottom:18px;
-}
-
-.options{
-display:flex;
-gap:10px;
-margin-bottom:18px;
-}
-
-.options select{
-flex:1;
-padding:12px;
-border-radius:12px;
-border:1px solid #ddd;
-background:#f7f7f7;
-}
-
-.buttons{
-display:flex;
-gap:12px;
-}
-
-.add-cart,
-.order-now{
-flex:1;
-padding:14px;
-border:none;
-border-radius:14px;
-font-weight:700;
-cursor:pointer;
-transition:.3s;
-}
-
-.add-cart{
-background:#000;
-color:#fff;
-}
-
-.order-now{
-background:#f4f4f4;
-}
-
-.add-cart:hover,
-.order-now:hover{
-transform:translateY(-3px);
-}
-
-/* PAGINATION */
-
-.pagination{
-display:flex;
-justify-content:center;
-gap:12px;
-}
-
-.page-btn{
-width:45px;
-height:45px;
-border:none;
-border-radius:12px;
-background:#f4f4f4;
-font-weight:700;
-cursor:pointer;
-}
-
-.page-btn.active{
-background:#000;
-color:#fff;
-}
-
-/* CART */
-
-.cart-sidebar{
-position:fixed;
-top:0;
-right:-450px;
-width:420px;
-height:100vh;
-background:#fff;
-z-index:9999;
-padding:30px;
-transition:.4s;
-box-shadow:-10px 0 40px rgba(0,0,0,.1);
-display:flex;
-flex-direction:column;
-}
-
-.cart-sidebar.active{
-right:0;
-}
-
-.cart-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:25px;
-}
-
-.cart-items{
-flex:1;
-overflow:auto;
-}
-
-.cart-item{
-display:flex;
-gap:15px;
-border-bottom:1px solid #eee;
-padding-bottom:18px;
-margin-bottom:18px;
-}
-
-.cart-item img{
-width:90px;
-height:100px;
-object-fit:cover;
-border-radius:16px;
-}
-
-.qty{
-display:flex;
-align-items:center;
-gap:10px;
-margin-top:10px;
-}
-
-.qty button{
-width:28px;
-height:28px;
-border:none;
-border-radius:50%;
-background:#f4f4f4;
-cursor:pointer;
-}
-
-.delete-btn{
-margin-top:12px;
-color:red;
-cursor:pointer;
-font-size:18px;
-}
-
-.checkout-btn{
-width:100%;
-padding:16px;
-border:none;
-border-radius:16px;
-background:#000;
-color:#fff;
-font-weight:700;
-cursor:pointer;
-margin-top:15px;
-}
-
-/* CHECKOUT */
-
-.checkout{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.5);
-display:none;
-justify-content:center;
-align-items:center;
-padding:20px;
-z-index:99999;
-}
-
-.checkout.active{
-display:flex;
-}
-
-.checkout-box{
-background:#fff;
-width:100%;
-max-width:700px;
-border-radius:30px;
-padding:35px;
-position:relative;
-}
-
-.close-checkout{
-position:absolute;
-top:20px;
-right:20px;
-font-size:24px;
-cursor:pointer;
-}
-
-.checkout-box h2{
-font-size:34px;
-margin-bottom:25px;
-}
-
-.checkout-form{
-display:grid;
-gap:18px;
-}
-
-.checkout-form input,
-.checkout-form textarea,
-.checkout-form select{
-padding:16px;
-border-radius:14px;
-border:1px solid #ddd;
-background:#f7f7f7;
-outline:none;
-}
-
-.checkout-form textarea{
-height:120px;
-resize:none;
-}
-
-.pay-btn{
-padding:16px;
-border:none;
-border-radius:14px;
-background:#000;
-color:#fff;
-font-weight:700;
-cursor:pointer;
-}
-
-/* FOOTER */
-
-footer{
-background:#f7f7f7;
-padding:70px 7% 40px;
-margin-top:80px;
-}
-
-.footer-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:40px;
-margin-bottom:40px;
-}
-
-.footer-col h3{
-margin-bottom:18px;
-}
-
-.footer-col p{
-line-height:1.8;
-color:#666;
-}
-
-/* MOBILE */
-
-@media(max-width:1000px){
-
-.products{
-grid-template-columns:repeat(2,1fr);
-}
-
-.hero{
-flex-direction:column;
-}
-
-.hero-text h1{
-font-size:58px;
-}
-
-}
+/* MOBILE MENU */
+.menu-btn{display:none}
 
 @media(max-width:768px){
-
-.menu-btn{
-display:block;
-}
-
+.menu-btn{display:block}
 .nav-links{
 position:fixed;
 top:70px;
@@ -593,790 +96,323 @@ height:100vh;
 background:#fff;
 flex-direction:column;
 padding:40px;
-align-items:flex-start;
-box-shadow:10px 0 40px rgba(0,0,0,0.1);
-transition:0.4s;
+transition:.4s;
+box-shadow:10px 0 40px rgba(0,0,0,.1);
+}
+.nav-links.active{left:0}
+.search-box{display:none}
+}
+
+/* HERO */
+.hero{
+padding:130px 7% 60px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:40px;
+}
+
+.hero h1{font-size:70px;font-weight:900}
+
+.hero img{
+width:100%;
+border-radius:20px;
+height:500px;
+object-fit:cover;
+}
+
+/* PRODUCTS */
+.products{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+padding:60px 7%;
+}
+
+.card{
+border:1px solid #eee;
+border-radius:20px;
+overflow:hidden;
+transition:.3s;
+}
+
+.card:hover{transform:translateY(-8px)}
+
+.card img{width:100%;height:300px;object-fit:cover}
+
+.info{padding:15px}
+
+.price{font-weight:800;font-size:20px}
+
+.btns{
+display:flex;
+gap:10px;
+margin-top:10px;
+}
+
+button{
+padding:10px;
+border:none;
+cursor:pointer;
+border-radius:10px;
+font-weight:600;
+}
+
+.add{background:#000;color:#fff;flex:1}
+.order{background:#f2f2f2;flex:1}
+
+/* CART */
+.cart{
+position:fixed;
+right:-400px;
+top:0;
+width:350px;
+height:100vh;
+background:#fff;
+box-shadow:-10px 0 30px rgba(0,0,0,.1);
+transition:.4s;
+padding:20px;
 z-index:9999;
 }
 
-.nav-links.active{
+.cart.active{right:0}
+
+.item{
+display:flex;
+gap:10px;
+margin-bottom:15px;
+border-bottom:1px solid #eee;
+padding-bottom:10px;
+}
+
+.delete{
+color:red;
+cursor:pointer;
+}
+
+/* CHECKOUT */
+.checkout{
+position:fixed;
+top:0;
 left:0;
-}
-
-.search-box{
-display:none;
-}
-
-.products{
-grid-template-columns:1fr;
-}
-
-.hero-text h1{
-font-size:46px;
-}
-
-.cart-sidebar{
 width:100%;
+height:100%;
+background:rgba(0,0,0,.5);
+display:none;
+align-items:center;
+justify-content:center;
 }
 
+.checkout.active{display:flex}
+
+.box{
+background:#fff;
+padding:25px;
+width:400px;
+border-radius:20px;
+}
+
+.box input,textarea,select{
+width:100%;
+margin:8px 0;
+padding:10px;
+border:1px solid #ddd;
+border-radius:10px;
+}
+
+/* SOCIAL */
+.socials{
+display:flex;
+gap:10px;
+margin-top:10px;
+}
+
+.socials a{
+width:35px;height:35px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+border:1px solid #ddd;
+text-decoration:none;
+color:#000;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<!-- LOADER -->
-
-<div class="loader" id="loader">
-<h1>VELLA CO.</h1>
-</div>
-
-<!-- HEADER -->
-
 <header>
-
 <div class="navbar">
 
 <div class="logo">VELLA CO.</div>
 
-<div class="nav-links" id="navLinks">
-
+<div class="nav-links" id="menu">
 <a href="#">Home</a>
 <a href="#shop">Shop</a>
-<a href="#">New Arrivals</a>
-<a href="#">Collections</a>
-<a href="#contact">Contact</a>
-
+<a href="#">New</a>
+<a href="#">Contact</a>
 </div>
 
 <div class="search-box">
-
-<input type="text" placeholder="Search products..." id="searchInput">
-
-<i class="fa-solid fa-magnifying-glass"></i>
-
+<input placeholder="Search">
 </div>
 
 <div class="nav-icons">
 
-<div class="cart-icon" onclick="toggleCart()">
+<i class="fa fa-bars menu-btn" onclick="toggleMenu()"></i>
 
-<i class="fa-solid fa-bag-shopping"></i>
-
-<div class="cart-count" id="cartCount">0</div>
-
-</div>
-
-<div class="menu-btn" id="menuBtn">
-<i class="fa-solid fa-bars"></i>
+<div onclick="toggleCart()">
+<i class="fa fa-shopping-bag"></i>
+<span class="cart-count" id="count">0</span>
 </div>
 
 </div>
 
 </div>
-
 </header>
 
-<!-- HERO -->
-
 <section class="hero">
-
-<div class="hero-text">
-
+<div>
 <h1>VELLA CO.</h1>
-
-<p>
-Premium modern streetwear collection crafted for luxury fashion lovers.
-</p>
-
-<button class="hero-btn" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
-Shop Now
-</button>
-
+<p>Premium Streetwear Fashion</p>
 </div>
-
-<div class="hero-image">
-
-<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1200&auto=format&fit=crop">
-
-</div>
-
+<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b">
 </section>
 
-<!-- PRODUCTS -->
-
-<section class="products-section" id="shop">
-
-<h2 class="section-title">Shop Collection</h2>
-
-<div class="products" id="productsContainer"></div>
-
-<div class="pagination">
-
-<button class="page-btn active" onclick="changePage(1)">1</button>
-
-<button class="page-btn" onclick="changePage(2)">2</button>
-
-<button class="page-btn" onclick="changePage(3)">3</button>
-
-</div>
-
-</section>
+<div class="products" id="products"></div>
 
 <!-- CART -->
-
-<div class="cart-sidebar" id="cartSidebar">
-
-<div class="cart-header">
-
-<h2>Your Cart</h2>
-
-<i class="fa-solid fa-xmark" onclick="toggleCart()"></i>
-
-</div>
-
-<div class="cart-items" id="cartItems"></div>
-
-<div>
-
-<h3>Total: ₹<span id="cartTotal">0</span></h3>
-
-<button class="checkout-btn" onclick="openCheckout()">
-Checkout
-</button>
-
-</div>
-
+<div class="cart" id="cart">
+<h3>Cart</h3>
+<div id="cartItems"></div>
+<button onclick="openCheckout()">Checkout</button>
 </div>
 
 <!-- CHECKOUT -->
-
-<div class="checkout" id="checkout">
-
-<div class="checkout-box">
-
-<i class="fa-solid fa-xmark close-checkout" onclick="closeCheckout()"></i>
-
+<div class="checkout" id="checkout" onclick="closeCheckout(event)">
+<div class="box">
 <h2>Checkout</h2>
 
-<div class="checkout-form">
+<input id="name" placeholder="Name">
+<input id="phone" placeholder="10 digit mobile">
+<input id="email" placeholder="Email">
+<textarea id="address" placeholder="Address"></textarea>
 
-<input type="text" placeholder="Full Name" id="name">
-
-<input type="tel" placeholder="10 Digit Mobile Number" id="phone" maxlength="10">
-
-<input type="email" placeholder="Email Address" id="email">
-
-<textarea placeholder="Full Address" id="address"></textarea>
-
-<select id="paymentMethod">
-
-<option value="online">Online Payment</option>
-
-<option value="cod">Cash On Delivery</option>
-
+<select id="pay">
+<option value="online">Online</option>
+<option value="cod">COD</option>
 </select>
 
-<button class="pay-btn" onclick="placeOrder()">
-Place Order
-</button>
+<button onclick="placeOrder()">Place Order</button>
 
 </div>
-
 </div>
-
-</div>
-
-<!-- FOOTER -->
-
-<footer id="contact">
-
-<div class="footer-grid">
-
-<div class="footer-col">
-
-<h3>VELLA CO.</h3>
-
-<p>
-Luxury minimal premium streetwear fashion brand.
-</p>
-
-</div>
-
-<div class="footer-col">
-
-<h3>Contact</h3>
-
-<p>Email: support@vellaco.com</p>
-
-<p>Phone: +91 9876543210</p>
-
-</div>
-
-</div>
-
-<p style="text-align:center;">
-© 2026 VELLA CO. All Rights Reserved.
-</p>
-
-</footer>
 
 <script>
 
-/* PRODUCTS */
-
-const allProducts = [
-
-{
-id:1,
-title:"Oversized Hoodie",
-price:2499,
-oldPrice:3499,
-image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200&auto=format&fit=crop"
-},
-
-{
-id:2,
-title:"Premium Black Tee",
-price:1499,
-oldPrice:2199,
-image:"https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop"
-},
-
-{
-id:3,
-title:"Streetwear Jacket",
-price:3999,
-oldPrice:4999,
-image:"https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop"
-},
-
-{
-id:4,
-title:"Minimal White Tee",
-price:1799,
-oldPrice:2499,
-image:"https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop"
-},
-
-{
-id:5,
-title:"Gray Oversized Hoodie",
-price:2699,
-oldPrice:3599,
-image:"https://images.unsplash.com/photo-1506629905607-d9d8f1f1e7f5?q=80&w=1200&auto=format&fit=crop"
-},
-
-{
-id:6,
-title:"Luxury Jacket",
-price:4599,
-oldPrice:5999,
-image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1200&auto=format&fit=crop"
-},
-
-{
-id:7,
-title:"Premium Sweatshirt",
-price:2199,
-oldPrice:3199,
-image:"https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop"
-},
-
-{
-id:8,
-title:"Classic Street Tee",
-price:1599,
-oldPrice:2399,
-image:"https://images.unsplash.com/photo-1503341504253-dff4815485f1?q=80&w=1200&auto=format&fit=crop"
-},
-
-{
-id:9,
-title:"Minimal Fashion Hoodie",
-price:2999,
-oldPrice:3999,
-image:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop"
-}
-
-];
-
-/* PAGINATION */
-
-let currentPage = 1;
-
-function renderProducts(page){
-
-const container = document.getElementById("productsContainer");
-
-container.innerHTML = "";
-
-const start = (page - 1) * 3;
-const end = start + 3;
-
-const pageProducts = allProducts.slice(start,end);
-
-pageProducts.forEach(product=>{
-
-container.innerHTML += `
-
-<div class="product-card">
-
-<div class="product-image">
-
-<img src="${product.image}">
-
-<div class="discount">
--${Math.floor((product.oldPrice-product.price)/product.oldPrice*100)}%
-</div>
-
-</div>
-
-<div class="product-info">
-
-<h3>${product.title}</h3>
-
-<div class="price">
-
-<span>₹${product.price}</span>
-
-<del>₹${product.oldPrice}</del>
-
-</div>
-
-<div class="rating">
-★★★★★
-</div>
-
-<div class="options">
-
-<select>
-<option>S</option>
-<option>M</option>
-<option>L</option>
-<option>XL</option>
-</select>
-
-<select>
-<option>Black</option>
-<option>White</option>
-<option>Gray</option>
-</select>
-
-</div>
-
-<div class="buttons">
-
-<button class="add-cart" onclick="addToCart(${product.id})">
-Add To Cart
-</button>
-
-<button class="order-now" onclick="directOrder(${product.id})">
-Order Now
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-window.scrollTo({
-top:document.getElementById("shop").offsetTop - 80,
-behavior:"smooth"
-});
-
-}
-
-renderProducts(1);
-
-function changePage(page){
-
-currentPage = page;
-
-document.querySelectorAll(".page-btn").forEach(btn=>{
-btn.classList.remove("active");
-});
-
-document.querySelectorAll(".page-btn")[page-1].classList.add("active");
-
-history.pushState({page:page},"");
-
-renderProducts(page);
-
-}
-
-/* BACK BUTTON */
-
-window.onpopstate = function(event){
-
-if(event.state && event.state.page){
-
-renderProducts(event.state.page);
-
-document.querySelectorAll(".page-btn").forEach(btn=>{
-btn.classList.remove("active");
-});
-
-document.querySelectorAll(".page-btn")[event.state.page-1].classList.add("active");
-
-}
-
-}
-
 /* MENU */
-
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.getElementById("navLinks");
-
-menuBtn.onclick = () => {
-navLinks.classList.toggle("active");
-};
-
-/* OUTSIDE CLICK CLOSE */
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("active");
+}
 
 document.addEventListener("click",(e)=>{
-
-const isMenuClick =
-navLinks.contains(e.target) || menuBtn.contains(e.target);
-
-if(!isMenuClick){
-navLinks.classList.remove("active");
+if(!document.getElementById("menu").contains(e.target) &&
+!e.target.classList.contains("menu-btn")){
+document.getElementById("menu").classList.remove("active");
 }
-
 });
 
-if(
-e.target.id === "checkout"
-){
-closeCheckout();
-}
+/* PRODUCTS */
+let products=[
+{ id:1,name:"Hoodie",price:1999,img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab"},
+{ id:2,name:"Tshirt",price:999,img:"https://images.unsplash.com/photo-1512436991641-6745cdb1723f"},
+{ id:3,name:"Jacket",price:2999,img:"https://images.unsplash.com/photo-1496747611176-843222e1e57c"}
+];
 
+let cart=[];
+
+function show(){
+let html="";
+products.forEach(p=>{
+html+=`
+<div class="card">
+<img src="${p.img}">
+<div class="info">
+<h3>${p.name}</h3>
+<div class="price">₹${p.price}</div>
+<div class="btns">
+<button class="add" onclick="add(${p.id})">Add</button>
+<button class="order" onclick="buy(${p.id})">Order</button>
+</div>
+</div>
+</div>`;
 });
-
-/* CART */
-
-let cart = JSON.parse(localStorage.getItem("vellaCart")) || [];
-
-function saveCart(){
-localStorage.setItem("vellaCart",JSON.stringify(cart));
+document.getElementById("products").innerHTML=html;
 }
+show();
 
-function addToCart(id){
-
-const product = allProducts.find(p=>p.id===id);
-
-const existing = cart.find(item=>item.id===id);
-
-if(existing){
-existing.qty++;
-}else{
-cart.push({...product,qty:1});
-}
-
-saveCart();
+function add(id){
+let p=products.find(x=>x.id==id);
+cart.push(p);
+document.getElementById("count").innerText=cart.length;
 renderCart();
-toggleCart();
-
 }
 
 function renderCart(){
-
-const cartItems = document.getElementById("cartItems");
-const cartCount = document.getElementById("cartCount");
-const cartTotal = document.getElementById("cartTotal");
-
-cartItems.innerHTML = "";
-
-let total = 0;
-let count = 0;
-
-if(cart.length === 0){
-
-cartItems.innerHTML = `
-<p>Your cart is empty.</p>
-`;
-
-}
-
-cart.forEach(item=>{
-
-total += item.price * item.qty;
-count += item.qty;
-
-cartItems.innerHTML += `
-
-<div class="cart-item">
-
-<img src="${item.image}">
-
-<div>
-
-<h4>${item.title}</h4>
-
-<p>₹${item.price}</p>
-
-<div class="qty">
-
-<button onclick="changeQty(${item.id},-1)">-</button>
-
-<span>${item.qty}</span>
-
-<button onclick="changeQty(${item.id},1)">+</button>
-
-</div>
-
-<div class="delete-btn" onclick="deleteProduct(${item.id})">
-
-<i class="fa-solid fa-trash"></i>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
+let html="";
+cart.forEach((c,i)=>{
+html+=`
+<div class="item">
+<p>${c.name}</p>
+<span class="delete" onclick="del(${i})">X</span>
+</div>`;
 });
-
-cartCount.innerText = count;
-cartTotal.innerText = total;
-
+document.getElementById("cartItems").innerHTML=html;
 }
 
+function del(i){
+cart.splice(i,1);
 renderCart();
-
-function changeQty(id,change){
-
-const item = cart.find(i=>i.id===id);
-
-item.qty += change;
-
-if(item.qty <= 0){
-cart = cart.filter(i=>i.id!==id);
-}
-
-saveCart();
-renderCart();
-
-}
-
-function deleteProduct(id){
-
-cart = cart.filter(item=>item.id !== id);
-
-saveCart();
-renderCart();
-
+document.getElementById("count").innerText=cart.length;
 }
 
 function toggleCart(){
-
-document.getElementById("cartSidebar").classList.toggle("active");
-
+document.getElementById("cart").classList.toggle("active");
 }
 
-/* CHECKOUT */
-
-let selectedProduct = null;
-
-function directOrder(id){
-
-selectedProduct = allProducts.find(p=>p.id===id);
-
-openCheckout();
-
+function buy(id){
+toggleCheckout();
 }
 
 function openCheckout(){
-
-document.getElementById("checkout").classList.add("active");
-
+toggleCheckout();
 }
 
-function closeCheckout(){
-
-document.getElementById("checkout").classList.remove("active");
-
+function toggleCheckout(){
+document.getElementById("checkout").classList.toggle("active");
 }
 
-/* PHONE VALIDATION */
-
-document.getElementById("phone").addEventListener("input",function(){
-
-this.value = this.value.replace(/[^0-9]/g,'');
-
-if(this.value.length > 10){
-this.value = this.value.slice(0,10);
+function closeCheckout(e){
+if(e.target.id==="checkout") toggleCheckout();
 }
-
-});
-
-/* PLACE ORDER */
 
 function placeOrder(){
 
-const name = document.getElementById("name").value;
-const phone = document.getElementById("phone").value;
-const email = document.getElementById("email").value;
-const address = document.getElementById("address").value;
-const payment = document.getElementById("paymentMethod").value;
-
-if(phone.length !== 10){
-
-alert("Mobile number must be exactly 10 digits.");
-
+let phone=document.getElementById("phone").value;
+if(phone.length!=10){
+alert("Invalid number");
 return;
-
 }
 
-let total = 0;
-let productText = "";
-
-if(selectedProduct){
-
-total = selectedProduct.price;
-
-productText = `${selectedProduct.title}`;
-
+if(document.getElementById("pay").value=="cod"){
+window.open("https://wa.me/919999999999","_blank");
 }else{
-
-cart.forEach(item=>{
-
-total += item.price * item.qty;
-
-productText += `${item.title} x ${item.qty}, `;
-
-});
-
-}
-
-if(payment === "online"){
-
-const options = {
-
-key:"YOUR_RAZORPAY_KEY",
-
-amount: total * 100,
-
-currency:"INR",
-
-name:"VELLA CO.",
-
-description:"Premium Fashion Order",
-
-handler:function(response){
-
-alert("Payment Successful!");
-
-},
-
-theme:{
-color:"#000000"
-}
-
-};
-
-const rzp = new Razorpay(options);
-
-rzp.open();
-
-}else{
-
-const whatsappMessage = `Hello VELLA CO.%0A%0AName: ${name}%0APhone: ${phone}%0AEmail: ${email}%0AAddress: ${address}%0A%0AProducts: ${productText}%0ATotal: ₹${total}%0APayment: Cash On Delivery`;
-
-window.open(`https://wa.me/919999999999?text=${whatsappMessage}`,"_blank");
-
+alert("Razorpay open (key add karna)");
 }
 
 }
-
-/* SEARCH */
-
-document.getElementById("searchInput").addEventListener("input",(e)=>{
-
-const value = e.target.value.toLowerCase();
-
-const filtered = allProducts.filter(product=>
-product.title.toLowerCase().includes(value)
-);
-
-const container = document.getElementById("productsContainer");
-
-container.innerHTML = "";
-
-filtered.forEach(product=>{
-
-container.innerHTML += `
-
-<div class="product-card">
-
-<div class="product-image">
-
-<img src="${product.image}">
-
-<div class="discount">
--${Math.floor((product.oldPrice-product.price)/product.oldPrice*100)}%
-</div>
-
-</div>
-
-<div class="product-info">
-
-<h3>${product.title}</h3>
-
-<div class="price">
-
-<span>₹${product.price}</span>
-
-<del>₹${product.oldPrice}</del>
-
-</div>
-
-<div class="rating">
-★★★★★
-</div>
-
-<div class="buttons">
-
-<button class="add-cart" onclick="addToCart(${product.id})">
-Add To Cart
-</button>
-
-<button class="order-now" onclick="directOrder(${product.id})">
-Order Now
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-});
-
-/* LOADER */
-
-window.addEventListener("load",()=>{
-
-setTimeout(()=>{
-
-document.getElementById("loader").style.display="none";
-
-},1200);
-
-});
 
 </script>
 
