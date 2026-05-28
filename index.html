@@ -586,15 +586,17 @@ display:block;
 
 .nav-links{
 position:fixed;
-top:80px;
+top:70px;
 left:-100%;
-width:100%;
-height:calc(100vh - 80px);
+width:70%;
+height:100vh;
 background:#fff;
 flex-direction:column;
-padding-top:50px;
+padding:40px;
 align-items:flex-start;
-padding-left:40px;
+box-shadow:10px 0 40px rgba(0,0,0,0.1);
+transition:0.4s;
+z-index:9999;
 }
 
 .nav-links.active{
