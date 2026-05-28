@@ -1653,7 +1653,7 @@ document.getElementById('summary').innerHTML=summary;
 history.pushState(
 {
 type:'checkout'
-},
+},function
 '',
 '#checkout'
 );
@@ -1664,23 +1664,38 @@ type:'checkout'
 
 function placeOrder(){
 
-const name=document.getElementById('name').value;
-const email=document.getElementById('email').value;
-const phone=document.getElementById('phone').value;
-const address=document.getElementById('address').value;
+const name=document.getElementById('name').value.trim();
+
+const email=document.getElementById('email').value.trim();
+
+const phone=document.getElementById('phone').value.trim();
+
+const address=document.getElementById('address').value.trim();
+
 const payment=document.getElementById('paymentMethod').value;
 
 const razorpayKey=
-document.getElementById('razorpayKey').value ||
+document.getElementById('razorpayKey').value.trim() ||
 "rzp_test_1DP5mmOlF5G5ag";
 
 if(!name || !email || !phone || !address){
+
+showToast("Please fill all details");
+
+return;
+
+}
+
+if(!/^[0-9]{10}$/.test(phone)){
+
+showToast("Phone number must be exactly 10 digits");
 
 return;
 
 }
 
 const order={
+
 name,
 email,
 phone,
@@ -1688,17 +1703,16 @@ address,
 payment,
 cart,
 total:document.getElementById('total').innerText
+
 };
 
 orders.push(order);
 
 localStorage.setItem('orders',JSON.stringify(orders));
 
-if(payment==='cod'){
+/* ONLINE PAYMENT */
 
-showSuccess();
-
-}else{
+if(payment==='online'){
 
 const options={
 
@@ -1712,9 +1726,19 @@ name:"VELLA CO.",
 
 description:"Premium Fashion Order",
 
-handler:function(){
+image:"https://i.imgur.com/8Km9tLL.png",
+
+handler:function(response){
 
 showSuccess();
+
+},
+
+prefill:{
+
+name:name,
+email:email,
+contact:phone
 
 },
 
@@ -1727,6 +1751,36 @@ color:"#000000"
 const rzp=new Razorpay(options);
 
 rzp.open();
+
+}
+
+/* COD PAYMENT */
+
+if(payment==='cod'){
+
+let text=`🛍️ *VELLA CO. ORDER*%0A%0A`;
+
+text+=`👤 Name: ${name}%0A`;
+
+text+=`📞 Phone: ${phone}%0A`;
+
+text+=`📍 Address: ${address}%0A%0A`;
+
+cart.forEach(item=>{
+
+text+=`• ${item.title} x ${item.qty} - ₹${item.price*item.qty}%0A`;
+
+});
+
+text+=`%0A💰 Total: ₹${order.total}`;
+
+window.open(
+
+`https://wa.me/919999999999?text=${text}`
+
+);
+
+showSuccess();
 
 }
 
