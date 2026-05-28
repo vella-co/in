@@ -1,337 +1,421 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VELLA CO. - Premium Store</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>VELLA CO. - Luxury Fashion</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
+/* =====================
+GLOBAL STYLE
+===================== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
 body{
-margin:0;
-font-family:Arial;
-background:#fff;
-color:#000;
+  background:#0a0a0a;
+  color:#fff;
+  overflow-x:hidden;
 }
 
-header{
-position:sticky;
-top:0;
-background:#fff;
-display:flex;
-justify-content:space-between;
-padding:15px 5%;
-border-bottom:1px solid #eee;
-z-index:999;
+/* GOLD ACCENT */
+:root{
+  --gold:#d4af37;
+  --glass:rgba(255,255,255,0.06);
+}
+
+/* =====================
+NAVBAR
+===================== */
+nav{
+  position:sticky;
+  top:0;
+  backdrop-filter: blur(15px);
+  background:rgba(0,0,0,0.4);
+  display:flex;
+  justify-content:space-between;
+  padding:15px 30px;
+  z-index:1000;
+  border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
 .logo{
-font-size:22px;
-font-weight:bold;
+  font-family:'Playfair Display';
+  font-size:22px;
+  color:var(--gold);
 }
 
-.filters{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-padding:15px 5%;
+.nav-links a{
+  color:#fff;
+  margin:0 10px;
+  text-decoration:none;
+  font-size:14px;
 }
 
-select,input{
-padding:10px;
-border:1px solid #ddd;
-border-radius:8px;
+.cart-btn{
+  background:var(--gold);
+  color:#000;
+  padding:6px 12px;
+  border:none;
+  cursor:pointer;
+  border-radius:6px;
 }
 
-.products{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-padding:20px 5%;
+/* =====================
+HERO
+===================== */
+.hero{
+  height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background: radial-gradient(circle, #1a1a1a, #000);
+}
+
+.hero h1{
+  font-size:60px;
+  font-family:'Playfair Display';
+  color:var(--gold);
+}
+
+.hero p{margin:10px 0 20px;color:#ccc;}
+
+.btn{
+  padding:10px 20px;
+  border:none;
+  cursor:pointer;
+  margin:5px;
+  border-radius:8px;
+}
+
+.btn-gold{
+  background:var(--gold);
+  color:#000;
+}
+
+.btn-outline{
+  background:transparent;
+  border:1px solid var(--gold);
+  color:var(--gold);
+}
+
+/* =====================
+SECTIONS
+===================== */
+section{padding:60px 20px;}
+
+/* CATEGORIES */
+.grid-4{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:15px;
 }
 
 .card{
-border:1px solid #eee;
-padding:15px;
-border-radius:12px;
+  background:var(--glass);
+  padding:20px;
+  border-radius:15px;
+  backdrop-filter:blur(10px);
+  text-align:center;
+  transition:0.3s;
 }
 
-.card img{
-width:100%;
-height:220px;
-object-fit:cover;
-border-radius:10px;
+.card:hover{
+  transform:scale(1.05);
+  border:1px solid var(--gold);
 }
 
-.btn{
-padding:10px;
-border:none;
-cursor:pointer;
-margin-top:8px;
-width:100%;
+/* PRODUCTS */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:20px;
 }
 
-.cart{
-position:fixed;
-right:10px;
-bottom:10px;
-background:#000;
-color:#fff;
-padding:10px 15px;
-border-radius:50px;
-cursor:pointer;
+.product{
+  background:var(--glass);
+  border-radius:15px;
+  padding:15px;
+  transition:0.3s;
 }
 
-.section{
-padding:40px 5%;
+.product:hover{transform:translateY(-5px);}
+
+.product img{
+  width:100%;
+  border-radius:10px;
 }
 
-.faq-item{
-border-bottom:1px solid #eee;
-padding:10px 0;
-cursor:pointer;
+.price{color:var(--gold);margin:5px 0;}
+
+/* FILTER BAR */
+.filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:20px;
 }
 
-.answer{
-display:none;
-color:#555;
-margin-top:5px;
+select,input{
+  padding:8px;
+  border-radius:6px;
+  border:none;
 }
 
+/* CART */
+.cart-drawer{
+  position:fixed;
+  right:-400px;
+  top:0;
+  width:350px;
+  height:100%;
+  background:#111;
+  padding:20px;
+  transition:0.4s;
+  overflow-y:auto;
+  z-index:2000;
+}
+
+.cart-drawer.active{right:0;}
+
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  margin:10px 0;
+  border-bottom:1px solid #333;
+  padding-bottom:10px;
+}
+
+/* CHECKOUT */
 .checkout{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.5);
-display:none;
-justify-content:center;
-align-items:center;
+  display:none;
+  padding:20px;
+  background:#111;
 }
 
-.box{
-background:#fff;
-padding:20px;
-width:90%;
-max-width:500px;
-border-radius:12px;
+input, textarea{
+  width:100%;
+  margin:8px 0;
+  padding:10px;
+  border-radius:8px;
+  border:none;
 }
 
-@media(max-width:900px){
-.products{grid-template-columns:repeat(2,1fr);}
+/* MODAL */
+.modal{
+  position:fixed;
+  top:0;left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  display:none;
+  justify-content:center;
+  align-items:center;
 }
 
+.modal-content{
+  background:#111;
+  padding:20px;
+  border-radius:10px;
+  width:300px;
+}
+
+/* RESPONSIVE */
 @media(max-width:600px){
-.products{grid-template-columns:1fr;}
+  .hero h1{font-size:35px;}
 }
 </style>
-
 </head>
 
 <body>
 
-<header>
-<div class="logo">VELLA CO.</div>
-<div onclick="openCart()" class="cart">Cart (<span id="cartCount">0</span>)</div>
-</header>
+<!-- NAV -->
+<nav>
+  <div class="logo">VELLA CO.</div>
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#" onclick="toggleCart()">Cart 🛒</a>
+  </div>
+</nav>
 
-<!-- FILTER -->
-<div class="filters">
-<input type="text" id="search" placeholder="Search product">
-
-<select id="category">
-<option value="all">All Category</option>
-<option value="hoodie">Hoodie</option>
-<option value="tshirt">T-Shirt</option>
-<option value="jacket">Jacket</option>
-</select>
-
-<select id="sort">
-<option value="">Sort</option>
-<option value="low">Low to High</option>
-<option value="high">High to Low</option>
-</select>
+<!-- HERO -->
+<div class="hero" id="home">
+  <h1>VELLA CO.</h1>
+  <p>Wear Your Attitude</p>
+  <button class="btn btn-gold">Shop Now</button>
+  <button class="btn btn-outline">Explore</button>
 </div>
 
-<!-- PRODUCTS -->
-<div class="products" id="productBox"></div>
+<!-- CATEGORIES -->
+<section>
+<h2>Categories</h2>
+<div class="grid-4">
+  <div class="card">T-Shirts</div>
+  <div class="card">Hoodies</div>
+  <div class="card">Jeans</div>
+  <div class="card">Streetwear</div>
+</div>
+</section>
 
-<!-- PAGINATION -->
-<div class="section">
-<button onclick="pageChange(1)">1</button>
-<button onclick="pageChange(2)">2</button>
+<!-- SHOP -->
+<section id="shop">
+<h2>Trending Products</h2>
+
+<div class="filters">
+  <select id="categoryFilter" onchange="filterProducts()">
+    <option value="all">All</option>
+    <option value="tshirt">T-Shirts</option>
+    <option value="hoodie">Hoodies</option>
+  </select>
+
+  <select id="sortFilter" onchange="filterProducts()">
+    <option value="default">Sort</option>
+    <option value="low">Low to High</option>
+    <option value="high">High to Low</option>
+  </select>
+</div>
+
+<div class="products" id="productList"></div>
+</section>
+
+<!-- CART -->
+<div class="cart-drawer" id="cartDrawer">
+  <h2>Cart</h2>
+  <div id="cartItems"></div>
+  <h3>Total: ₹<span id="total">0</span></h3>
+  <button class="btn btn-gold" onclick="openCheckout()">Checkout</button>
 </div>
 
 <!-- CHECKOUT -->
 <div class="checkout" id="checkout">
-<div class="box">
 <h2>Checkout</h2>
-<input id="name" placeholder="Name"><br><br>
-<input id="phone" placeholder="Phone (10 digit)" maxlength="10"><br><br>
-<input id="address" placeholder="Address"><br><br>
+<input placeholder="Name" id="name">
+<input placeholder="Phone" id="phone">
+<textarea placeholder="Address" id="address"></textarea>
 
-<select id="payment">
-<option value="online">Online (Razorpay)</option>
-<option value="cod">Cash on Delivery</option>
-</select><br><br>
+<h3>Payment Method</h3>
+<select id="paymentMethod">
+  <option>COD</option>
+  <option>Online (Razorpay)</option>
+</select>
 
-<button onclick="placeOrder()" class="btn">Place Order</button>
-</div>
-</div>
-
-<!-- FAQ -->
-<div class="section">
-<h2>FAQs</h2>
-
-<div class="faq-item" onclick="toggleFAQ(this)">
-What is delivery time?
-<div class="answer">3-5 days delivery across India</div>
+<button class="btn btn-gold" onclick="processPaymentWithRazorpay()">Pay Now</button>
 </div>
 
-<div class="faq-item" onclick="toggleFAQ(this)">
-Return policy?
-<div class="answer">7 days easy return available</div>
-</div>
-
-<div class="faq-item" onclick="toggleFAQ(this)">
-Payment methods?
-<div class="answer">Razorpay UPI, Card & COD</div>
-</div>
-
-</div>
-
-<!-- CONTACT -->
-<div class="section" id="contact">
-<h2>Contact</h2>
-<p>Email: support@vellaco.com</p>
-<p>Phone: +91 9999999999</p>
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h3 id="mName"></h3>
+    <p id="mPrice"></p>
+    <button class="btn btn-gold" onclick="addToCart()">Add to Cart</button>
+  </div>
 </div>
 
 <script>
-
-let products=[
-{id:1,name:"Black Hoodie",price:2499,cat:"hoodie"},
-{id:2,name:"White Hoodie",price:2299,cat:"hoodie"},
-{id:3,name:"Street Tee",price:1299,cat:"tshirt"},
-{id:4,name:"Premium Tee",price:1599,cat:"tshirt"},
-{id:5,name:"Winter Jacket",price:3999,cat:"jacket"},
-{id:6,name:"Denim Jacket",price:4599,cat:"jacket"},
-{id:7,name:"Oversized Hoodie",price:2799,cat:"hoodie"},
-{id:8,name:"Gym Tee",price:999,cat:"tshirt"},
-{id:9,name:"Classic Jacket",price:4999,cat:"jacket"},
-{id:10,name:"Urban Hoodie",price:2899,cat:"hoodie"},
-{id:11,name:"Basic Tee",price:799,cat:"tshirt"},
-{id:12,name:"Leather Jacket",price:5999,cat:"jacket"}
+let products = [
+  {id:1,name:"Black Street Tee",price:799,cat:"tshirt"},
+  {id:2,name:"Luxury Hoodie",price:1299,cat:"hoodie"},
+  {id:3,name:"Oversized Tee",price:699,cat:"tshirt"},
+  {id:4,name:"Premium Hoodie",price:1499,cat:"hoodie"}
 ];
 
-let page=1;
-let cart=[];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let selectedProduct=null;
 
-function render(){
+/* RENDER */
+function renderProducts(list=products){
+  let html="";
+  list.forEach(p=>{
+    html+=`
+    <div class="product">
+      <img src="https://via.placeholder.com/200">
+      <h4>${p.name}</h4>
+      <div class="price">₹${p.price}</div>
+      <button class="btn btn-gold" onclick="openModal(${p.id})">Quick View</button>
+    </div>`;
+  });
+  document.getElementById("productList").innerHTML=html;
+}
+renderProducts();
 
-let box=document.getElementById("productBox");
+/* FILTER */
+function filterProducts(){
+  let cat=document.getElementById("categoryFilter").value;
+  let sort=document.getElementById("sortFilter").value;
 
-let data=[...products];
+  let filtered=[...products];
 
-// filter
-let cat=document.getElementById("category").value;
-let search=document.getElementById("search").value.toLowerCase();
-let sort=document.getElementById("sort").value;
+  if(cat!="all") filtered=filtered.filter(p=>p.cat==cat);
 
-if(cat!="all") data=data.filter(p=>p.cat==cat);
-if(search) data=data.filter(p=>p.name.toLowerCase().includes(search));
+  if(sort=="low") filtered.sort((a,b)=>a.price-b.price);
+  if(sort=="high") filtered.sort((a,b)=>b.price-a.price);
 
-// sort
-if(sort=="low") data.sort((a,b)=>a.price-b.price);
-if(sort=="high") data.sort((a,b)=>b.price-a.price);
-
-// pagination 6 items
-let start=(page-1)*6;
-let paged=data.slice(start,start+6);
-
-box.innerHTML="";
-
-paged.forEach(p=>{
-box.innerHTML+=`
-<div class="card">
-<h3>${p.name}</h3>
-<p>₹${p.price}</p>
-<button class="btn" onclick="add(${p.id})">Add to Cart</button>
-<button class="btn" onclick="buy(${p.id})">Buy Now</button>
-</div>
-`;
-});
-
+  renderProducts(filtered);
 }
 
-function pageChange(p){
-page=p;
-render();
+/* MODAL */
+function openModal(id){
+  selectedProduct=products.find(p=>p.id==id);
+  document.getElementById("mName").innerText=selectedProduct.name;
+  document.getElementById("mPrice").innerText="₹"+selectedProduct.price;
+  document.getElementById("modal").style.display="flex";
 }
 
-function add(id){
-cart.push(products.find(p=>p.id==id));
-document.getElementById("cartCount").innerText=cart.length;
+function addToCart(){
+  cart.push(selectedProduct);
+  localStorage.setItem("cart",JSON.stringify(cart));
+  alert("Added to Cart");
+  document.getElementById("modal").style.display="none";
+  updateCart();
 }
 
-function openCart(){
-document.getElementById("checkout").style.display="flex";
+/* CART */
+function toggleCart(){
+  document.getElementById("cartDrawer").classList.toggle("active");
+  updateCart();
 }
 
-function buy(id){
-cart=[products.find(p=>p.id==id)];
-openCart();
+function updateCart(){
+  let html="";
+  let total=0;
+
+  cart.forEach((item,i)=>{
+    total+=item.price;
+    html+=`
+    <div class="cart-item">
+      <span>${item.name}</span>
+      <span>₹${item.price}</span>
+    </div>`;
+  });
+
+  document.getElementById("cartItems").innerHTML=html;
+  document.getElementById("total").innerText=total;
 }
 
-function placeOrder(){
-
-let name=document.getElementById("name").value;
-let phone=document.getElementById("phone").value;
-let address=document.getElementById("address").value;
-let payment=document.getElementById("payment").value;
-
-if(phone.length!=10){
-alert("Invalid phone number");
-return;
+/* CHECKOUT */
+function openCheckout(){
+  document.getElementById("checkout").style.display="block";
 }
 
-let total=cart.reduce((a,b)=>a+b.price,0);
+/* RAZORPAY SIMULATION */
+function processPaymentWithRazorpay(){
+  let method=document.getElementById("paymentMethod").value;
 
-if(payment=="online"){
-let options={
-key:"YOUR_RAZORPAY_KEY",
-amount:total*100,
-currency:"INR",
-name:"VELLA CO",
-handler:function(){
-alert("Payment Success");
+  if(method=="COD"){
+    alert("Order Placed (COD)");
+  }else{
+    setTimeout(()=>{
+      alert("Payment Successful 🎉 Order Confirmed");
+    },2000);
+  }
+
+  cart=[];
+  localStorage.removeItem("cart");
+  updateCart();
 }
-};
-
-new Razorpay(options).open();
-}else{
-alert("COD Order Placed Successfully");
-}
-
-document.getElementById("checkout").style.display="none";
-cart=[];
-document.getElementById("cartCount").innerText=0;
-}
-
-function toggleFAQ(el){
-let ans=el.querySelector(".answer");
-ans.style.display=ans.style.display=="block"?"none":"block";
-}
-
-document.getElementById("search").addEventListener("input",render);
-document.getElementById("category").addEventListener("change",render);
-document.getElementById("sort").addEventListener("change",render);
-
-render();
-
 </script>
 
 </body>
