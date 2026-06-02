@@ -701,3 +701,383 @@ updateCart();
 updateCart();
 
 </script>
+<!-- WISHLIST + PRODUCT MODAL -->
+
+<div class="wishlist-drawer" id="wishlistDrawer">
+
+<div class="cart-header">
+<h2>Wishlist</h2>
+<span onclick="closeWishlist()">✕</span>
+</div>
+
+<div id="wishlistItems">
+
+<p style="padding:20px;text-align:center;">
+No wishlist items
+</p>
+
+</div>
+
+</div>
+
+<div class="product-modal" id="productModal">
+
+<div class="modal-box">
+
+<span class="close-modal" onclick="closeProductModal()">
+✕
+</span>
+
+<img id="modalImage" src="">
+
+<h2 id="modalTitle"></h2>
+
+<h3 id="modalPrice"></h3>
+
+<div class="size-title">
+Select Size
+</div>
+
+<div class="sizes">
+
+<button>S</button>
+<button>M</button>
+<button>L</button>
+<button>XL</button>
+
+</div>
+
+<div class="qty-box">
+
+<button onclick="decreaseQty()">-</button>
+
+<input
+type="number"
+id="qty"
+value="1"
+min="1"
+>
+
+<button onclick="increaseQty()">+</button>
+
+</div>
+
+<button class="buy-btn">
+Buy Now
+</button>
+
+</div>
+
+</div>
+
+<style>
+
+.wishlist-drawer{
+position:fixed;
+left:-420px;
+top:0;
+width:380px;
+max-width:100%;
+height:100vh;
+background:#fff;
+z-index:999999;
+box-shadow:5px 0 20px rgba(0,0,0,.15);
+transition:.4s;
+overflow-y:auto;
+}
+
+.wishlist-drawer.active{
+left:0;
+}
+
+.wishlist-item{
+padding:15px;
+border-bottom:1px solid #eee;
+display:flex;
+gap:10px;
+}
+
+.wishlist-item img{
+width:70px;
+height:80px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.product-modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.7);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:999999;
+padding:15px;
+}
+
+.product-modal.active{
+display:flex;
+}
+
+.modal-box{
+background:#fff;
+width:100%;
+max-width:450px;
+padding:20px;
+border-radius:15px;
+position:relative;
+}
+
+.modal-box img{
+width:100%;
+height:320px;
+object-fit:cover;
+border-radius:12px;
+}
+
+.close-modal{
+position:absolute;
+right:15px;
+top:10px;
+font-size:28px;
+cursor:pointer;
+}
+
+.size-title{
+margin-top:15px;
+font-weight:600;
+}
+
+.sizes{
+display:flex;
+gap:10px;
+margin-top:10px;
+}
+
+.sizes button{
+width:50px;
+height:40px;
+border:1px solid #ddd;
+background:#fff;
+cursor:pointer;
+}
+
+.qty-box{
+display:flex;
+gap:10px;
+margin-top:20px;
+align-items:center;
+}
+
+.qty-box button{
+width:40px;
+height:40px;
+border:none;
+background:#000;
+color:#fff;
+cursor:pointer;
+}
+
+.qty-box input{
+width:70px;
+height:40px;
+text-align:center;
+}
+
+.buy-btn{
+width:100%;
+height:50px;
+margin-top:20px;
+background:#000;
+color:#fff;
+border:none;
+border-radius:10px;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+}
+
+.wishlist-btn{
+width:100%;
+height:40px;
+margin-top:8px;
+background:#fff;
+border:1px solid #000;
+cursor:pointer;
+font-weight:600;
+}
+
+</style>
+
+<script>
+
+let wishlist =
+JSON.parse(
+localStorage.getItem("vellaWishlist")
+) || [];
+
+function openWishlist(){
+document
+.getElementById("wishlistDrawer")
+.classList.add("active");
+}
+
+function closeWishlist(){
+document
+.getElementById("wishlistDrawer")
+.classList.remove("active");
+}
+
+function updateWishlist(){
+
+localStorage.setItem(
+"vellaWishlist",
+JSON.stringify(wishlist)
+);
+
+const box =
+document.getElementById("wishlistItems");
+
+if(wishlist.length===0){
+
+box.innerHTML=
+`
+<p style="padding:20px;text-align:center;">
+No wishlist items
+</p>
+`;
+
+return;
+}
+
+box.innerHTML="";
+
+wishlist.forEach(item=>{
+
+box.innerHTML+=
+`
+<div class="wishlist-item">
+
+<img src="${item.image}">
+
+<div>
+
+<h4>${item.name}</h4>
+
+<p>₹${item.price}</p>
+
+</div>
+
+</div>
+`;
+
+});
+
+}
+
+document
+.querySelectorAll(".product")
+.forEach(product=>{
+
+const btn =
+document.createElement("button");
+
+btn.innerHTML="❤ Wishlist";
+
+btn.className="wishlist-btn";
+
+product
+.querySelector(".product-info")
+.appendChild(btn);
+
+btn.addEventListener("click",()=>{
+
+const image =
+product.querySelector("img").src;
+
+const name =
+product.querySelector("h3").innerText;
+
+const price =
+product.querySelector(".price")
+.innerText.replace("₹","");
+
+wishlist.push({
+image,
+name,
+price
+});
+
+updateWishlist();
+
+});
+
+product
+.querySelector("img")
+.addEventListener("click",()=>{
+
+document
+.getElementById("productModal")
+.classList.add("active");
+
+document
+.getElementById("modalImage")
+.src=image;
+
+document
+.getElementById("modalTitle")
+.innerText=name;
+
+document
+.getElementById("modalPrice")
+.innerText="₹"+price;
+
+});
+
+});
+
+function closeProductModal(){
+
+document
+.getElementById("productModal")
+.classList.remove("active");
+
+}
+
+function increaseQty(){
+
+const qty =
+document.getElementById("qty");
+
+qty.value =
+parseInt(qty.value)+1;
+
+}
+
+function decreaseQty(){
+
+const qty =
+document.getElementById("qty");
+
+if(qty.value>1){
+
+qty.value =
+parseInt(qty.value)-1;
+
+}
+
+}
+
+document
+.querySelector(".right-icons div")
+.addEventListener(
+"click",
+openWishlist
+);
+
+updateWishlist();
+
+</script>
