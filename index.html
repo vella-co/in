@@ -2127,3 +2127,241 @@ alert(
 </script>
 
 <!-- PART 7 END -->
+<!-- PART 8 START -->
+
+<style>
+
+.new-arrivals,
+.best-sellers,
+.testimonials,
+.instagram-section{
+padding:50px 15px;
+}
+
+.section-heading{
+text-align:center;
+font-size:30px;
+font-weight:900;
+margin-bottom:30px;
+}
+
+.arrival-grid,
+.insta-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+}
+
+.arrival-card,
+.insta-box{
+overflow:hidden;
+border-radius:15px;
+}
+
+.arrival-card img,
+.insta-box img{
+width:100%;
+height:220px;
+object-fit:cover;
+transition:.4s;
+}
+
+.arrival-card:hover img,
+.insta-box:hover img{
+transform:scale(1.08);
+}
+
+.testimonial-box{
+background:#f8f8f8;
+padding:20px;
+border-radius:15px;
+margin-bottom:15px;
+}
+
+.testimonial-box h4{
+margin-bottom:5px;
+}
+
+.scroll-top{
+position:fixed;
+bottom:90px;
+right:20px;
+width:50px;
+height:50px;
+background:black;
+color:white;
+border:none;
+border-radius:50%;
+font-size:20px;
+cursor:pointer;
+display:none;
+z-index:9999;
+}
+
+@media(min-width:768px){
+
+.arrival-grid,
+.insta-grid{
+grid-template-columns:repeat(4,1fr);
+}
+
+}
+
+</style>
+
+<section class="new-arrivals">
+
+<h2 class="section-heading">
+🔥 NEW ARRIVALS
+</h2>
+
+<div class="arrival-grid">
+
+<div class="arrival-card">
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f">
+</div>
+
+<div class="arrival-card">
+<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b">
+</div>
+
+<div class="arrival-card">
+<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b">
+</div>
+
+<div class="arrival-card">
+<img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c">
+</div>
+
+</div>
+
+</section>
+
+<section class="best-sellers">
+
+<h2 class="section-heading">
+⭐ BEST SELLERS
+</h2>
+
+<div class="arrival-grid">
+
+<div class="arrival-card">
+<img src="https://images.unsplash.com/photo-1503341504253-dff4815485f1">
+</div>
+
+<div class="arrival-card">
+<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab">
+</div>
+
+<div class="arrival-card">
+<img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234">
+</div>
+
+<div class="arrival-card">
+<img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f">
+</div>
+
+</div>
+
+</section>
+
+<section class="testimonials">
+
+<h2 class="section-heading">
+❤️ CUSTOMER REVIEWS
+</h2>
+
+<div class="testimonial-box">
+<h4>Rahul Sharma</h4>
+⭐⭐⭐⭐⭐
+<p>Best quality product. Delivery bhi fast thi.</p>
+</div>
+
+<div class="testimonial-box">
+<h4>Aman Verma</h4>
+⭐⭐⭐⭐⭐
+<p>Fabric quality premium hai. Worth it.</p>
+</div>
+
+<div class="testimonial-box">
+<h4>Rohit Singh</h4>
+⭐⭐⭐⭐⭐
+<p>Mast fitting aur packaging bhi premium.</p>
+</div>
+
+</section>
+
+<section class="instagram-section">
+
+<h2 class="section-heading">
+📸 FOLLOW US ON INSTAGRAM
+</h2>
+
+<div class="insta-grid">
+
+<div class="insta-box">
+<img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c">
+</div>
+
+<div class="insta-box">
+<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b">
+</div>
+
+<div class="insta-box">
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f">
+</div>
+
+<div class="insta-box">
+<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b">
+</div>
+
+</div>
+
+</section>
+
+<button
+class="scroll-top"
+id="scrollTop">
+
+↑
+
+</button>
+
+<script>
+
+const scrollBtn =
+document.getElementById(
+"scrollTop"
+);
+
+window.addEventListener(
+"scroll",
+()=>{
+
+if(window.scrollY>300){
+
+scrollBtn.style.display=
+"block";
+
+}else{
+
+scrollBtn.style.display=
+"none";
+
+}
+
+}
+);
+
+scrollBtn.onclick=()=>{
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+</script>
+
+<!-- PART 8 END -->
