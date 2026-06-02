@@ -4024,4 +4024,508 @@ loadReviews();
 
 </script>
 
-<!-- PART 14 END -->
+<!-- PART 14 END --><!-- PART 15 START -->
+
+<style>
+
+.loyalty-card{
+background:linear-gradient(135deg,#000,#333);
+color:white;
+padding:25px;
+margin:20px;
+border-radius:20px;
+text-align:center;
+}
+
+.compare-section{
+padding:40px 15px;
+}
+
+.compare-box{
+background:#f8f8f8;
+padding:20px;
+border-radius:15px;
+margin-bottom:15px;
+}
+
+.referral-box{
+background:#f1f1f1;
+padding:20px;
+margin:20px;
+border-radius:15px;
+text-align:center;
+}
+
+.referral-code{
+font-size:22px;
+font-weight:bold;
+margin-top:10px;
+}
+
+.checkout-summary{
+background:#f8f8f8;
+padding:20px;
+border-radius:15px;
+margin-top:15px;
+}
+
+</style>
+
+<section class="loyalty-card">
+
+<h2>
+🏆 VELLA REWARDS
+</h2>
+
+<p>
+Earn 10 Points For Every Order
+</p>
+
+<h3 id="userPoints">
+
+0 Points
+
+</h3>
+
+</section>
+
+<section class="referral-box">
+
+<h2>
+🎁 REFER & EARN
+</h2>
+
+<p>
+Share your referral code and earn rewards
+</p>
+
+<div
+class="referral-code"
+id="referralCode">
+
+VELLA100
+
+</div>
+
+</section>
+
+<section class="compare-section">
+
+<h2 class="section-heading">
+⚖ Compare Products
+</h2>
+
+<div class="compare-box">
+
+<p>
+Select products and compare prices, ratings and offers.
+</p>
+
+<button
+onclick="compareDemo()">
+
+Compare Demo
+
+</button>
+
+</div>
+
+</section>
+
+<script>
+
+/* Loyalty Points */
+
+let points =
+localStorage.getItem(
+"userPoints"
+) || 0;
+
+document
+.getElementById(
+"userPoints"
+)
+.innerText =
+points + " Points";
+
+</script>
+
+<script>
+
+/* Upgrade Place Order */
+
+const oldPlaceOrder2 =
+window.placeOrder;
+
+window.placeOrder =
+function(){
+
+let current =
+Number(
+localStorage.getItem(
+"userPoints"
+) || 0
+);
+
+current += 10;
+
+localStorage.setItem(
+"userPoints",
+current
+);
+
+oldPlaceOrder2();
+
+}
+
+</script>
+
+<script>
+
+/* Compare Demo */
+
+function compareDemo(){
+
+alert(
+
+"Product A\n\n₹799\n⭐⭐⭐⭐⭐\n\nVS\n\nProduct B\n\n₹999\n⭐⭐⭐⭐"
+
+);
+
+}
+
+</script>
+
+<script>
+
+/* Premium Checkout Summary */
+
+const oldRenderCart =
+window.renderCart;
+
+window.renderCart =
+function(){
+
+oldRenderCart();
+
+setTimeout(()=>{
+
+let box =
+document.getElementById(
+"cartItems"
+);
+
+if(box){
+
+box.innerHTML += `
+
+<div class="checkout-summary">
+
+<h3>
+Order Benefits
+</h3>
+
+<br>
+
+✅ Free Shipping
+
+<br><br>
+
+✅ Secure Payment
+
+<br><br>
+
+✅ Easy Returns
+
+<br><br>
+
+🎁 Earn Reward Points
+
+</div>
+
+`;
+
+}
+
+},200);
+
+}
+
+</script>
+
+<!-- PART 15 END --><!-- PART 16 START -->
+
+<style>
+
+.product-label{
+position:absolute;
+bottom:10px;
+left:10px;
+background:red;
+color:white;
+padding:5px 10px;
+font-size:11px;
+border-radius:20px;
+font-weight:bold;
+z-index:2;
+}
+
+.color-options{
+display:flex;
+gap:10px;
+margin-top:15px;
+}
+
+.color-dot{
+width:30px;
+height:30px;
+border-radius:50%;
+cursor:pointer;
+border:2px solid #ddd;
+}
+
+.size-chart-btn{
+width:100%;
+padding:10px;
+margin-top:10px;
+background:#111;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+.size-chart-modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.7);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:20000;
+}
+
+.size-chart-box{
+background:white;
+padding:20px;
+border-radius:15px;
+width:95%;
+max-width:500px;
+}
+
+.size-chart-box table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+}
+
+.size-chart-box td,
+.size-chart-box th{
+border:1px solid #ddd;
+padding:10px;
+text-align:center;
+}
+
+.zoom-main{
+transition:.3s;
+cursor:zoom-in;
+}
+
+.zoom-main:hover{
+transform:scale(1.08);
+}
+
+</style>
+
+<div
+class="size-chart-modal"
+id="sizeChartModal">
+
+<div class="size-chart-box">
+
+<h2>Size Chart</h2>
+
+<table>
+
+<tr>
+<th>Size</th>
+<th>Chest</th>
+</tr>
+
+<tr>
+<td>S</td>
+<td>38</td>
+</tr>
+
+<tr>
+<td>M</td>
+<td>40</td>
+</tr>
+
+<tr>
+<td>L</td>
+<td>42</td>
+</tr>
+
+<tr>
+<td>XL</td>
+<td>44</td>
+</tr>
+
+<tr>
+<td>XXL</td>
+<td>46</td>
+</tr>
+
+</table>
+
+<br>
+
+<button
+onclick="closeSizeChart()">
+
+Close
+
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+/* Product Labels */
+
+setTimeout(()=>{
+
+document
+.querySelectorAll(
+".product-card"
+)
+.forEach((card,index)=>{
+
+const labels = [
+"🔥 HOT",
+"🆕 NEW",
+"⭐ TRENDING",
+"💎 PREMIUM"
+];
+
+let label =
+document.createElement(
+"div"
+);
+
+label.className =
+"product-label";
+
+label.innerText =
+labels[
+index % labels.length
+];
+
+card.appendChild(label);
+
+});
+
+},1000);
+
+</script>
+
+<script>
+
+function openSizeChart(){
+
+document
+.getElementById(
+"sizeChartModal"
+)
+.style.display="flex";
+
+}
+
+function closeSizeChart(){
+
+document
+.getElementById(
+"sizeChartModal"
+)
+.style.display="none";
+
+}
+
+</script>
+
+<script>
+
+/* Product Popup Upgrade */
+
+const oldOpenProduct4 =
+window.openProduct;
+
+window.openProduct =
+function(product){
+
+oldOpenProduct4(product);
+
+setTimeout(()=>{
+
+let content =
+document.querySelector(
+".modal-content"
+);
+
+if(content){
+
+content.innerHTML += `
+
+<h4 style="margin-top:15px;">
+Choose Color
+</h4>
+
+<div class="color-options">
+
+<div
+class="color-dot"
+style="background:black;">
+</div>
+
+<div
+class="color-dot"
+style="background:white;border:1px solid #999;">
+</div>
+
+<div
+class="color-dot"
+style="background:red;">
+</div>
+
+<div
+class="color-dot"
+style="background:blue;">
+</div>
+
+</div>
+
+<button
+class="size-chart-btn"
+onclick="openSizeChart()">
+
+📏 View Size Chart
+
+</button>
+
+`;
+
+}
+
+},100);
+
+}
+
+</script>
+
+<!-- PART 16 END -->
