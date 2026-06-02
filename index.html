@@ -1749,3 +1749,381 @@ JSON.stringify(wishlist)
 </script>
 
 <!-- PART 6 END -->
+<!-- PART 7 START -->
+
+<style>
+
+.mobile-menu{
+position:fixed;
+top:0;
+left:-100%;
+width:280px;
+height:100vh;
+background:white;
+z-index:10001;
+transition:.4s;
+box-shadow:5px 0 20px rgba(0,0,0,.15);
+padding:20px;
+}
+
+.mobile-menu.active{
+left:0;
+}
+
+.mobile-menu a{
+display:block;
+padding:15px 0;
+border-bottom:1px solid #eee;
+font-weight:600;
+}
+
+.menu-btn{
+font-size:24px;
+cursor:pointer;
+margin-right:10px;
+}
+
+.categories{
+padding:30px 15px;
+display:flex;
+gap:10px;
+overflow-x:auto;
+}
+
+.category{
+min-width:120px;
+background:black;
+color:white;
+padding:12px;
+text-align:center;
+border-radius:30px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.offer-banner{
+background:black;
+color:white;
+text-align:center;
+padding:12px;
+font-weight:bold;
+}
+
+.coupon-box{
+padding:15px;
+border-top:1px solid #ddd;
+}
+
+.coupon-box input{
+width:100%;
+padding:10px;
+margin-bottom:10px;
+border:1px solid #ddd;
+border-radius:8px;
+}
+
+.coupon-box button{
+width:100%;
+padding:10px;
+background:black;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.qty-controls{
+display:flex;
+align-items:center;
+gap:10px;
+margin-top:8px;
+}
+
+.qty-controls button{
+width:28px;
+height:28px;
+border:none;
+background:black;
+color:white;
+cursor:pointer;
+border-radius:5px;
+}
+
+</style>
+
+<div class="offer-banner">
+🔥 FREE SHIPPING ON ORDERS ABOVE ₹999
+</div>
+
+<div class="mobile-menu" id="mobileMenu">
+
+<h2>VELLA CO.</h2>
+
+<a href="#">Home</a>
+<a href="#">Shop</a>
+<a href="#">New Arrivals</a>
+<a href="#">Best Sellers</a>
+<a href="#">Track Order</a>
+<a href="#">Contact Us</a>
+
+</div>
+
+<script>
+
+/* Menu Button Create */
+
+const navbar =
+document.querySelector(".navbar");
+
+const menuBtn =
+document.createElement("div");
+
+menuBtn.innerHTML =
+'<i class="fas fa-bars"></i>';
+
+menuBtn.className =
+"menu-btn";
+
+navbar.prepend(menuBtn);
+
+menuBtn.onclick = ()=>{
+
+document
+.getElementById("mobileMenu")
+.classList.add("active");
+
+}
+
+document.addEventListener(
+"click",
+function(e){
+
+if(
+!document
+.getElementById("mobileMenu")
+.contains(e.target)
+&&
+!menuBtn.contains(e.target)
+){
+
+document
+.getElementById("mobileMenu")
+.classList.remove("active");
+
+}
+
+}
+);
+
+</script>
+
+<section class="categories">
+
+<div class="category">
+T-Shirts
+</div>
+
+<div class="category">
+Hoodies
+</div>
+
+<div class="category">
+Oversized
+</div>
+
+<div class="category">
+Cargo
+</div>
+
+<div class="category">
+Jackets
+</div>
+
+<div class="category">
+New Drop
+</div>
+
+</section>
+
+<script>
+
+/* Better Cart Quantity */
+
+function renderCart(){
+
+let box =
+document.getElementById("cartItems");
+
+if(cart.length===0){
+
+box.innerHTML =
+"<h3>Your Cart Is Empty</h3>";
+
+return;
+
+}
+
+let total = 0;
+
+box.innerHTML = "";
+
+cart.forEach((item,index)=>{
+
+if(!item.qty){
+item.qty = 1;
+}
+
+total += item.price * item.qty;
+
+box.innerHTML += `
+
+<div class="cart-item">
+
+<img src="${item.image}">
+
+<div>
+
+<h4>${item.name}</h4>
+
+<p>₹${item.price}</p>
+
+<div class="qty-controls">
+
+<button onclick="decreaseCartQty(${index})">
+-
+</button>
+
+<span>
+${item.qty}
+</span>
+
+<button onclick="increaseCartQty(${index})">
++
+</button>
+
+</div>
+
+<button
+onclick="removeCart(${index})">
+
+Remove
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+box.innerHTML += `
+
+<div class="coupon-box">
+
+<input
+id="couponInput"
+placeholder="Coupon Code">
+
+<button
+onclick="applyCoupon()">
+
+Apply Coupon
+
+</button>
+
+</div>
+
+<hr>
+
+<h2 id="cartTotal">
+
+Total : ₹${total}
+
+</h2>
+
+<br>
+
+<button
+onclick="checkoutCOD()"
+style="
+width:100%;
+padding:12px;
+background:black;
+color:white;
+border:none;
+border-radius:10px;
+margin-bottom:10px;
+">
+
+Cash On Delivery
+
+</button>
+
+<button
+onclick="payRazorpay(${total})"
+style="
+width:100%;
+padding:12px;
+background:#3395ff;
+color:white;
+border:none;
+border-radius:10px;
+">
+
+Pay With Razorpay
+
+</button>
+
+`;
+
+}
+
+function increaseCartQty(index){
+
+cart[index].qty++;
+
+renderCart();
+
+}
+
+function decreaseCartQty(index){
+
+if(cart[index].qty>1){
+
+cart[index].qty--;
+
+renderCart();
+
+}
+
+}
+
+function applyCoupon(){
+
+let code =
+document
+.getElementById("couponInput")
+.value
+.toUpperCase();
+
+if(code==="VELLA10"){
+
+alert(
+"Coupon Applied! 10% OFF"
+);
+
+}else{
+
+alert(
+"Invalid Coupon"
+);
+
+}
+
+}
+
+</script>
+
+<!-- PART 7 END -->
