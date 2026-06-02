@@ -3517,4 +3517,511 @@ loadOrders();
 
 </script>
 
-<!-- PART 12 END -->
+<!-- PART 12 END --><!-- PART 13 START -->
+
+<style>
+
+.stock-badge{
+display:inline-block;
+padding:5px 10px;
+border-radius:20px;
+font-size:12px;
+font-weight:bold;
+margin-top:8px;
+}
+
+.in-stock{
+background:#d4edda;
+color:#155724;
+}
+
+.low-stock{
+background:#fff3cd;
+color:#856404;
+}
+
+.out-stock{
+background:#f8d7da;
+color:#721c24;
+}
+
+.share-btn{
+width:100%;
+padding:10px;
+margin-top:8px;
+background:#25D366;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.notify-btn{
+width:100%;
+padding:10px;
+margin-top:8px;
+background:#ff9800;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+}
+
+</style>
+
+<script>
+
+/* Stock System */
+
+products.forEach(product=>{
+
+product.stock =
+Math.floor(
+Math.random()*20
+)+1;
+
+});
+
+/* Update Product Cards */
+
+const originalLoadProducts =
+window.loadProducts;
+
+window.loadProducts =
+function(){
+
+originalLoadProducts();
+
+setTimeout(()=>{
+
+document
+.querySelectorAll(
+".product-info"
+)
+.forEach((box,index)=>{
+
+let stock =
+products[index]?.stock || 0;
+
+let badge="";
+
+if(stock>10){
+
+badge=
+'<div class="stock-badge in-stock">✅ In Stock</div>';
+
+}else if(stock>0){
+
+badge=
+'<div class="stock-badge low-stock">⚠ Low Stock</div>';
+
+}else{
+
+badge=
+'<div class="stock-badge out-stock">❌ Out Of Stock</div>';
+
+}
+
+box.innerHTML += badge;
+
+});
+
+},300);
+
+}
+
+loadProducts();
+
+</script>
+
+<script>
+
+/* Product Share */
+
+function shareProduct(product){
+
+if(navigator.share){
+
+navigator.share({
+
+title:product.name,
+
+text:
+"Check this product on VELLA CO.",
+
+url:window.location.href
+
+});
+
+}else{
+
+alert(
+"Share not supported"
+);
+
+}
+
+}
+
+</script>
+
+<script>
+
+/* Upgrade Product Popup */
+
+const oldOpenProduct2 =
+window.openProduct;
+
+window.openProduct =
+function(product){
+
+oldOpenProduct2(product);
+
+setTimeout(()=>{
+
+let content =
+document.querySelector(
+".modal-content"
+);
+
+if(content){
+
+content.innerHTML += `
+
+<button
+class="share-btn"
+onclick='shareProduct(${JSON.stringify(product)})'>
+
+📤 Share Product
+
+</button>
+
+<button
+class="notify-btn"
+onclick="notifyStock()">
+
+🔔 Notify Me
+
+</button>
+
+`;
+
+}
+
+},100);
+
+}
+
+function notifyStock(){
+
+alert(
+"You will be notified when stock is updated."
+);
+
+}
+
+</script>
+
+<script>
+
+/* Wishlist Save Count */
+
+function updateWishlistBadge(){
+
+let total =
+wishlist.length;
+
+document
+.querySelectorAll(
+"#wishlistCount"
+)
+.forEach(el=>{
+
+el.innerText = total;
+
+});
+
+}
+
+setInterval(
+updateWishlistBadge,
+1000
+);
+
+</script>
+
+<!-- PART 13 END --><!-- PART 14 START -->
+
+<style>
+
+.flash-sale{
+padding:40px 15px;
+background:#fff4f4;
+margin:20px;
+border-radius:20px;
+text-align:center;
+}
+
+.flash-sale h2{
+color:red;
+margin-bottom:10px;
+}
+
+.live-visitors{
+position:fixed;
+top:140px;
+right:15px;
+background:white;
+padding:10px 15px;
+border-radius:30px;
+box-shadow:0 0 10px rgba(0,0,0,.15);
+z-index:999;
+font-size:13px;
+font-weight:bold;
+}
+
+.review-box{
+background:#f8f8f8;
+padding:15px;
+border-radius:15px;
+margin-top:15px;
+}
+
+.review-box textarea{
+width:100%;
+padding:10px;
+margin-top:10px;
+border-radius:10px;
+border:1px solid #ddd;
+}
+
+.review-box button{
+margin-top:10px;
+padding:10px 15px;
+border:none;
+background:black;
+color:white;
+border-radius:10px;
+cursor:pointer;
+}
+
+.gallery-slider{
+display:flex;
+gap:10px;
+overflow-x:auto;
+margin-top:15px;
+}
+
+.gallery-slider img{
+width:80px;
+height:80px;
+border-radius:10px;
+object-fit:cover;
+cursor:pointer;
+border:2px solid transparent;
+}
+
+.gallery-slider img:hover{
+border-color:black;
+}
+
+</style>
+
+<div class="live-visitors">
+
+👀 <span id="visitorCount">
+127
+</span> Visitors Online
+
+</div>
+
+<section class="flash-sale">
+
+<h2>
+⚡ FLASH SALE
+</h2>
+
+<p>
+Extra 20% OFF On Selected Products
+</p>
+
+</section>
+
+<script>
+
+/* Live Visitors Counter */
+
+setInterval(()=>{
+
+document
+.getElementById(
+"visitorCount"
+)
+.innerText =
+
+Math.floor(
+Math.random()*200
+)+50;
+
+},5000);
+
+</script>
+
+<script>
+
+/* Product Review System */
+
+function addReview(){
+
+let review =
+document
+.getElementById(
+"userReview"
+)
+.value;
+
+if(!review) return;
+
+let reviews =
+JSON.parse(
+localStorage.getItem(
+"reviews"
+)
+) || [];
+
+reviews.push(review);
+
+localStorage.setItem(
+"reviews",
+JSON.stringify(reviews)
+);
+
+loadReviews();
+
+document
+.getElementById(
+"userReview"
+)
+.value="";
+
+}
+
+function loadReviews(){
+
+let reviews =
+JSON.parse(
+localStorage.getItem(
+"reviews"
+)
+) || [];
+
+let box =
+document.getElementById(
+"reviewList"
+);
+
+if(!box) return;
+
+box.innerHTML="";
+
+reviews.forEach(text=>{
+
+box.innerHTML += `
+
+<div
+style="
+background:white;
+padding:10px;
+margin-top:10px;
+border-radius:10px;
+">
+
+⭐⭐⭐⭐⭐
+
+<br><br>
+
+${text}
+
+</div>
+
+`;
+
+});
+
+}
+
+</script>
+
+<script>
+
+/* Upgrade Product Popup */
+
+const oldOpenProduct3 =
+window.openProduct;
+
+window.openProduct =
+function(product){
+
+oldOpenProduct3(product);
+
+setTimeout(()=>{
+
+let modal =
+document.querySelector(
+".modal-content"
+);
+
+if(modal){
+
+modal.innerHTML += `
+
+<div class="gallery-slider">
+
+<img src="${product.image}">
+
+<img src="${product.image}">
+
+<img src="${product.image}">
+
+<img src="${product.image}">
+
+</div>
+
+<div class="review-box">
+
+<h3>
+Customer Reviews
+</h3>
+
+<div id="reviewList">
+</div>
+
+<textarea
+id="userReview"
+placeholder="Write Review">
+</textarea>
+
+<button
+onclick="addReview()">
+
+Submit Review
+
+</button>
+
+</div>
+
+`;
+
+loadReviews();
+
+}
+
+},150);
+
+}
+
+</script>
+
+<!-- PART 14 END -->
