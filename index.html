@@ -4528,4 +4528,735 @@ onclick="openSizeChart()">
 
 </script>
 
-<!-- PART 16 END -->
+<!-- PART 16 END --><!-- PART 17 START -->
+
+<style>
+
+.admin-panel{
+padding:40px 15px;
+background:#f8f8f8;
+margin:20px;
+border-radius:20px;
+}
+
+.admin-panel h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+.admin-panel input{
+width:100%;
+padding:12px;
+margin-bottom:10px;
+border:1px solid #ddd;
+border-radius:10px;
+}
+
+.admin-panel button{
+width:100%;
+padding:12px;
+background:black;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+margin-bottom:10px;
+}
+
+.admin-products{
+margin-top:20px;
+}
+
+.admin-product{
+background:white;
+padding:15px;
+border-radius:15px;
+margin-bottom:10px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.admin-actions button{
+width:auto;
+padding:8px 12px;
+margin-left:5px;
+}
+
+</style>
+
+<section class="admin-panel">
+
+<h2>
+🛠 Admin Product Manager
+</h2>
+
+<input
+type="text"
+id="adminName"
+placeholder="Product Name">
+
+<input
+type="number"
+id="adminPrice"
+placeholder="Product Price">
+
+<input
+type="text"
+id="adminImage"
+placeholder="Product Image URL">
+
+<button
+onclick="addAdminProduct()">
+
+➕ Add Product
+
+</button>
+
+<div
+class="admin-products"
+id="adminProducts">
+
+</div>
+
+</section>
+
+<script>
+
+let adminProducts =
+JSON.parse(
+localStorage.getItem(
+"adminProducts"
+)
+) || [];
+
+function saveAdminProducts(){
+
+localStorage.setItem(
+"adminProducts",
+JSON.stringify(
+adminProducts
+)
+);
+
+}
+
+function renderAdminProducts(){
+
+let box =
+document.getElementById(
+"adminProducts"
+);
+
+box.innerHTML="";
+
+adminProducts.forEach((item,index)=>{
+
+box.innerHTML += `
+
+<div class="admin-product">
+
+<div>
+
+<b>${item.name}</b>
+
+<br>
+
+₹${item.price}
+
+</div>
+
+<div class="admin-actions">
+
+<button
+onclick="editProduct(${index})">
+
+✏ Edit
+
+</button>
+
+<button
+onclick="deleteProduct(${index})">
+
+🗑 Delete
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+function addAdminProduct(){
+
+let name =
+document
+.getElementById(
+"adminName"
+)
+.value;
+
+let price =
+document
+.getElementById(
+"adminPrice"
+)
+.value;
+
+let image =
+document
+.getElementById(
+"adminImage"
+)
+.value;
+
+if(!name || !price || !image){
+
+alert(
+"Fill all fields"
+);
+
+return;
+
+}
+
+adminProducts.push({
+
+id:Date.now(),
+
+name:name,
+
+price:Number(price),
+
+oldPrice:Number(price)+500,
+
+rating:"⭐⭐⭐⭐⭐ 4.9 (99)",
+
+image:image
+
+});
+
+saveAdminProducts();
+
+renderAdminProducts();
+
+alert(
+"Product Added"
+);
+
+}
+
+function deleteProduct(index){
+
+adminProducts.splice(
+index,
+1
+);
+
+saveAdminProducts();
+
+renderAdminProducts();
+
+alert(
+"Product Deleted"
+);
+
+}
+
+function editProduct(index){
+
+let newName =
+prompt(
+"New Product Name",
+adminProducts[index].name
+);
+
+if(newName){
+
+adminProducts[index].name =
+newName;
+
+saveAdminProducts();
+
+renderAdminProducts();
+
+}
+
+}
+
+renderAdminProducts();
+
+</script>
+
+<!-- PART 17 END --><!-- PART 18 START -->
+
+<style>
+
+.shop-tools{
+padding:20px 15px;
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.shop-tools select{
+padding:10px;
+border:1px solid #ddd;
+border-radius:10px;
+}
+
+.search-suggestions{
+position:absolute;
+background:white;
+width:100%;
+max-height:250px;
+overflow-y:auto;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+display:none;
+z-index:9999;
+}
+
+.suggestion-item{
+padding:10px;
+cursor:pointer;
+border-bottom:1px solid #eee;
+}
+
+.suggestion-item:hover{
+background:#f5f5f5;
+}
+
+.quick-view-btn{
+width:100%;
+padding:8px;
+margin-top:8px;
+background:#444;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+</style>
+
+<section class="shop-tools">
+
+<select onchange="sortProducts(this.value)">
+
+<option value="">
+Sort Products
+</option>
+
+<option value="low">
+Price Low To High
+</option>
+
+<option value="high">
+Price High To Low
+</option>
+
+<option value="rating">
+Best Rating
+</option>
+
+</select>
+
+</section>
+
+<div
+class="search-suggestions"
+id="searchSuggestions">
+
+</div>
+
+<script>
+
+/* Sort Products */
+
+function sortProducts(type){
+
+let sorted = [...products];
+
+if(type==="low"){
+
+sorted.sort(
+(a,b)=>a.price-b.price
+);
+
+}
+
+if(type==="high"){
+
+sorted.sort(
+(a,b)=>b.price-a.price
+);
+
+}
+
+if(type==="rating"){
+
+sorted.sort(
+(a,b)=>5-4
+);
+
+}
+
+let html="";
+
+sorted.forEach(product=>{
+
+html += `
+
+<div class="product-card">
+
+<div class="discount">
+-30%
+</div>
+
+<div class="wishlist-btn"
+onclick="addToWishlist(${product.id})">
+
+<i class="far fa-heart"></i>
+
+</div>
+
+<img src="${product.image}">
+
+<div class="product-info">
+
+<div class="product-name">
+
+${product.name}
+
+</div>
+
+<div class="rating">
+
+${product.rating}
+
+</div>
+
+<div class="price">
+
+₹${product.price}
+
+<span class="old-price">
+
+₹${product.oldPrice}
+
+</span>
+
+</div>
+
+<button
+class="quick-view-btn"
+onclick="openProduct(products.find(p=>p.id===${product.id}))">
+
+Quick View
+
+</button>
+
+<button
+class="add-cart"
+onclick="addToCart(${product.id})">
+
+Add To Cart
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+document
+.getElementById(
+"productGrid"
+)
+.innerHTML = html;
+
+}
+
+</script>
+
+<script>
+
+/* Search Suggestions */
+
+searchInput.addEventListener(
+"input",
+function(){
+
+let value =
+this.value
+.toLowerCase();
+
+let box =
+document.getElementById(
+"searchSuggestions"
+);
+
+if(!value){
+
+box.style.display="none";
+return;
+
+}
+
+let matches =
+products.filter(product=>
+
+product.name
+.toLowerCase()
+.includes(value)
+
+);
+
+box.innerHTML="";
+
+matches.forEach(item=>{
+
+box.innerHTML += `
+
+<div
+class="suggestion-item"
+onclick="openProduct(products.find(p=>p.id===${item.id}))">
+
+${item.name}
+
+</div>
+
+`;
+
+});
+
+box.style.display="block";
+
+});
+
+document.addEventListener(
+"click",
+()=>{
+
+document
+.getElementById(
+"searchSuggestions"
+)
+.style.display="none";
+
+}
+);
+
+</script>
+
+<!-- PART 18 END --><!-- PART 19 START -->
+
+<style>
+
+.tracking-section{
+padding:40px 15px;
+}
+
+.track-box{
+background:#f8f8f8;
+padding:20px;
+border-radius:15px;
+text-align:center;
+}
+
+.track-box input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:1px solid #ddd;
+border-radius:10px;
+}
+
+.track-box button{
+padding:12px 20px;
+background:black;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+.progress-container{
+margin-top:25px;
+display:none;
+}
+
+.progress-bar{
+height:10px;
+background:#ddd;
+border-radius:20px;
+overflow:hidden;
+}
+
+.progress-fill{
+height:100%;
+width:75%;
+background:#28a745;
+}
+
+.status-list{
+margin-top:20px;
+text-align:left;
+}
+
+.status-item{
+padding:10px;
+margin-bottom:10px;
+background:white;
+border-radius:10px;
+}
+
+.invoice-box{
+background:#f8f8f8;
+padding:20px;
+margin:20px 0;
+border-radius:15px;
+}
+
+.invoice-btn{
+padding:12px 20px;
+background:black;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+</style>
+
+<section class="tracking-section">
+
+<h2 class="section-heading">
+📦 Order Tracking
+</h2>
+
+<div class="track-box">
+
+<input
+type="text"
+id="trackingInput"
+placeholder="Enter Order ID">
+
+<button
+onclick="trackMyOrder()">
+
+Track Order
+
+</button>
+
+<div
+class="progress-container"
+id="progressContainer">
+
+<div class="progress-bar">
+
+<div class="progress-fill">
+
+</div>
+
+</div>
+
+<div class="status-list">
+
+<div class="status-item">
+✅ Order Confirmed
+</div>
+
+<div class="status-item">
+✅ Packed
+</div>
+
+<div class="status-item">
+🚚 Out For Delivery
+</div>
+
+<div class="status-item">
+⏳ Delivered Soon
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="invoice-box">
+
+<h2>
+🧾 Invoice Download
+</h2>
+
+<p>
+Generate your invoice for orders.
+</p>
+
+<br>
+
+<button
+class="invoice-btn"
+onclick="downloadInvoice()">
+
+Download Invoice
+
+</button>
+
+</section>
+
+<script>
+
+function trackMyOrder(){
+
+let id =
+document
+.getElementById(
+"trackingInput"
+)
+.value;
+
+if(!id){
+
+alert(
+"Enter Order ID"
+);
+
+return;
+
+}
+
+document
+.getElementById(
+"progressContainer"
+)
+.style.display="block";
+
+}
+
+function downloadInvoice(){
+
+alert(
+
+"Invoice Download Feature UI Added.\nConnect PDF Generator Later."
+
+);
+
+}
+
+</script>
+
+<!-- PART 19 END -->
