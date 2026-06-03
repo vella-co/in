@@ -5260,3 +5260,255 @@ alert(
 </script>
 
 <!-- PART 19 END -->
+<!-- PART 20 START -->
+
+<style>
+
+/* Premium Animation */
+
+.product-card{
+animation:fadeUp .5s ease;
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.sticky-buy{
+position:fixed;
+bottom:70px;
+left:50%;
+transform:translateX(-50%);
+background:black;
+color:white;
+padding:14px 30px;
+border:none;
+border-radius:50px;
+font-weight:bold;
+cursor:pointer;
+z-index:9998;
+box-shadow:0 5px 20px rgba(0,0,0,.25);
+}
+
+.exit-popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.7);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:30000;
+}
+
+.exit-box{
+background:white;
+padding:30px;
+border-radius:20px;
+text-align:center;
+max-width:400px;
+width:90%;
+}
+
+.exit-box button{
+padding:12px 20px;
+border:none;
+background:black;
+color:white;
+border-radius:10px;
+cursor:pointer;
+margin-top:10px;
+}
+
+.sales-counter{
+position:fixed;
+right:15px;
+bottom:150px;
+background:white;
+padding:12px;
+border-radius:12px;
+box-shadow:0 0 15px rgba(0,0,0,.15);
+z-index:999;
+font-size:13px;
+}
+
+</style>
+
+<button
+class="sticky-buy"
+onclick="renderCart()">
+
+🛒 Buy Now
+
+</button>
+
+<div
+class="sales-counter"
+id="salesCounter">
+
+🔥 247 Orders Today
+
+</div>
+
+<div
+class="exit-popup"
+id="exitPopup">
+
+<div class="exit-box">
+
+<h2>
+🎁 Wait!
+</h2>
+
+<p>
+Use Coupon:
+<b>VELLA20</b>
+
+<br><br>
+
+Get Extra 20% OFF
+
+</p>
+
+<button
+onclick="closeExitOffer()">
+
+Continue Shopping
+
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+/* Fake Daily Orders */
+
+setInterval(()=>{
+
+let orders =
+Math.floor(
+Math.random()*500
+)+100;
+
+document
+.getElementById(
+"salesCounter"
+)
+.innerHTML =
+
+"🔥 " + orders +
+" Orders Today";
+
+},8000);
+
+</script>
+
+<script>
+
+/* Exit Intent Offer */
+
+let exitShown = false;
+
+document.addEventListener(
+"mouseout",
+function(e){
+
+if(
+e.clientY < 5 &&
+!exitShown
+){
+
+document
+.getElementById(
+"exitPopup"
+)
+.style.display="flex";
+
+exitShown = true;
+
+}
+
+}
+);
+
+function closeExitOffer(){
+
+document
+.getElementById(
+"exitPopup"
+)
+.style.display="none";
+
+}
+
+</script>
+
+<script>
+
+/* Smooth Scroll */
+
+document
+.querySelectorAll('a[href^="#"]')
+.forEach(link=>{
+
+link.addEventListener(
+'click',
+function(e){
+
+e.preventDefault();
+
+let target =
+document.querySelector(
+this.getAttribute('href')
+);
+
+if(target){
+
+target.scrollIntoView({
+
+behavior:'smooth'
+
+});
+
+}
+
+});
+
+});
+
+</script>
+
+<script>
+
+/* Final Performance Save */
+
+window.addEventListener(
+"beforeunload",
+()=>{
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+
+localStorage.setItem(
+"wishlist",
+JSON.stringify(wishlist)
+);
+
+});
+
+</script>
+
+<!-- PART 20 END -->
