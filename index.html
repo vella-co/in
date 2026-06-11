@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FF Arena | Free Fire Tournaments</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Battle Arena - India's Ultimate Esports Tournament Platform</title>
+
+<meta name="description" content="Battle Arena Premium Esports Tournament Platform">
 
 <style>
 
@@ -13,204 +14,257 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:'Segoe UI',sans-serif;
+}
+
+html{
 scroll-behavior:smooth;
 }
 
+:root{
+--blue:#3b82f6;
+--purple:#8b5cf6;
+--dark:#111827;
+--light:#ffffff;
+}
+
 body{
-background:#0b0f1a;
-color:white;
+background:#fff;
+color:#111827;
 overflow-x:hidden;
 }
 
-a{
-text-decoration:none;
-color:white;
+::-webkit-scrollbar{
+width:8px;
 }
 
-img{
-max-width:100%;
-display:block;
+::-webkit-scrollbar-thumb{
+background:linear-gradient(var(--blue),var(--purple));
+border-radius:20px;
 }
 
-/* NAVBAR */
-
-header{
+.loading-screen{
 position:fixed;
 top:0;
 left:0;
 width:100%;
-z-index:999;
-background:rgba(0,0,0,0.8);
-backdrop-filter:blur(10px);
+height:100%;
+background:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
 }
 
-.navbar{
-max-width:1300px;
-margin:auto;
+.loader{
+width:70px;
+height:70px;
+border:7px solid #eee;
+border-top:7px solid var(--blue);
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:18px 8%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:18px 25px;
+background:rgba(255,255,255,.9);
+backdrop-filter:blur(15px);
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+z-index:1000;
 }
 
 .logo{
-font-size:28px;
+font-size:32px;
 font-weight:800;
-color:#ffb100;
-text-transform:uppercase;
-letter-spacing:2px;
+background:linear-gradient(90deg,var(--blue),var(--purple));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .nav-links{
 display:flex;
-gap:25px;
+gap:30px;
 }
 
 .nav-links a{
-font-weight:500;
+text-decoration:none;
+color:#111827;
+font-weight:600;
 transition:.3s;
 }
 
 .nav-links a:hover{
-color:#ffb100;
+color:var(--blue);
 }
 
-/* HERO */
-
 .hero{
-height:100vh;
-background:
-linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.8)),
-url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1400&q=80');
-background-size:cover;
-background-position:center;
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding:20px;
+padding:120px 8%;
+background:
+radial-gradient(circle at top left,#dbeafe,transparent 40%),
+radial-gradient(circle at bottom right,#ede9fe,transparent 40%);
 }
 
 .hero-content{
-max-width:850px;
+max-width:900px;
 }
 
 .hero h1{
-font-size:65px;
-font-weight:800;
+font-size:75px;
+font-weight:900;
 line-height:1.1;
-margin-bottom:15px;
+margin-bottom:20px;
 }
 
-.hero span{
-color:#ffb100;
+.hero h1 span{
+background:linear-gradient(90deg,var(--blue),var(--purple));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .hero p{
-font-size:18px;
-color:#ddd;
-margin-bottom:25px;
-}
-
-.hero-buttons{
-display:flex;
-justify-content:center;
-gap:15px;
-flex-wrap:wrap;
-}
-
-.btn{
-padding:14px 30px;
-border:none;
-border-radius:50px;
-font-weight:700;
-cursor:pointer;
-transition:.3s;
-}
-
-.btn-primary{
-background:#ffb100;
-color:black;
-}
-
-.btn-primary:hover{
-transform:translateY(-3px);
-}
-
-.btn-secondary{
-background:transparent;
-border:2px solid #ffb100;
-color:white;
-}
-
-.btn-secondary:hover{
-background:#ffb100;
-color:black;
-}
-
-/* SECTION TITLE */
-
-.section-title{
-text-align:center;
-font-size:38px;
-font-weight:800;
+font-size:22px;
+color:#555;
 margin-bottom:40px;
 }
 
-.section-title span{
-color:#ffb100;
+.btn{
+padding:16px 35px;
+border-radius:15px;
+display:inline-block;
+text-decoration:none;
+font-weight:700;
+margin:10px;
+transition:.3s;
 }
 
-/* POSTER SECTION */
-
-.poster-section{
-padding:100px 20px;
-max-width:1300px;
-margin:auto;
+.primary{
+background:linear-gradient(90deg,var(--blue),var(--purple));
+color:white;
 }
 
-.poster-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+.secondary{
+border:2px solid var(--blue);
+color:var(--blue);
+}
+
+.btn:hover{
+transform:translateY(-5px);
+}
+
+.stats{
+margin-top:60px;
+display:flex;
+justify-content:center;
 gap:25px;
+flex-wrap:wrap;
 }
 
-.poster-card{
-background:#121827;
-border-radius:18px;
+.stat-card{
+width:220px;
+padding:25px;
+background:rgba(255,255,255,.7);
+backdrop-filter:blur(15px);
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.stat-card h2{
+font-size:40px;
+color:var(--blue);
+}
+
+section{
+padding:100px 8%;
+}
+
+.section-title{
+text-align:center;
+font-size:45px;
+margin-bottom:60px;
+}
+
+.tournaments{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
+
+.card{
+background:white;
+border-radius:25px;
 overflow:hidden;
+box-shadow:0 15px 35px rgba(0,0,0,.08);
 transition:.4s;
-border:1px solid rgba(255,255,255,0.08);
 }
 
-.poster-card:hover{
-transform:translateY(-8px);
+.card:hover{
+transform:translateY(-10px);
 }
 
-.poster-image{
-height:350px;
-overflow:hidden;
-}
-
-.poster-image img{
+.card img{
 width:100%;
-height:100%;
+height:220px;
 object-fit:cover;
 }
 
-.poster-content{
-padding:18px;
+.card-content{
+padding:25px;
 }
 
-.poster-content h3{
-margin-bottom:10px;
-font-size:22px;
+.game-title{
+font-size:24px;
+font-weight:800;
+margin-bottom:15px;
 }
 
-.poster-content p{
-color:#cfcfcf;
-font-size:14px;
+.info{
+margin:10px 0;
+}
+
+.register-btn{
+width:100%;
+padding:15px;
+border:none;
+border-radius:15px;
+background:linear-gradient(90deg,var(--blue),var(--purple));
+color:white;
+font-weight:700;
+margin-top:20px;
+cursor:pointer;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:45px;
+}
+
+.nav-links{
+display:none;
+}
+
+.section-title{
+font-size:32px;
+}
+
 }
 
 </style>
@@ -218,94 +272,153 @@ font-size:14px;
 
 <body>
 
-<header>
-<nav class="navbar">
+<div class="loading-screen">
+<div class="loader"></div>
+</div>
 
-<div class="logo">FF Arena</div>
+<nav>
+
+<div class="logo">
+Battle Arena
+</div>
 
 <div class="nav-links">
+
 <a href="#">Home</a>
-<a href="#posters">Posters</a>
-<a href="#tournaments">Tournament</a>
+<a href="#tournaments">Tournaments</a>
+<a href="#matches">Matches</a>
+<a href="#leaderboard">Leaderboard</a>
 <a href="#register">Register</a>
 <a href="#contact">Contact</a>
+
 </div>
 
 </nav>
-</header>
 
 <section class="hero">
 
 <div class="hero-content">
 
 <h1>
-Join The Biggest
-<span>Free Fire</span>
-Tournaments
+India's Ultimate
+<span>Esports Tournament</span>
+Platform
 </h1>
 
 <p>
-Daily Custom Rooms, Weekly Scrims,
-Cash Prize Events & Professional Esports Matches.
+Join India's fastest growing gaming tournaments,
+compete with top teams and win massive prize pools.
 </p>
 
-<div class="hero-buttons">
-<button class="btn btn-primary">
-Join Tournament
+<a href="#register" class="btn primary">
+Register Now
+</a>
+
+<a href="#tournaments" class="btn secondary">
+View Tournaments
+</a>
+
+<div class="stats">
+
+<div class="stat-card">
+<h2 id="players">0</h2>
+<p>Players</p>
+</div>
+
+<div class="stat-card">
+<h2 id="tournamentsCount">0</h2>
+<p>Tournaments</p>
+</div>
+
+<div class="stat-card">
+<h2 id="prizePool">0</h2>
+<p>Prize Pool</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="tournaments">
+
+<h2 class="section-title">
+Featured Tournaments
+</h2>
+
+<div class="tournaments">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e">
+
+<div class="card-content">
+
+<div class="game-title">
+BGMI Tournament
+</div>
+
+<div class="info">Prize Pool: ₹50,000</div>
+<div class="info">Entry Fee: ₹100</div>
+<div class="info">Date: 20 June 2026</div>
+<div class="info">Time: 7:00 PM</div>
+<div class="info">Total Slots: 100</div>
+<div class="info">Slots Left: 25</div>
+
+<button class="register-btn">
+Register Now
 </button>
 
-<button class="btn btn-secondary">
-View Posters
+</div>
+
+</div>
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420">
+
+<div class="card-content">
+
+<div class="game-title">
+Free Fire MAX Tournament
+</div>
+
+<div class="info">Prize Pool: ₹30,000</div>
+<div class="info">Entry Fee: ₹50</div>
+<div class="info">Date: 22 June 2026</div>
+<div class="info">Time: 6:00 PM</div>
+<div class="info">Total Slots: 96</div>
+<div class="info">Slots Left: 18</div>
+
+<button class="register-btn">
+Register Now
 </button>
-</div>
 
-</div>
-
-</section>
-
-<section class="poster-section" id="posters">
-
-<h2 class="section-title">
-Tournament <span>Posters</span>
-</h2>
-
-<div class="poster-grid">
-
-<div class="poster-card">
-
-<div class="poster-image">
-<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80">
-</div>
-
-<div class="poster-content">
-<h3>FF Solo Clash</h3>
-<p>Prize Pool ₹5,000 • Entry ₹50</p>
 </div>
 
 </div>
 
-<div class="poster-card">
+<div class="card">
 
-<div class="poster-image">
-<img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?auto=format&fit=crop&w=800&q=80">
+<img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f">
+
+<div class="card-content">
+
+<div class="game-title">
+Call Of Duty Mobile
 </div>
 
-<div class="poster-content">
-<h3>Squad Championship</h3>
-<p>Prize Pool ₹15,000 • Entry ₹199</p>
-</div>
+<div class="info">Prize Pool: ₹25,000</div>
+<div class="info">Entry Fee: ₹75</div>
+<div class="info">Date: 25 June 2026</div>
+<div class="info">Time: 8:00 PM</div>
+<div class="info">Total Slots: 64</div>
+<div class="info">Slots Left: 11</div>
 
-</div>
+<button class="register-btn">
+Register Now
+</button>
 
-<div class="poster-card">
-
-<div class="poster-image">
-<img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&w=800&q=80">
-</div>
-
-<div class="poster-content">
-<h3>Weekly Scrims</h3>
-<p>Prize Pool ₹2,500 • Entry Free</p>
 </div>
 
 </div>
@@ -313,266 +426,696 @@ Tournament <span>Posters</span>
 </div>
 
 </section>
-<!-- TOURNAMENT SECTION -->
 
-<section class="tournament-section" id="tournaments">
+<!-- Upcoming Matches -->
+
+<section id="matches">
 
 <h2 class="section-title">
-Upcoming <span>Tournaments</span>
+Upcoming Matches
 </h2>
 
-<div class="tournament-grid">
+<div class="tournaments">
 
-<div class="tournament-card">
-<h3>Free Fire Solo Battle</h3>
-<p>📅 Date: 20 June 2026</p>
-<p>💰 Prize Pool: ₹5,000</p>
-<p>🎟 Entry Fee: ₹50</p>
+<div class="card">
 
-<div class="card-buttons">
-<button class="join-btn">Join Now</button>
-</div>
-</div>
+<div class="card-content">
 
-<div class="tournament-card">
-<h3>Free Fire Duo Clash</h3>
-<p>📅 Date: 23 June 2026</p>
-<p>💰 Prize Pool: ₹10,000</p>
-<p>🎟 Entry Fee: ₹99</p>
+<h3>BGMI Grand Finals</h3>
 
-<div class="card-buttons">
-<button class="join-btn">Join Now</button>
-</div>
+<br>
+
+<p>
+Prize Pool ₹50,000
+</p>
+
+<br>
+
+<h2 id="timer1">
+Loading...
+</h2>
+
 </div>
 
-<div class="tournament-card">
-<h3>Free Fire Squad Cup</h3>
-<p>📅 Date: 27 June 2026</p>
-<p>💰 Prize Pool: ₹25,000</p>
-<p>🎟 Entry Fee: ₹199</p>
-
-<div class="card-buttons">
-<button class="join-btn">Join Now</button>
 </div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>Free Fire MAX Clash</h3>
+
+<br>
+
+<p>
+Prize Pool ₹30,000
+</p>
+
+<br>
+
+<h2 id="timer2">
+Loading...
+</h2>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>COD Mobile Championship</h3>
+
+<br>
+
+<p>
+Prize Pool ₹25,000
+</p>
+
+<br>
+
+<h2 id="timer3">
+Loading...
+</h2>
+
+</div>
+
 </div>
 
 </div>
 
 </section>
 
-<!-- REGISTRATION FORM -->
+<!-- Winners -->
 
-<section class="register-section" id="register">
+<section>
 
 <h2 class="section-title">
-Tournament <span>Registration</span>
+Hall Of Champions
 </h2>
 
-<div class="register-box">
+<div class="tournaments">
 
-<form id="registerForm">
+<div class="card">
 
-<input type="text"
+<div class="card-content">
+
+<h1>🥇</h1>
+
+<br>
+
+<h3>Rohit Gaming</h3>
+
+<p>Team Alpha</p>
+
+<br>
+
+<strong>
+Won ₹20,000
+</strong>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h1>🥈</h1>
+
+<br>
+
+<h3>Aman Esports</h3>
+
+<p>Warriors Squad</p>
+
+<br>
+
+<strong>
+Won ₹10,000
+</strong>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h1>🥉</h1>
+
+<br>
+
+<h3>Raj Gamer</h3>
+
+<p>Titans Esports</p>
+
+<br>
+
+<strong>
+Won ₹5,000
+</strong>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Leaderboard -->
+
+<section id="leaderboard">
+
+<h2 class="section-title">
+Leaderboard
+</h2>
+
+<div style="overflow-x:auto;">
+
+<table
+style="
+width:100%;
+border-collapse:collapse;
+background:white;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+border-radius:20px;
+overflow:hidden;
+">
+
+<tr
+style="
+background:linear-gradient(
+90deg,
+#3b82f6,
+#8b5cf6
+);
+color:white;
+">
+
+<th style="padding:18px;">
+Rank
+</th>
+
+<th>
+Team
+</th>
+
+<th>
+Kills
+</th>
+
+<th>
+Points
+</th>
+
+</tr>
+
+<tr>
+<td style="padding:15px;">1</td>
+<td>Team Alpha</td>
+<td>85</td>
+<td>280</td>
+</tr>
+
+<tr>
+<td style="padding:15px;">2</td>
+<td>Warriors</td>
+<td>78</td>
+<td>250</td>
+</tr>
+
+<tr>
+<td style="padding:15px;">3</td>
+<td>Titans</td>
+<td>69</td>
+<td>220</td>
+</tr>
+
+<tr>
+<td style="padding:15px;">4</td>
+<td>Legends</td>
+<td>55</td>
+<td>180</td>
+</tr>
+
+<tr>
+<td style="padding:15px;">5</td>
+<td>Shadow Squad</td>
+<td>49</td>
+<td>150</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+<script>
+
+function countdown(id,date){
+
+setInterval(function(){
+
+let now=new Date().getTime();
+
+let distance=date-now;
+
+let days=Math.floor(distance/(1000*60*60*24));
+
+let hours=Math.floor(
+(distance%(1000*60*60*24))
+/
+(1000*60*60)
+);
+
+let minutes=Math.floor(
+(distance%(1000*60*60))
+/
+(1000*60)
+);
+
+let seconds=Math.floor(
+(distance%(1000*60))
+/
+1000
+);
+
+document.getElementById(id).innerHTML=
+days+"D "
++hours+"H "
++minutes+"M "
++seconds+"S";
+
+},1000);
+
+}
+
+countdown(
+"timer1",
+new Date("June 20, 2026 19:00:00").getTime()
+);
+
+countdown(
+"timer2",
+new Date("June 22, 2026 18:00:00").getTime()
+);
+
+countdown(
+"timer3",
+new Date("June 25, 2026 20:00:00").getTime()
+);
+
+</script>
+<!-- Registration -->
+
+<section id="register">
+
+<h2 class="section-title">
+Tournament Registration
+</h2>
+
+<div class="card" style="max-width:800px;margin:auto;">
+
+<div class="card-content">
+
+<form id="registrationForm">
+
+<input
+type="text"
+id="teamName"
+placeholder="Team Name"
+required
+style="width:100%;padding:15px;margin:10px 0;border-radius:12px;border:1px solid #ddd;">
+
+<input
+type="text"
+id="playerName"
 placeholder="Player Name"
-required>
+required
+style="width:100%;padding:15px;margin:10px 0;border-radius:12px;border:1px solid #ddd;">
 
-<input type="text"
-placeholder="Free Fire UID"
-required>
+<input
+type="text"
+id="uid"
+placeholder="Game UID"
+required
+style="width:100%;padding:15px;margin:10px 0;border-radius:12px;border:1px solid #ddd;">
 
-<input type="text"
-placeholder="In Game Name"
-required>
+<select
+id="game"
+style="width:100%;padding:15px;margin:10px 0;border-radius:12px;border:1px solid #ddd;">
 
-<input type="email"
-placeholder="Email Address"
-required>
-
-<input type="tel"
-placeholder="WhatsApp Number"
-required>
-
-<select required>
-<option value="">
-Select Tournament
-</option>
-
-<option>
-Free Fire Solo Battle
-</option>
-
-<option>
-Free Fire Duo Clash
-</option>
-
-<option>
-Free Fire Squad Cup
-</option>
+<option>BGMI</option>
+<option>Free Fire MAX</option>
+<option>Call Of Duty Mobile</option>
 
 </select>
 
-<button type="submit" class="submit-btn">
-Register Now
+<input
+type="tel"
+id="whatsapp"
+placeholder="WhatsApp Number"
+required
+style="width:100%;padding:15px;margin:10px 0;border-radius:12px;border:1px solid #ddd;">
+
+<button
+type="submit"
+class="register-btn">
+
+Submit Registration
+
 </button>
 
 </form>
 
 </div>
 
-</section>
-
-<!-- PAYMENT SECTION -->
-
-<section class="payment-section">
-
-<h2 class="section-title">
-Entry Fee <span>Payment</span>
-</h2>
-
-<div class="payment-grid">
-
-<div class="payment-card">
-
-<h3>Online Payment</h3>
-
-<p>
-Pay Entry Fee Using
-UPI, Card, Net Banking,
-Wallets Through Razorpay.
-</p>
-
-<button id="payBtn"
-class="payment-btn">
-Pay Online
-</button>
-
-</div>
-
-<div class="payment-card">
-
-<h3>Pay Later / COD</h3>
-
-<p>
-Contact Admin On WhatsApp
-And Confirm Your Slot.
-</p>
-
-<a href="https://wa.me/919999999999"
-target="_blank">
-
-<button class="whatsapp-btn">
-WhatsApp Registration
-</button>
-
-</a>
-
-</div>
-
 </div>
 
 </section>
 
-<!-- LEADERBOARD -->
+<!-- Payment -->
 
-<section class="leaderboard">
+<section>
 
 <h2 class="section-title">
-Top <span>Players</span>
+Payment Verification
 </h2>
 
-<table>
+<div class="card" style="max-width:700px;margin:auto;">
 
-<tr>
-<th>Rank</th>
-<th>Player</th>
-<th>Points</th>
-</tr>
+<div class="card-content">
 
-<tr>
-<td>#1</td>
-<td>FF KING</td>
-<td>950</td>
-</tr>
+<h3>
+UPI ID:
+battlearena@upi
+</h3>
 
-<tr>
-<td>#2</td>
-<td>PRO GAMER</td>
-<td>890</td>
-</tr>
+<br>
 
-<tr>
-<td>#3</td>
-<td>HEADSHOT X</td>
-<td>845</td>
-</tr>
+<img
+src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=battlearena@upi"
+width="250">
 
-</table>
+<br><br>
+
+<input
+type="file"
+id="paymentFile">
+
+<br><br>
+
+<button
+class="register-btn"
+onclick="uploadPayment()">
+
+Submit Screenshot
+
+</button>
+
+<br><br>
+
+<h3 id="paymentStatus">
+Status: Pending Verification
+</h3>
+
+</div>
+
+</div>
 
 </section>
 
 <!-- FAQ -->
 
-<section class="faq-section">
+<section>
 
 <h2 class="section-title">
-Frequently Asked <span>Questions</span>
+FAQ
 </h2>
 
-<div class="faq-box">
+<button class="accordion">
+How To Register?
+</button>
 
-<h3>How do I join a tournament?</h3>
+<div class="panel">
 <p>
-Fill the registration form
-and pay the entry fee.
+Fill the registration form and submit.
 </p>
+</div>
 
-<h3>When will room ID be shared?</h3>
+<button class="accordion">
+How Will I Get Room ID?
+</button>
+
+<div class="panel">
 <p>
-Room details will be sent
-on WhatsApp before match start.
+Room details will be sent on WhatsApp.
 </p>
+</div>
 
-<h3>How are prizes distributed?</h3>
+<button class="accordion">
+Refund Available?
+</button>
+
+<div class="panel">
 <p>
-Winners receive rewards
-through UPI or Bank Transfer.
+No refund after successful registration.
 </p>
-
 </div>
 
 </section>
 
-<!-- CONTACT -->
+<!-- Contact -->
 
 <section id="contact">
 
 <h2 class="section-title">
-Contact <span>Support</span>
+Contact Us
 </h2>
 
-<div class="contact-box">
+<div class="tournaments">
 
-<p>
-WhatsApp:
-+91 99999 99999
-</p>
+<div class="card">
+<div class="card-content">
+<h3>WhatsApp</h3>
+<p>+91 9876543210</p>
+</div>
+</div>
 
-<p>
-Email:
-support@ffarena.com
-</p>
+<div class="card">
+<div class="card-content">
+<h3>Email</h3>
+<p>support@battlearena.in</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>Instagram</h3>
+<p>@battlearena</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>Discord</h3>
+<p>Battle Arena Official</p>
+</div>
+</div>
 
 </div>
 
 </section>
 
-<!-- FOOTER -->
+<!-- Footer -->
 
-<footer>
+<footer
+style="
+background:#111827;
+color:white;
+text-align:center;
+padding:50px 8%;
+">
+
+<h2>
+Battle Arena
+</h2>
+
+<br>
 
 <p>
-© 2026 FF Arena.
-All Rights Reserved.
+India's Ultimate Esports Tournament Platform
+</p>
+
+<br>
+
+<p>
+© 2026 Battle Arena. All Rights Reserved.
 </p>
 
 </footer>
+
+<style>
+
+.accordion{
+width:100%;
+padding:18px;
+margin-top:10px;
+border:none;
+background:#f3f4f6;
+font-size:18px;
+font-weight:600;
+cursor:pointer;
+border-radius:12px;
+text-align:left;
+}
+
+.panel{
+display:none;
+padding:20px;
+background:white;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,.05);
+}
+
+</style>
+
+<script>
+
+/* Loader */
+
+window.onload=function(){
+
+document.querySelector(
+".loading-screen"
+).style.display="none";
+
+};
+
+/* Counter Animation */
+
+function animate(id,target){
+
+let count=0;
+
+let speed=target/100;
+
+let interval=setInterval(()=>{
+
+count+=speed;
+
+if(count>=target){
+
+count=target;
+
+clearInterval(interval);
+
+}
+
+document.getElementById(id).innerHTML=
+Math.floor(count);
+
+},20);
+
+}
+
+animate("players",50000);
+animate("tournamentsCount",1000);
+animate("prizePool",50);
+
+/* Registration */
+
+document
+.getElementById("registrationForm")
+.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+let data={
+
+team:
+document.getElementById("teamName").value,
+
+player:
+document.getElementById("playerName").value,
+
+uid:
+document.getElementById("uid").value,
+
+game:
+document.getElementById("game").value,
+
+whatsapp:
+document.getElementById("whatsapp").value
+
+};
+
+let registrations=
+JSON.parse(
+localStorage.getItem("registrations")
+) || [];
+
+registrations.push(data);
+
+localStorage.setItem(
+"registrations",
+JSON.stringify(registrations)
+);
+
+alert("Registration Successful!");
+
+this.reset();
+
+});
+
+/* Payment */
+
+function uploadPayment(){
+
+document.getElementById(
+"paymentStatus"
+).innerHTML=
+"Status: Screenshot Submitted ✅";
+
+}
+
+/* FAQ */
+
+let acc=
+document.getElementsByClassName(
+"accordion"
+);
+
+for(let i=0;i<acc.length;i++){
+
+acc[i].addEventListener(
+"click",
+function(){
+
+let panel=
+this.nextElementSibling;
+
+if(panel.style.display==="block"){
+
+panel.style.display="none";
+
+}else{
+
+panel.style.display="block";
+
+}
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
