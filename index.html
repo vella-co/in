@@ -1344,4 +1344,454 @@ title:"Modern Gray Hoodie",
 price:2799,
 oldPrice:3599,
 category:"hoodie",
-image:"https://images.unsp
+image:"https://images.unsplash.com/photo-1506629905607-d9d8f1f1e7f5?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+id:6,
+title:"Premium White Jacket",
+price:4599,
+oldPrice:5599,
+category:"jacket",
+image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1200&auto=format&fit=crop"
+}
+
+];
+
+const productsContainer = document.getElementById("productsContainer");
+
+function renderProducts(list){
+
+productsContainer.innerHTML='';
+
+list.forEach(product=>{
+
+productsContainer.innerHTML += `
+
+<div class="product-card reveal">
+
+<div class="product-img">
+
+<img src="${product.image}">
+
+<div class="discount">
+-${Math.floor((product.oldPrice-product.price)/product.oldPrice*100)}%
+</div>
+
+<div class="wishlist">
+<i class="fa-regular fa-heart"></i>
+</div>
+
+</div>
+
+<div class="product-info">
+
+<h3>${product.title}</h3>
+
+<div class="price">
+<span>₹${product.price}</span>
+<del>₹${product.oldPrice}</del>
+</div>
+
+<div class="rating">
+★★★★★
+</div>
+
+<div class="option-row">
+
+<select>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+</select>
+
+<select>
+<option>Black</option>
+<option>White</option>
+<option>Gray</option>
+</select>
+
+</div>
+
+<div class="card-btns">
+
+<button class="add-cart" onclick="addToCart(${product.id})">
+Add to Cart
+</button>
+
+<button class="quick-view" onclick="openModal(${product.id})">
+Quick View
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+revealAnimations();
+
+}
+
+renderProducts(products);
+
+/* SEARCH */
+
+document.getElementById("searchInput").addEventListener("input",e=>{
+
+const value=e.target.value.toLowerCase();
+
+const filtered=products.filter(p=>
+p.title.toLowerCase().includes(value)
+);
+
+renderProducts(filtered);
+
+});
+
+/* FILTER */
+
+document.getElementById("categoryFilter").addEventListener("change",filterProducts);
+document.getElementById("priceFilter").addEventListener("change",filterProducts);
+document.getElementById("sortFilter").addEventListener("change",filterProducts);
+
+function filterProducts(){
+
+let filtered=[...products];
+
+const category=document.getElementById("categoryFilter").value;
+const price=document.getElementById("priceFilter").value;
+const sort=document.getElementById("sortFilter").value;
+
+if(category!=="all"){
+filtered=filtered.filter(p=>p.category===category);
+}
+
+if(price==="low"){
+filtered=filtered.filter(p=>p.price<2000);
+}
+
+if(price==="high"){
+filtered=filtered.filter(p=>p.price>2000);
+}
+
+if(sort==="low-high"){
+filtered.sort((a,b)=>a.price-b.price);
+}
+
+if(sort==="high-low"){
+filtered.sort((a,b)=>b.price-a.price);
+}
+
+renderProducts(filtered);
+
+}
+
+/* CART */
+
+let cart=JSON.parse(localStorage.getItem("vellaCart")) || [];
+
+function saveCart(){
+localStorage.setItem("vellaCart",JSON.stringify(cart));
+}
+
+function addToCart(id){
+
+const product=products.find(p=>p.id===id);
+
+const existing=cart.find(item=>item.id===id);
+
+if(existing){
+existing.qty++;
+}else{
+cart.push({...product,qty:1});
+}
+
+saveCart();
+renderCart();
+
+}
+
+function renderCart(){
+
+const cartItems=document.getElementById("cartItems");
+const cartCount=document.getElementById("cartCount");
+const cartTotal=document.getElementById("cartTotal");
+
+cartItems.innerHTML='';
+
+let total=0;
+let count=0;
+
+if(cart.length===0){
+
+cartItems.innerHTML=`
+<div style="text-align:center;padding-top:80px;">
+<h3>Your cart is empty</h3>
+<p style="margin-top:10px;color:gray;">Add premium products now.</p>
+</div>
+`;
+
+}
+
+cart.forEach(item=>{
+
+total += item.price*item.qty;
+count += item.qty;
+
+cartItems.innerHTML += `
+
+<div class="cart-item">
+
+<img src="${item.image}">
+
+<div>
+
+<h4>${item.title}</h4>
+
+<p>₹${item.price}</p>
+
+<div class="qty-box">
+
+<button onclick="changeQty(${item.id},-1)">-</button>
+
+<span>${item.qty}</span>
+
+<button onclick="changeQty(${item.id},1)">+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+cartCount.innerText=count;
+cartTotal.innerText=total;
+
+}
+
+renderCart();
+
+function changeQty(id,change){
+
+const item=cart.find(i=>i.id===id);
+
+item.qty += change;
+
+if(item.qty<=0){
+cart=cart.filter(i=>i.id!==id);
+}
+
+saveCart();
+renderCart();
+
+}
+
+function toggleCart(){
+document.getElementById("cartSidebar").classList.toggle("active");
+}
+
+/* MODAL */
+
+function openModal(id){
+
+const product=products.find(p=>p.id===id);
+
+document.getElementById("modalImage").src=product.image;
+document.getElementById("modalTitle").innerText=product.title;
+document.getElementById("modalPrice").innerText=`₹${product.price}`;
+
+document.getElementById("productModal").classList.add("active");
+
+}
+
+function closeModal(){
+document.getElementById("productModal").classList.remove("active");
+}
+
+function buyNow(){
+
+closeModal();
+
+document.querySelector(".checkout-form").scrollIntoView({
+behavior:'smooth'
+});
+
+}
+
+/* FAQ */
+
+document.querySelectorAll(".faq-item").forEach(item=>{
+
+item.addEventListener("click",()=>{
+
+item.classList.toggle("active");
+
+});
+
+});
+
+/* MOBILE MENU */
+
+document.getElementById("menuBtn").addEventListener("click",()=>{
+
+document.getElementById("navLinks").classList.toggle("active");
+
+});
+
+/* THEME */
+
+const themeToggle=document.getElementById("themeToggle");
+
+themeToggle.addEventListener("click",()=>{
+
+document.body.classList.toggle("dark");
+
+if(document.body.classList.contains("dark")){
+themeToggle.classList.remove("fa-moon");
+themeToggle.classList.add("fa-sun");
+}else{
+themeToggle.classList.remove("fa-sun");
+themeToggle.classList.add("fa-moon");
+}
+
+});
+
+/* REVEAL */
+
+function revealAnimations(){
+
+const reveals=document.querySelectorAll(".reveal");
+
+reveals.forEach(el=>{
+
+const top=el.getBoundingClientRect().top;
+
+if(top < window.innerHeight - 80){
+el.classList.add("active");
+}
+
+});
+
+}
+
+window.addEventListener("scroll",revealAnimations);
+
+/* LOADER */
+
+window.addEventListener("load",()=>{
+
+setTimeout(()=>{
+
+document.getElementById("loader").style.opacity='0';
+
+setTimeout(()=>{
+document.getElementById("loader").style.display='none';
+},500);
+
+},1200);
+
+});
+
+/* CHECKOUT */
+
+function placeOrder(){
+
+const payment=document.getElementById("paymentMethod").value;
+
+const customerName=document.getElementById("customerName").value || "Customer";
+
+const total=cart.reduce((sum,item)=>sum+item.price*item.qty,0);
+
+if(cart.length===0){
+alert("Your cart is empty.");
+return;
+}
+
+if(payment==="razorpay"){
+
+const options = {
+
+key:"rzp_test_1234567890",
+amount:total*100,
+currency:"INR",
+name:"VELLA CO.",
+description:"Premium Fashion Purchase",
+
+handler:function(response){
+
+alert("Payment Successful!");
+
+localStorage.setItem("vellaOrders",JSON.stringify(cart));
+
+cart=[];
+saveCart();
+renderCart();
+
+},
+
+theme:{
+color:"#000000"
+}
+
+};
+
+const rzp = new Razorpay(options);
+rzp.open();
+
+}
+
+else if(payment==="cod"){
+
+alert("Order placed successfully with Cash on Delivery!");
+
+localStorage.setItem("vellaOrders",JSON.stringify(cart));
+
+cart=[];
+saveCart();
+renderCart();
+
+}
+
+else if(payment==="whatsapp"){
+
+let message=`VELLA CO. ORDER%0A`;
+
+cart.forEach(item=>{
+
+message += `${item.title} x${item.qty} - ₹${item.price*item.qty}%0A`;
+
+});
+
+message += `%0ACustomer: ${customerName}%0ATotal: ₹${total}`;
+
+window.open(`https://wa.me/918929094129?text=${message}`,"_blank");
+
+}
+
+}
+
+/* NAV SCROLL */
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY > 50){
+document.querySelector("header").style.boxShadow="0 5px 20px rgba(0,0,0,0.05)";
+}else{
+document.querySelector("header").style.boxShadow="none";
+}
+
+});
+
+</script>
+
+</body>
