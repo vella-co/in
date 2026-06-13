@@ -621,4 +621,86 @@
       const items = state.checkout.items;
       const total = items.reduce((sum,i)=>sum + i.price * i.qty, 0);
       const first = items[0];
-      return `Hello VELLA CO,%0ANew Order Received:%0AName: ${v.name}%0APhone: ${v.phone}%0AAddress: ${v.address}%0AProduct: ${first.name}${items.lengt
+      return `Hello VELLA CO,%0ANew Order Received:%0AName: ${v.name}%0APhone: ${v.phone}%0AAddress: ${v.address}%0AProduct: ${first.name}${items.length>1 ? ' + more' : ''}%0ASize: ${first.size}%0AQuantity: ${first.qty}%0ATotal Price: ${money(total)}`;
+    }
+
+    function placeWhatsApp(){
+      const msg = orderMessage();
+      if(!msg) return;
+      window.open('https://wa.me/?text=' + msg, '_blank');
+      toast('Opening WhatsApp');
+    }
+
+    function placeCOD(){
+      const msg = orderMessage();
+      if(!msg) return;
+      window.open('https://wa.me/?text=' + msg, '_blank');
+      toast('COD order sent to WhatsApp');
+    }
+
+    function payRazorpay(){
+      const v = validateCheckout();
+      if(!v) return;
+      showLoading(true);
+      setTimeout(()=>{
+        showLoading(false);
+        toast('Payment success');
+        saveCart([]);
+        updateCartCount();
+        goHome();
+      },1300);
+    }
+
+    function goHome(){
+      state.pageNum = 1;
+      state.category = 'All';
+      state.search = '';
+      el('searchInput').value = '';
+      el('searchInputMobile').value = '';
+      renderHome();
+      history.pushState({page:'home',pg:1,cat:'All'},'',`?page=home`);
+    }
+
+    function goCart(){
+      renderCart();
+      history.pushState({page:'cart'},'',`?page=cart`);
+    }
+
+    function scrollToProducts(){
+      document.getElementById('productGrid').scrollIntoView({behavior:'smooth'});
+    }
+
+    function route(){
+      const url = new URL(location.href);
+      const page = url.searchParams.get('page') || 'home';
+
+      if(page === 'detail'){
+        const id = Number(url.searchParams.get('id'));
+        state.detail = products.find(p=>p.id===id);
+        state.size = 'M';
+        state.qty = 1;
+        renderDetail();
+      }else if(page === 'cart'){
+        renderCart();
+      }else if(page === 'checkout'){
+        state.checkout = state.checkout || {items: loadCart(), mode:'cart'};
+        renderCheckout();
+      }else{
+        state.pageNum = Number(url.searchParams.get('pg') || 1);
+        state.category = url.searchParams.get('cat') || 'All';
+        renderHome();
+      }
+    }
+
+    window.addEventListener('popstate', route);
+
+    function init(){
+      renderHome();
+      updateCartCount();
+      route();
+    }
+
+    init();
+  </script>
+</body>
+</html>
