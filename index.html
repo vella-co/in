@@ -661,3 +661,401 @@ EXPLORE COLLECTION
 </div>
 
 </section>
+<style>
+
+/* PRODUCT ACTIONS */
+
+.product-actions{
+display:flex;
+gap:10px;
+margin-top:15px;
+}
+
+.action-btn{
+flex:1;
+padding:14px;
+border:none;
+border-radius:12px;
+font-weight:700;
+cursor:pointer;
+transition:.3s;
+}
+
+.cart-btn{
+background:black;
+color:white;
+}
+
+.view-btn{
+background:#f4f4f4;
+}
+
+.action-btn:hover{
+transform:translateY(-3px);
+}
+
+/* CART SIDEBAR */
+
+.cart-sidebar{
+position:fixed;
+top:0;
+right:-450px;
+width:420px;
+height:100vh;
+background:white;
+z-index:9999;
+box-shadow:-10px 0 40px rgba(0,0,0,.1);
+transition:.4s;
+display:flex;
+flex-direction:column;
+}
+
+.cart-sidebar.active{
+right:0;
+}
+
+.cart-header{
+padding:25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid #eee;
+}
+
+.cart-items{
+flex:1;
+overflow:auto;
+padding:20px;
+}
+
+.cart-product{
+display:flex;
+gap:15px;
+margin-bottom:20px;
+padding-bottom:20px;
+border-bottom:1px solid #eee;
+}
+
+.cart-product img{
+width:80px;
+height:100px;
+object-fit:cover;
+border-radius:12px;
+}
+
+.cart-footer{
+padding:20px;
+border-top:1px solid #eee;
+}
+
+.checkout-btn{
+width:100%;
+padding:15px;
+background:black;
+color:white;
+border-radius:12px;
+font-weight:700;
+}
+
+/* WISHLIST */
+
+.wishlist-btn{
+position:absolute;
+top:15px;
+right:15px;
+width:42px;
+height:42px;
+border-radius:50%;
+background:white;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+cursor:pointer;
+}
+
+.wishlist-btn.active{
+color:red;
+}
+
+/* PRODUCT MODAL */
+
+.product-modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.6);
+display:none;
+justify-content:center;
+align-items:center;
+padding:20px;
+z-index:99999;
+}
+
+.product-modal.active{
+display:flex;
+}
+
+.modal-box{
+background:white;
+width:100%;
+max-width:1000px;
+border-radius:25px;
+overflow:hidden;
+display:grid;
+grid-template-columns:1fr 1fr;
+}
+
+.modal-image img{
+height:100%;
+object-fit:cover;
+}
+
+.modal-content{
+padding:40px;
+position:relative;
+}
+
+.close-modal{
+position:absolute;
+top:20px;
+right:20px;
+font-size:25px;
+cursor:pointer;
+}
+
+.modal-content h2{
+font-size:40px;
+margin-bottom:15px;
+}
+
+.modal-price{
+font-size:28px;
+font-weight:800;
+margin-bottom:20px;
+}
+
+.modal-content p{
+color:#777;
+line-height:1.8;
+margin-bottom:25px;
+}
+
+.size-options{
+display:flex;
+gap:10px;
+margin-bottom:25px;
+}
+
+.size-options button{
+padding:12px 20px;
+border:1px solid #ddd;
+background:white;
+border-radius:10px;
+}
+
+.buy-btn{
+padding:15px 25px;
+background:black;
+color:white;
+border-radius:12px;
+font-weight:700;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.cart-sidebar{
+width:100%;
+}
+
+.modal-box{
+grid-template-columns:1fr;
+}
+
+.modal-image img{
+height:350px;
+}
+
+}
+
+</style>
+
+<!-- CART SIDEBAR -->
+
+<div class="cart-sidebar" id="cartSidebar">
+
+<div class="cart-header">
+
+<h2>Your Cart</h2>
+
+<i class="fa-solid fa-xmark" onclick="toggleCart()"></i>
+
+</div>
+
+<div class="cart-items" id="cartItems">
+
+<p>Your cart is empty.</p>
+
+</div>
+
+<div class="cart-footer">
+
+<h3>
+Total: ₹<span id="cartTotal">0</span>
+</h3>
+
+<br>
+
+<button class="checkout-btn">
+Proceed To Checkout
+</button>
+
+</div>
+
+</div>
+
+<!-- PRODUCT MODAL -->
+
+<div class="product-modal" id="productModal">
+
+<div class="modal-box">
+
+<div class="modal-image">
+<img id="modalImage" src="">
+</div>
+
+<div class="modal-content">
+
+<div class="close-modal" onclick="closeModal()">
+<i class="fa-solid fa-xmark"></i>
+</div>
+
+<h2 id="modalTitle">
+Product Name
+</h2>
+
+<div class="modal-price" id="modalPrice">
+₹0
+</div>
+
+<p>
+Premium luxury streetwear made with high-quality fabric,
+modern oversized fit and exceptional comfort.
+</p>
+
+<div class="size-options">
+
+<button>S</button>
+<button>M</button>
+<button>L</button>
+<button>XL</button>
+
+</div>
+
+<button class="buy-btn">
+BUY NOW
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* CART */
+
+let cart = JSON.parse(localStorage.getItem("vellaCart")) || [];
+
+function saveCart(){
+localStorage.setItem("vellaCart",JSON.stringify(cart));
+}
+
+function toggleCart(){
+document.getElementById("cartSidebar").classList.toggle("active");
+}
+
+document.querySelector(".cart-icon").onclick=toggleCart;
+
+function addToCart(name,price,image){
+
+cart.push({
+name,
+price,
+image
+});
+
+saveCart();
+renderCart();
+
+}
+
+function renderCart(){
+
+let cartItems=document.getElementById("cartItems");
+let total=0;
+
+if(cart.length===0){
+
+cartItems.innerHTML="<p>Your cart is empty.</p>";
+
+document.getElementById("cartTotal").innerText="0";
+
+return;
+}
+
+cartItems.innerHTML='';
+
+cart.forEach(item=>{
+
+total += item.price;
+
+cartItems.innerHTML += `
+
+<div class="cart-product">
+
+<img src="${item.image}">
+
+<div>
+
+<h4>${item.name}</h4>
+
+<p>₹${item.price}</p>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("cartTotal").innerText=total;
+
+}
+
+renderCart();
+
+/* MODAL */
+
+function openModal(title,price,image){
+
+document.getElementById("productModal").classList.add("active");
+
+document.getElementById("modalTitle").innerText=title;
+
+document.getElementById("modalPrice").innerText='₹'+price;
+
+document.getElementById("modalImage").src=image;
+
+}
+
+function closeModal(){
+
+document.getElementById("productModal").classList.remove("active");
+
+}
+
+</script>
