@@ -1,60 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Fashion Store</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: #ffffff; color: #333; }
-        
-        /* Navigation */
-        nav { display: flex; justify-content: space-between; padding: 20px 10%; border-bottom: 1px solid #eee; }
-        
-        /* Hero Section */
-        .hero { padding: 100px 10%; text-align: center; }
-        .hero h1 { font-size: 3rem; margin-bottom: 20px; }
-        
-        /* Blue Button (Order Now) */
-        .btn { 
-            background-color: #007bff; color: white; padding: 15px 30px; 
-            border: none; border-radius: 5px; cursor: pointer; font-size: 1rem;
-            transition: 0.3s;
-        }
-        .btn:hover { background-color: #0056b3; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AGE GURU - Premium Age Calculator</title>
+<meta name="description" content="AGE GURU - Free Age Calculator, Age Difference Calculator, Birthday Countdown & Days Between Dates Tool">
 
-        /* Product Grid */
-        .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 50px 10%; }
-        .card { border: 1px solid #f0f0f0; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-    </style>
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+min-height:100vh;
+background:linear-gradient(135deg,#0f172a,#1e1b4b,#312e81);
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+color:white;
+}
+
+.container{
+width:100%;
+max-width:900px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,.15);
+border-radius:25px;
+padding:30px;
+box-shadow:0 8px 32px rgba(0,0,0,.3);
+}
+
+.logo{
+text-align:center;
+font-size:42px;
+font-weight:800;
+margin-bottom:20px;
+background:linear-gradient(to right,#60a5fa,#a78bfa);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.tabs{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-bottom:25px;
+}
+
+.tabs button{
+flex:1;
+padding:12px;
+border:none;
+border-radius:12px;
+background:rgba(255,255,255,.08);
+color:white;
+cursor:pointer;
+}
+
+.tabs button:hover{
+background:rgba(255,255,255,.15);
+}
+
+.card{
+display:none;
+background:rgba(255,255,255,.05);
+padding:20px;
+border-radius:20px;
+}
+
+.card.active{
+display:block;
+}
+
+input{
+width:100%;
+padding:14px;
+margin:10px 0;
+border:none;
+border-radius:12px;
+background:rgba(255,255,255,.1);
+color:white;
+}
+
+.calc-btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+background:#6366f1;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+.result{
+margin-top:15px;
+font-size:18px;
+font-weight:bold;
+}
+
+.ads{
+margin-top:20px;
+padding:20px;
+text-align:center;
+border-radius:15px;
+background:rgba(255,255,255,.05);
+}
+</style>
 </head>
+
 <body>
 
-    <nav>
-        <h2>MyStyle</h2>
-        <div>Cart (0)</div>
-    </nav>
+<div class="container">
 
-    <div class="hero">
-        <h1>Premium Collection 2026</h1>
-        <p>Quality apparel for your lifestyle.</p>
-    </div>
+<div class="logo">AGE GURU</div>
 
-    <div class="products">
-        <div class="card">
-            <h3>Premium T-Shirt</h3>
-            <p>₹999</p>
-            <br>
-            <button class="btn" onclick="orderNow('Premium T-Shirt', 999)">Order Now</button>
-        </div>
-        <!-- Aur products yahan add karein -->
-    </div>
+<div class="tabs">
+<button onclick="showTab('age')">Age Calculator</button>
+<button onclick="showTab('diff')">Age Difference</button>
+<button onclick="showTab('countdown')">Birthday Countdown</button>
+<button onclick="showTab('days')">Days Between Dates</button>
+</div>
 
-    <script>
-        function orderNow(productName, price) {
-            alert("Integrating Razorpay for: " + productName + " at ₹" + price);
-            // Yahan aap Razorpay ki script call karenge
-        }
-    </script>
+<!-- AGE CALCULATOR -->
+<div class="card active" id="age">
+<h2>Age Calculator</h2>
+<input type="date" id="dob">
+<button class="calc-btn" onclick="calculateAge()">Calculate Age</button>
+<div class="result" id="ageResult"></div>
+</div>
+
+<!-- AGE DIFFERENCE -->
+<div class="card" id="diff">
+<h2>Age Difference</h2>
+<input type="date" id="date1">
+<input type="date" id="date2">
+<button class="calc-btn" onclick="ageDifference()">Calculate Difference</button>
+<div class="result" id="diffResult"></div>
+</div>
+
+<!-- COUNTDOWN -->
+<div class="card" id="countdown">
+<h2>Birthday Countdown</h2>
+<input type="date" id="birthday">
+<button class="calc-btn" onclick="birthdayCountdown()">Check</button>
+<div class="result" id="countResult"></div>
+</div>
+
+<!-- DAYS BETWEEN -->
+<div class="card" id="days">
+<h2>Days Between Dates</h2>
+<input type="date" id="start">
+<input type="date" id="end">
+<button class="calc-btn" onclick="daysBetween()">Calculate</button>
+<div class="result" id="daysResult"></div>
+</div>
+
+<div class="ads">
+Google AdSense Ad Space
+</div>
+
+</div>
+
+<script>
+
+function showTab(id){
+document.querySelectorAll('.card').forEach(x=>x.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+}
+
+function calculateAge(){
+let dob=new Date(document.getElementById("dob").value);
+let today=new Date();
+
+let age=today.getFullYear()-dob.getFullYear();
+
+let m=today.getMonth()-dob.getMonth();
+
+if(m<0 || (m===0 && today.getDate()<dob.getDate())){
+age--;
+}
+
+document.getElementById("ageResult").innerHTML=
+"Your Age: "+age+" Years";
+}
+
+function ageDifference(){
+let d1=new Date(document.getElementById("date1").value);
+let d2=new Date(document.getElementById("date2").value);
+
+let diff=Math.abs(d2-d1);
+
+let years=Math.floor(diff/(1000*60*60*24*365));
+
+document.getElementById("diffResult").innerHTML=
+"Difference: "+years+" Years";
+}
+
+function birthdayCountdown(){
+
+let birth=new Date(document.getElementById("birthday").value);
+
+let today=new Date();
+
+let next=new Date(
+today.getFullYear(),
+birth.getMonth(),
+birth.getDate()
+);
+
+if(next<today){
+next.setFullYear(today.getFullYear()+1);
+}
+
+let diff=Math.ceil(
+(next-today)/(1000*60*60*24)
+);
+
+document.getElementById("countResult").innerHTML=
+diff+" Days Left For Birthday 🎉";
+}
+
+function daysBetween(){
+
+let s=new Date(document.getElementById("start").value);
+
+let e=new Date(document.getElementById("end").value);
+
+let diff=Math.abs(e-s);
+
+let days=Math.ceil(
+diff/(1000*60*60*24)
+);
+
+document.getElementById("daysResult").innerHTML=
+days+" Days";
+}
+
+</script>
+
 </body>
 </html>
