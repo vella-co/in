@@ -1,192 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>StyleWear - Fashion Store</title>
+
+<title>Only UPSI</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 <style>
-*{
+
+/* ========================= */
+/* PART 2 CSS YAHAN PASTE HOGA */
+/* ========================= */
+  *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-background:#f5f8ff;
+background:#f8fbff;
+color:#0f172a;
+overflow-x:hidden;
 }
 
-header{
-background:#0d47a1;
-color:white;
-padding:15px 50px;
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
+}
+
+.navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:#fff;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+z-index:1000;
+}
+
+.nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
+padding:18px 0;
 }
 
 .logo{
 font-size:28px;
-font-weight:bold;
+font-weight:700;
+color:#2563eb;
 }
 
-nav a{
-color:white;
+.nav-links{
+display:flex;
+gap:30px;
+}
+
+.nav-links a{
 text-decoration:none;
-margin-left:20px;
+color:#334155;
+font-weight:500;
 }
 
 .hero{
-height:80vh;
-background:linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),
-url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b');
-background-size:cover;
-background-position:center;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
+padding:140px 0 100px;
+background:linear-gradient(135deg,#2563eb,#1d4ed8);
 color:white;
+}
+
+.hero-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
 }
 
 .hero h1{
-font-size:55px;
-margin-bottom:10px;
-}
-
-.hero p{
-font-size:20px;
+font-size:58px;
+line-height:1.1;
 margin-bottom:20px;
 }
 
-.btn{
-background:#2196f3;
-color:white;
-padding:12px 25px;
-text-decoration:none;
-border-radius:5px;
+.hero p{
+font-size:18px;
+line-height:1.8;
+margin-bottom:25px;
 }
 
-.section{
-padding:60px 30px;
-text-align:center;
+.hero-card{
+background:white;
+color:#0f172a;
+padding:35px;
+border-radius:25px;
+box-shadow:0 20px 50px rgba(0,0,0,.15);
 }
 
-.section h2{
-color:#0d47a1;
-margin-bottom:30px;
+.hero-card h3{
+margin-bottom:15px;
+font-size:28px;
 }
 
-.products{
+.stats{
+padding:80px 0;
+}
+
+.stats-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
 }
 
-.card{
+.stat{
 background:white;
-border-radius:10px;
-overflow:hidden;
-box-shadow:0 2px 10px rgba(0,0,0,.1);
-}
-
-.card img{
-width:100%;
-height:300px;
-object-fit:cover;
-}
-
-.card h3{
-padding:10px;
-}
-
-.card p{
-color:#2196f3;
-font-weight:bold;
-padding-bottom:15px;
-}
-
-.about{
-background:white;
-}
-
-.contact{
-background:#eaf2ff;
-}
-
-footer{
-background:#0d47a1;
-color:white;
+padding:30px;
+border-radius:20px;
 text-align:center;
-padding:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
 }
-</style>
+
+.stat h2{
+color:#2563eb;
+font-size:40px;
+margin-bottom:10px;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:50px;
+}
+
+.section-title h2{
+font-size:42px;
+margin-bottom:10px;
+}
+
+.courses{
+padding:100px 0;
+}
+
+.course-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+}
+
+.course-card{
+background:white;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.course-card:hover{
+transform:translateY(-10px);
+}
+
+.course-top{
+height:180px;
+background:linear-gradient(135deg,#2563eb,#1d4ed8);
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:30px;
+font-weight:700;
+}
+
+.course-body{
+padding:25px;
+}
+
+.course-body button{
+margin-top:15px;
+padding:12px 20px;
+border:none;
+background:#2563eb;
+color:white;
+border-radius:10px;
+cursor:pointer;
+}
+
+.footer{
+background:#0f172a;
+color:white;
+padding:70px 0;
+margin-top:80px;
+}
+
+/* ========================= */
+/* PART 3 YAHAN SE START HOGA */
+/* ========================= */
+  </style>
+
 </head>
+
 <body>
 
-<header>
-<div class="logo">StyleWear</div>
+<header class="navbar">
 
-<nav>
+<div class="container nav">
+
+<div class="logo">
+<i class="fa-solid fa-graduation-cap"></i>
+Only UPSI
+</div>
+
+<div class="nav-links">
 <a href="#">Home</a>
-<a href="#">Shop</a>
-<a href="#">About</a>
-<a href="#">Contact</a>
-</nav>
+<a href="#">Courses</a>
+<a href="#">Notes</a>
+<a href="#">Mock Tests</a>
+<a href="#">Current Affairs</a>
+</div>
+
+</div>
+
 </header>
 
 <section class="hero">
+
+<div class="container hero-grid">
+
 <div>
-<h1>Fashion That Defines You</h1>
-<p>Premium Clothing Collection For Everyone</p>
-<a href="#" class="btn">Shop Now</a>
-</div>
-</section>
 
-<section class="section">
-<h2>Featured Collection</h2>
+<h1>
+Crack UPSI 2026 With Confidence
+</h1>
 
-<div class="products">
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518">
-<h3>Men's T-Shirt</h3>
-<p>₹799</p>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b">
-<h3>Women's Fashion</h3>
-<p>₹1499</p>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f">
-<h3>Kids Collection</h3>
-<p>₹999</p>
-</div>
-
-</div>
-</section>
-
-<section class="section about">
-<h2>About Us</h2>
 <p>
-StyleWear is a modern fashion brand offering premium quality clothing
-for men, women and kids with trendy styles and affordable prices.
+Premium Notes, Mock Tests, PYQs,
+Current Affairs and Complete UPSI Preparation.
 </p>
+
+</div>
+
+<div class="hero-card">
+
+<h3>
+UPSI Foundation Batch 2026
+</h3>
+
+<p>
+✔ Live Classes<br>
+✔ PDF Notes<br>
+✔ Mock Tests<br>
+✔ Doubt Support
+</p>
+
+</div>
+
+</div>
+
 </section>
 
-<section class="section contact">
-<h2>Contact Us</h2>
-<p>Email: support@stylewear.com</p>
-<p>Phone: +91 9876543210</p>
+<section class="stats">
+
+<div class="container stats-grid">
+
+<div class="stat">
+<h2>25K+</h2>
+<p>Students</p>
+</div>
+
+<div class="stat">
+<h2>500+</h2>
+<p>Mock Tests</p>
+</div>
+
+<div class="stat">
+<h2>1200+</h2>
+<p>Study Notes</p>
+</div>
+
+<div class="stat">
+<h2>95%</h2>
+<p>Success Rate</p>
+</div>
+
+</div>
+
 </section>
 
-<footer>
-© 2026 StyleWear. All Rights Reserved.
+<section class="courses">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Popular Courses</h2>
+
+<p>
+Choose The Best Course For UPSI
+</p>
+
+</div>
+
+<div class="course-grid">
+
+<div class="course-card">
+
+<div class="course-top">
+UPSI
+</div>
+
+<div class="course-body">
+
+<h3>
+Foundation Batch
+</h3>
+
+<p>
+Complete UPSI Course
+With Tests & Notes.
+</p>
+
+<button>
+View Course
+</button>
+
+</div>
+
+</div>
+
+<div class="course-card">
+
+<div class="course-top">
+MOCK
+</div>
+
+<div class="course-body">
+
+<h3>
+Mock Test Series
+</h3>
+
+<p>
+500+ Practice Tests
+For UPSI Exam.
+</p>
+
+<button>
+Start Test
+</button>
+
+</div>
+
+</div>
+
+<div class="course-card">
+
+<div class="course-top">
+NOTES
+</div>
+
+<div class="course-body">
+
+<h3>
+Premium Notes
+</h3>
+
+<p>
+Easy Revision Notes
+For Every Subject.
+</p>
+
+<button>
+Download
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+
+<div class="container">
+
+<h2>
+Only UPSI
+</h2>
+
+<p>
+Your Complete UPSI Preparation Platform
+</p>
+
+<br>
+
+<p>
+© 2026 Only UPSI. All Rights Reserved.
+</p>
+
+</div>
+
 </footer>
 
+<script>
+
+console.log("Only UPSI Loaded");
+
+</script>
+
 </body>
+
 </html>
