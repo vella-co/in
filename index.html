@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -18,10 +16,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
 <style>
 
-/* ========================= */
-/* PART 2 CSS YAHAN PASTE HOGA */
-/* ========================= */
-  *{
+*{
 margin:0;
 padding:0;
 box-sizing:border-box;
@@ -29,16 +24,18 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-background:#f8fbff;
-color:#0f172a;
+background:#f5f9ff;
+color:#111827;
 overflow-x:hidden;
 }
 
 .container{
-width:90%;
+width:92%;
 max-width:1200px;
 margin:auto;
 }
+
+/* NAVBAR */
 
 .navbar{
 position:fixed;
@@ -50,87 +47,349 @@ box-shadow:0 5px 20px rgba(0,0,0,.08);
 z-index:1000;
 }
 
-@media (max-width: 768px){
-
 .nav{
-flex-direction:column;
-gap:15px;
+height:70px;
+display:flex;
+align-items:center;
+justify-content:space-between;
 }
 
-.nav-links{
-flex-wrap:wrap;
-justify-content:center;
-gap:15px;
+.logo{
+font-size:24px;
+font-weight:700;
+color:#2563eb;
 }
+
+.menu-btn{
+font-size:24px;
+cursor:pointer;
+}
+
+/* HERO */
 
 .hero{
-padding:120px 0 60px;
+padding-top:110px;
+padding-bottom:60px;
+
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#1d4ed8
+);
+
+color:white;
 }
 
-.hero-grid{
-grid-template-columns:1fr;
-gap:30px;
+.badge{
+display:inline-block;
+padding:8px 16px;
+background:rgba(255,255,255,.15);
+border-radius:30px;
+margin-bottom:20px;
+font-size:14px;
 }
 
 .hero h1{
-font-size:34px;
-text-align:center;
+font-size:38px;
+line-height:1.2;
+margin-bottom:15px;
+font-weight:800;
 }
 
 .hero p{
-text-align:center;
+line-height:1.8;
 font-size:16px;
+margin-bottom:25px;
 }
 
+.hero-btns{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.btn-primary{
+padding:14px 24px;
+border:none;
+border-radius:12px;
+background:white;
+color:#2563eb;
+font-weight:700;
+cursor:pointer;
+}
+
+.btn-secondary{
+padding:14px 24px;
+border:2px solid white;
+background:transparent;
+color:white;
+border-radius:12px;
+font-weight:700;
+cursor:pointer;
+}
+
+/* HERO CARD */
+
 .hero-card{
+margin-top:35px;
+background:white;
+color:#111827;
 padding:25px;
+border-radius:24px;
+box-shadow:0 15px 40px rgba(0,0,0,.15);
+}
+
+.hero-card h3{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.hero-card p{
+color:#64748b;
+margin-bottom:15px;
+}
+
+.hero-card ul{
+list-style:none;
+}
+
+.hero-card li{
+margin-bottom:10px;
+}
+
+/* PART 2 CSS YAHAN SE CONTINUE HOGA */
+ /* STATS */
+
+.stats{
+padding:60px 0;
 }
 
 .stats-grid{
-grid-template-columns:1fr 1fr;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
 }
 
-.course-grid{
-grid-template-columns:1fr;
+.stat-card{
+background:white;
+padding:22px;
+border-radius:18px;
+text-align:center;
+box-shadow:0 8px 20px rgba(0,0,0,.06);
+}
+
+.stat-card h2{
+color:#2563eb;
+font-size:30px;
+margin-bottom:8px;
+}
+
+/* SECTION TITLE */
+
+.section-title{
+text-align:center;
+margin-bottom:35px;
 }
 
 .section-title h2{
 font-size:30px;
+margin-bottom:8px;
 }
 
-.footer{
+.section-title p{
+color:#64748b;
+}
+
+/* COURSES */
+
+.courses{
+padding:70px 0;
+}
+
+.course-grid{
+display:grid;
+gap:20px;
+}
+
+.course-card{
+background:white;
+border-radius:22px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.course-banner{
+height:180px;
+background:linear-gradient(135deg,#2563eb,#1d4ed8);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:32px;
+font-weight:700;
+color:white;
+}
+
+.course-content{
+padding:20px;
+}
+
+.course-content h3{
+margin-bottom:10px;
+}
+
+.course-content p{
+color:#64748b;
+line-height:1.7;
+margin-bottom:15px;
+}
+
+.course-content button{
+padding:12px 20px;
+border:none;
+background:#2563eb;
+color:white;
+border-radius:10px;
+font-weight:600;
+}
+
+/* NOTES */
+
+.notes{
+padding:70px 0;
+background:white;
+}
+
+.notes-grid{
+display:grid;
+gap:15px;
+}
+
+.note-card{
+background:#f1f6ff;
+padding:20px;
+border-radius:16px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.note-card button{
+padding:10px 15px;
+border:none;
+background:#2563eb;
+color:white;
+border-radius:8px;
+}
+
+/* PREMIUM */
+
+.premium{
+padding:70px 0;
 text-align:center;
 }
-}
-/* ========================= */
-/* PART 3 YAHAN SE START HOGA */
-/* ========================= */
-  </style>
 
+.premium-box{
+background:linear-gradient(135deg,#2563eb,#1d4ed8);
+padding:40px 25px;
+border-radius:25px;
+color:white;
+}
+
+.premium-box h2{
+font-size:30px;
+margin-bottom:12px;
+}
+
+.premium-box p{
+line-height:1.8;
+margin-bottom:20px;
+}
+
+.premium-box button{
+padding:14px 28px;
+border:none;
+border-radius:12px;
+background:white;
+color:#2563eb;
+font-weight:700;
+}
+
+/* FOOTER */
+
+.footer{
+background:#0f172a;
+color:white;
+padding:50px 0;
+margin-top:50px;
+}
+
+.footer h2{
+margin-bottom:10px;
+}
+
+.footer p{
+color:#cbd5e1;
+line-height:1.8;
+}
+
+/* TABLET + DESKTOP */
+
+@media(min-width:768px){
+
+.hero-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+align-items:center;
+}
+
+.stats-grid{
+grid-template-columns:repeat(4,1fr);
+}
+
+.course-grid{
+grid-template-columns:repeat(3,1fr);
+}
+
+.notes-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.hero h1{
+font-size:60px;
+}
+
+.section-title h2{
+font-size:42px;
+}
+}
+
+/* PART 3 YAHAN SE START HOGA */
+ </style>
 </head>
 
 <body>
+
+<!-- NAVBAR -->
 
 <header class="navbar">
 
 <div class="container nav">
 
 <div class="logo">
-<i class="fa-solid fa-graduation-cap"></i>
 Only UPSI
 </div>
 
-<div class="nav-links">
-<a href="#">Home</a>
-<a href="#">Courses</a>
-<a href="#">Notes</a>
-<a href="#">Mock Tests</a>
-<a href="#">Current Affairs</a>
+<div class="menu-btn">
+<i class="fa-solid fa-bars"></i>
 </div>
 
 </div>
 
 </header>
+
+<!-- HERO -->
 
 <section class="hero">
 
@@ -138,29 +397,58 @@ Only UPSI
 
 <div>
 
+<div class="badge">
+UPSI 2026 FOUNDATION BATCH
+</div>
+
 <h1>
-Crack UPSI 2026 With Confidence
+Crack UPSI 2026
+With Confidence
 </h1>
 
 <p>
-Premium Notes, Mock Tests, PYQs,
-Current Affairs and Complete UPSI Preparation.
+Premium Notes, Mock Tests,
+Current Affairs, PYQs &
+Expert Guidance In One Place.
 </p>
 
+<div class="hero-btns">
+
+<button class="btn-primary">
+Start Learning
+</button>
+
+<button class="btn-secondary">
+Explore Courses
+</button>
+
 </div>
+
+</div>
+
+<div>
 
 <div class="hero-card">
 
 <h3>
-UPSI Foundation Batch 2026
+UPSI Foundation Batch
 </h3>
 
 <p>
-✔ Live Classes<br>
-✔ PDF Notes<br>
-✔ Mock Tests<br>
-✔ Doubt Support
+Complete Preparation Course
+For UPSI Aspirants.
 </p>
+
+<ul>
+
+<li>✔ Live Classes</li>
+<li>✔ PDF Notes</li>
+<li>✔ Mock Tests</li>
+<li>✔ Doubt Support</li>
+
+</ul>
+
+</div>
 
 </div>
 
@@ -168,33 +456,41 @@ UPSI Foundation Batch 2026
 
 </section>
 
+<!-- STATS -->
+
 <section class="stats">
 
-<div class="container stats-grid">
+<div class="container">
 
-<div class="stat">
+<div class="stats-grid">
+
+<div class="stat-card">
 <h2>25K+</h2>
 <p>Students</p>
 </div>
 
-<div class="stat">
+<div class="stat-card">
 <h2>500+</h2>
 <p>Mock Tests</p>
 </div>
 
-<div class="stat">
+<div class="stat-card">
 <h2>1200+</h2>
 <p>Study Notes</p>
 </div>
 
-<div class="stat">
+<div class="stat-card">
 <h2>95%</h2>
 <p>Success Rate</p>
 </div>
 
 </div>
 
+</div>
+
 </section>
+
+<!-- COURSES -->
 
 <section class="courses">
 
@@ -214,19 +510,19 @@ Choose The Best Course For UPSI
 
 <div class="course-card">
 
-<div class="course-top">
+<div class="course-banner">
 UPSI
 </div>
 
-<div class="course-body">
+<div class="course-content">
 
 <h3>
 Foundation Batch
 </h3>
 
 <p>
-Complete UPSI Course
-With Tests & Notes.
+Complete UPSI Preparation
+With Notes & Tests.
 </p>
 
 <button>
@@ -239,19 +535,19 @@ View Course
 
 <div class="course-card">
 
-<div class="course-top">
+<div class="course-banner">
 MOCK
 </div>
 
-<div class="course-body">
+<div class="course-content">
 
 <h3>
 Mock Test Series
 </h3>
 
 <p>
-500+ Practice Tests
-For UPSI Exam.
+500+ Chapter Wise Tests
+For Better Practice.
 </p>
 
 <button>
@@ -264,11 +560,11 @@ Start Test
 
 <div class="course-card">
 
-<div class="course-top">
-NOTES
+<div class="course-banner">
+PDF
 </div>
 
-<div class="course-body">
+<div class="course-content">
 
 <h3>
 Premium Notes
@@ -293,6 +589,79 @@ Download
 
 </section>
 
+<!-- NOTES -->
+
+<section class="notes">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Free Notes</h2>
+
+<p>
+Important Topics For UPSI
+</p>
+
+</div>
+
+<div class="notes-grid">
+
+<div class="note-card">
+<span>Ratio & Proportion</span>
+<button>Open</button>
+</div>
+
+<div class="note-card">
+<span>Percentage</span>
+<button>Open</button>
+</div>
+
+<div class="note-card">
+<span>Profit & Loss</span>
+<button>Open</button>
+</div>
+
+<div class="note-card">
+<span>Indian Constitution</span>
+<button>Open</button>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PREMIUM -->
+
+<section class="premium">
+
+<div class="container">
+
+<div class="premium-box">
+
+<h2>
+Unlock Premium Membership
+</h2>
+
+<p>
+Get Full Access To Notes,
+Courses, Mock Tests & PYQs.
+</p>
+
+<button>
+Join Premium
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
 <footer class="footer">
 
 <div class="container">
@@ -315,12 +684,5 @@ Your Complete UPSI Preparation Platform
 
 </footer>
 
-<script>
-
-console.log("Only UPSI Loaded");
-
-</script>
-
 </body>
-
 </html>
