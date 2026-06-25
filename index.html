@@ -6,14 +6,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Only UPSI</title>
+<title>JapMala - Divine Naam Jap Counter</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
 <style>
+
+:root{
+--glass:rgba(255,255,255,.12);
+--border:rgba(255,255,255,.20);
+--shadow:0 20px 60px rgba(0,0,0,.20);
+}
 
 *{
 margin:0;
@@ -23,609 +26,644 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-background:#f5f9ff;
+min-height:100vh;
 overflow-x:hidden;
+color:#fff;
+background:linear-gradient(135deg,#ff9966,#ff5e62);
+transition:.5s;
 }
 
-.container{
-width:92%;
-max-width:1200px;
-margin:auto;
-}
-
-/* NAVBAR */
-
-.navbar{
+#particles{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-background:#fff;
-z-index:1000;
-box-shadow:0 5px 20px rgba(0,0,0,.08);
+inset:0;
+pointer-events:none;
+opacity:.12;
+background:
+radial-gradient(circle at 10% 20%,white 2px,transparent 2px),
+radial-gradient(circle at 80% 40%,white 2px,transparent 2px),
+radial-gradient(circle at 30% 80%,white 2px,transparent 2px),
+radial-gradient(circle at 70% 70%,white 2px,transparent 2px);
+background-size:250px 250px;
+animation:bgMove 25s linear infinite;
 }
 
-.nav{
-height:72px;
+@keyframes bgMove{
+from{transform:translateY(0);}
+to{transform:translateY(-300px);}
+}
+
+.topbar{
 display:flex;
-align-items:center;
 justify-content:space-between;
+align-items:center;
+padding:20px;
 }
 
 .logo{
-display:flex;
-align-items:center;
-gap:10px;
-font-size:24px;
+font-size:28px;
 font-weight:800;
-color:#2563eb;
 }
 
-.logo-circle{
-width:42px;
-height:42px;
-border-radius:50%;
-background:linear-gradient(135deg,#2563eb,#1d4ed8);
-display:flex;
-align-items:center;
-justify-content:center;
+.theme-btn{
+border:none;
+padding:12px 18px;
+border-radius:15px;
+background:var(--glass);
+backdrop-filter:blur(15px);
 color:#fff;
-font-weight:700;
+cursor:pointer;
 }
 
-.menu{
-font-size:24px;
+.container{
+width:min(95%,700px);
+margin:auto;
+padding-bottom:50px;
 }
 
-/* HERO */
+.glass{
+background:var(--glass);
+backdrop-filter:blur(20px);
+border:1px solid var(--border);
+border-radius:30px;
+box-shadow:var(--shadow);
+}
 
 .hero{
-padding-top:120px;
-padding-bottom:80px;
-background:linear-gradient(135deg,#2563eb,#1d4ed8);
-color:white;
-}
-
-.badge{
-display:inline-block;
-padding:8px 16px;
-background:rgba(255,255,255,.15);
-border-radius:50px;
+padding:30px;
+text-align:center;
 margin-bottom:20px;
 }
 
-.hero h1{
-font-size:40px;
+.god-icon{
+font-size:80px;
+margin-bottom:10px;
+animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+50%{
+transform:translateY(-10px);
+}
+}
+
+.god-title{
+font-size:34px;
+font-weight:700;
+}
+
+.god-sub{
+margin-top:8px;
+opacity:.9;
+}
+
+.selector{
+padding:22px;
+margin-bottom:20px;
+}
+
+.selector label{
+display:block;
+margin-bottom:10px;
+font-weight:600;
+}
+
+.selector select{
+width:100%;
+padding:15px;
+border:none;
+outline:none;
+border-radius:16px;
+font-size:16px;
+}
+ .counter-card{
+padding:30px;
+text-align:center;
+margin-bottom:20px;
+}
+
+.counter-label{
+font-size:18px;
+opacity:.9;
+}
+
+.counter{
+font-size:80px;
 font-weight:800;
-line-height:1.2;
+margin:15px 0;
+text-shadow:0 0 25px rgba(255,255,255,.4);
+}
+
+.count-btn{
+width:100%;
+padding:18px;
+border:none;
+border-radius:18px;
+font-size:18px;
+font-weight:700;
+cursor:pointer;
+background:white;
+color:#111;
+transition:.25s;
+}
+
+.count-btn:hover{
+transform:scale(1.03);
+}
+
+.count-btn:active{
+transform:scale(.95);
+}
+
+.target-card{
+padding:25px;
+margin-bottom:20px;
+}
+
+.target-row{
+display:flex;
+gap:10px;
+align-items:center;
+justify-content:space-between;
 margin-bottom:15px;
 }
 
-.hero p{
-line-height:1.8;
-margin-bottom:25px;
-}
-
-.hero-buttons{
-display:flex;
-gap:12px;
-flex-wrap:wrap;
-}
-
-.btn-primary{
-padding:14px 24px;
+.target-row select{
+padding:12px;
 border:none;
-border-radius:12px;
-background:white;
-color:#2563eb;
-font-weight:700;
+border-radius:14px;
 }
 
-.btn-secondary{
-padding:14px 24px;
-border:2px solid white;
-background:transparent;
-color:white;
-border-radius:12px;
-font-weight:700;
-}
-
-.hero-card{
-margin-top:35px;
-background:white;
-color:#111827;
-padding:25px;
-border-radius:24px;
-box-shadow:0 15px 40px rgba(0,0,0,.15);
-}
-
-.hero-card h3{
-margin-bottom:10px;
-}
-
-/* POPUP */
-
-.popup{
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:white;
-padding:25px;
-border-radius:20px;
-box-shadow:0 20px 50px rgba(0,0,0,.2);
+#customTarget{
+width:100%;
+padding:14px;
+border:none;
+border-radius:14px;
 display:none;
-z-index:9999;
-text-align:center;
-width:300px;
+margin-bottom:15px;
 }
 
-/* SUBJECT MODAL */
-
-.subject-modal{
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:white;
-width:90%;
-max-width:500px;
-padding:25px;
-border-radius:20px;
-display:none;
-z-index:9999;
+.progress-track{
+height:18px;
+background:rgba(255,255,255,.15);
+border-radius:50px;
+overflow:hidden;
 }
 
-.subject-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px;
-margin-top:15px;
+.progress-fill{
+height:100%;
+width:0%;
+border-radius:50px;
+background:linear-gradient(90deg,#ffe259,#ffa751);
+transition:.4s;
 }
 
-.subject-card{
-background:#f1f6ff;
-padding:15px;
-border-radius:12px;
+.progress-text{
+margin-top:10px;
 text-align:center;
 font-weight:600;
 }
 
-/* PART 2 YAHAN SE START HOGA */
- /* HERO CONTINUATION RESPONSIVE */
+.actions{
+display:flex;
+gap:12px;
+margin-bottom:20px;
+}
 
-@media(min-width:768px){
-.hero h1{
+.actions button{
+flex:1;
+padding:16px;
+border:none;
+border-radius:16px;
+font-size:17px;
+font-weight:700;
+cursor:pointer;
+}
+
+.minus-btn{
+background:#fff;
+}
+
+.reset-btn{
+background:#ffe259;
+}
+
+.plus-btn{
+background:#fff;
+}
+
+.quote-card{
+padding:25px;
+text-align:center;
+font-size:18px;
+font-weight:600;
+line-height:1.7;
+margin-bottom:20px;
+}
+
+.footer{
+text-align:center;
+padding:25px;
+opacity:.85;
+}
+
+.theme-radha{
+background:linear-gradient(135deg,#ff9966,#ff5e62);
+}
+
+.theme-ram{
+background:linear-gradient(135deg,#ff8008,#ffc837);
+}
+
+.theme-shiv{
+background:linear-gradient(135deg,#141e30,#243b55);
+}
+
+.theme-hanuman{
+background:linear-gradient(135deg,#ff512f,#dd2476);
+}
+
+.theme-ganesh{
+background:linear-gradient(135deg,#f7971e,#ffd200);
+}
+
+.theme-sai{
+background:linear-gradient(135deg,#c79081,#dfa579);
+}
+
+.theme-durga{
+background:linear-gradient(135deg,#cb2d3e,#ef473a);
+}
+
+.theme-krishna{
+background:linear-gradient(135deg,#396afc,#2948ff);
+}
+
+@media(max-width:600px){
+
+.counter{
+font-size:58px;
+}
+
+.god-title{
+font-size:26px;
+}
+
+.god-icon{
 font-size:60px;
 }
 
-.hero-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:60px;
-align-items:center;
-}
+.actions{
+flex-direction:column;
 }
 
-/* BUTTON HOVER */
-
-.btn-primary:hover,
-.btn-secondary:hover{
-transform:scale(1.05);
-transition:.2s;
 }
 
-/* SECTIONS */
+</style>
 
-section{
-padding:70px 0;
-}
-
-/* STATS */
-
-.stats-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:15px;
-}
-
-.stat{
-background:white;
-padding:22px;
-border-radius:18px;
-text-align:center;
-box-shadow:0 8px 20px rgba(0,0,0,.06);
-}
-
-.stat h2{
-color:#2563eb;
-font-size:32px;
-}
-
-/* COURSES */
-
-.courses{
-background:#f5f9ff;
-}
-
-.section-title{
-text-align:center;
-margin-bottom:40px;
-}
-
-.section-title h2{
-font-size:32px;
-margin-bottom:8px;
-}
-
-.course-grid{
-display:grid;
-gap:20px;
-}
-
-.course-card{
-background:white;
-border-radius:20px;
-overflow:hidden;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-}
-
-.course-banner{
-height:160px;
-background:linear-gradient(135deg,#2563eb,#1d4ed8);
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-font-size:30px;
-font-weight:800;
-}
-
-.course-content{
-padding:20px;
-}
-
-.course-content button{
-margin-top:15px;
-padding:12px 20px;
-border:none;
-background:#2563eb;
-color:white;
-border-radius:10px;
-}
-
-/* NOTES */
-
-.notes-grid{
-display:grid;
-gap:12px;
-}
-
-.note-card{
-background:white;
-padding:16px;
-border-radius:14px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-/* PREMIUM */
-
-.premium-box{
-background:linear-gradient(135deg,#2563eb,#1d4ed8);
-color:white;
-padding:35px;
-border-radius:20px;
-text-align:center;
-}
-
-.premium-box h2{
-margin-bottom:10px;
-}
-
-.premium-box button{
-margin-top:15px;
-padding:14px 28px;
-border:none;
-border-radius:12px;
-background:white;
-color:#2563eb;
-font-weight:700;
-}
-
-/* POPUP ACTIVE */
-
-.popup.active,
-.subject-modal.active{
-display:block;
-}
-
-/* FOOTER */
-
-.footer{
-background:#0f172a;
-color:white;
-padding:50px 0;
-text-align:center;
-}
-
-/* DESKTOP IMPROVEMENT */
-
-@media(min-width:1024px){
-
-.stats-grid{
-grid-template-columns:repeat(4,1fr);
-}
-
-.course-grid{
-grid-template-columns:repeat(3,1fr);
-}
-
-.notes-grid{
-grid-template-columns:repeat(2,1fr);
-}
-
-.hero h1{
-font-size:64px;
-}
-}
- </style>
 </head>
 
-<body>
+<body class="theme-radha">
 
-<!-- NAVBAR -->
+<div id="particles"></div>
 
-<header class="navbar">
-<div class="container nav">
+<header class="topbar">
 
 <div class="logo">
-<div class="logo-circle">O</div>
-Only UPSI
+📿 JapMala
 </div>
 
-<div class="menu">
-<i class="fa-solid fa-bars"></i>
-</div>
+<button class="theme-btn">
+✨ Divine
+</button>
 
-</div>
 </header>
 
-<!-- HERO -->
+<div class="container">
 
-<section class="hero" id="home">
+<div class="hero glass">
 
-<div class="container hero-grid">
+<div class="god-icon" id="godIcon">
+🌸
+</div>
 
-<div>
+<div class="god-title" id="godTitle">
+Radha Krishna
+</div>
 
-<div class="badge">UPSI 2026 PREPARATION</div>
+<div class="god-sub">
+Har Naam Mein Shakti Hai
+</div>
 
-<h1>
-Crack UPSI With Smart Preparation
-Platform
-</h1>
+</div>
 
-<p>
-Notes, Mock Tests, PYQs & Premium Study Material.
-</p>
+<div class="selector glass">
 
-<div class="hero-buttons">
+<label>
+Select Naam
+</label>
 
-<button class="btn-primary" onclick="scrollToCourses()">
-Start Learning
+<select id="godSelect">
+
+<option value="radha">🌸 Radha Krishna</option>
+<option value="ram">🏹 Shri Ram</option>
+<option value="shiv">🔱 Mahadev</option>
+<option value="hanuman">🚩 Hanuman Ji</option>
+<option value="ganesh">🐘 Ganesh Ji</option>
+<option value="sai">🙏 Sai Baba</option>
+<option value="durga">🦁 Maa Durga</option>
+<option value="krishna">🦚 Krishna</option>
+
+</select>
+
+</div>
+
+<div class="counter-card glass">
+
+<div class="counter-label">
+Jap Count
+</div>
+
+<div id="counter" class="counter">
+0
+</div>
+
+<button id="countBtn" class="count-btn">
+📿 TAP TO CHANT
 </button>
 
-<button class="btn-secondary" onclick="showPopup()">
-Explore Courses
+</div>
+<div class="target-card glass">
+
+<div class="target-row">
+
+<h3>🎯 Target</h3>
+
+<select id="targetSelect">
+<option value="108">108</option>
+<option value="1008">1008</option>
+<option value="11000">11000</option>
+<option value="custom">Custom</option>
+</select>
+
+</div>
+
+<input
+type="number"
+id="customTarget"
+placeholder="Enter Custom Target">
+
+<div class="progress-track">
+<div id="progressFill" class="progress-fill"></div>
+</div>
+
+<div id="progressText" class="progress-text">
+0 / 108
+</div>
+
+</div>
+
+<div class="actions">
+
+<button id="minusBtn" class="minus-btn">
+➖
+</button>
+
+<button id="resetBtn" class="reset-btn">
+🔄 Reset
+</button>
+
+<button id="plusBtn" class="plus-btn">
+➕
 </button>
 
 </div>
 
-</div>
+<div class="quote-card glass">
 
-<div>
-
-<div class="hero-card">
-<h3>UPSI Foundation Batch</h3>
-<p>Best structured course for beginners.</p>
+<div id="quoteText">
+🌸 Naam Jap Se Mann Shuddh Hota Hai 🌸
 </div>
 
 </div>
 
+<div class="footer">
+📿 JapMala • Phase 1 Premium
 </div>
-
-</section>
-
-<!-- STATS -->
-
-<section class="stats">
-
-<div class="container stats-grid">
-
-<div class="stat"><h2>25K+</h2><p>Students</p></div>
-<div class="stat"><h2>500+</h2><p>Tests</p></div>
-<div class="stat"><h2>1200+</h2><p>Notes</p></div>
-<div class="stat"><h2>95%</h2><p>Success</p></div>
-
-</div>
-
-</section>
-
-<!-- COURSES -->
-
-<section class="courses" id="courses">
-
-<div class="container">
-
-<div class="section-title">
-<h2>Popular Courses</h2>
-<p>Choose your path</p>
-</div>
-
-<div class="course-grid">
-
-<div class="course-card">
-
-<div class="course-banner">FOUNDATION</div>
-
-<div class="course-content">
-
-<h3>Foundation Batch</h3>
-
-<p>Complete UPSI preparation course.</p>
-
-<button onclick="openSubjects()">View Course</button>
-
-</div>
-
-</div>
-
-<div class="course-card">
-
-<div class="course-banner">TEST</div>
-
-<div class="course-content">
-
-<h3>Mock Test Series</h3>
-
-<p>Coming soon test platform.</p>
-
-<button onclick="comingSoon()">Start Test</button>
-
-</div>
-
-</div>
-
-<div class="course-card">
-
-<div class="course-banner">PDF</div>
-
-<div class="course-content">
-
-<h3>Premium Notes</h3>
-
-<p>High quality notes.</p>
-
-<button onclick="comingSoon()">Download</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- NOTES -->
-
-<section class="notes">
-
-<div class="container">
-
-<div class="section-title">
-<h2>Free Notes</h2>
-</div>
-
-<div class="notes-grid">
-
-<div class="note-card"><span>Ratio</span><button>Open</button></div>
-<div class="note-card"><span>Percentage</span><button>Open</button></div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- PREMIUM -->
-
-<section class="premium">
-
-<div class="container">
-
-<div class="premium-box">
-
-<h2>Premium Membership</h2>
-
-<p>Get full access to study material</p>
-
-<button onclick="comingSoon()">Join Now</button>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer class="footer">
-<div class="container">
-<h2>Only UPSI</h2>
-<p>© 2026 All Rights Reserved</p>
-</div>
-</footer>
-
-<!-- POPUP -->
-
-<div class="popup" id="popup">
-<h3>Coming Soon 🚀</h3>
-<p>This feature will be available soon.</p>
-<button onclick="closePopup()">Close</button>
-</div>
-
-<!-- SUBJECT MODAL -->
-
-<div class="subject-modal" id="subjects">
-
-<h3>Foundation Subjects</h3>
-
-<div class="subject-grid">
-
-<div class="subject-card">Maths</div>
-<div class="subject-card">Reasoning</div>
-<div class="subject-card">Hindi</div>
-<div class="subject-card">GK</div>
-
-</div>
-
-<button onclick="closeSubjects()">Close</button>
 
 </div>
 
 <script>
 
-/* SCROLL TO COURSES */
-function scrollToCourses(){
-document.getElementById("courses").scrollIntoView({behavior:"smooth"});
+let count =
+parseInt(localStorage.getItem("jap_count")) || 0;
+
+let target =
+parseInt(localStorage.getItem("jap_target")) || 108;
+
+const counter =
+document.getElementById("counter");
+
+const progressFill =
+document.getElementById("progressFill");
+
+const progressText =
+document.getElementById("progressText");
+
+const targetSelect =
+document.getElementById("targetSelect");
+
+const customTarget =
+document.getElementById("customTarget");
+
+function updateUI(){
+
+counter.innerText = count;
+
+let percent =
+Math.min((count/target)*100,100);
+
+progressFill.style.width =
+percent + "%";
+
+progressText.innerText =
+count + " / " + target;
+
+localStorage.setItem(
+"jap_count",
+count
+);
+
+localStorage.setItem(
+"jap_target",
+target
+);
+
 }
 
-/* POPUP */
-function showPopup(){
-document.getElementById("popup").classList.add("active");
+updateUI();
+
+document
+.getElementById("countBtn")
+.addEventListener("click",()=>{
+
+count++;
+updateUI();
+
+if(navigator.vibrate){
+navigator.vibrate(30);
 }
 
-function closePopup(){
-document.getElementById("popup").classList.remove("active");
+});
+
+document
+.getElementById("plusBtn")
+.addEventListener("click",()=>{
+
+count++;
+updateUI();
+
+});
+
+document
+.getElementById("minusBtn")
+.addEventListener("click",()=>{
+
+if(count>0){
+count--;
+updateUI();
 }
 
-/* SUBJECT MODAL */
-function openSubjects(){
-document.getElementById("subjects").classList.add("active");
+});
+
+document
+.getElementById("resetBtn")
+.addEventListener("click",()=>{
+
+if(confirm("Reset Jap Count?")){
+
+count=0;
+updateUI();
+
 }
 
-function closeSubjects(){
-document.getElementById("subjects").classList.remove("active");
+});
+
+targetSelect.addEventListener(
+"change",
+function(){
+
+if(this.value==="custom"){
+
+customTarget.style.display=
+"block";
+
+}else{
+
+customTarget.style.display=
+"none";
+
+target=
+parseInt(this.value);
+
+updateUI();
+
 }
 
-/* COMING SOON */
-function comingSoon(){
-showPopup();
 }
+);
+
+customTarget.addEventListener(
+"input",
+function(){
+
+if(this.value){
+
+target=
+parseInt(this.value);
+
+updateUI();
+
+}
+
+}
+);
+
+const themes = {
+
+radha:{
+class:"theme-radha",
+icon:"🌸",
+title:"Radha Krishna"
+},
+
+ram:{
+class:"theme-ram",
+icon:"🏹",
+title:"Shri Ram"
+},
+
+shiv:{
+class:"theme-shiv",
+icon:"🔱",
+title:"Mahadev"
+},
+
+hanuman:{
+class:"theme-hanuman",
+icon:"🚩",
+title:"Hanuman Ji"
+},
+
+ganesh:{
+class:"theme-ganesh",
+icon:"🐘",
+title:"Ganesh Ji"
+},
+
+sai:{
+class:"theme-sai",
+icon:"🙏",
+title:"Sai Baba"
+},
+
+durga:{
+class:"theme-durga",
+icon:"🦁",
+title:"Maa Durga"
+},
+
+krishna:{
+class:"theme-krishna",
+icon:"🦚",
+title:"Krishna"
+}
+
+};
+
+document
+.getElementById("godSelect")
+.addEventListener(
+"change",
+function(){
+
+let g =
+themes[this.value];
+
+document.body.className =
+g.class;
+
+document
+.getElementById("godIcon")
+.innerText =
+g.icon;
+
+document
+.getElementById("godTitle")
+.innerText =
+g.title;
+
+}
+);
 
 </script>
 
