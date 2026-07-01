@@ -10,25 +10,23 @@
     body{
       color:#111;
       background:
-        radial-gradient(circle at top left, rgba(230,230,230,.7), transparent 35%),
+        radial-gradient(circle at top left, rgba(230,230,230,.8), transparent 35%),
         radial-gradient(circle at top right, rgba(245,245,245,.9), transparent 30%),
         #fff;
     }
-
     :root{
-      --glass: rgba(255,255,255,.48);
-      --glass2: rgba(255,255,255,.65);
-      --border: rgba(255,255,255,.7);
+      --glass: rgba(255,255,255,.55);
+      --glass2: rgba(255,255,255,.75);
+      --border: rgba(255,255,255,.75);
       --shadow: 0 18px 50px rgba(0,0,0,.10);
-      --dark: #111;
-      --accent: #d7a35b;
-      --accent2: #efefef;
+      --dark:#111;
+      --accent:#d7a35b;
     }
 
     .navbar{
-      position:sticky;top:0;z-index:1000;
+      position:sticky;top:0;z-index:2000;
       display:flex;justify-content:space-between;align-items:center;
-      padding:16px 40px;
+      padding:16px 34px;
       background:var(--glass2);
       backdrop-filter:blur(18px);
       -webkit-backdrop-filter:blur(18px);
@@ -36,25 +34,38 @@
       box-shadow:0 8px 30px rgba(0,0,0,.05);
     }
 
+    .brand{
+      display:flex;align-items:center;gap:12px;
+      padding:10px 16px;border-radius:18px;
+      background:rgba(255,255,255,.45);
+      border:1px solid rgba(255,255,255,.85);
+      backdrop-filter:blur(18px);
+      box-shadow:var(--shadow);
+    }
+
     .logo{
-      font-size:28px;font-weight:900;letter-spacing:2px
+      font-size:28px;font-weight:900;letter-spacing:2px;
+      background:linear-gradient(135deg,#111,#777);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
     }
 
-    .nav-links{
-      display:flex;gap:18px;align-items:center
-    }
-
+    .nav-actions{display:flex;align-items:center;gap:12px}
+    .nav-links{display:flex;gap:10px;align-items:center}
     .nav-links a{
       text-decoration:none;color:#111;font-weight:700;
-      padding:10px 14px;border-radius:999px;
-      transition:.25s
+      padding:10px 14px;border-radius:999px;transition:.25s
     }
-
     .nav-links a:hover{background:#111;color:#fff}
-
-    .menu-btn{
-      display:none;background:none;border:none;font-size:30px;cursor:pointer;color:#111
+    .icon-btn{
+      border:none;cursor:pointer;padding:10px 14px;border-radius:999px;
+      background:rgba(255,255,255,.65);
+      border:1px solid rgba(0,0,0,.08);
+      box-shadow:0 10px 25px rgba(0,0,0,.08);
+      font-weight:800
     }
+
+    .menu-btn{display:none}
 
     .hero{
       min-height:88vh;display:flex;align-items:center;justify-content:center;
@@ -63,45 +74,30 @@
         linear-gradient(rgba(255,255,255,.10), rgba(255,255,255,.18)),
         url("https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
     }
-
     .hero-box{
-      max-width:920px;
-      padding:38px;
-      border-radius:30px;
+      max-width:920px;padding:38px;border-radius:30px;
       background:var(--glass);
       backdrop-filter:blur(22px);
       -webkit-backdrop-filter:blur(22px);
       border:1px solid var(--border);
       box-shadow:var(--shadow);
     }
-
     .hero h1{
-      font-size:clamp(42px,7vw,84px);
+      font-size:clamp(44px,7vw,86px);
       line-height:1;
       margin-bottom:14px;
       letter-spacing:2px;
+      background:linear-gradient(135deg,#111,#777);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
     }
-
-    .hero p{
-      font-size:18px;
-      color:#222;
-      max-width:720px;
-      margin:0 auto 26px;
-    }
-
-    .btn-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      justify-content:center
-    }
-
+    .hero p{font-size:18px;color:#222;max-width:760px;margin:0 auto 26px}
+    .btn-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
     .btn{
       border:none;cursor:pointer;text-decoration:none;
       padding:14px 22px;border-radius:999px;font-weight:800;
       transition:.25s ease;display:inline-flex;align-items:center;gap:8px
     }
-
     .btn:hover{transform:translateY(-2px)}
     .btn-dark{background:#111;color:#fff}
     .btn-light{background:#fff;color:#111;border:1px solid rgba(0,0,0,.10)}
@@ -109,249 +105,180 @@
     .btn-small{padding:11px 16px;border-radius:12px;font-size:14px}
     .btn-wide{width:100%;justify-content:center}
 
-    .section{
-      max-width:1240px;margin:auto;padding:72px 40px
-    }
-
-    .section h2{
-      text-align:center;font-size:34px;margin-bottom:12px
-    }
-
-    .sub{
-      text-align:center;max-width:760px;margin:0 auto 32px;color:#666
-    }
+    .section{max-width:1240px;margin:auto;padding:72px 34px}
+    .section h2{text-align:center;font-size:34px;margin-bottom:12px}
+    .sub{text-align:center;max-width:760px;margin:0 auto 32px;color:#666}
 
     .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-      gap:22px
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px
     }
-
     .card{
       background:var(--glass);
       backdrop-filter:blur(18px);
       -webkit-backdrop-filter:blur(18px);
       border:1px solid rgba(0,0,0,.08);
-      border-radius:24px;
-      overflow:hidden;
-      box-shadow:var(--shadow);
-      transition:.25s
+      border-radius:24px;overflow:hidden;box-shadow:var(--shadow);transition:.25s
     }
-
     .card:hover{transform:translateY(-4px)}
-
-    .cat-card{
-      padding:32px 20px;
-      text-align:center;
-      font-size:22px;
-      font-weight:900;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .cat-card::after{
-      content:"";
-      position:absolute;inset:auto -20% -60% auto;
-      width:140px;height:140px;border-radius:50%;
-      background:rgba(215,163,91,.18);
-      filter:blur(10px)
-    }
-
-    .product-card img{
-      width:100%;height:300px;object-fit:cover;display:block
-    }
-
-    .product-card .content{
-      padding:16px
-    }
-
-    .product-card h3{
-      font-size:20px;margin-bottom:6px
-    }
-
-    .meta{
-      display:flex;justify-content:space-between;align-items:center;
-      margin:10px 0 14px;color:#555;font-size:14px
-    }
-
-    .price{
-      font-size:18px;font-weight:900;color:#111
-    }
-
-    .rating{
-      color:#d18b16;font-weight:800
-    }
-
-    .action-row{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px
-    }
+    .cat-card{padding:32px 20px;text-align:center;font-size:22px;font-weight:900}
+    .product-card img{width:100%;height:300px;object-fit:cover;display:block}
+    .product-card .content{padding:16px}
+    .product-card h3{font-size:20px;margin-bottom:6px}
+    .meta{display:flex;justify-content:space-between;align-items:center;margin:10px 0 14px;color:#555;font-size:14px}
+    .price{font-size:18px;font-weight:900;color:#111}
+    .rating{color:#d18b16;font-weight:800}
+    .action-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 
     .review-wrap{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:22px
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px
     }
+    .review-card{padding:20px}
+    .review-top{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+    .avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#111,#666)}
 
-    .review-card{
-      padding:20px
-    }
+    .footer{background:#111;color:#fff;text-align:center;padding:20px;margin-top:30px}
 
-    .review-card p{color:#555}
-    .review-top{
-      display:flex;gap:12px;align-items:center;margin-bottom:12px
-    }
-
-    .avatar{
-      width:48px;height:48px;border-radius:50%;
-      background:linear-gradient(135deg,#111,#666);
-    }
-
-    .product-detail{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:24px;
-      align-items:stretch
-    }
-
-    .detail-image{
-      min-height:420px;
-      background:url("https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
-      border-radius:26px;
-      box-shadow:var(--shadow);
-    }
-
-    .detail-box{
-      padding:24px;
-      border-radius:26px;
-      background:var(--glass2);
+    .cart-fab{
+      position:fixed;right:18px;bottom:18px;z-index:2500;
+      display:flex;align-items:center;gap:10px;
+      border:none;cursor:pointer;
+      padding:14px 16px;border-radius:999px;
+      background:rgba(255,255,255,.72);
       backdrop-filter:blur(18px);
       -webkit-backdrop-filter:blur(18px);
-      border:1px solid rgba(0,0,0,.08);
-      box-shadow:var(--shadow)
-    }
-
-    .detail-box h3{font-size:30px;margin-bottom:8px}
-    .detail-box .price{font-size:28px;margin:10px 0 16px}
-    .field{
-      width:100%;
-      padding:14px 15px;
-      border-radius:14px;
-      border:1px solid rgba(0,0,0,.10);
-      outline:none;
-      margin-bottom:12px;
-      background:rgba(255,255,255,.72)
-    }
-
-    .footer{
-      background:#111;color:#fff;text-align:center;padding:20px;margin-top:30px
-    }
-
-    .popup{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      width:min(280px, calc(100% - 36px));
-      padding:14px 16px;
-      border-radius:18px;
-      background:rgba(255,255,255,.55);
-      backdrop-filter:blur(18px);
-      -webkit-backdrop-filter:blur(18px);
-      border:1px solid rgba(255,255,255,.7);
+      border:1px solid rgba(255,255,255,.9);
       box-shadow:0 16px 45px rgba(0,0,0,.14);
-      display:none;
-      z-index:3000
+      font-weight:900
+    }
+    .badge{
+      min-width:24px;height:24px;border-radius:50%;
+      background:#111;color:#fff;display:inline-flex;align-items:center;justify-content:center;
+      font-size:12px
     }
 
-    .popup strong{display:block;margin-bottom:4px}
-    .popup small{color:#555}
+    .cart-drawer{
+      position:fixed;top:0;right:-420px;height:100vh;width:min(420px,100%);
+      background:rgba(255,255,255,.80);
+      backdrop-filter:blur(22px);
+      -webkit-backdrop-filter:blur(22px);
+      border-left:1px solid rgba(0,0,0,.08);
+      box-shadow:-20px 0 60px rgba(0,0,0,.12);
+      z-index:3000;
+      transition:.3s ease;
+      padding:18px;
+      display:flex;flex-direction:column
+    }
+    .cart-drawer.open{right:0}
+    .cart-head{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:10px 6px 16px
+    }
+    .cart-list{flex:1;overflow:auto;display:flex;flex-direction:column;gap:12px}
+    .cart-item{
+      display:grid;grid-template-columns:70px 1fr auto;gap:12px;align-items:center;
+      padding:12px;border-radius:18px;background:rgba(255,255,255,.65);
+      border:1px solid rgba(0,0,0,.06)
+    }
+    .cart-item img{width:70px;height:70px;object-fit:cover;border-radius:14px}
+    .qty{
+      display:flex;align-items:center;gap:8px;margin-top:6px
+    }
+    .qty button{
+      width:28px;height:28px;border:none;border-radius:50%;
+      background:#111;color:#fff;cursor:pointer
+    }
+    .cart-foot{
+      padding-top:12px;border-top:1px solid rgba(0,0,0,.08)
+    }
+    .cart-total{display:flex;justify-content:space-between;font-weight:900;font-size:18px;margin-bottom:12px}
 
     .modal{
       display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);
       align-items:center;justify-content:center;padding:20px;z-index:4000
     }
-
     .modal-box{
-      width:min(520px,100%);
-      background:rgba(255,255,255,.72);
+      width:min(560px,100%);
+      background:rgba(255,255,255,.82);
       backdrop-filter:blur(22px);
       -webkit-backdrop-filter:blur(22px);
       border:1px solid rgba(255,255,255,.8);
-      border-radius:26px;
-      padding:22px;
-      box-shadow:0 30px 80px rgba(0,0,0,.25)
+      border-radius:26px;padding:22px;box-shadow:0 30px 80px rgba(0,0,0,.25)
     }
-
     .modal-box h3{margin-bottom:10px;font-size:26px}
     .modal-box p{color:#555;margin-bottom:16px}
-    .modal-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px
+    .modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .field{
+      width:100%;padding:14px 15px;border-radius:14px;border:1px solid rgba(0,0,0,.10);
+      outline:none;margin-bottom:12px;background:rgba(255,255,255,.72)
+    }
+    .privacy{
+      font-size:13px;color:#666;line-height:1.5;margin-top:10px
     }
 
-    @media (max-width: 900px){
-      .product-detail{grid-template-columns:1fr}
+    .popup{
+      position:fixed;right:18px;bottom:88px;width:min(300px, calc(100% - 36px));
+      padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.65);
+      backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+      border:1px solid rgba(255,255,255,.8);
+      box-shadow:0 16px 45px rgba(0,0,0,.14);display:none;z-index:3500
     }
 
+    @media (max-width: 900px){ .action-row,.modal-grid{grid-template-columns:1fr} }
     @media (max-width:768px){
       .navbar{padding:14px 18px}
       .menu-btn{display:block}
       .nav-links{
-        display:none;position:absolute;right:18px;top:68px;
-        flex-direction:column;gap:12px;background:#fff;
-        padding:14px;border-radius:18px;width:210px;
+        display:none;position:absolute;right:18px;top:68px;flex-direction:column;gap:12px;
+        background:#fff;padding:14px;border-radius:18px;width:210px;
         box-shadow:0 15px 40px rgba(0,0,0,.12)
       }
       .nav-links.show{display:flex}
       .section{padding:54px 18px}
-      .action-row,.modal-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
 
   <header class="navbar">
-    <div class="logo">VELLA CO.</div>
-    <nav class="nav-links" id="navLinks">
-      <a href="#home">Home</a>
-      <a href="#products">Products</a>
-      <a href="#details">Details</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <div class="brand">
+      <div class="logo">VELLA CO.</div>
+    </div>
+    <div class="nav-actions">
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#products">Shop Now</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="icon-btn menu-btn" onclick="toggleMenu()">☰</button>
+      <button class="icon-btn" onclick="openCart()">🛒 <span class="badge" id="cartCount">0</span></button>
+    </div>
   </header>
 
   <section class="hero" id="home">
     <div class="hero-box">
       <h1>VELLA CO.</h1>
-      <p>Premium clothing store with glassmorphism design, clean white style, COD via WhatsApp, and Razorpay online checkout.</p>
+      <p>Premium clothing store with white luxury look, glass effect, clean product cards, and cart-based ordering.</p>
       <div class="btn-row">
         <a href="#products" class="btn btn-dark">SHOP NOW</a>
-        <a href="#details" class="btn btn-light">ORDER NOW</a>
-        <a href="#contact" class="btn btn-accent">WhatsApp COD</a>
       </div>
     </div>
   </section>
 
   <section class="section" id="products">
     <h2>Featured Products</h2>
-    <p class="sub">Better cards, cleaner layout, and full order options.</p>
+    <p class="sub">Add products to cart, then order from cart or directly.</p>
 
     <div class="grid">
       <div class="card product-card">
         <img src="https://images.unsplash.com/photo-1523381294911-8d3cead13475?auto=format&fit=crop&w=900&q=80" alt="Oversized Shirt">
         <div class="content">
           <h3>Oversized Shirt</h3>
-          <div class="meta">
-            <span class="price">₹899</span>
-            <span class="rating">★ 4.8</span>
-          </div>
+          <div class="meta"><span class="price">₹899</span><span class="rating">★ 4.8</span></div>
           <div class="action-row">
-            <button class="btn btn-dark btn-small" onclick="addToCart('Oversized Shirt', 899)">Add to Cart</button>
-            <button class="btn btn-light btn-small" onclick="openOrder('Oversized Shirt', 899, 'https://images.unsplash.com/photo-1523381294911-8d3cead13475?auto=format&fit=crop&w=900&q=80')">Order Now</button>
+            <button class="btn btn-dark btn-small" onclick="addToCart('Oversized Shirt',899,'https://images.unsplash.com/photo-1523381294911-8d3cead13475?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
+            <button class="btn btn-light btn-small" onclick="quickOrder('Oversized Shirt',899)">Order</button>
           </div>
         </div>
       </div>
@@ -360,13 +287,10 @@
         <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=900&q=80" alt="Premium Hoodie">
         <div class="content">
           <h3>Premium Hoodie</h3>
-          <div class="meta">
-            <span class="price">₹1299</span>
-            <span class="rating">★ 4.9</span>
-          </div>
+          <div class="meta"><span class="price">₹1299</span><span class="rating">★ 4.9</span></div>
           <div class="action-row">
-            <button class="btn btn-dark btn-small" onclick="addToCart('Premium Hoodie', 1299)">Add to Cart</button>
-            <button class="btn btn-light btn-small" onclick="openOrder('Premium Hoodie', 1299, 'https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=900&q=80')">Order Now</button>
+            <button class="btn btn-dark btn-small" onclick="addToCart('Premium Hoodie',1299,'https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
+            <button class="btn btn-light btn-small" onclick="quickOrder('Premium Hoodie',1299)">Order</button>
           </div>
         </div>
       </div>
@@ -375,219 +299,203 @@
         <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80" alt="Classic Jacket">
         <div class="content">
           <h3>Classic Jacket</h3>
-          <div class="meta">
-            <span class="price">₹1599</span>
-            <span class="rating">★ 4.7</span>
-          </div>
+          <div class="meta"><span class="price">₹1599</span><span class="rating">★ 4.7</span></div>
           <div class="action-row">
-            <button class="btn btn-dark btn-small" onclick="addToCart('Classic Jacket', 1599)">Add to Cart</button>
-            <button class="btn btn-light btn-small" onclick="openOrder('Classic Jacket', 1599, 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80')">Order Now</button>
+            <button class="btn btn-dark btn-small" onclick="addToCart('Classic Jacket',1599,'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
+            <button class="btn btn-light btn-small" onclick="quickOrder('Classic Jacket',1599)">Order</button>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="details">
-    <h2>Product Details</h2>
-    <p class="sub">Order karte time details bharne ka glass effect form.</p>
-
-    <div class="product-detail">
-      <div class="detail-image"></div>
-
-      <div class="detail-box">
-        <h3>VELLA CO. Premium Set</h3>
-        <p>Soft fabric, premium fit, and elegant style for everyday wear.</p>
-        <div class="price">₹999</div>
-
-        <input class="field" type="text" id="name" placeholder="Full Name">
-        <input class="field" type="tel" id="phone" placeholder="Mobile Number">
-        <input class="field" type="text" id="address" placeholder="Full Address">
-        <input class="field" type="text" id="size" placeholder="Size (S / M / L / XL)">
-        <input class="field" type="number" id="qty" placeholder="Quantity" value="1" min="1">
-
-        <div class="modal-grid">
-          <button class="btn btn-dark" onclick="whatsappCOD()">Order via WhatsApp COD</button>
-          <button class="btn btn-light" onclick="onlinePay()">Pay Online with Razorpay</button>
         </div>
       </div>
     </div>
   </section>
 
   <section class="section" id="reviews">
-    <h2>Customer Reviews</h2>
-    <p class="sub">Review section with photo-style cards.</p>
-
+    <h2>Reviews</h2>
+    <p class="sub">Customers ka feedback aur premium look.</p>
     <div class="review-wrap">
-      <div class="card review-card">
-        <div class="review-top">
-          <div class="avatar"></div>
-          <div>
-            <strong>Aman</strong><br>
-            <small>★ 5.0</small>
-          </div>
-        </div>
-        <p>“Quality bahut achhi hai, packaging premium lagti hai.”</p>
-      </div>
-
-      <div class="card review-card">
-        <div class="review-top">
-          <div class="avatar"></div>
-          <div>
-            <strong>Riya</strong><br>
-            <small>★ 4.9</small>
-          </div>
-        </div>
-        <p>“Design clean hai aur size fit bhi perfect tha.”</p>
-      </div>
-
-      <div class="card review-card">
-        <div class="review-top">
-          <div class="avatar"></div>
-          <div>
-            <strong>Karan</strong><br>
-            <small>★ 4.8</small>
-          </div>
-        </div>
-        <p>“WhatsApp se order karna easy tha, delivery bhi fast rahi.”</p>
-      </div>
+      <div class="card review-card"><div class="review-top"><div class="avatar"></div><div><strong>Aman</strong><br><small>★ 5.0</small></div></div><p>“Quality premium hai aur design clean hai.”</p></div>
+      <div class="card review-card"><div class="review-top"><div class="avatar"></div><div><strong>Riya</strong><br><small>★ 4.9</small></div></div><p>“Cart se order karna easy laga.”</p></div>
+      <div class="card review-card"><div class="review-top"><div class="avatar"></div><div><strong>Karan</strong><br><small>★ 4.8</small></div></div><p>“Glass effect aur header dono mast lag rahe hain.”</p></div>
     </div>
+  </section>
+
+  <section class="section" id="privacy">
+    <h2>Privacy Policy</h2>
+    <p class="sub">We collect only order details like name, phone, address, size, and quantity to process your purchase. Payment information is handled by the payment provider. Your details are used only for order delivery and customer support.</p>
   </section>
 
   <section class="section" id="contact">
     <h2>Contact</h2>
-    <p class="sub">WhatsApp COD ke liye number change kar dena.</p>
-    <div style="text-align:center">
-      <a class="btn btn-accent" href="https://wa.me/919000000000?text=Hi%20VELLA%20CO.%20I%20want%20to%20order%20on%20COD" target="_blank">Open WhatsApp</a>
-    </div>
+    <p class="sub">Need help? Use the cart, place an order, or pay online.</p>
   </section>
 
   <footer class="footer">
     <p>&copy; 2026 VELLA CO. All rights reserved.</p>
   </footer>
 
+  <button class="cart-fab" onclick="openCart()">🛒 Cart <span class="badge" id="cartCount2">0</span></button>
+
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-head">
+      <h3>My Cart</h3>
+      <button class="icon-btn" onclick="openCart()">✕</button>
+    </div>
+    <div class="cart-list" id="cartList"></div>
+    <div class="cart-foot">
+      <div class="cart-total"><span>Total</span><span id="cartTotal">₹0</span></div>
+      <button class="btn btn-dark btn-wide" onclick="checkoutCart()">Order Cart</button>
+    </div>
+  </div>
+
   <div class="modal" id="orderModal">
     <div class="modal-box">
-      <h3 id="orderTitle">Place Order</h3>
-      <p id="orderInfo">Fill details and choose COD or online payment.</p>
-      <input class="field" type="text" id="mName" placeholder="Full Name">
-      <input class="field" type="tel" id="mPhone" placeholder="Mobile Number">
-      <input class="field" type="text" id="mAddress" placeholder="Address">
-      <input class="field" type="text" id="mSize" placeholder="Size">
-      <input class="field" type="number" id="mQty" placeholder="Quantity" value="1" min="1">
+      <h3 id="orderTitle">Order Product</h3>
+      <p id="orderInfo">Fill details and choose payment method.</p>
+      <input class="field" id="name" placeholder="Full Name">
+      <input class="field" id="phone" placeholder="Mobile Number">
+      <input class="field" id="address" placeholder="Address">
+      <input class="field" id="size" placeholder="Size (S/M/L/XL)">
+      <input class="field" id="qty" type="number" min="1" value="1" placeholder="Quantity">
       <div class="modal-grid">
-        <button class="btn btn-accent" onclick="modalWhatsApp()">COD via WhatsApp</button>
-        <button class="btn btn-dark" onclick="payNow()">Pay with Razorpay</button>
+        <button class="btn btn-accent" onclick="orderWhatsApp()">COD via WhatsApp</button>
+        <button class="btn btn-dark" onclick="paySingle()">Pay with Razorpay</button>
       </div>
       <div style="margin-top:12px">
         <button class="btn btn-light btn-wide" onclick="closeOrder()">Close</button>
       </div>
+      <div class="privacy">By placing an order, you agree to our Privacy Policy above.</div>
     </div>
   </div>
 
   <div class="popup" id="popup">
-    <strong>New order placed</strong>
-    <small id="popupText">Someone just purchased a product.</small>
+    <strong>Someone just purchased</strong>
+    <small id="popupText"></small>
   </div>
 
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <script>
-    let cartCount = 0;
-    let currentProduct = '';
+    const STORAGE_KEY = "vella_cart";
+    let cart = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    let currentProduct = "";
     let currentAmount = 0;
-    let currentImage = '';
 
-    function toggleMenu() {
-      document.getElementById('navLinks').classList.toggle('show');
+    function saveCart(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); }
+
+    function updateCartUI(){
+      document.getElementById("cartCount").innerText = cart.length;
+      document.getElementById("cartCount2").innerText = cart.length;
+      document.getElementById("cartTotal").innerText = "₹" + cart.reduce((s,i)=>s + i.price * i.qty, 0);
+      const list = document.getElementById("cartList");
+      list.innerHTML = "";
+
+      if(!cart.length){
+        list.innerHTML = '<div style="padding:20px;color:#666;text-align:center">Cart is empty</div>';
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        const div = document.createElement("div");
+        div.className = "cart-item";
+        div.innerHTML = `
+          <img src="${item.img}" alt="${item.name}">
+          <div>
+            <strong>${item.name}</strong><br>
+            <small>₹${item.price}</small>
+            <div class="qty">
+              <button onclick="changeQty(${index}, -1)">-</button>
+              <span>${item.qty}</span>
+              <button onclick="changeQty(${index}, 1)">+</button>
+            </div>
+          </div>
+          <button class="icon-btn" onclick="removeItem(${index})">🗑</button>
+        `;
+        list.appendChild(div);
+      });
     }
 
-    function addToCart(name, amount) {
-      cartCount++;
-      showPopup(name + ' added to cart');
+    function toggleMenu(){ document.getElementById("navLinks").classList.toggle("show"); }
+    function openCart(){ document.getElementById("cartDrawer").classList.toggle("open"); }
+    function addToCart(name, price, img){
+      const found = cart.find(i => i.name === name);
+      if(found) found.qty += 1;
+      else cart.push({name, price, qty:1, img});
+      saveCart();
+      updateCartUI();
+      showPopup(name + " added to cart");
+    }
+    function changeQty(index, delta){
+      cart[index].qty += delta;
+      if(cart[index].qty <= 0) cart.splice(index,1);
+      saveCart();
+      updateCartUI();
+    }
+    function removeItem(index){
+      cart.splice(index,1);
+      saveCart();
+      updateCartUI();
     }
 
-    function openOrder(name, amount, img) {
+    function quickOrder(name, amount){
       currentProduct = name;
       currentAmount = amount;
-      currentImage = img;
-      document.getElementById('orderTitle').innerText = name + ' | ₹' + amount;
-      document.getElementById('orderInfo').innerText = 'Fill your details below and choose COD or online payment.';
-      document.getElementById('orderModal').style.display = 'flex';
+      document.getElementById("orderTitle").innerText = name + " | ₹" + amount;
+      document.getElementById("orderInfo").innerText = "Fill your details below.";
+      document.getElementById("orderModal").style.display = "flex";
     }
 
-    function closeOrder() {
-      document.getElementById('orderModal').style.display = 'none';
+    function closeOrder(){ document.getElementById("orderModal").style.display = "none"; }
+
+    function orderWhatsApp(){
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const address = document.getElementById("address").value;
+      const size = document.getElementById("size").value;
+      const qty = document.getElementById("qty").value || 1;
+      const msg = `Hi VELLA CO.%0AI want to order:%0AProduct: ${currentProduct}%0APrice: ₹${currentAmount}%0AQty: ${qty}%0ASize: ${size}%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0APayment: COD`;
+      window.open("https://wa.me/919000000000?text=" + msg, "_blank");
     }
 
-    function buildOrderText() {
-      const name = document.getElementById('mName').value || document.getElementById('name').value || '';
-      const phone = document.getElementById('mPhone').value || document.getElementById('phone').value || '';
-      const address = document.getElementById('mAddress').value || document.getElementById('address').value || '';
-      const size = document.getElementById('mSize').value || document.getElementById('size').value || '';
-      const qty = document.getElementById('mQty').value || document.getElementById('qty').value || '1';
-
-      return `Hi VELLA CO.%0AI want to order:%0AProduct: ${currentProduct}%0APrice: ₹${currentAmount}%0AQty: ${qty}%0ASize: ${size}%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0APayment: COD`;
-    }
-
-    function modalWhatsApp() {
-      const msg = buildOrderText();
-      window.open('https://wa.me/919000000000?text=' + msg, '_blank');
-      closeOrder();
-    }
-
-    function whatsappCOD() {
-      currentProduct = 'VELLA CO. Premium Set';
-      currentAmount = 999;
-      const name = document.getElementById('name').value || '';
-      const phone = document.getElementById('phone').value || '';
-      const address = document.getElementById('address').value || '';
-      const size = document.getElementById('size').value || '';
-      const qty = document.getElementById('qty').value || '1';
-
-      const msg = `Hi VELLA CO.%0AI want to order on COD:%0AProduct: ${currentProduct}%0APrice: ₹${currentAmount}%0AQty: ${qty}%0ASize: ${size}%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0APayment: COD`;
-      window.open('https://wa.me/919000000000?text=' + msg, '_blank');
-    }
-
-    function onlinePay() {
-      currentProduct = 'VELLA CO. Premium Set';
-      currentAmount = 999;
-      document.getElementById('orderModal').style.display = 'flex';
-    }
-
-    function payNow() {
+    function paySingle(){
       const options = {
-        key: 'YOUR_RAZORPAY_KEY_ID',
+        key: "YOUR_RAZORPAY_KEY_ID",
         amount: currentAmount * 100,
-        currency: 'INR',
-        name: 'VELLA CO.',
+        currency: "INR",
+        name: "VELLA CO.",
         description: currentProduct,
-        handler: function(response) {
-          showPopup('Payment successful');
-          closeOrder();
-        },
-        theme: { color: '#111111' }
+        handler: function(){ showPopup("Payment successful"); closeOrder(); },
+        theme: { color: "#111111" }
       };
       new Razorpay(options).open();
     }
 
-    function showPopup(text) {
-      const popup = document.getElementById('popup');
-      document.getElementById('popupText').innerText = text;
-      popup.style.display = 'block';
-      setTimeout(() => popup.style.display = 'none', 2800);
+    function checkoutCart(){
+      if(!cart.length){ alert("Cart is empty"); return; }
+      currentProduct = "Cart Order";
+      currentAmount = cart.reduce((s,i)=>s + i.price * i.qty, 0);
+      quickOrder("Cart Order", currentAmount);
+    }
+
+    function showPopup(text){
+      const popup = document.getElementById("popup");
+      document.getElementById("popupText").innerText = text;
+      popup.style.display = "block";
+      setTimeout(()=>popup.style.display="none", 2600);
     }
 
     setInterval(() => {
-      const names = ['Aman', 'Riya', 'Karan', 'Neha', 'Arjun'];
-      const products = ['shirt', 'hoodie', 'jacket', 'set', 'tee'];
-      const name = names[Math.floor(Math.random() * names.length)];
-      const product = products[Math.floor(Math.random() * products.length)];
-      showPopup(`${name} just purchased a ${product}`);
+      const names = ["Aman","Riya","Karan","Neha","Arjun"];
+      const items = ["shirt","hoodie","jacket"];
+      const n = names[Math.floor(Math.random()*names.length)];
+      const p = items[Math.floor(Math.random()*items.length)];
+      showPopup(n + " just bought a " + p);
     }, 5000);
 
-    window.onclick = function(e) {
-      if (e.target.id === 'orderModal') closeOrder();
+    window.onclick = function(e){
+      if(e.target.id === "orderModal") closeOrder();
+      if(e.target.id === "cartDrawer") document.getElementById("cartDrawer").classList.remove("open");
     }
+
+    updateCartUI();
   </script>
 </body>
 </html>
