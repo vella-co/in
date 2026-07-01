@@ -5,263 +5,264 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VELLA CO. | Premium Clothing Store</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
+    * { margin:0; padding:0; box-sizing:border-box; font-family:Arial, sans-serif; }
+    html { scroll-behavior:smooth; }
     body {
-      background: #f6f2ed;
-      color: #1f1f1f;
-      line-height: 1.6;
+      background:#fff;
+      color:#111;
+      line-height:1.6;
     }
 
     .navbar {
       position: sticky;
-      top: 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 40px;
-      background: #111;
-      color: #fff;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      top:0;
+      z-index:1000;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 40px;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom:1px solid rgba(0,0,0,0.08);
     }
 
     .logo {
-      font-size: 26px;
-      font-weight: 800;
-      letter-spacing: 2px;
+      font-size:26px;
+      font-weight:900;
+      letter-spacing:2px;
     }
 
     .nav-links {
-      display: flex;
-      gap: 22px;
-      align-items: center;
+      display:flex;
+      gap:22px;
+      align-items:center;
     }
 
     .nav-links a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 15px;
-      opacity: 0.9;
-    }
-
-    .nav-links a:hover {
-      opacity: 1;
+      text-decoration:none;
+      color:#111;
+      font-size:15px;
+      font-weight:600;
     }
 
     .menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 30px;
-      cursor: pointer;
+      display:none;
+      background:none;
+      border:none;
+      font-size:30px;
+      cursor:pointer;
+      color:#111;
     }
 
     .hero {
-      min-height: 88vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 40px 20px;
+      min-height:88vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:40px 20px;
       background:
-        linear-gradient(rgba(0,0,0,0.50), rgba(0,0,0,0.50)),
-        url("https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
-      color: #fff;
+        linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)),
+        url("https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
     }
 
-    .hero-content {
-      max-width: 780px;
+    .hero-box {
+      max-width:820px;
+      padding:34px;
+      border-radius:28px;
+      background: rgba(255,255,255,0.25);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border:1px solid rgba(255,255,255,0.5);
+      box-shadow:0 20px 60px rgba(0,0,0,0.12);
     }
 
-    .hero-content h1 {
-      font-size: clamp(38px, 6vw, 72px);
-      line-height: 1.05;
-      margin-bottom: 16px;
-      letter-spacing: 1px;
+    .hero h1 {
+      font-size:clamp(40px, 7vw, 76px);
+      line-height:1.05;
+      margin-bottom:14px;
     }
 
-    .hero-content p {
-      font-size: 18px;
-      margin-bottom: 28px;
-      opacity: 0.95;
+    .hero p {
+      font-size:18px;
+      margin-bottom:26px;
+      color:#222;
+    }
+
+    .btn-row {
+      display:flex;
+      gap:14px;
+      justify-content:center;
+      flex-wrap:wrap;
     }
 
     .btn {
-      display: inline-block;
-      border: none;
-      background: #d6a25c;
-      color: #111;
-      padding: 14px 28px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 700;
-      cursor: pointer;
-      transition: 0.25s ease;
+      display:inline-block;
+      border:none;
+      padding:14px 24px;
+      border-radius:999px;
+      cursor:pointer;
+      text-decoration:none;
+      font-weight:800;
+      transition:0.25s ease;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      background: #e3b36f;
-    }
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-dark { background:#111; color:#fff; }
+    .btn-light { background:#fff; color:#111; border:1px solid rgba(0,0,0,0.12); }
 
     .section {
-      padding: 70px 40px;
-      max-width: 1200px;
-      margin: auto;
+      max-width:1200px;
+      margin:auto;
+      padding:70px 40px;
     }
 
     .section h2 {
-      font-size: 34px;
-      margin-bottom: 14px;
-      text-align: center;
+      text-align:center;
+      font-size:34px;
+      margin-bottom:12px;
     }
 
-    .section p.sub {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 34px;
-      color: #5b5b5b;
+    .sub {
+      text-align:center;
+      max-width:700px;
+      margin:0 auto 32px;
+      color:#666;
     }
 
-    .cat-grid,
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 22px;
+    .cat-grid, .product-grid, .info-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+      gap:22px;
     }
 
-    .cat-card,
-    .product-card,
-    .info-card {
-      background: #fff;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      transition: 0.25s ease;
+    .card {
+      background: rgba(255,255,255,0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border:1px solid rgba(0,0,0,0.08);
+      border-radius:22px;
+      box-shadow:0 12px 34px rgba(0,0,0,0.08);
+      overflow:hidden;
+      transition:0.25s ease;
     }
+
+    .card:hover { transform: translateY(-4px); }
 
     .cat-card {
-      padding: 34px 20px;
-      text-align: center;
-      font-weight: 700;
-      font-size: 22px;
-    }
-
-    .cat-card:hover,
-    .product-card:hover,
-    .info-card:hover {
-      transform: translateY(-4px);
+      padding:36px 20px;
+      text-align:center;
+      font-size:22px;
+      font-weight:800;
     }
 
     .product-card img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      display: block;
+      width:100%;
+      height:280px;
+      object-fit:cover;
+      display:block;
     }
 
     .product-card .content {
-      padding: 18px;
-      text-align: center;
+      padding:18px;
+      text-align:center;
     }
 
     .product-card h3 {
-      margin-bottom: 8px;
-      font-size: 20px;
+      font-size:20px;
+      margin-bottom:6px;
     }
 
     .price {
-      font-size: 18px;
-      font-weight: 700;
-      color: #d16a2c;
-      margin-bottom: 14px;
+      color:#111;
+      font-weight:900;
+      margin-bottom:14px;
     }
 
-    .mini {
-      padding: 11px 20px;
-      border-radius: 10px;
-      background: #111;
-      color: #fff;
-    }
-
-    .info-wrap {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 22px;
+    .btn-small {
+      padding:11px 18px;
+      border-radius:12px;
+      font-size:14px;
+      margin:4px;
     }
 
     .info-card {
-      padding: 26px;
-      text-align: center;
+      padding:26px;
+      text-align:center;
     }
 
     .info-card h3 {
-      margin-bottom: 10px;
-      font-size: 20px;
+      margin-bottom:10px;
+      font-size:20px;
     }
 
-    .info-card p {
-      color: #5d5d5d;
-    }
+    .info-card p { color:#666; }
 
     .footer {
-      background: #111;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
+      text-align:center;
+      padding:20px;
+      background:#111;
+      color:#fff;
+      margin-top:30px;
     }
 
     .cart-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 22px;
-      height: 22px;
-      padding: 0 7px;
-      margin-left: 8px;
-      border-radius: 999px;
-      background: #d6a25c;
-      color: #111;
-      font-size: 12px;
-      font-weight: 800;
+      display:inline-flex;
+      min-width:22px;
+      height:22px;
+      padding:0 7px;
+      align-items:center;
+      justify-content:center;
+      border-radius:999px;
+      background:#111;
+      color:#fff;
+      font-size:12px;
+      margin-left:8px;
     }
 
-    @media (max-width: 768px) {
-      .navbar {
-        padding: 16px 20px;
-      }
+    .modal {
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.45);
+      z-index:2000;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
 
-      .menu-btn {
-        display: block;
-      }
+    .modal-box {
+      width:min(420px, 100%);
+      background:#fff;
+      border-radius:22px;
+      padding:24px;
+      box-shadow:0 30px 80px rgba(0,0,0,0.25);
+    }
 
+    .modal-box h3 { margin-bottom:10px; }
+    .modal-box p { color:#666; margin-bottom:18px; }
+    .modal-actions { display:flex; gap:12px; flex-wrap:wrap; }
+
+    @media (max-width:768px) {
+      .navbar { padding:16px 20px; }
+      .menu-btn { display:block; }
       .nav-links {
-        display: none;
-        position: absolute;
-        right: 20px;
-        top: 68px;
-        flex-direction: column;
-        gap: 14px;
-        background: #111;
-        padding: 16px;
-        border-radius: 14px;
-        width: 180px;
+        display:none;
+        position:absolute;
+        right:20px;
+        top:68px;
+        flex-direction:column;
+        gap:14px;
+        background:#fff;
+        padding:16px;
+        border-radius:16px;
+        width:190px;
+        box-shadow:0 15px 40px rgba(0,0,0,0.12);
       }
-
-      .nav-links.show {
-        display: flex;
-      }
-
-      .section {
-        padding: 56px 20px;
-      }
+      .nav-links.show { display:flex; }
+      .section { padding:56px 20px; }
     }
   </style>
 </head>
@@ -280,52 +281,58 @@
   </header>
 
   <section class="hero" id="home">
-    <div class="hero-content">
+    <div class="hero-box">
       <h1>VELLA CO.</h1>
-      <p>Premium clothing for modern style, daily comfort, and bold fashion statements.</p>
-      <a href="#products" class="btn">Shop Collection</a>
+      <p>Premium clothing with a clean white luxury look and modern glass-style design.</p>
+      <div class="btn-row">
+        <a href="#products" class="btn btn-dark">Shop Now</a>
+        <a href="#contact" class="btn btn-light">Order Now</a>
+      </div>
     </div>
   </section>
 
   <section class="section" id="categories">
     <h2>Shop by Category</h2>
-    <p class="sub">Find stylish picks for every mood and every day.</p>
+    <p class="sub">Find the right style for every day, every season, and every mood.</p>
     <div class="cat-grid">
-      <div class="cat-card">Men</div>
-      <div class="cat-card">Women</div>
-      <div class="cat-card">Kids</div>
-      <div class="cat-card">New Arrivals</div>
+      <div class="card cat-card">Men</div>
+      <div class="card cat-card">Women</div>
+      <div class="card cat-card">Kids</div>
+      <div class="card cat-card">New Arrivals</div>
     </div>
   </section>
 
   <section class="section" id="products">
     <h2>Featured Products</h2>
-    <p class="sub">Handpicked fashion pieces crafted for a clean premium look.</p>
+    <p class="sub">Simple, premium, and made to feel like a high-end fashion store.</p>
     <div class="product-grid">
-      <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=900&q=80" alt="Oversized Shirt">
+      <div class="card product-card">
+        <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80" alt="Premium Shirt">
         <div class="content">
-          <h3>Oversized Shirt</h3>
+          <h3>Premium Shirt</h3>
           <div class="price">₹899</div>
-          <button class="btn mini" onclick="addToCart()">Add to Cart</button>
+          <button class="btn btn-dark btn-small" onclick="addToCart('Premium Shirt', 899)">Add to Cart</button>
+          <button class="btn btn-light btn-small" onclick="orderNow('Premium Shirt', 899)">Order Now</button>
         </div>
       </div>
 
-      <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=900&q=80" alt="Classic Hoodie">
+      <div class="card product-card">
+        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80" alt="Luxury Hoodie">
         <div class="content">
-          <h3>Classic Hoodie</h3>
+          <h3>Luxury Hoodie</h3>
           <div class="price">₹1299</div>
-          <button class="btn mini" onclick="addToCart()">Add to Cart</button>
+          <button class="btn btn-dark btn-small" onclick="addToCart('Luxury Hoodie', 1299)">Add to Cart</button>
+          <button class="btn btn-light btn-small" onclick="orderNow('Luxury Hoodie', 1299)">Order Now</button>
         </div>
       </div>
 
-      <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80" alt="Denim Jacket">
+      <div class="card product-card">
+        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=900&q=80" alt="Classic Jacket">
         <div class="content">
-          <h3>Denim Jacket</h3>
+          <h3>Classic Jacket</h3>
           <div class="price">₹1599</div>
-          <button class="btn mini" onclick="addToCart()">Add to Cart</button>
+          <button class="btn btn-dark btn-small" onclick="addToCart('Classic Jacket', 1599)">Add to Cart</button>
+          <button class="btn btn-light btn-small" onclick="orderNow('Classic Jacket', 1599)">Order Now</button>
         </div>
       </div>
     </div>
@@ -333,42 +340,92 @@
 
   <section class="section" id="about">
     <h2>About VELLA CO.</h2>
-    <p class="sub">A modern fashion label made for people who like clean design, comfort, and strong identity.</p>
-    <div class="info-wrap">
-      <div class="info-card">
-        <h3>Premium Look</h3>
-        <p>Simple layout, elegant colors, and a polished fashion-store feel.</p>
+    <p class="sub">A modern brand built for people who want premium styling with a clean fashion-store feel.</p>
+    <div class="info-grid">
+      <div class="card info-card">
+        <h3>Glass Effect</h3>
+        <p>Transparent cards and blur effects give a luxury look.</p>
       </div>
-      <div class="info-card">
-        <h3>Mobile Friendly</h3>
-        <p>Fully responsive design that looks good on phone, tablet, and desktop.</p>
+      <div class="card info-card">
+        <h3>White Theme</h3>
+        <p>Clean background inspired by premium fashion websites.</p>
       </div>
-      <div class="info-card">
-        <h3>Easy to Use</h3>
-        <p>One-file HTML setup so you can upload directly to GitHub Pages.</p>
+      <div class="card info-card">
+        <h3>Easy Checkout</h3>
+        <p>Buttons open Razorpay checkout for payment flow.</p>
       </div>
     </div>
   </section>
 
   <section class="section" id="contact">
-    <h2>Contact Us</h2>
-    <p class="sub">Email: support@vellaco.com | Phone: +91 90000 00000</p>
+    <h2>Contact</h2>
+    <p class="sub">Email: support@vellaco.com | WhatsApp: +91 90000 00000</p>
   </section>
 
   <footer class="footer">
     <p>&copy; 2026 VELLA CO. All rights reserved.</p>
   </footer>
 
+  <div class="modal" id="orderModal">
+    <div class="modal-box">
+      <h3>Checkout</h3>
+      <p id="orderText">Your order will open in Razorpay checkout.</p>
+      <div class="modal-actions">
+        <button class="btn btn-dark" onclick="payNow()">Pay with Razorpay</button>
+        <button class="btn btn-light" onclick="closeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <script>
+    let cartCount = 0;
+    let selectedProduct = "";
+    let selectedAmount = 0;
+
     function toggleMenu() {
       document.getElementById("navLinks").classList.toggle("show");
     }
 
-    let cartCount = 0;
-
-    function addToCart() {
+    function addToCart(name, amount) {
       cartCount++;
-      alert("Item added to cart. Total items: " + cartCount);
+      alert(name + " added to cart. Cart items: " + cartCount);
+      selectedProduct = name;
+      selectedAmount = amount;
+    }
+
+    function orderNow(name, amount) {
+      selectedProduct = name;
+      selectedAmount = amount;
+      document.getElementById("orderText").innerText = name + " - ₹" + amount + ". Razorpay checkout open karne ke liye pay button dabao.";
+      document.getElementById("orderModal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("orderModal").style.display = "none";
+    }
+
+    function payNow() {
+      const options = {
+        key: "YOUR_RAZORPAY_KEY_ID",
+        amount: selectedAmount * 100,
+        currency: "INR",
+        name: "VELLA CO.",
+        description: selectedProduct,
+        handler: function (response) {
+          alert("Payment successful: " + response.razorpay_payment_id);
+          closeModal();
+        },
+        theme: { color: "#111111" }
+      };
+
+      const rzp = new Razorpay(options);
+      rzp.open();
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("orderModal");
+      if (event.target === modal) modal.style.display = "none";
     }
   </script>
 </body>
