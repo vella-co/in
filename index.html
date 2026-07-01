@@ -1,671 +1,375 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VELLA CO. | Premium Clothing Store</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    body {
+      background: #f6f2ed;
+      color: #1f1f1f;
+      line-height: 1.6;
+    }
 
-<title>JapMala - Divine Naam Jap Counter</title>
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      background: #111;
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    .logo {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
 
-<style>
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+    }
 
-:root{
---glass:rgba(255,255,255,.12);
---border:rgba(255,255,255,.20);
---shadow:0 20px 60px rgba(0,0,0,.20);
-}
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 15px;
+      opacity: 0.9;
+    }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+    .nav-links a:hover {
+      opacity: 1;
+    }
 
-body{
-min-height:100vh;
-overflow-x:hidden;
-color:#fff;
-background:linear-gradient(135deg,#ff9966,#ff5e62);
-transition:.5s;
-}
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 30px;
+      cursor: pointer;
+    }
 
-#particles{
-position:fixed;
-inset:0;
-pointer-events:none;
-opacity:.12;
-background:
-radial-gradient(circle at 10% 20%,white 2px,transparent 2px),
-radial-gradient(circle at 80% 40%,white 2px,transparent 2px),
-radial-gradient(circle at 30% 80%,white 2px,transparent 2px),
-radial-gradient(circle at 70% 70%,white 2px,transparent 2px);
-background-size:250px 250px;
-animation:bgMove 25s linear infinite;
-}
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      background:
+        linear-gradient(rgba(0,0,0,0.50), rgba(0,0,0,0.50)),
+        url("https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
+      color: #fff;
+    }
 
-@keyframes bgMove{
-from{transform:translateY(0);}
-to{transform:translateY(-300px);}
-}
+    .hero-content {
+      max-width: 780px;
+    }
 
-.topbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px;
-}
+    .hero-content h1 {
+      font-size: clamp(38px, 6vw, 72px);
+      line-height: 1.05;
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+    }
 
-.logo{
-font-size:28px;
-font-weight:800;
-}
+    .hero-content p {
+      font-size: 18px;
+      margin-bottom: 28px;
+      opacity: 0.95;
+    }
 
-.theme-btn{
-border:none;
-padding:12px 18px;
-border-radius:15px;
-background:var(--glass);
-backdrop-filter:blur(15px);
-color:#fff;
-cursor:pointer;
-}
+    .btn {
+      display: inline-block;
+      border: none;
+      background: #d6a25c;
+      color: #111;
+      padding: 14px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
 
-.container{
-width:min(95%,700px);
-margin:auto;
-padding-bottom:50px;
-}
+    .btn:hover {
+      transform: translateY(-2px);
+      background: #e3b36f;
+    }
 
-.glass{
-background:var(--glass);
-backdrop-filter:blur(20px);
-border:1px solid var(--border);
-border-radius:30px;
-box-shadow:var(--shadow);
-}
+    .section {
+      padding: 70px 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-.hero{
-padding:30px;
-text-align:center;
-margin-bottom:20px;
-}
+    .section h2 {
+      font-size: 34px;
+      margin-bottom: 14px;
+      text-align: center;
+    }
 
-.god-icon{
-font-size:80px;
-margin-bottom:10px;
-animation:float 3s ease-in-out infinite;
-}
+    .section p.sub {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 34px;
+      color: #5b5b5b;
+    }
 
-@keyframes float{
-50%{
-transform:translateY(-10px);
-}
-}
+    .cat-grid,
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+    }
 
-.god-title{
-font-size:34px;
-font-weight:700;
-}
+    .cat-card,
+    .product-card,
+    .info-card {
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: 0.25s ease;
+    }
 
-.god-sub{
-margin-top:8px;
-opacity:.9;
-}
+    .cat-card {
+      padding: 34px 20px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 22px;
+    }
 
-.selector{
-padding:22px;
-margin-bottom:20px;
-}
+    .cat-card:hover,
+    .product-card:hover,
+    .info-card:hover {
+      transform: translateY(-4px);
+    }
 
-.selector label{
-display:block;
-margin-bottom:10px;
-font-weight:600;
-}
+    .product-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+    }
 
-.selector select{
-width:100%;
-padding:15px;
-border:none;
-outline:none;
-border-radius:16px;
-font-size:16px;
-}
- .counter-card{
-padding:30px;
-text-align:center;
-margin-bottom:20px;
-}
+    .product-card .content {
+      padding: 18px;
+      text-align: center;
+    }
 
-.counter-label{
-font-size:18px;
-opacity:.9;
-}
+    .product-card h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
 
-.counter{
-font-size:80px;
-font-weight:800;
-margin:15px 0;
-text-shadow:0 0 25px rgba(255,255,255,.4);
-}
+    .price {
+      font-size: 18px;
+      font-weight: 700;
+      color: #d16a2c;
+      margin-bottom: 14px;
+    }
 
-.count-btn{
-width:100%;
-padding:18px;
-border:none;
-border-radius:18px;
-font-size:18px;
-font-weight:700;
-cursor:pointer;
-background:white;
-color:#111;
-transition:.25s;
-}
+    .mini {
+      padding: 11px 20px;
+      border-radius: 10px;
+      background: #111;
+      color: #fff;
+    }
 
-.count-btn:hover{
-transform:scale(1.03);
-}
+    .info-wrap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 22px;
+    }
 
-.count-btn:active{
-transform:scale(.95);
-}
+    .info-card {
+      padding: 26px;
+      text-align: center;
+    }
 
-.target-card{
-padding:25px;
-margin-bottom:20px;
-}
+    .info-card h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
 
-.target-row{
-display:flex;
-gap:10px;
-align-items:center;
-justify-content:space-between;
-margin-bottom:15px;
-}
+    .info-card p {
+      color: #5d5d5d;
+    }
 
-.target-row select{
-padding:12px;
-border:none;
-border-radius:14px;
-}
+    .footer {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
 
-#customTarget{
-width:100%;
-padding:14px;
-border:none;
-border-radius:14px;
-display:none;
-margin-bottom:15px;
-}
+    .cart-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 22px;
+      height: 22px;
+      padding: 0 7px;
+      margin-left: 8px;
+      border-radius: 999px;
+      background: #d6a25c;
+      color: #111;
+      font-size: 12px;
+      font-weight: 800;
+    }
 
-.progress-track{
-height:18px;
-background:rgba(255,255,255,.15);
-border-radius:50px;
-overflow:hidden;
-}
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 16px 20px;
+      }
 
-.progress-fill{
-height:100%;
-width:0%;
-border-radius:50px;
-background:linear-gradient(90deg,#ffe259,#ffa751);
-transition:.4s;
-}
+      .menu-btn {
+        display: block;
+      }
 
-.progress-text{
-margin-top:10px;
-text-align:center;
-font-weight:600;
-}
+      .nav-links {
+        display: none;
+        position: absolute;
+        right: 20px;
+        top: 68px;
+        flex-direction: column;
+        gap: 14px;
+        background: #111;
+        padding: 16px;
+        border-radius: 14px;
+        width: 180px;
+      }
 
-.actions{
-display:flex;
-gap:12px;
-margin-bottom:20px;
-}
+      .nav-links.show {
+        display: flex;
+      }
 
-.actions button{
-flex:1;
-padding:16px;
-border:none;
-border-radius:16px;
-font-size:17px;
-font-weight:700;
-cursor:pointer;
-}
-
-.minus-btn{
-background:#fff;
-}
-
-.reset-btn{
-background:#ffe259;
-}
-
-.plus-btn{
-background:#fff;
-}
-
-.quote-card{
-padding:25px;
-text-align:center;
-font-size:18px;
-font-weight:600;
-line-height:1.7;
-margin-bottom:20px;
-}
-
-.footer{
-text-align:center;
-padding:25px;
-opacity:.85;
-}
-
-.theme-radha{
-background:linear-gradient(135deg,#ff9966,#ff5e62);
-}
-
-.theme-ram{
-background:linear-gradient(135deg,#ff8008,#ffc837);
-}
-
-.theme-shiv{
-background:linear-gradient(135deg,#141e30,#243b55);
-}
-
-.theme-hanuman{
-background:linear-gradient(135deg,#ff512f,#dd2476);
-}
-
-.theme-ganesh{
-background:linear-gradient(135deg,#f7971e,#ffd200);
-}
-
-.theme-sai{
-background:linear-gradient(135deg,#c79081,#dfa579);
-}
-
-.theme-durga{
-background:linear-gradient(135deg,#cb2d3e,#ef473a);
-}
-
-.theme-krishna{
-background:linear-gradient(135deg,#396afc,#2948ff);
-}
-
-@media(max-width:600px){
-
-.counter{
-font-size:58px;
-}
-
-.god-title{
-font-size:26px;
-}
-
-.god-icon{
-font-size:60px;
-}
-
-.actions{
-flex-direction:column;
-}
-
-}
-
-</style>
-
+      .section {
+        padding: 56px 20px;
+      }
+    }
+  </style>
 </head>
-
-<body class="theme-radha">
-
-<div id="particles"></div>
-
-<header class="topbar">
-
-<div class="logo">
-📿 JapMala
-</div>
-
-<button class="theme-btn">
-✨ Divine
-</button>
-
-</header>
-
-<div class="container">
-
-<div class="hero glass">
-
-<div class="god-icon" id="godIcon">
-🌸
-</div>
-
-<div class="god-title" id="godTitle">
-Radha Krishna
-</div>
-
-<div class="god-sub">
-Har Naam Mein Shakti Hai
-</div>
-
-</div>
-
-<div class="selector glass">
-
-<label>
-Select Naam
-</label>
-
-<select id="godSelect">
-
-<option value="radha">🌸 Radha Krishna</option>
-<option value="ram">🏹 Shri Ram</option>
-<option value="shiv">🔱 Mahadev</option>
-<option value="hanuman">🚩 Hanuman Ji</option>
-<option value="ganesh">🐘 Ganesh Ji</option>
-<option value="sai">🙏 Sai Baba</option>
-<option value="durga">🦁 Maa Durga</option>
-<option value="krishna">🦚 Krishna</option>
-
-</select>
-
-</div>
-
-<div class="counter-card glass">
-
-<div class="counter-label">
-Jap Count
-</div>
-
-<div id="counter" class="counter">
-0
-</div>
-
-<button id="countBtn" class="count-btn">
-📿 TAP TO CHANT
-</button>
-
-</div>
-<div class="target-card glass">
-
-<div class="target-row">
-
-<h3>🎯 Target</h3>
-
-<select id="targetSelect">
-<option value="108">108</option>
-<option value="1008">1008</option>
-<option value="11000">11000</option>
-<option value="custom">Custom</option>
-</select>
-
-</div>
-
-<input
-type="number"
-id="customTarget"
-placeholder="Enter Custom Target">
-
-<div class="progress-track">
-<div id="progressFill" class="progress-fill"></div>
-</div>
-
-<div id="progressText" class="progress-text">
-0 / 108
-</div>
-
-</div>
-
-<div class="actions">
-
-<button id="minusBtn" class="minus-btn">
-➖
-</button>
-
-<button id="resetBtn" class="reset-btn">
-🔄 Reset
-</button>
-
-<button id="plusBtn" class="plus-btn">
-➕
-</button>
-
-</div>
-
-<div class="quote-card glass">
-
-<div id="quoteText">
-🌸 Naam Jap Se Mann Shuddh Hota Hai 🌸
-</div>
-
-</div>
-
-<div class="footer">
-📿 JapMala • Phase 1 Premium
-</div>
-
-</div>
-
-<script>
-
-let count =
-parseInt(localStorage.getItem("jap_count")) || 0;
-
-let target =
-parseInt(localStorage.getItem("jap_target")) || 108;
-
-const counter =
-document.getElementById("counter");
-
-const progressFill =
-document.getElementById("progressFill");
-
-const progressText =
-document.getElementById("progressText");
-
-const targetSelect =
-document.getElementById("targetSelect");
-
-const customTarget =
-document.getElementById("customTarget");
-
-function updateUI(){
-
-counter.innerText = count;
-
-let percent =
-Math.min((count/target)*100,100);
-
-progressFill.style.width =
-percent + "%";
-
-progressText.innerText =
-count + " / " + target;
-
-localStorage.setItem(
-"jap_count",
-count
-);
-
-localStorage.setItem(
-"jap_target",
-target
-);
-
-}
-
-updateUI();
-
-document
-.getElementById("countBtn")
-.addEventListener("click",()=>{
-
-count++;
-updateUI();
-
-if(navigator.vibrate){
-navigator.vibrate(30);
-}
-
-});
-
-document
-.getElementById("plusBtn")
-.addEventListener("click",()=>{
-
-count++;
-updateUI();
-
-});
-
-document
-.getElementById("minusBtn")
-.addEventListener("click",()=>{
-
-if(count>0){
-count--;
-updateUI();
-}
-
-});
-
-document
-.getElementById("resetBtn")
-.addEventListener("click",()=>{
-
-if(confirm("Reset Jap Count?")){
-
-count=0;
-updateUI();
-
-}
-
-});
-
-targetSelect.addEventListener(
-"change",
-function(){
-
-if(this.value==="custom"){
-
-customTarget.style.display=
-"block";
-
-}else{
-
-customTarget.style.display=
-"none";
-
-target=
-parseInt(this.value);
-
-updateUI();
-
-}
-
-}
-);
-
-customTarget.addEventListener(
-"input",
-function(){
-
-if(this.value){
-
-target=
-parseInt(this.value);
-
-updateUI();
-
-}
-
-}
-);
-
-const themes = {
-
-radha:{
-class:"theme-radha",
-icon:"🌸",
-title:"Radha Krishna"
-},
-
-ram:{
-class:"theme-ram",
-icon:"🏹",
-title:"Shri Ram"
-},
-
-shiv:{
-class:"theme-shiv",
-icon:"🔱",
-title:"Mahadev"
-},
-
-hanuman:{
-class:"theme-hanuman",
-icon:"🚩",
-title:"Hanuman Ji"
-},
-
-ganesh:{
-class:"theme-ganesh",
-icon:"🐘",
-title:"Ganesh Ji"
-},
-
-sai:{
-class:"theme-sai",
-icon:"🙏",
-title:"Sai Baba"
-},
-
-durga:{
-class:"theme-durga",
-icon:"🦁",
-title:"Maa Durga"
-},
-
-krishna:{
-class:"theme-krishna",
-icon:"🦚",
-title:"Krishna"
-}
-
-};
-
-document
-.getElementById("godSelect")
-.addEventListener(
-"change",
-function(){
-
-let g =
-themes[this.value];
-
-document.body.className =
-g.class;
-
-document
-.getElementById("godIcon")
-.innerText =
-g.icon;
-
-document
-.getElementById("godTitle")
-.innerText =
-g.title;
-
-}
-);
-
-</script>
-
+<body>
+
+  <header class="navbar">
+    <div class="logo">VELLA CO.</div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#categories">Categories</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>VELLA CO.</h1>
+      <p>Premium clothing for modern style, daily comfort, and bold fashion statements.</p>
+      <a href="#products" class="btn">Shop Collection</a>
+    </div>
+  </section>
+
+  <section class="section" id="categories">
+    <h2>Shop by Category</h2>
+    <p class="sub">Find stylish picks for every mood and every day.</p>
+    <div class="cat-grid">
+      <div class="cat-card">Men</div>
+      <div class="cat-card">Women</div>
+      <div class="cat-card">Kids</div>
+      <div class="cat-card">New Arrivals</div>
+    </div>
+  </section>
+
+  <section class="section" id="products">
+    <h2>Featured Products</h2>
+    <p class="sub">Handpicked fashion pieces crafted for a clean premium look.</p>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=900&q=80" alt="Oversized Shirt">
+        <div class="content">
+          <h3>Oversized Shirt</h3>
+          <div class="price">₹899</div>
+          <button class="btn mini" onclick="addToCart()">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=900&q=80" alt="Classic Hoodie">
+        <div class="content">
+          <h3>Classic Hoodie</h3>
+          <div class="price">₹1299</div>
+          <button class="btn mini" onclick="addToCart()">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80" alt="Denim Jacket">
+        <div class="content">
+          <h3>Denim Jacket</h3>
+          <div class="price">₹1599</div>
+          <button class="btn mini" onclick="addToCart()">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <h2>About VELLA CO.</h2>
+    <p class="sub">A modern fashion label made for people who like clean design, comfort, and strong identity.</p>
+    <div class="info-wrap">
+      <div class="info-card">
+        <h3>Premium Look</h3>
+        <p>Simple layout, elegant colors, and a polished fashion-store feel.</p>
+      </div>
+      <div class="info-card">
+        <h3>Mobile Friendly</h3>
+        <p>Fully responsive design that looks good on phone, tablet, and desktop.</p>
+      </div>
+      <div class="info-card">
+        <h3>Easy to Use</h3>
+        <p>One-file HTML setup so you can upload directly to GitHub Pages.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <h2>Contact Us</h2>
+    <p class="sub">Email: support@vellaco.com | Phone: +91 90000 00000</p>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2026 VELLA CO. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    let cartCount = 0;
+
+    function addToCart() {
+      cartCount++;
+      alert("Item added to cart. Total items: " + cartCount);
+    }
+  </script>
 </body>
 </html>
