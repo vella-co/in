@@ -11,14 +11,14 @@
     body{
       color:#111;
       background:
-        radial-gradient(circle at top left, rgba(230,230,230,.8), transparent 35%),
-        radial-gradient(circle at top right, rgba(245,245,245,.9), transparent 30%),
+        radial-gradient(circle at top left, rgba(235,235,235,.9), transparent 35%),
+        radial-gradient(circle at top right, rgba(250,250,250,.95), transparent 30%),
         #fff;
     }
     :root{
-      --glass: rgba(255,255,255,.55);
-      --glass2: rgba(255,255,255,.78);
-      --border: rgba(255,255,255,.8);
+      --glass: rgba(255,255,255,.60);
+      --glass2: rgba(255,255,255,.82);
+      --border: rgba(255,255,255,.85);
       --shadow: 0 18px 50px rgba(0,0,0,.10);
       --dark:#111;
       --accent:#d7a35b;
@@ -27,26 +27,26 @@
     .navbar{
       position:sticky;top:0;z-index:2000;
       display:flex;justify-content:space-between;align-items:center;
-      padding:14px 34px;
+      padding:14px 28px;
       background:var(--glass2);
-      backdrop-filter:blur(18px);
-      -webkit-backdrop-filter:blur(18px);
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
       border-bottom:1px solid rgba(0,0,0,.08);
       box-shadow:0 8px 30px rgba(0,0,0,.05);
     }
 
     .brand{
-      display:flex;align-items:center;gap:12px;
-      padding:10px 16px;border-radius:18px;
-      background:rgba(255,255,255,.46);
-      border:1px solid rgba(255,255,255,.9);
+      display:flex;align-items:center;gap:10px;
+      padding:10px 14px;border-radius:18px;
+      background:rgba(255,255,255,.55);
+      border:1px solid rgba(255,255,255,.95);
       backdrop-filter:blur(18px);
       box-shadow:var(--shadow);
     }
 
-    .logo{
-      font-size:28px;font-weight:900;letter-spacing:2px;
-      background:linear-gradient(135deg,#111,#777);
+    .brand .logo{
+      font-size:30px;font-weight:900;letter-spacing:3px;
+      background:linear-gradient(135deg,#111,#888);
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
     }
@@ -61,7 +61,7 @@
 
     .icon-btn{
       border:none;cursor:pointer;padding:10px 14px;border-radius:999px;
-      background:rgba(255,255,255,.75);
+      background:rgba(255,255,255,.78);
       border:1px solid rgba(0,0,0,.08);
       box-shadow:0 10px 25px rgba(0,0,0,.08);
       font-weight:900
@@ -76,26 +76,23 @@
         linear-gradient(rgba(255,255,255,.12), rgba(255,255,255,.18)),
         url("https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
     }
-
     .hero-box{
       max-width:920px;padding:38px;border-radius:30px;
       background:var(--glass);
-      backdrop-filter:blur(22px);
-      -webkit-backdrop-filter:blur(22px);
+      backdrop-filter:blur(24px);
+      -webkit-backdrop-filter:blur(24px);
       border:1px solid var(--border);
       box-shadow:var(--shadow);
     }
-
     .hero h1{
-      font-size:clamp(44px,7vw,86px);
+      font-size:clamp(46px,7vw,88px);
       line-height:1;
       margin-bottom:14px;
-      letter-spacing:2px;
+      letter-spacing:3px;
       background:linear-gradient(135deg,#111,#777);
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
     }
-
     .hero p{font-size:18px;color:#222;max-width:760px;margin:0 auto 26px}
     .btn-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
 
@@ -104,7 +101,6 @@
       padding:14px 22px;border-radius:999px;font-weight:800;
       transition:.25s ease;display:inline-flex;align-items:center;gap:8px
     }
-
     .btn:hover{transform:translateY(-2px)}
     .btn-dark{background:#111;color:#fff}
     .btn-light{background:#fff;color:#111;border:1px solid rgba(0,0,0,.10)}
@@ -112,7 +108,7 @@
     .btn-small{padding:11px 16px;border-radius:12px;font-size:14px}
     .btn-wide{width:100%;justify-content:center}
 
-    .section{max-width:1240px;margin:auto;padding:72px 34px}
+    .section{max-width:1240px;margin:auto;padding:72px 28px}
     .section h2{text-align:center;font-size:34px;margin-bottom:12px}
     .sub{text-align:center;max-width:760px;margin:0 auto 32px;color:#666}
 
@@ -128,7 +124,7 @@
       border-radius:24px;overflow:hidden;box-shadow:var(--shadow);transition:.25s
     }
     .card:hover{transform:translateY(-4px)}
-    .cat-card{padding:32px 20px;text-align:center;font-size:22px;font-weight:900}
+
     .product-card img{width:100%;height:300px;object-fit:cover;display:block}
     .product-card .content{padding:16px}
     .product-card h3{font-size:20px;margin-bottom:6px}
@@ -145,10 +141,17 @@
     .avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#111,#666)}
 
     .footer{background:#111;color:#fff;text-align:center;padding:20px;margin-top:30px}
+    .socials{display:flex;gap:14px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+    .socials a{
+      width:44px;height:44px;border-radius:50%;
+      display:inline-flex;align-items:center;justify-content:center;
+      background:#111;color:#fff;text-decoration:none;
+      box-shadow:0 10px 25px rgba(0,0,0,.15)
+    }
 
     .cart-drawer{
       position:fixed;top:0;right:-420px;height:100vh;width:min(420px,100%);
-      background:rgba(255,255,255,.82);
+      background:rgba(255,255,255,.84);
       backdrop-filter:blur(22px);
       -webkit-backdrop-filter:blur(22px);
       border-left:1px solid rgba(0,0,0,.08);
@@ -181,7 +184,7 @@
     }
     .modal-box{
       width:min(560px,100%);
-      background:rgba(255,255,255,.82);
+      background:rgba(255,255,255,.84);
       backdrop-filter:blur(22px);
       -webkit-backdrop-filter:blur(22px);
       border:1px solid rgba(255,255,255,.8);
@@ -196,13 +199,6 @@
     }
 
     .policy-list{color:#555;line-height:1.8;max-width:900px;margin:0 auto;text-align:left}
-    .socials{display:flex;gap:14px;justify-content:center;margin-top:18px;flex-wrap:wrap}
-    .socials a{
-      width:44px;height:44px;border-radius:50%;
-      display:inline-flex;align-items:center;justify-content:center;
-      background:#111;color:#fff;text-decoration:none;
-      box-shadow:0 10px 25px rgba(0,0,0,.15)
-    }
 
     .popup{
       position:fixed;right:18px;bottom:18px;width:min(300px, calc(100% - 36px));
@@ -229,12 +225,10 @@
 <body>
 
   <header class="navbar">
-    <div class="brand">
-      <div class="logo">VELLA CO.</div>
-    </div>
+    <div class="brand"><div class="logo">VELLA CO.</div></div>
     <div class="nav-actions">
       <button class="icon-btn menu-btn" onclick="toggleMenu()">☰</button>
-      <button class="icon-btn" onclick="openCart()">🛒 <span class="badge" id="cartCount">0</span></button>
+      <button class="icon-btn" onclick="openCart()">🛒 <span id="cartCount">0</span></button>
       <nav class="nav-links" id="navLinks">
         <a href="#home">Home</a>
         <a href="#products">Shop Now</a>
@@ -247,7 +241,7 @@
   <section class="hero" id="home">
     <div class="hero-box">
       <h1>VELLA CO.</h1>
-      <p>Premium clothing store with white luxury look, glass effect, and cart-based ordering.</p>
+      <p>Premium clothing store with glass look, stylish cards, and cart-based ordering.</p>
       <div class="btn-row">
         <a href="#products" class="btn btn-dark">SHOP NOW</a>
       </div>
@@ -257,7 +251,6 @@
   <section class="section" id="products">
     <h2>Featured Products</h2>
     <p class="sub">Add products to cart, then order from cart or directly.</p>
-
     <div class="grid">
       <div class="card product-card">
         <img src="https://images.unsplash.com/photo-1523381294911-8d3cead13475?auto=format&fit=crop&w=900&q=80" alt="Oversized Shirt">
@@ -266,7 +259,7 @@
           <div class="meta"><span class="price">₹899</span><span class="rating">★ 4.8</span></div>
           <div class="action-row">
             <button class="btn btn-dark btn-small" onclick="addToCart('Oversized Shirt',899,'https://images.unsplash.com/photo-1523381294911-8d3cead13475?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
-            <button class="btn btn-light btn-small" onclick="quickOrder('Oversized Shirt',899)">Order</button>
+            <button class="btn btn-light btn-small" onclick="openOrder('Oversized Shirt',899)">Order</button>
           </div>
         </div>
       </div>
@@ -278,7 +271,7 @@
           <div class="meta"><span class="price">₹1299</span><span class="rating">★ 4.9</span></div>
           <div class="action-row">
             <button class="btn btn-dark btn-small" onclick="addToCart('Premium Hoodie',1299,'https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
-            <button class="btn btn-light btn-small" onclick="quickOrder('Premium Hoodie',1299)">Order</button>
+            <button class="btn btn-light btn-small" onclick="openOrder('Premium Hoodie',1299)">Order</button>
           </div>
         </div>
       </div>
@@ -290,7 +283,7 @@
           <div class="meta"><span class="price">₹1599</span><span class="rating">★ 4.7</span></div>
           <div class="action-row">
             <button class="btn btn-dark btn-small" onclick="addToCart('Classic Jacket',1599,'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80')">Add to Cart</button>
-            <button class="btn btn-light btn-small" onclick="quickOrder('Classic Jacket',1599)">Order</button>
+            <button class="btn btn-light btn-small" onclick="openOrder('Classic Jacket',1599)">Order</button>
           </div>
         </div>
       </div>
@@ -309,7 +302,7 @@
 
   <section class="section" id="privacy">
     <h2>Privacy & Policies</h2>
-    <p class="sub">Shipping, returns, refund, and order terms.</p>
+    <p class="sub">Shipping, returns, refund, and terms.</p>
     <div class="policy-list">
       <p><strong>Shipping Policy:</strong> Orders are usually dispatched within 1-3 working days.</p>
       <p><strong>Return Policy:</strong> Returns accepted only for damaged or wrong products within 3 days.</p>
@@ -317,12 +310,6 @@
       <p><strong>Terms:</strong> By placing an order, you agree to the store terms and conditions.</p>
       <p><strong>Privacy:</strong> Customer data is used only for order processing and support.</p>
     </div>
-    <div class="socials">
-      <a href="#"><i class="fa-brands fa-instagram"></i></a>
-      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-      <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-      <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-    </div>
   </section>
 
   <footer class="footer">
@@ -344,15 +331,15 @@
   <div class="modal" id="orderModal">
     <div class="modal-box">
       <h3 id="orderTitle">Order Product</h3>
-      <p id="orderInfo">Fill details first, then choose COD or Razorpay.</p>
-      <input class="field" id="name" placeholder="Full Name">
-      <input class="field" id="phone" placeholder="Mobile Number">
-      <input class="field" id="address" placeholder="Address">
-      <input class="field" id="size" placeholder="Size (S/M/L/XL)">
-      <input class="field" id="qty" type="number" min="1" value="1" placeholder="Quantity">
+      <p id="orderInfo">Fill details first. Order will work only after all details are entered.</p>
+      <input class="field" id="name" placeholder="Full Name" required>
+      <input class="field" id="phone" placeholder="Mobile Number" required>
+      <input class="field" id="address" placeholder="Address" required>
+      <input class="field" id="size" placeholder="Size (S/M/L/XL)" required>
+      <input class="field" id="qty" type="number" min="1" value="1" placeholder="Quantity" required>
       <div class="modal-grid">
         <button class="btn btn-accent" onclick="orderWhatsApp()">COD by WhatsApp</button>
-        <button class="btn btn-dark" onclick="paySingle()">Pay with Razorpay</button>
+        <button class="btn btn-dark" onclick="payNow()">Pay with Razorpay</button>
       </div>
       <div style="margin-top:12px">
         <button class="btn btn-light btn-wide" onclick="closeOrder()">Close</button>
@@ -360,10 +347,7 @@
     </div>
   </div>
 
-  <div class="popup" id="popup">
-    <strong>New order update</strong>
-    <small id="popupText"></small>
-  </div>
+  <div class="popup" id="popup"><strong>New order update</strong><small id="popupText"></small></div>
 
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <script>
@@ -373,6 +357,8 @@
     let currentAmount = 0;
 
     function saveCart(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); }
+    function toggleMenu(){ document.getElementById("navLinks").classList.toggle("show"); }
+    function openCart(){ document.getElementById("cartDrawer").classList.toggle("open"); }
 
     function updateCartUI(){
       document.getElementById("cartCount").innerText = cart.length;
@@ -402,109 +388,6 @@
         list.appendChild(div);
       });
     }
-
-    function toggleMenu(){ document.getElementById("navLinks").classList.toggle("show"); }
-    function openCart(){ document.getElementById("cartDrawer").classList.toggle("open"); }
-
-    function addToCart(name, price, img){
-      const found = cart.find(i => i.name === name);
-      if(found) found.qty += 1;
-      else cart.push({name, price, qty:1, img});
-      saveCart();
-      updateCartUI();
-      showPopup(name + " added to cart");
-    }
-
- <p><strong>Privacy:</strong> Customer data is used only for order processing and support.</p>
-    </div>
-    <div class="socials">
-      <a href="#"><i class="fa-brands fa-instagram"></i></a>
-      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-      <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-      <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <p>&copy; 2026 VELLA CO. All rights reserved.</p>
-  </footer>
-
-  <div class="cart-drawer" id="cartDrawer">
-    <div class="cart-head">
-      <h3>My Cart</h3>
-      <button class="icon-btn" onclick="openCart()">✕</button>
-    </div>
-    <div class="cart-list" id="cartList"></div>
-    <div class="cart-foot">
-      <div class="cart-total"><span>Total</span><span id="cartTotal">₹0</span></div>
-      <button class="btn btn-dark btn-wide" onclick="checkoutCart()">Order Cart</button>
-    </div>
-  </div>
-
-  <div class="modal" id="orderModal">
-    <div class="modal-box">
-      <h3 id="orderTitle">Order Product</h3>
-      <p id="orderInfo">Fill details first, then choose COD or Razorpay.</p>
-      <input class="field" id="name" placeholder="Full Name">
-      <input class="field" id="phone" placeholder="Mobile Number">
-      <input class="field" id="address" placeholder="Address">
-      <input class="field" id="size" placeholder="Size (S/M/L/XL)">
-      <input class="field" id="qty" type="number" min="1" value="1" placeholder="Quantity">
-      <div class="modal-grid">
-        <button class="btn btn-accent" onclick="orderWhatsApp()">COD by WhatsApp</button>
-        <button class="btn btn-dark" onclick="paySingle()">Pay with Razorpay</button>
-      </div>
-      <div style="margin-top:12px">
-        <button class="btn btn-light btn-wide" onclick="closeOrder()">Close</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="popup" id="popup">
-    <strong>New order update</strong>
-    <small id="popupText"></small>
-  </div>
-
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-  <script>
-    const STORAGE_KEY = "vella_cart";
-    let cart = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-    let currentProduct = "";
-    let currentAmount = 0;
-
-    function saveCart(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); }
-
-    function updateCartUI(){
-      document.getElementById("cartCount").innerText = cart.length;
-      document.getElementById("cartTotal").innerText = "₹" + cart.reduce((s,i)=>s + i.price * i.qty, 0);
-      const list = document.getElementById("cartList");
-      list.innerHTML = "";
-      if(!cart.length){
-        list.innerHTML = '<div style="padding:20px;color:#666;text-align:center">Cart is empty</div>';
-        return;
-      }
-      cart.forEach((item, index) => {
-        const div = document.createElement("div");
-        div.className = "cart-item";
-        div.innerHTML = `
-          <img src="${item.img}" alt="${item.name}">
-          <div>
-            <strong>${item.name}</strong><br>
-            <small>₹${item.price}</small>
-            <div class="qty">
-              <button onclick="changeQty(${index}, -1)">-</button>
-              <span>${item.qty}</span>
-              <button onclick="changeQty(${index}, 1)">+</button>
-            </div>
-          </div>
-          <button class="icon-btn" onclick="removeItem(${index})">🗑</button>
-        `;
-        list.appendChild(div);
-      });
-    }
-
-    function toggleMenu(){ document.getElementById("navLinks").classList.toggle("show"); }
-    function openCart(){ document.getElementById("cartDrawer").classList.toggle("open"); }
 
     function addToCart(name, price, img){
       const found = cart.find(i => i.name === name);
@@ -528,21 +411,25 @@
       updateCartUI();
     }
 
-    function quickOrder(name, amount){
+    function openOrder(name, amount){
       currentProduct = name;
       currentAmount = amount;
       document.getElementById("orderTitle").innerText = name + " | ₹" + amount;
-      document.getElementById("orderInfo").innerText = "Fill full details first. Order will work only after details are entered.";
       document.getElementById("orderModal").style.display = "flex";
     }
 
     function closeOrder(){ document.getElementById("orderModal").style.display = "none"; }
 
-    function allFilled(){
-      return ["name","phone","address","size","qty"].every(id => document.getElementById(id).value.trim() !== "");
+    function formFilled(){
+      return document.getElementById("name").value.trim() &&
+             document.getElementById("phone").value.trim() &&
+             document.getElementById("address").value.trim() &&
+             document.getElementById("size").value.trim() &&
+             document.getElementById("qty").value.trim();
     }
+
     function orderWhatsApp(){
-      if(!allFilled()){ alert("Please fill all details first."); return; }
+      if(!formFilled()){ alert("Please fill all details first."); return; }
       const name = document.getElementById("name").value;
       const phone = document.getElementById("phone").value;
       const address = document.getElementById("address").value;
@@ -552,8 +439,8 @@
       window.open("https://wa.me/919000000000?text=" + msg, "_blank");
     }
 
-    function paySingle(){
-      if(!allFilled()){ alert("Please fill all details first."); return; }
+    function payNow(){
+      if(!formFilled()){ alert("Please fill all details first."); return; }
       const options = {
         key: "YOUR_RAZORPAY_KEY_ID",
         amount: currentAmount * 100,
@@ -571,7 +458,6 @@
       currentProduct = "Cart Order";
       currentAmount = cart.reduce((s,i)=>s + i.price * i.qty, 0);
       document.getElementById("orderTitle").innerText = "Cart Checkout | ₹" + currentAmount;
-      document.getElementById("orderInfo").innerText = "Fill details first, then choose COD or Razorpay.";
       document.getElementById("orderModal").style.display = "flex";
     }
 
