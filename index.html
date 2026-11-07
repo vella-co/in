@@ -1,374 +1,207 @@
+
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tuition Fee Tracker</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', system-ui, sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SG ELITE | Tournament Upcoming</title>
 
-    body {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      padding: 20px;
-      color: #333;
-    }
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Rajdhani:wght@400;600;700&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #050505;
+    color: white;
+    font-family: 'Rajdhani', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Background */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+    radial-gradient(circle at 50% 45%, #38290d 0%, transparent 35%),
+    linear-gradient(135deg, #080808, #11100c, #030303);
+    z-index: -2;
+}
+
+.grid {
+    position: fixed;
+    inset: 0;
+    background-image:
+    linear-gradient(#d6a6420c 1px, transparent 1px),
+    linear-gradient(90deg, #d6a6420c 1px, transparent 1px);
+    background-size: 45px 45px;
+    mask-image: linear-gradient(transparent, black, transparent);
+    z-index: -1;
+}
+
+/* Main Card */
+.container {
+    width: 90%;
+    max-width: 850px;
+    padding: 65px 20px;
+    text-align: center;
+    border: 1px solid #b58b36;
+    background: linear-gradient(145deg, #14120d, #080808 60%);
+    box-shadow: 0 0 50px #c99a3520,
+                inset 0 0 35px #c99a3510;
+    position: relative;
+}
+
+.container::before,
+.container::after {
+    content: "";
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    border-color: #e6bd62;
+    border-style: solid;
+}
+
+.container::before {
+    top: -1px;
+    left: -1px;
+    border-width: 2px 0 0 2px;
+}
+
+.container::after {
+    bottom: -1px;
+    right: -1px;
+    border-width: 0 2px 2px 0;
+}
+
+.tag {
+    color: #cba34e;
+    letter-spacing: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 28px;
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(35px, 8vw, 75px);
+    font-weight: 900;
+    color: #f5d58a;
+    text-shadow: 0 0 20px #c18b36;
+    letter-spacing: 2px;
+}
+
+.line {
+    width: 130px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #e5bd65, transparent);
+    margin: 25px auto;
+}
+
+.heading {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(22px, 5vw, 38px);
+    font-weight: 800;
+    letter-spacing: 5px;
+    color: #ffffff;
+}
+
+.heading span {
+    color: #e6b957;
+}
+
+.subtitle {
+    margin-top: 18px;
+    color: #999;
+    font-size: 17px;
+    letter-spacing: 3px;
+}
+
+.status {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 12px 30px;
+    border: 1px solid #c99b44;
+    color: #eac56d;
+    letter-spacing: 4px;
+    font-weight: 700;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%,100% {
+        box-shadow: 0 0 5px #c99b4440;
+    }
+    50% {
+        box-shadow: 0 0 25px #c99b4480;
+    }
+}
+
+.footer {
+    margin-top: 45px;
+    font-size: 12px;
+    color: #777;
+    letter-spacing: 4px;
+}
+
+@media(max-width: 500px) {
     .container {
-      max-width: 900px;
-      margin: 0 auto;
+        padding: 55px 12px;
     }
 
-    header {
-      text-align: center;
-      color: white;
-      margin-bottom: 30px;
+    .tag {
+        letter-spacing: 3px;
     }
 
-    header h1 {
-      font-size: 2.2rem;
-      margin-bottom: 8px;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    .heading {
+        letter-spacing: 2px;
     }
 
-    header p {
-      opacity: 0.9;
-      font-size: 1.05rem;
+    .subtitle {
+        font-size: 14px;
     }
-
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 25px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-      margin-bottom: 25px;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-
-    @media (max-width: 600px) {
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-    }
-
-    label {
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: #555;
-    }
-
-    input, select {
-      padding: 12px 14px;
-      border: 2px solid #e0e0e0;
-      border-radius: 10px;
-      font-size: 1rem;
-      transition: border 0.2s;
-    }
-
-    input:focus, select:focus {
-      outline: none;
-      border-color: #667eea;
-    }
-
-    .btn {
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: white;
-      border: none;
-      padding: 13px 28px;
-      border-radius: 10px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      margin-top: 10px;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-    }
-
-    .btn-full {
-      width: 100%;
-      grid-column: 1 / -1;
-    }
-
-    .search-box {
-      margin-bottom: 20px;
-    }
-
-    .search-box input {
-      width: 100%;
-      padding: 12px 16px;
-      border-radius: 10px;
-      border: 2px solid #e0e0e0;
-      font-size: 1rem;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-    }
-
-    th {
-      background: #f8f9ff;
-      padding: 14px 12px;
-      text-align: left;
-      font-weight: 600;
-      color: #555;
-      border-bottom: 2px solid #eee;
-    }
-
-    td {
-      padding: 14px 12px;
-      border-bottom: 1px solid #f0f0f0;
-      vertical-align: middle;
-    }
-
-    tr:hover {
-      background: #fafbff;
-    }
-
-    .status {
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      display: inline-block;
-    }
-
-    .status.pending {
-      background: #fff3cd;
-      color: #856404;
-    }
-
-    .status.paid {
-      background: #d4edda;
-      color: #155724;
-    }
-
-    .delete-btn {
-      background: #ff6b6b;
-      color: white;
-      border: none;
-      padding: 7px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    .delete-btn:hover {
-      background: #ee5253;
-    }
-
-    .empty {
-      text-align: center;
-      padding: 40px;
-      color: #999;
-      font-size: 1.1rem;
-    }
-
-    .total-box {
-      background: #f8f9ff;
-      padding: 15px 20px;
-      border-radius: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 20px;
-      font-weight: 600;
-    }
-
-    .total-box span {
-      color: #667eea;
-      font-size: 1.3rem;
-    }
-  </style>
+}
+</style>
 </head>
+
 <body>
-  <div class="container">
-    <header>
-      <h1>Tuition Fee Tracker</h1>
-      <p>Bacchon ki fee manage karo asani se</p>
-    </header>
 
-    <!-- Add Form -->
-    <div class="card">
-      <h2 style="margin-bottom: 18px; color: #444;">Naya Student Add Karo</h2>
-      <div class="form-grid">
-        <div class="form-group">
-          <label>Student ka Naam</label>
-          <input type="text" id="name" placeholder="Jaise: Rahul Sharma">
-        </div>
-        <div class="form-group">
-          <label>Fee Amount (₹)</label>
-          <input type="number" id="fee" placeholder="2000">
-        </div>
-        <div class="form-group">
-          <label>Due Date (Kab aani hai)</label>
-          <input type="date" id="dueDate">
-        </div>
-        <div class="form-group">
-          <label>Status</label>
-          <select id="status">
-            <option value="Pending">Pending</option>
-            <option value="Paid">Paid</option>
-          </select>
-        </div>
-        <button class="btn btn-full" onclick="addStudent()">+ Add Student</button>
-      </div>
+<div class="grid"></div>
+
+<div class="container">
+
+    <div class="tag">OFFICIAL ESPORTS EVENT</div>
+
+    <div class="logo">ᏚᏩ_Ꭼʟɪᴛᴇ</div>
+
+    <div class="line"></div>
+
+    <div class="heading">
+        TOURNAMENT <span>UPCOMING</span>
     </div>
 
-    <!-- List -->
-    <div class="card">
-      <div class="search-box">
-        <input type="text" id="search" placeholder="Naam se search karo..." oninput="renderTable()">
-      </div>
-
-      <div id="tableContainer">
-        <!-- Table will come here -->
-      </div>
-
-      <div class="total-box">
-        <div>Total Pending Fee:</div>
-        <span id="totalPending">₹0</span>
-      </div>
+    <div class="subtitle">
+        THE BATTLE IS ABOUT TO BEGIN
     </div>
-  </div>
 
-  <script>
-    let students = JSON.parse(localStorage.getItem('tuitionStudents')) || [];
+    <div class="status">
+        ● COMING SOON
+    </div>
 
-    function saveData() {
-      localStorage.setItem('tuitionStudents', JSON.stringify(students));
-    }
+    <div class="footer">
+        SG ELITE ESPORTS © 2026
+    </div>
 
-    function addStudent() {
-      const name = document.getElementById('name').value.trim();
-      const fee = document.getElementById('fee').value;
-      const dueDate = document.getElementById('dueDate').value;
-      const status = document.getElementById('status').value;
+</div>
 
-      if (!name || !fee || !dueDate) {
-        alert('Please saari details bharo!');
-        return;
-      }
-
-      students.push({
-        id: Date.now(),
-        name,
-        fee: Number(fee),
-        dueDate,
-        status
-      });
-
-      saveData();
-      renderTable();
-
-      // Clear form
-      document.getElementById('name').value = '';
-      document.getElementById('fee').value = '';
-      document.getElementById('dueDate').value = '';
-      document.getElementById('status').value = 'Pending';
-    }
-
-    function deleteStudent(id) {
-      if (confirm('Kya aap is student ko delete karna chahte ho?')) {
-        students = students.filter(s => s.id !== id);
-        saveData();
-        renderTable();
-      }
-    }
-
-    function toggleStatus(id) {
-      students = students.map(s => {
-        if (s.id === id) {
-          s.status = s.status === 'Paid' ? 'Pending' : 'Paid';
-        }
-        return s;
-      });
-      saveData();
-      renderTable();
-    }
-
-    function renderTable() {
-      const search = document.getElementById('search').value.toLowerCase();
-      const filtered = students.filter(s => s.name.toLowerCase().includes(search));
-
-      const container = document.getElementById('tableContainer');
-
-      if (filtered.length === 0) {
-        container.innerHTML = `<div class="empty">Abhi koi student nahi hai</div>`;
-        document.getElementById('totalPending').innerText = '₹0';
-        return;
-      }
-
-      let html = `
-        <table>
-          <thead>
-            <tr>
-              <th>Naam</th>
-              <th>Fee</th>
-              <th>Due Date</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-      `;
-
-      let totalPending = 0;
-
-      filtered.forEach(s => {
-        if (s.status === 'Pending') totalPending += s.fee;
-
-        html += `
-          <tr>
-            <td><strong>${s.name}</strong></td>
-            <td>₹${s.fee}</td>
-            <td>${formatDate(s.dueDate)}</td>
-            <td>
-              <span class="status \( {s.status.toLowerCase()}" onclick="toggleStatus( \){s.id})" style="cursor:pointer" title="Click to change">
-                ${s.status}
-              </span>
-            </td>
-            <td>
-              <button class="delete-btn" onclick="deleteStudent(${s.id})">Delete</button>
-            </td>
-          </tr>
-        `;
-      });
-
-      html += `</tbody></table>`;
-      container.innerHTML = html;
-      document.getElementById('totalPending').innerText = `₹${totalPending}`;
-    }
-
-    function formatDate(dateStr) {
-      const d = new Date(dateStr);
-      return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
-    }
-
-    // Initial render
-    renderTable();
-  </script>
 </body>
 </html>
