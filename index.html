@@ -3,93 +3,381 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SG ELITE Tournament</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090909">
+<title>SG ELITE | Esports Tournament</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+:root{
+ --bg:#08090c;
+ --card:#111318;
+ --gold:#e9bd64;
+ --gold2:#fff0bd;
+ --muted:#92939a;
+ --line:rgba(233,189,100,.19);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
 body{
- font-family:Arial,sans-serif;
- background:linear-gradient(135deg,#fff,#f4ead3,#fff);
- color:#29241b;padding:15px 12px;min-height:100vh
+ background:
+ radial-gradient(ellipse at 50% -10%,#44351b 0%,transparent 40%),
+ radial-gradient(ellipse at 100% 70%,#1c1710 0%,transparent 40%),
+ var(--bg);
+ color:#fff;
+ font-family:Inter,Arial,sans-serif;
+ min-height:100vh;
+ padding:16px 13px 30px;
 }
-.container{max-width:480px;margin:auto}
+
+.container{max-width:490px;margin:auto}
+
 .glass{
- background:rgba(255,255,255,.68);
- backdrop-filter:blur(18px);
- -webkit-backdrop-filter:blur(18px);
- border:1px solid white;border-radius:22px;
- box-shadow:0 12px 35px #80602020
+ background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+ border:1px solid rgba(255,255,255,.10);
+ backdrop-filter:blur(20px);
+ -webkit-backdrop-filter:blur(20px);
+ border-radius:23px;
+ box-shadow:0 15px 50px rgba(0,0,0,.35),
+ inset 0 1px rgba(255,255,255,.06);
 }
+
 header{
- padding:17px;display:flex;align-items:center;
- justify-content:space-between;margin-bottom:16px
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ padding:16px 18px;
+ margin-bottom:17px;
 }
-.logo{font-size:21px;font-weight:900;color:#a47725}
-.tag{font-size:9px;letter-spacing:2px;color:#8c806b;margin-top:4px}
-.live{
- padding:10px 13px;border-radius:30px;
- border:1px solid #c49a45;color:#90651e;
- font-size:11px;font-weight:bold;text-decoration:none
+
+.brand{
+ font-family:Orbitron,sans-serif;
+ font-weight:900;
+ font-size:19px;
+ letter-spacing:1px;
+ color:var(--gold);
 }
-.hero{text-align:center;padding:25px 15px;margin-bottom:16px}
-.gold{color:#a77a27;font-weight:bold;letter-spacing:2px;font-size:11px}
-.hero h1{font-size:29px;margin:10px 0;color:#302819}
-.sub{font-size:12px;color:#80786b;line-height:1.6}
-.rules-link{display:inline-block;margin-top:13px;color:#987022;font-size:12px;font-weight:bold}
-.live-card{padding:18px;margin-bottom:16px}
-.live-card h2{font-size:18px;margin-bottom:12px}
-.video-box{
- width:100%;aspect-ratio:16/9;background:#171717;
- border-radius:15px;overflow:hidden
+
+.brand span{color:white}
+
+.brand-sub{
+ color:#777;
+ font-size:8px;
+ letter-spacing:3px;
+ margin-top:5px;
 }
-.video-box iframe{width:100%;height:100%;border:0}
-.video-title{font-size:14px;font-weight:bold;margin-top:12px}
-.video-status{font-size:11px;color:#8c6b2e;margin-top:5px}
-.card{padding:22px;margin-bottom:16px}
-.steps{display:flex;gap:10px;margin-bottom:20px}
+
+.live-badge{
+ border:1px solid rgba(255,80,80,.4);
+ color:#ff7777;
+ padding:9px 12px;
+ border-radius:30px;
+ font-size:10px;
+ font-weight:800;
+ text-decoration:none;
+ background:rgba(255,50,50,.07);
+}
+
+.dot{
+ display:inline-block;
+ width:7px;height:7px;
+ border-radius:50%;
+ background:#ff4545;
+ margin-right:5px;
+ box-shadow:0 0 10px #ff4545;
+}
+
+.section-label{
+ font-size:10px;
+ color:var(--gold);
+ font-weight:800;
+ letter-spacing:3px;
+ margin-bottom:9px;
+}
+
+.card{
+ padding:22px;
+ margin-bottom:17px;
+ position:relative;
+ overflow:hidden;
+}
+
+.card::before{
+ content:"";
+ position:absolute;
+ width:130px;height:130px;
+ background:rgba(233,189,100,.06);
+ filter:blur(45px);
+ top:-60px;right:-50px;
+ pointer-events:none;
+}
+
+h1,h2,h3{font-family:Orbitron,sans-serif}
+
+h2{font-size:19px;margin-bottom:7px}
+
+.description{
+ color:var(--muted);
+ font-size:12px;
+ line-height:1.7;
+}
+
+.steps{
+ display:flex;
+ gap:9px;
+ margin:20px 0;
+}
+
 .step{
- flex:1;text-align:center;padding:11px 5px;
- background:#eee9df;border-radius:12px;
- color:#8b8376;font-size:11px;font-weight:bold
+ flex:1;
+ padding:12px 5px;
+ border-radius:11px;
+ text-align:center;
+ font-size:10px;
+ font-weight:800;
+ color:#777;
+ background:#1b1d23;
+ border:1px solid #292b30;
 }
-.step.active{background:linear-gradient(120deg,#f8e8b9,#d6b15b);color:#493510}
+
+.step.active{
+ color:var(--gold2);
+ border-color:#a9823f;
+ background:linear-gradient(120deg,rgba(233,189,100,.18),rgba(233,189,100,.04));
+}
+
 .page{display:none}
 .page.active{display:block}
-h2{font-size:19px;margin-bottom:8px}
-label{display:block;font-size:12px;font-weight:bold;color:#65563c;margin:15px 0 7px}
+
+label{
+ display:block;
+ margin:16px 0 8px;
+ color:#c9c9ca;
+ font-size:10px;
+ font-weight:800;
+ letter-spacing:1px;
+}
+
 input{
- width:100%;padding:14px;border:1px solid #e2d2ae;
- border-radius:12px;background:#ffffffd9;outline:none;font-size:14px
+ width:100%;
+ padding:15px;
+ color:white;
+ font-size:13px;
+ border-radius:12px;
+ outline:none;
+ border:1px solid rgba(255,255,255,.1);
+ background:rgba(0,0,0,.32);
+ transition:.25s;
 }
-input:focus{border-color:#bd903a}
+
+input:focus{
+ border-color:var(--gold);
+ box-shadow:0 0 15px rgba(233,189,100,.09);
+}
+
+input::placeholder{color:#686970}
+
 .btn{
- width:100%;padding:15px;border:0;border-radius:13px;
- margin-top:16px;background:linear-gradient(110deg,#aa7c29,#f0d58c);
- color:#30230d;font-weight:900;font-size:13px;cursor:pointer
+ width:100%;
+ padding:15px;
+ margin-top:17px;
+ border:0;
+ border-radius:12px;
+ font-weight:900;
+ font-size:12px;
+ letter-spacing:1px;
+ cursor:pointer;
+ color:#17120a;
+ background:linear-gradient(110deg,#a97b2d,#ffe4a1,#bd913e);
+ box-shadow:0 5px 25px rgba(233,189,100,.16);
+ transition:.25s;
 }
-.back{background:#fff;color:#87621e;border:1px solid #ddc797}
-.fee{font-size:30px;font-weight:900;color:#987022;margin:15px 0}
-.methods{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+.btn:active{transform:scale(.98)}
+
+.btn.secondary{
+ color:var(--gold);
+ background:rgba(233,189,100,.06);
+ border:1px solid var(--line);
+ box-shadow:none;
+}
+
+.fee{
+ font-family:Orbitron,sans-serif;
+ font-size:28px;
+ color:var(--gold);
+ margin:18px 0;
+}
+
+.methods{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:11px;
+}
+
 .method{
- padding:17px 8px;text-align:center;border:1px solid #dfc995;
- border-radius:15px;background:#ffffffb3;cursor:pointer
+ border:1px solid var(--line);
+ background:rgba(255,255,255,.025);
+ border-radius:14px;
+ padding:16px 9px;
+ text-align:center;
+ color:#fff;
 }
-.method.selected{border:2px solid #b78b37;background:#fff7e4}
-.method b{display:block;margin-top:7px}
+
+.method b{
+ display:block;
+ font-size:12px;
+ margin-top:7px;
+}
+
+.method small{color:#888;font-size:10px}
+
+.method.selected{
+ border-color:var(--gold);
+ background:rgba(233,189,100,.08);
+}
+
 .qr{
- width:185px;height:185px;border:2px dashed #c49a45;
- border-radius:17px;display:flex;align-items:center;
- justify-content:center;text-align:center;margin:18px auto;
- color:#95702d;background:#fffaf0;font-size:13px;padding:15px
+ width:175px;height:175px;
+ margin:19px auto;
+ display:grid;
+ place-items:center;
+ text-align:center;
+ border:1px dashed #94733d;
+ border-radius:16px;
+ color:var(--gold);
+ background:#15130f;
+ font-size:12px;
+ line-height:1.7;
 }
-.note{font-size:11px;color:#81796d;line-height:1.6;text-align:center;margin:12px 0}
-footer{text-align:center;padding:20px}
-.social{display:flex;justify-content:center;gap:12px;margin:13px}
-.social a{
- padding:11px 16px;border-radius:30px;background:#fff8e8;
- border:1px solid #e5d3a8;color:#8c641e;
- font-size:12px;font-weight:bold;text-decoration:none
+
+.notice{
+ font-size:10px;
+ color:#a19b8f;
+ line-height:1.7;
+ text-align:center;
+ margin:14px 0;
+ padding:12px;
+ border:1px solid rgba(233,189,100,.12);
+ border-radius:12px;
+ background:rgba(233,189,100,.035);
+}
+
+/* YOUTUBE */
+
+.youtube-card{padding:18px}
+
+.youtube-top{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:15px;
+}
+
+.youtube-top h2{font-size:16px}
+
+.youtube-label{
+ font-size:9px;
+ color:#ff7777;
+ font-weight:900;
+ letter-spacing:1px;
+}
+
+.video{
+ width:100%;
+ aspect-ratio:16/9;
+ overflow:hidden;
+ border-radius:15px;
+ background:#000;
+ border:1px solid #292929;
+}
+
+.video iframe{
+ width:100%;
+ height:100%;
+ border:0;
+}
+
+.video-title{
+ margin-top:13px;
+ font-size:13px;
+ font-weight:800;
+ line-height:1.5;
+}
+
+.video-desc{
+ margin-top:5px;
+ font-size:10px;
+ color:#85858b;
+}
+
+.watch-btn{
+ display:block;
+ text-align:center;
+ padding:13px;
+ margin-top:14px;
+ border-radius:11px;
+ color:white;
+ background:#b91f28;
+ text-decoration:none;
+ font-size:11px;
+ font-weight:900;
+ letter-spacing:1px;
+}
+
+/* FOOTER */
+
+footer{
+ padding:21px;
+ text-align:center;
+}
+
+.footer-brand{
+ font-family:Orbitron,sans-serif;
+ color:var(--gold);
+ font-weight:900;
+ font-size:16px;
+}
+
+.socials{
+ display:flex;
+ justify-content:center;
+ gap:11px;
+ margin:17px 0;
+}
+
+.socials a{
+ padding:11px 16px;
+ border-radius:30px;
+ text-decoration:none;
+ font-size:11px;
+ font-weight:800;
+ color:var(--gold2);
+ background:rgba(233,189,100,.06);
+ border:1px solid var(--line);
+}
+
+.copyright{
+ color:#666;
+ font-size:9px;
+ letter-spacing:1px;
+}
+
+/* SMALL DETAILS */
+
+.divider{
+ height:1px;
+ background:linear-gradient(90deg,transparent,var(--gold),transparent);
+ opacity:.3;
+ margin:17px 0;
+}
+
+@media(max-width:360px){
+ .card{padding:17px}
+ .brand{font-size:16px}
 }
 </style>
 </head>
@@ -97,26 +385,125 @@ footer{text-align:center;padding:20px}
 <body>
 <div class="container">
 
+<!-- HEADER -->
+
 <header class="glass">
  <div>
-  <div class="logo">ᏚᏩ_Ꭼʟɪᴛᴇ⚠</div>
-  <div class="tag">OFFICIAL TOURNAMENT</div>
+  <div class="brand">ᏚᏩ_<span>ELITE</span>⚠</div>
+  <div class="brand-sub">ESPORTS TOURNAMENT</div>
  </div>
- <a class="live" href="#youtubeLive">● YT LIVE</a>
+ <a class="live-badge" href="#youtubeLive">
+  <span class="dot"></span> LIVE
+ </a>
 </header>
 
-<section class="glass hero">
- <div class="gold">OFFICIAL GAMING EVENT</div>
- <h1>SG ELITE<br>TOURNAMENT</h1>
- <p class="sub">COMPETE • PLAY • WIN</p>
- <a class="rules-link" href="rules.html">TOURNAMENT RULES ↗</a>
+<!-- REGISTRATION FIRST -->
+
+<main>
+<section class="glass card" id="registration">
+
+ <div class="section-label">01 / PLAYER ENTRY</div>
+ <h2>PLAYER REGISTRATION</h2>
+ <p class="description">Enter your player details carefully.</p>
+
+ <div class="steps">
+  <div class="step active" id="step1">01 · DETAILS</div>
+  <div class="step" id="step2">02 · PAYMENT INFO</div>
+ </div>
+
+ <form id="regForm">
+
+  <!-- PLAYER DETAILS -->
+
+  <div class="page active" id="page1">
+
+   <label>PLAYER NAME</label>
+   <input id="player" required maxlength="50"
+   placeholder="Enter your name">
+
+   <label>FREE FIRE IN-GAME NAME</label>
+   <input id="game" required maxlength="50"
+   placeholder="Enter your game name">
+
+   <label>FREE FIRE UID</label>
+   <input id="uid" required inputmode="numeric"
+   pattern="[0-9]{5,15}" placeholder="Enter your UID">
+
+   <label>WHATSAPP NUMBER</label>
+   <input id="phone" required type="tel"
+   pattern="[0-9+ ]{10,16}" placeholder="Your WhatsApp number">
+
+   <button type="button" class="btn" onclick="nextPage()">
+    CONTINUE TO NEXT STEP →
+   </button>
+  </div>
+
+  <!-- PAYMENT DEMO -->
+
+  <div class="page" id="page2">
+
+   <div class="section-label">02 / PAYMENT INFORMATION</div>
+   <h2>ENTRY INFORMATION</h2>
+   <p class="description">Payment section preview.</p>
+
+   <div class="fee">₹50 <small style="font-size:10px;color:#aaa">ENTRY</small></div>
+
+   <div class="methods">
+    <div class="method selected">
+     <div style="font-size:25px">▦</div>
+     <b>QR CODE</b>
+     <small>Demo preview</small>
+    </div>
+
+    <div class="method">
+     <div style="font-size:25px">₹</div>
+     <b>UPI ID</b>
+     <small>Demo preview</small>
+    </div>
+   </div>
+
+   <div class="qr">
+    QR CODE<br>
+    PLACEHOLDER<br>
+    <small>NOT ACTIVE</small>
+   </div>
+
+   <label>UPI ID DISPLAY FIELD</label>
+   <input disabled placeholder="Inactive demo — no payment collection">
+
+   <label>TRANSACTION REFERENCE</label>
+   <input id="reference" placeholder="Optional demo field">
+
+   <div class="notice">
+    This is a visual demo only. QR and UPI are inactive.
+    No money is collected or payment verified by this website.
+   </div>
+
+   <button type="submit" class="btn">
+    SEND REGISTRATION ON WHATSAPP →
+   </button>
+
+   <button type="button" class="btn secondary" onclick="previousPage()">
+    ← BACK TO DETAILS
+   </button>
+
+  </div>
+ </form>
 </section>
+</main>
 
-<!-- YOUTUBE LIVE SECTION -->
+<!-- YOUTUBE BELOW REGISTRATION -->
 
-<section class="glass live-card" id="youtubeLive">
- <h2>▶ TOURNAMENT LIVE</h2>
- <div class="video-box">
+<section class="glass card youtube-card" id="youtubeLive">
+
+ <div class="youtube-top">
+  <h2>YOUTUBE LIVE</h2>
+  <span class="youtube-label">
+   <span class="dot"></span> STREAM
+  </span>
+ </div>
+
+ <div class="video">
   <iframe id="youtubeFrame"
    src=""
    title="SG ELITE YouTube Live"
@@ -124,132 +511,84 @@ footer{text-align:center;padding:20px}
    allowfullscreen>
   </iframe>
  </div>
- <div class="video-title" id="videoTitle">SG ELITE - YouTube Live</div>
- <div class="video-status" id="videoStatus">YouTube Live Preview</div>
- <a id="watchYoutube" class="rules-link" href="#" target="_blank">
-  WATCH ON YOUTUBE ↗
- </a>
-</section>
 
-<!-- REGISTRATION -->
-
-<section class="glass card">
- <div class="steps">
-  <div class="step active" id="s1">01 REGISTER</div>
-  <div class="step" id="s2">02 ENTRY FEE</div>
+ <div class="video-title" id="videoTitle">
+  SG ELITE OFFICIAL LIVE STREAM
  </div>
 
- <form id="regForm">
+ <div class="video-desc">
+  Watch tournament updates and live matches.
+ </div>
 
-  <div class="page active" id="page1">
-   <h2>Player Registration</h2>
-   <p class="sub">Enter your correct player details.</p>
+ <a class="watch-btn" id="watchYoutube"
+ href="#" target="_blank" rel="noopener">
+  ▶ WATCH ON YOUTUBE
+ </a>
 
-   <label>PLAYER NAME</label>
-   <input id="player" required maxlength="50" placeholder="Your name">
-
-   <label>FREE FIRE NAME</label>
-   <input id="game" required maxlength="50" placeholder="Your game name">
-
-   <label>FREE FIRE UID</label>
-   <input id="uid" required pattern="[0-9]{5,15}"
-   inputmode="numeric" placeholder="Enter UID">
-
-   <label>WHATSAPP NUMBER</label>
-   <input id="phone" required type="tel"
-   pattern="[0-9+ ]{10,16}" placeholder="Your number">
-
-   <button type="button" class="btn" onclick="nextPage()">
-    CONTINUE →
-   </button>
-  </div>
-
-  <div class="page" id="page2">
-   <h2>Entry Fee</h2>
-   <p class="sub">Payment selection demo.</p>
-   <div class="fee">₹50 <small style="font-size:12px">ENTRY</small></div>
-
-   <div class="methods">
-    <div class="method selected" id="qrChoice" onclick="choose('QR')">
-     <div style="font-size:24px">▦</div>
-     <b>QR CODE</b>
-    </div>
-    <div class="method" id="upiChoice" onclick="choose('UPI')">
-     <div style="font-size:24px">₹</div>
-     <b>UPI ID</b>
-    </div>
-   </div>
-
-   <div id="qrPanel">
-    <div class="qr">QR CODE<br>PLACEHOLDER<br>NOT ACTIVE</div>
-   </div>
-
-   <div id="upiPanel" style="display:none">
-    <label>UPI ID</label>
-    <input disabled placeholder="Demo only">
-   </div>
-
-   <label>TRANSACTION REFERENCE</label>
-   <input id="reference" placeholder="Optional demo field">
-
-   <p class="note">
-    QR and UPI are inactive placeholders. Do not transfer money.
-    This demo does not process or verify payments.
-   </p>
-
-   <button type="submit" class="btn">SUBMIT REGISTRATION →</button>
-   <button type="button" class="btn back" onclick="previousPage()">← BACK</button>
-  </div>
-
- </form>
 </section>
+
+<!-- FOOTER -->
 
 <footer class="glass">
- <div class="gold">FOLLOW SG ELITE</div>
- <div class="social">
-  <a id="youtube" href="#" target="_blank">▶ YouTube</a>
-  <a id="instagram" href="#" target="_blank">◎ Instagram</a>
+ <div class="footer-brand">ᏚᏩ_ELITE⚠</div>
+ <div class="divider"></div>
+ <div class="section-label">CONNECT WITH US</div>
+
+ <div class="socials">
+  <a id="ytLink" href="#" target="_blank">▶ YOUTUBE</a>
+  <a id="igLink" href="#" target="_blank">◎ INSTAGRAM</a>
  </div>
- <p class="note">© SG ELITE TOURNAMENT</p>
+
+ <div class="copyright">
+  © 2026 SG ELITE · ALL RIGHTS RESERVED
+ </div>
 </footer>
 
 </div>
 
 <script>
 
-// APNE LINKS YAHAN PASTE KARO
+/* EDIT YOUR LINKS HERE */
 
 const WHATSAPP_NUMBER="YOUR_WHATSAPP_NUMBER";
 const YOUTUBE_CHANNEL="YOUR_YOUTUBE_CHANNEL_URL";
-const YOUTUBE_LIVE="https://www.youtube.com/live/l2Sg4gGXqrM";
-const INSTAGRAM="YOUR_INSTAGRAM_URL";
+const YOUTUBE_LIVE="PASTE_YOUTUBE_LIVE_LINK_HERE";
+const INSTAGRAM_PAGE="YOUR_INSTAGRAM_URL";
 
-// SOCIAL LINKS
+/* SOCIAL LINKS */
 
-document.getElementById("youtube").href=YOUTUBE_CHANNEL;
-document.getElementById("instagram").href=INSTAGRAM;
+document.getElementById("ytLink").href=YOUTUBE_CHANNEL;
+document.getElementById("igLink").href=INSTAGRAM_PAGE;
+document.getElementById("watchYoutube").href=YOUTUBE_LIVE;
 
-// YOUTUBE LINK PREVIEW
+/* YOUTUBE VIDEO ID */
 
 function getVideoId(url){
  try{
   const u=new URL(url);
-  if(u.hostname.includes("youtu.be"))return u.pathname.slice(1);
-  if(u.pathname.includes("/live/"))return u.pathname.split("/live/")[1].split("/")[0];
-  if(u.pathname.includes("/shorts/"))return u.pathname.split("/shorts/")[1].split("/")[0];
-  if(u.pathname.includes("/embed/"))return u.pathname.split("/embed/")[1].split("/")[0];
+
+  if(u.hostname.includes("youtu.be"))
+   return u.pathname.slice(1).split("/")[0];
+
+  if(u.pathname.includes("/live/"))
+   return u.pathname.split("/live/")[1].split("/")[0];
+
+  if(u.pathname.includes("/embed/"))
+   return u.pathname.split("/embed/")[1].split("/")[0];
+
   return u.searchParams.get("v");
  }catch(e){return null}
 }
 
+/* LOAD VIDEO AND TITLE */
+
 async function loadYoutube(){
  const id=getVideoId(YOUTUBE_LIVE);
+
  if(!id || YOUTUBE_LIVE.includes("PASTE_"))return;
 
  document.getElementById("youtubeFrame").src=
-  "https://www.youtube-nocookie.com/embed/"+id;
-
- document.getElementById("watchYoutube").href=YOUTUBE_LIVE;
+ "https://www.youtube-nocookie.com/embed/"+id;
 
  try{
   const response=await fetch(
@@ -257,72 +596,69 @@ async function loadYoutube(){
    encodeURIComponent("https://www.youtube.com/watch?v="+id)+
    "&format=json"
   );
-  if(!response.ok)throw new Error("Title unavailable");
+
+  if(!response.ok)throw new Error("Unavailable");
+
   const data=await response.json();
   document.getElementById("videoTitle").textContent=data.title;
- }catch(e){
-  document.getElementById("videoTitle").textContent="SG ELITE YouTube Live";
- }
 
- document.getElementById("videoStatus").textContent="YouTube video preview";
+ }catch(error){
+  document.getElementById("videoTitle").textContent=
+  "SG ELITE OFFICIAL LIVE STREAM";
+ }
 }
 
 loadYoutube();
 
-let payment="QR";
+/* FORM NAVIGATION */
 
 function nextPage(){
- for(const field of document.querySelectorAll("#page1 input")){
+
+ const fields=document.querySelectorAll("#page1 input");
+
+ for(const field of fields){
   if(!field.reportValidity())return;
  }
+
  document.getElementById("page1").classList.remove("active");
  document.getElementById("page2").classList.add("active");
- document.getElementById("s1").classList.remove("active");
- document.getElementById("s2").classList.add("active");
+ document.getElementById("step1").classList.remove("active");
+ document.getElementById("step2").classList.add("active");
 }
 
 function previousPage(){
  document.getElementById("page2").classList.remove("active");
  document.getElementById("page1").classList.add("active");
- document.getElementById("s2").classList.remove("active");
- document.getElementById("s1").classList.add("active");
+ document.getElementById("step2").classList.remove("active");
+ document.getElementById("step1").classList.add("active");
 }
 
-function choose(option){
- payment=option;
- document.getElementById("qrChoice").classList.toggle("selected",option==="QR");
- document.getElementById("upiChoice").classList.toggle("selected",option==="UPI");
- document.getElementById("qrPanel").style.display=option==="QR"?"block":"none";
- document.getElementById("upiPanel").style.display=option==="UPI"?"block":"none";
-}
-
-// SUBMIT = DIRECT WHATSAPP CHAT
+/* DIRECT WHATSAPP REQUEST */
 
 document.getElementById("regForm").addEventListener("submit",function(e){
+
  e.preventDefault();
 
  if(WHATSAPP_NUMBER==="YOUR_WHATSAPP_NUMBER"){
-  alert("First add your WhatsApp number in the code.");
+  alert("Please configure the organizer WhatsApp number first.");
   return;
  }
 
  const message=
-`SG ELITE TOURNAMENT - REGISTRATION
+`SG ELITE TOURNAMENT - REGISTRATION REQUEST
 
-Player Name: ${document.getElementById("player").value.trim()}
-Game Name: ${document.getElementById("game").value.trim()}
-UID: ${document.getElementById("uid").value.trim()}
-WhatsApp: ${document.getElementById("phone").value.trim()}
-Payment Option Selected: ${payment}
-Reference: ${document.getElementById("reference").value.trim()||"Not provided"}
+PLAYER NAME: ${document.getElementById("player").value.trim()}
+GAME NAME: ${document.getElementById("game").value.trim()}
+FREE FIRE UID: ${document.getElementById("uid").value.trim()}
+WHATSAPP: ${document.getElementById("phone").value.trim()}
+REFERENCE: ${document.getElementById("reference").value.trim()||"Not provided"}
 
-Status: Registration request only. Not verified.`;
+STATUS: Registration request only. Not verified.`;
 
- const whatsappURL=
- "https://wa.me/"+WHATSAPP_NUMBER+
+ const url="https://wa.me/"+WHATSAPP_NUMBER+
  "?text="+encodeURIComponent(message);
 
- window.location.href=whatsappURL;
+ window.location.href=url;
 });
 
 </script>
