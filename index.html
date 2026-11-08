@@ -4,194 +4,363 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SG ELITE Tournament Registration</title>
+<title>SG ELITE Tournament</title>
+
 <style>
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
+
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#090909;
-  color:white;
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
+ font-family:Arial,sans-serif;
+ background:linear-gradient(135deg,#fff,#f5ecd9,#fff);
+ color:#29241b;
+ min-height:100vh;
+ padding:18px 12px;
 }
-.container{
-  width:100%;
-  max-width:440px;
-  background:#141414;
-  border:1px solid #b58b35;
-  border-radius:18px;
-  padding:25px;
-  box-shadow:0 0 30px #b58b3520;
+
+.container{max-width:460px;margin:auto}
+
+.glass{
+ background:rgba(255,255,255,.65);
+ backdrop-filter:blur(18px);
+ -webkit-backdrop-filter:blur(18px);
+ border:1px solid rgba(255,255,255,.9);
+ box-shadow:0 12px 35px rgba(120,90,30,.13);
+ border-radius:22px;
 }
-.logo{text-align:center;color:#e6bd62;font-size:27px;font-weight:900}
-.subtitle{text-align:center;color:#aaa;font-size:12px;letter-spacing:2px}
-.steps{display:flex;gap:8px;margin:25px 0}
+
+header{
+ padding:18px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:16px;
+}
+
+.logo{font-size:21px;font-weight:900;color:#a47725}
+.tag{font-size:9px;letter-spacing:2px;color:#8c806b;margin-top:4px}
+
+.live{
+ padding:10px 12px;
+ border-radius:30px;
+ border:1px solid #c49a45;
+ color:#90651e;
+ font-size:11px;
+ font-weight:bold;
+}
+
+.hero{
+ text-align:center;
+ padding:28px 15px;
+ margin-bottom:16px;
+}
+
+.hero h1{font-size:29px;margin:12px 0;color:#31291b}
+.gold{color:#b48731}
+.sub{font-size:12px;color:#80786b;line-height:1.6}
+.rules-link{display:inline-block;margin-top:14px;color:#987022;font-size:12px;font-weight:bold}
+
+.card{padding:22px;margin-bottom:16px}
+
+.steps{display:flex;gap:10px;margin-bottom:22px}
 .step{
-  flex:1;text-align:center;padding:10px;
-  border-radius:8px;background:#292929;color:#999;font-size:12px
+ flex:1;text-align:center;padding:12px 5px;
+ background:#eee9df;border-radius:12px;
+ color:#8b8376;font-size:11px;font-weight:bold;
 }
-.step.active{background:#b58b35;color:#111;font-weight:bold}
-h2{font-size:19px;color:#e6bd62}
-label{display:block;margin:15px 0 7px;font-size:13px;color:#ddd}
-input{
-  width:100%;padding:14px;border-radius:8px;
-  border:1px solid #444;background:#202020;
-  color:white;outline:none;font-size:14px
-}
-input:focus{border-color:#d6aa4b}
-button{
-  width:100%;padding:15px;border:0;border-radius:8px;
-  background:linear-gradient(100deg,#a87925,#f0d17c);
-  color:#111;font-weight:bold;font-size:15px;
-  margin-top:20px;cursor:pointer
-}
-.secondary{background:#333;color:white}
+.step.active{background:linear-gradient(120deg,#f8e8b9,#d6b15b);color:#493510}
+
 .page{display:none}
 .page.active{display:block}
-.qr{
-  width:190px;height:190px;margin:20px auto;
-  border:2px dashed #b58b35;border-radius:12px;
-  display:flex;align-items:center;justify-content:center;
-  color:#c7a75c;text-align:center;padding:15px
+
+h2{font-size:19px;margin-bottom:8px}
+
+label{
+ display:block;font-size:12px;
+ font-weight:bold;color:#65563c;
+ margin:16px 0 7px;
 }
-.note{font-size:12px;color:#aaa;line-height:1.6;text-align:center}
+
+input{
+ width:100%;padding:14px;
+ border:1px solid #e2d2ae;
+ border-radius:12px;
+ background:rgba(255,255,255,.8);
+ outline:none;font-size:14px;
+}
+
+input:focus{border-color:#bd903a}
+
+.btn{
+ width:100%;padding:15px;
+ border:0;border-radius:13px;
+ margin-top:17px;
+ background:linear-gradient(110deg,#aa7c29,#f0d58c);
+ color:#30230d;font-weight:900;
+ font-size:13px;cursor:pointer;
+}
+
+.back{background:#fff;color:#87621e;border:1px solid #ddc797}
+
+.fee{font-size:31px;font-weight:900;color:#987022;margin:16px 0}
+
+.methods{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+.method{
+ padding:18px 8px;text-align:center;
+ border:1px solid #dfc995;border-radius:15px;
+ background:rgba(255,255,255,.7);cursor:pointer;
+}
+
+.method.selected{border:2px solid #b78b37;background:#fff7e4}
+
+.method b{display:block;margin-top:8px}
+
+.qr{
+ width:190px;height:190px;
+ border:2px dashed #c49a45;
+ border-radius:17px;
+ display:flex;align-items:center;justify-content:center;
+ text-align:center;margin:20px auto;
+ color:#95702d;background:#fffaf0;
+ font-size:13px;padding:15px;
+}
+
+.note{font-size:11px;color:#81796d;line-height:1.6;text-align:center;margin:13px 0}
+
+footer{text-align:center;padding:20px}
+.social{display:flex;justify-content:center;gap:12px;margin:13px}
+.social a{
+ padding:11px 17px;border-radius:30px;
+ background:#fff8e8;border:1px solid #e5d3a8;
+ color:#8c641e;font-size:12px;font-weight:bold;
+ text-decoration:none;
+}
+
+#success{display:none;text-align:center;padding:28px 18px}
+.check{
+ width:65px;height:65px;border-radius:50%;
+ display:grid;place-items:center;margin:0 auto 16px;
+ background:linear-gradient(120deg,#f5e5b7,#c49a45);
+ color:white;font-size:32px;
+ animation:pop .5s ease;
+}
+@keyframes pop{
+ from{transform:scale(.5);opacity:0}
+ to{transform:scale(1);opacity:1}
+}
 </style>
 </head>
+
 <body>
-
 <div class="container">
-  <div class="logo">ᏚᏩ_Ꭼʟɪᴛᴇ⚠</div>
-  <div class="subtitle">OFFICIAL TOURNAMENT REGISTRATION</div>
 
-  <div class="steps">
-    <div class="step active" id="s1">01. REGISTER</div>
-    <div class="step" id="s2">02. DETAILS</div>
+<header class="glass">
+ <div>
+  <div class="logo">ᏚᏩ_Ꭼʟɪᴛᴇ⚠</div>
+  <div class="tag">OFFICIAL TOURNAMENT</div>
+ </div>
+ <a class="live" id="liveLink" href="#">● YT LIVE</a>
+</header>
+
+<section class="glass hero">
+ <div class="gold">WELCOME PLAYERS</div>
+ <h1>SG ELITE<br>TOURNAMENT</h1>
+ <p class="sub">Register yourself and get ready for the battle.</p>
+ <a class="rules-link" href="rules.html">READ TOURNAMENT RULES ↗</a>
+</section>
+
+<section class="glass card" id="formCard">
+
+ <div class="steps">
+  <div class="step active" id="s1">01 REGISTER</div>
+  <div class="step" id="s2">02 ENTRY FEE</div>
+ </div>
+
+ <form id="regForm">
+
+  <!-- PAGE 1 -->
+
+  <div class="page active" id="page1">
+   <h2>Player Registration</h2>
+   <p class="sub">Enter your correct player details.</p>
+
+   <label>PLAYER NAME</label>
+   <input id="player" required placeholder="Enter your name">
+
+   <label>FREE FIRE NAME</label>
+   <input id="game" required placeholder="Enter your game name">
+
+   <label>FREE FIRE UID</label>
+   <input id="uid" required pattern="[0-9]{5,15}"
+   inputmode="numeric" placeholder="Enter UID">
+
+   <label>WHATSAPP NUMBER</label>
+   <input id="phone" required type="tel"
+   pattern="[0-9+ ]{10,16}" placeholder="Your number">
+
+   <button type="button" class="btn" onclick="nextPage()">
+    CONTINUE →
+   </button>
   </div>
 
-  <form id="registrationForm">
-    <section class="page active" id="page1">
-      <h2>Player Registration</h2>
+  <!-- PAGE 2 -->
 
-      <label>Player Name</label>
-      <input id="player" required placeholder="Enter your name">
+  <div class="page" id="page2">
+   <h2>Entry Fee</h2>
+   <p class="sub">Select your preferred payment option.</p>
 
-      <label>Free Fire In-Game Name</label>
-      <input id="gameName" required placeholder="Enter game name">
+   <div class="fee">₹50 <small style="font-size:12px">ENTRY FEE</small></div>
 
-      <label>Free Fire UID</label>
-      <input id="uid" required inputmode="numeric"
-      pattern="[0-9]{5,15}" placeholder="Enter your UID">
+   <div class="methods">
+    <div class="method selected" id="qrChoice"
+    onclick="choose('QR')">
+     <div style="font-size:25px">▦</div>
+     <b>QR CODE</b>
+     <small>Scan option</small>
+    </div>
 
-      <label>WhatsApp Number</label>
-      <input id="phone" required type="tel"
-      pattern="[0-9+ ]{10,16}" placeholder="Your contact number">
+    <div class="method" id="upiChoice"
+    onclick="choose('UPI')">
+     <div style="font-size:25px">₹</div>
+     <b>UPI ID</b>
+     <small>UPI option</small>
+    </div>
+   </div>
 
-      <label>Age</label>
-      <input id="age" type="number" min="13" max="99" required
-      placeholder="Enter age">
+   <div id="qrPanel">
+    <div class="qr">
+     QR CODE<br>PLACEHOLDER<br><br>NOT ACTIVE
+    </div>
+   </div>
 
-      <button type="button" onclick="nextPage()">CONTINUE →</button>
-    </section>
+   <div id="upiPanel" style="display:none">
+    <label>UPI ID</label>
+    <input disabled placeholder="UPI ID will be added later">
+   </div>
 
-    <section class="page" id="page2">
-      <h2>Registration Details</h2>
+   <label>TRANSACTION REFERENCE</label>
+   <input id="reference" placeholder="Optional demo field">
 
-      <p class="note">
-        SG ELITE SOLO TOURNAMENT<br><br>
-        Total Slots: 48<br>
-        Prize Pool: ₹1,500<br>
-        1st Prize: ₹1,000<br>
-        2nd Prize: ₹500
-      </p>
+   <p class="note">
+    Payment is disabled in this demo. Do not transfer money
+    using placeholder details. Registration is not confirmed
+    until separately verified by the organizer.
+   </p>
 
-      <div class="qr">
-        QR CODE PLACEHOLDER
-      </div>
+   <button class="btn" type="submit">
+    SUBMIT REGISTRATION
+   </button>
 
-      <p class="note">
-        Payment feature is currently inactive.
-        Do not send money using this demo page.
-      </p>
+   <button class="btn back" type="button" onclick="previousPage()">
+    ← BACK
+   </button>
+  </div>
 
-      <label>UPI ID (Not Active)</label>
-      <input disabled placeholder="UPI ID will be added later">
+ </form>
+</section>
 
-      <label>
-        <input type="checkbox" id="agree" required
-        style="width:auto">
-        I agree to the tournament rules.
-      </label>
+<!-- SUCCESS PAGE -->
 
-      <button type="submit">SUBMIT REGISTRATION</button>
-      <button type="button" class="secondary"
-      onclick="previousPage()">← BACK</button>
-    </section>
-  </form>
+<section class="glass" id="success">
+ <div class="check">✓</div>
+ <h2>Registration Ready!</h2>
+ <p class="sub">
+  Your registration message is ready.
+  Open WhatsApp and press Send to submit it.
+ </p>
 
-  <p class="note">POWERED BY SG ELITE</p>
+ <button class="btn" id="whatsappBtn">OPEN WHATSAPP</button>
+ <button class="btn back" onclick="location.reload()">NEW REGISTRATION</button>
+</section>
+
+<footer class="glass">
+ <div class="gold"><b>FOLLOW SG ELITE</b></div>
+
+ <div class="social">
+  <a id="youtube" href="#">▶ YouTube</a>
+  <a id="instagram" href="#">◎ Instagram</a>
+ </div>
+
+ <p class="note">© SG ELITE TOURNAMENT</p>
+</footer>
+
 </div>
 
 <script>
+
+// ADD YOUR LINKS HERE
+
+const WHATSAPP_NUMBER="YOUR_WHATSAPP_NUMBER";
+const YOUTUBE_CHANNEL="YOUR_YOUTUBE_CHANNEL_URL";
+const YOUTUBE_LIVE="YOUR_YOUTUBE_LIVE_URL";
+const INSTAGRAM="YOUR_INSTAGRAM_URL";
+
+document.getElementById("youtube").href=YOUTUBE_CHANNEL;
+document.getElementById("instagram").href=INSTAGRAM;
+document.getElementById("liveLink").href=YOUTUBE_LIVE;
+
+let payment="QR";
+
 function nextPage(){
-  const form=document.getElementById("registrationForm");
-  const page1=document.getElementById("page1");
+ const fields=document.querySelectorAll("#page1 input");
 
-  for(const field of page1.querySelectorAll("input")){
-    if(!field.reportValidity()) return;
-  }
+ for(let f of fields){
+  if(!f.reportValidity())return;
+ }
 
-  page1.classList.remove("active");
-  document.getElementById("page2").classList.add("active");
-  document.getElementById("s1").classList.remove("active");
-  document.getElementById("s2").classList.add("active");
+ document.getElementById("page1").classList.remove("active");
+ document.getElementById("page2").classList.add("active");
+ document.getElementById("s1").classList.remove("active");
+ document.getElementById("s2").classList.add("active");
 }
 
 function previousPage(){
-  document.getElementById("page2").classList.remove("active");
-  document.getElementById("page1").classList.add("active");
-  document.getElementById("s2").classList.remove("active");
-  document.getElementById("s1").classList.add("active");
+ document.getElementById("page2").classList.remove("active");
+ document.getElementById("page1").classList.add("active");
+ document.getElementById("s2").classList.remove("active");
+ document.getElementById("s1").classList.add("active");
 }
 
-document.getElementById("registrationForm")
-.addEventListener("submit",function(e){
-  e.preventDefault();
+function choose(option){
+ payment=option;
 
-  const data={
-    player:document.getElementById("player").value,
-    gameName:document.getElementById("gameName").value,
-    uid:document.getElementById("uid").value,
-    phone:document.getElementById("phone").value,
-    age:document.getElementById("age").value
-  };
+ document.getElementById("qrChoice").classList.toggle("selected",option==="QR");
+ document.getElementById("upiChoice").classList.toggle("selected",option==="UPI");
 
-  const whatsappNumber="YOUR_WHATSAPP_NUMBER";
+ document.getElementById("qrPanel").style.display=option==="QR"?"block":"none";
+ document.getElementById("upiPanel").style.display=option==="UPI"?"block":"none";
+}
 
-  const message=
+document.getElementById("regForm").addEventListener("submit",function(e){
+ e.preventDefault();
+
+ const message=
 `SG ELITE TOURNAMENT REGISTRATION
 
-Player: ${data.player}
-Game Name: ${data.gameName}
-UID: ${data.uid}
-WhatsApp: ${data.phone}
-Age: ${data.age}
+Player Name: ${document.getElementById("player").value}
+Game Name: ${document.getElementById("game").value}
+UID: ${document.getElementById("uid").value}
+WhatsApp: ${document.getElementById("phone").value}
+Payment Option: ${payment}
+Reference: ${document.getElementById("reference").value||"Not provided"}
 
-Status: Registration request`;
+Status: Registration request only. Payment not verified.`;
 
-  if(whatsappNumber==="YOUR_WHATSAPP_NUMBER"){
-    alert("Demo complete! Add your WhatsApp number in the code to enable WhatsApp.");
-    return;
+ const whatsappURL="https://wa.me/"+WHATSAPP_NUMBER+
+ "?text="+encodeURIComponent(message);
+
+ document.getElementById("formCard").style.display="none";
+ document.getElementById("success").style.display="block";
+
+ document.getElementById("whatsappBtn").onclick=function(){
+  if(WHATSAPP_NUMBER==="YOUR_WHATSAPP_NUMBER"){
+   alert("First add your WhatsApp number in the code.");
+   return;
   }
-
-  const url="https://wa.me/"+whatsappNumber+
-    "?text="+encodeURIComponent(message);
-
-  window.open(url,"_blank");
+  window.open(whatsappURL,"_blank");
+ };
 });
+
 </script>
 </body>
 </html>
