@@ -3,121 +3,111 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#090909">
-<title>SG ELITE | Esports Tournament</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#09090b">
+<title>SG ELITE | Tournament</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 :root{
- --bg:#08090c;
- --card:#111318;
- --gold:#e9bd64;
- --gold2:#fff0bd;
- --muted:#92939a;
- --line:rgba(233,189,100,.19);
+ --bg:#090a0d;
+ --panel:#121419;
+ --gold:#e8bd68;
+ --gold-light:#ffedc2;
+ --muted:#999ba3;
+ --border:rgba(232,189,104,.2);
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
  background:
- radial-gradient(ellipse at 50% -10%,#44351b 0%,transparent 40%),
- radial-gradient(ellipse at 100% 70%,#1c1710 0%,transparent 40%),
+ radial-gradient(ellipse at 50% 0%,#3b2c17 0%,transparent 38%),
+ radial-gradient(ellipse at 100% 70%,#211a10 0%,transparent 35%),
  var(--bg);
- color:#fff;
+ color:white;
  font-family:Inter,Arial,sans-serif;
  min-height:100vh;
- padding:16px 13px 30px;
+ padding:15px 12px 30px;
 }
 
 .container{max-width:490px;margin:auto}
 
 .glass{
  background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
- border:1px solid rgba(255,255,255,.10);
+ border:1px solid rgba(255,255,255,.1);
  backdrop-filter:blur(20px);
  -webkit-backdrop-filter:blur(20px);
- border-radius:23px;
- box-shadow:0 15px 50px rgba(0,0,0,.35),
- inset 0 1px rgba(255,255,255,.06);
+ border-radius:22px;
+ box-shadow:0 15px 45px #0007,inset 0 1px #ffffff0c;
 }
 
 header{
  display:flex;
  align-items:center;
  justify-content:space-between;
- padding:16px 18px;
+ padding:17px 18px;
  margin-bottom:17px;
 }
 
 .brand{
  font-family:Orbitron,sans-serif;
- font-weight:900;
- font-size:19px;
- letter-spacing:1px;
  color:var(--gold);
+ font-size:19px;
+ font-weight:900;
+ letter-spacing:1px;
 }
 
 .brand span{color:white}
 
 .brand-sub{
- color:#777;
  font-size:8px;
+ color:#888;
  letter-spacing:3px;
  margin-top:5px;
 }
 
 .live-badge{
- border:1px solid rgba(255,80,80,.4);
  color:#ff7777;
- padding:9px 12px;
+ background:#ff454510;
+ border:1px solid #ff777744;
+ padding:10px 13px;
  border-radius:30px;
  font-size:10px;
- font-weight:800;
+ font-weight:900;
  text-decoration:none;
- background:rgba(255,50,50,.07);
 }
 
 .dot{
  display:inline-block;
  width:7px;height:7px;
+ background:#ff4242;
  border-radius:50%;
- background:#ff4545;
  margin-right:5px;
- box-shadow:0 0 10px #ff4545;
-}
-
-.section-label{
- font-size:10px;
- color:var(--gold);
- font-weight:800;
- letter-spacing:3px;
- margin-bottom:9px;
+ box-shadow:0 0 10px #ff4242;
 }
 
 .card{
  padding:22px;
  margin-bottom:17px;
- position:relative;
  overflow:hidden;
+ position:relative;
 }
 
-.card::before{
- content:"";
- position:absolute;
- width:130px;height:130px;
- background:rgba(233,189,100,.06);
- filter:blur(45px);
- top:-60px;right:-50px;
- pointer-events:none;
+.section-label{
+ color:var(--gold);
+ font-size:10px;
+ font-weight:900;
+ letter-spacing:3px;
+ margin-bottom:10px;
 }
 
-h1,h2,h3{font-family:Orbitron,sans-serif}
-
-h2{font-size:19px;margin-bottom:7px}
+h2{
+ font-family:Orbitron,sans-serif;
+ font-size:18px;
+ margin-bottom:8px;
+}
 
 .description{
  color:var(--muted);
@@ -133,20 +123,20 @@ h2{font-size:19px;margin-bottom:7px}
 
 .step{
  flex:1;
+ text-align:center;
  padding:12px 5px;
  border-radius:11px;
- text-align:center;
- font-size:10px;
- font-weight:800;
- color:#777;
  background:#1b1d23;
  border:1px solid #292b30;
+ color:#777;
+ font-size:10px;
+ font-weight:900;
 }
 
 .step.active{
- color:var(--gold2);
- border-color:#a9823f;
- background:linear-gradient(120deg,rgba(233,189,100,.18),rgba(233,189,100,.04));
+ color:var(--gold-light);
+ border-color:#bd9148;
+ background:#bd91481c;
 }
 
 .page{display:none}
@@ -154,11 +144,11 @@ h2{font-size:19px;margin-bottom:7px}
 
 label{
  display:block;
- margin:16px 0 8px;
  color:#c9c9ca;
  font-size:10px;
  font-weight:800;
  letter-spacing:1px;
+ margin:16px 0 8px;
 }
 
 input{
@@ -168,170 +158,218 @@ input{
  font-size:13px;
  border-radius:12px;
  outline:none;
- border:1px solid rgba(255,255,255,.1);
- background:rgba(0,0,0,.32);
- transition:.25s;
+ border:1px solid #ffffff1c;
+ background:#08090bbd;
+ transition:.2s;
 }
 
 input:focus{
  border-color:var(--gold);
- box-shadow:0 0 15px rgba(233,189,100,.09);
+ box-shadow:0 0 14px #e8bd681c;
 }
 
-input::placeholder{color:#686970}
+input::placeholder{color:#666}
 
 .btn{
+ display:block;
  width:100%;
  padding:15px;
  margin-top:17px;
  border:0;
  border-radius:12px;
- font-weight:900;
- font-size:12px;
- letter-spacing:1px;
- cursor:pointer;
  color:#17120a;
  background:linear-gradient(110deg,#a97b2d,#ffe4a1,#bd913e);
- box-shadow:0 5px 25px rgba(233,189,100,.16);
- transition:.25s;
+ font-size:12px;
+ font-weight:900;
+ letter-spacing:1px;
+ cursor:pointer;
 }
-
-.btn:active{transform:scale(.98)}
 
 .btn.secondary{
  color:var(--gold);
- background:rgba(233,189,100,.06);
- border:1px solid var(--line);
- box-shadow:none;
+ background:#e8bd680c;
+ border:1px solid var(--border);
 }
+
+/* PAYMENT METHOD DESIGN */
 
 .fee{
  font-family:Orbitron,sans-serif;
- font-size:28px;
  color:var(--gold);
+ font-size:30px;
  margin:18px 0;
 }
 
-.methods{
+.payment-options{
  display:grid;
  grid-template-columns:1fr 1fr;
- gap:11px;
+ gap:12px;
+ margin-top:18px;
 }
 
-.method{
- border:1px solid var(--line);
- background:rgba(255,255,255,.025);
- border-radius:14px;
- padding:16px 9px;
+.payment-option{
+ position:relative;
+ min-height:125px;
+ padding:17px 10px;
+ border:1px solid #ffffff19;
+ border-radius:17px;
+ background:
+ linear-gradient(145deg,#202127,#111216);
  text-align:center;
- color:#fff;
+ color:white;
+ cursor:pointer;
+ transition:.25s;
+ overflow:hidden;
 }
 
-.method b{
+.payment-option:active{transform:scale(.97)}
+
+.payment-option.selected{
+ border:1px solid var(--gold);
+ background:
+ linear-gradient(145deg,#49371c,#1c1913);
+ box-shadow:0 0 20px #e8bd6820;
+}
+
+.payment-icon{
+ width:43px;height:43px;
+ margin:0 auto 10px;
+ display:grid;
+ place-items:center;
+ border-radius:13px;
+ background:#e8bd6817;
+ color:var(--gold);
+ font-size:23px;
+}
+
+.payment-option b{
  display:block;
  font-size:12px;
- margin-top:7px;
+ letter-spacing:1px;
 }
 
-.method small{color:#888;font-size:10px}
-
-.method.selected{
- border-color:var(--gold);
- background:rgba(233,189,100,.08);
+.payment-option small{
+ display:block;
+ color:#999;
+ font-size:9px;
+ margin-top:6px;
 }
 
-.qr{
- width:175px;height:175px;
- margin:19px auto;
+.selected-tag{
+ display:none;
+ position:absolute;
+ top:8px;right:8px;
+ color:#15110a;
+ background:var(--gold);
+ padding:4px 6px;
+ border-radius:5px;
+ font-size:8px;
+ font-weight:900;
+}
+
+.payment-option.selected .selected-tag{display:block}
+
+.payment-panel{
+ display:none;
+ margin-top:15px;
+ padding:17px;
+ border-radius:16px;
+ border:1px solid var(--border);
+ background:#08090bbd;
+ animation:fade .25s ease;
+}
+
+.payment-panel.active{display:block}
+
+@keyframes fade{
+ from{opacity:0;transform:translateY(7px)}
+ to{opacity:1;transform:translateY(0)}
+}
+
+.panel-heading{
+ color:var(--gold);
+ font-size:11px;
+ font-weight:900;
+ letter-spacing:1px;
+ margin-bottom:12px;
+}
+
+.qr-placeholder{
+ width:165px;height:165px;
+ margin:12px auto;
+ border:1px dashed #bd9148;
+ border-radius:15px;
  display:grid;
  place-items:center;
  text-align:center;
- border:1px dashed #94733d;
- border-radius:16px;
  color:var(--gold);
- background:#15130f;
- font-size:12px;
  line-height:1.7;
+ background:#17140f;
+ font-size:12px;
 }
 
-.notice{
+.demo-note{
+ padding:12px;
+ margin-top:13px;
+ border-radius:11px;
+ color:#aaa;
+ background:#ffffff08;
+ border:1px solid #ffffff12;
  font-size:10px;
- color:#a19b8f;
  line-height:1.7;
  text-align:center;
- margin:14px 0;
- padding:12px;
- border:1px solid rgba(233,189,100,.12);
- border-radius:12px;
- background:rgba(233,189,100,.035);
 }
-
-/* YOUTUBE */
 
 .youtube-card{padding:18px}
 
 .youtube-top{
  display:flex;
- justify-content:space-between;
  align-items:center;
+ justify-content:space-between;
  margin-bottom:15px;
 }
 
 .youtube-top h2{font-size:16px}
 
-.youtube-label{
- font-size:9px;
- color:#ff7777;
- font-weight:900;
- letter-spacing:1px;
-}
-
 .video{
  width:100%;
  aspect-ratio:16/9;
  overflow:hidden;
- border-radius:15px;
+ border-radius:14px;
  background:#000;
- border:1px solid #292929;
+ border:1px solid #ffffff20;
 }
 
-.video iframe{
- width:100%;
- height:100%;
- border:0;
-}
+.video iframe{width:100%;height:100%;border:0}
 
 .video-title{
- margin-top:13px;
  font-size:13px;
  font-weight:800;
  line-height:1.5;
+ margin-top:13px;
 }
 
 .video-desc{
- margin-top:5px;
  font-size:10px;
- color:#85858b;
+ color:#888;
+ margin-top:5px;
 }
 
 .watch-btn{
  display:block;
  text-align:center;
- padding:13px;
- margin-top:14px;
- border-radius:11px;
- color:white;
- background:#b91f28;
  text-decoration:none;
+ background:#b91f28;
+ color:white;
+ padding:13px;
+ border-radius:11px;
+ margin-top:14px;
  font-size:11px;
  font-weight:900;
- letter-spacing:1px;
 }
 
-/* FOOTER */
-
 footer{
- padding:21px;
+ padding:22px;
  text-align:center;
 }
 
@@ -339,44 +377,41 @@ footer{
  font-family:Orbitron,sans-serif;
  color:var(--gold);
  font-weight:900;
- font-size:16px;
+}
+
+.divider{
+ height:1px;
+ background:linear-gradient(90deg,transparent,var(--gold),transparent);
+ opacity:.4;
+ margin:17px 0;
 }
 
 .socials{
  display:flex;
  justify-content:center;
- gap:11px;
- margin:17px 0;
+ gap:12px;
+ margin:16px 0;
 }
 
 .socials a{
  padding:11px 16px;
  border-radius:30px;
+ color:var(--gold-light);
+ background:#e8bd680c;
+ border:1px solid var(--border);
  text-decoration:none;
  font-size:11px;
  font-weight:800;
- color:var(--gold2);
- background:rgba(233,189,100,.06);
- border:1px solid var(--line);
 }
 
 .copyright{
- color:#666;
+ color:#686970;
  font-size:9px;
  letter-spacing:1px;
 }
 
-/* SMALL DETAILS */
-
-.divider{
- height:1px;
- background:linear-gradient(90deg,transparent,var(--gold),transparent);
- opacity:.3;
- margin:17px 0;
-}
-
-@media(max-width:360px){
- .card{padding:17px}
+@media(max-width:350px){
+ .card{padding:16px}
  .brand{font-size:16px}
 }
 </style>
@@ -384,8 +419,6 @@ footer{
 
 <body>
 <div class="container">
-
-<!-- HEADER -->
 
 <header class="glass">
  <div>
@@ -397,14 +430,14 @@ footer{
  </a>
 </header>
 
-<!-- REGISTRATION FIRST -->
+<!-- REGISTRATION -->
 
 <main>
 <section class="glass card" id="registration">
 
  <div class="section-label">01 / PLAYER ENTRY</div>
  <h2>PLAYER REGISTRATION</h2>
- <p class="description">Enter your player details carefully.</p>
+ <p class="description">Enter your correct tournament details.</p>
 
  <div class="steps">
   <div class="step active" id="step1">01 · DETAILS</div>
@@ -413,17 +446,13 @@ footer{
 
  <form id="regForm">
 
-  <!-- PLAYER DETAILS -->
-
   <div class="page active" id="page1">
 
    <label>PLAYER NAME</label>
-   <input id="player" required maxlength="50"
-   placeholder="Enter your name">
+   <input id="player" required maxlength="50" placeholder="Enter your name">
 
    <label>FREE FIRE IN-GAME NAME</label>
-   <input id="game" required maxlength="50"
-   placeholder="Enter your game name">
+   <input id="game" required maxlength="50" placeholder="Enter game name">
 
    <label>FREE FIRE UID</label>
    <input id="uid" required inputmode="numeric"
@@ -434,49 +463,79 @@ footer{
    pattern="[0-9+ ]{10,16}" placeholder="Your WhatsApp number">
 
    <button type="button" class="btn" onclick="nextPage()">
-    CONTINUE TO NEXT STEP →
+    CONTINUE →
    </button>
   </div>
 
-  <!-- PAYMENT DEMO -->
+  <!-- PAYMENT STEP -->
 
   <div class="page" id="page2">
 
    <div class="section-label">02 / PAYMENT INFORMATION</div>
-   <h2>ENTRY INFORMATION</h2>
-   <p class="description">Payment section preview.</p>
+   <h2>SELECT METHOD</h2>
+   <p class="description">Choose a payment display option.</p>
 
    <div class="fee">₹50 <small style="font-size:10px;color:#aaa">ENTRY</small></div>
 
-   <div class="methods">
-    <div class="method selected">
-     <div style="font-size:25px">▦</div>
+   <div class="payment-options">
+
+    <button type="button"
+    class="payment-option selected"
+    id="qrChoice" onclick="choosePayment('QR')">
+
+     <span class="selected-tag">SELECTED</span>
+     <div class="payment-icon">▦</div>
      <b>QR CODE</b>
-     <small>Demo preview</small>
-    </div>
+     <small>QR preview</small>
+    </button>
 
-    <div class="method">
-     <div style="font-size:25px">₹</div>
+    <button type="button"
+    class="payment-option"
+    id="upiChoice" onclick="choosePayment('UPI')">
+
+     <span class="selected-tag">SELECTED</span>
+     <div class="payment-icon">₹</div>
      <b>UPI ID</b>
-     <small>Demo preview</small>
+     <small>UPI preview</small>
+    </button>
+
+   </div>
+
+   <!-- QR PANEL -->
+
+   <div class="payment-panel active" id="qrPanel">
+    <div class="panel-heading">QR CODE PREVIEW</div>
+    <div class="qr-placeholder">
+     QR CODE<br>
+     PLACEHOLDER<br>
+     <small>INACTIVE DEMO</small>
+    </div>
+    <div class="demo-note">
+     This QR area is a visual placeholder only.
+     It cannot accept payments.
     </div>
    </div>
 
-   <div class="qr">
-    QR CODE<br>
-    PLACEHOLDER<br>
-    <small>NOT ACTIVE</small>
-   </div>
+   <!-- UPI PANEL -->
 
-   <label>UPI ID DISPLAY FIELD</label>
-   <input disabled placeholder="Inactive demo — no payment collection">
+   <div class="payment-panel" id="upiPanel">
+    <div class="panel-heading">UPI ID PREVIEW</div>
+
+    <label>UPI ID</label>
+    <input disabled placeholder="Inactive demo — no payment collection">
+
+    <div class="demo-note">
+     This is an inactive preview. No UPI transfer or payment
+     collection is enabled.
+    </div>
+   </div>
 
    <label>TRANSACTION REFERENCE</label>
    <input id="reference" placeholder="Optional demo field">
 
-   <div class="notice">
-    This is a visual demo only. QR and UPI are inactive.
-    No money is collected or payment verified by this website.
+   <div class="demo-note">
+    Payment options are visual placeholders only.
+    No money is collected and no payment is verified here.
    </div>
 
    <button type="submit" class="btn">
@@ -484,7 +543,7 @@ footer{
    </button>
 
    <button type="button" class="btn secondary" onclick="previousPage()">
-    ← BACK TO DETAILS
+    ← BACK
    </button>
 
   </div>
@@ -492,13 +551,13 @@ footer{
 </section>
 </main>
 
-<!-- YOUTUBE BELOW REGISTRATION -->
+<!-- YOUTUBE LIVE -->
 
 <section class="glass card youtube-card" id="youtubeLive">
 
  <div class="youtube-top">
   <h2>YOUTUBE LIVE</h2>
-  <span class="youtube-label">
+  <span style="color:#ff7777;font-size:9px;font-weight:900">
    <span class="dot"></span> STREAM
   </span>
  </div>
@@ -517,14 +576,13 @@ footer{
  </div>
 
  <div class="video-desc">
-  Watch tournament updates and live matches.
+  Tournament updates and live matches.
  </div>
 
- <a class="watch-btn" id="watchYoutube"
- href="#" target="_blank" rel="noopener">
+ <a class="watch-btn" id="watchYoutube" href="#"
+ target="_blank" rel="noopener">
   ▶ WATCH ON YOUTUBE
  </a>
-
 </section>
 
 <!-- FOOTER -->
@@ -548,7 +606,7 @@ footer{
 
 <script>
 
-/* EDIT YOUR LINKS HERE */
+/* EDIT LINKS HERE */
 
 const WHATSAPP_NUMBER="YOUR_WHATSAPP_NUMBER";
 const YOUTUBE_CHANNEL="YOUR_YOUTUBE_CHANNEL_URL";
@@ -561,7 +619,7 @@ document.getElementById("ytLink").href=YOUTUBE_CHANNEL;
 document.getElementById("igLink").href=INSTAGRAM_PAGE;
 document.getElementById("watchYoutube").href=YOUTUBE_LIVE;
 
-/* YOUTUBE VIDEO ID */
+/* YOUTUBE VIDEO */
 
 function getVideoId(url){
  try{
@@ -579,8 +637,6 @@ function getVideoId(url){
   return u.searchParams.get("v");
  }catch(e){return null}
 }
-
-/* LOAD VIDEO AND TITLE */
 
 async function loadYoutube(){
  const id=getVideoId(YOUTUBE_LIVE);
@@ -600,9 +656,10 @@ async function loadYoutube(){
   if(!response.ok)throw new Error("Unavailable");
 
   const data=await response.json();
+
   document.getElementById("videoTitle").textContent=data.title;
 
- }catch(error){
+ }catch(e){
   document.getElementById("videoTitle").textContent=
   "SG ELITE OFFICIAL LIVE STREAM";
  }
@@ -610,30 +667,54 @@ async function loadYoutube(){
 
 loadYoutube();
 
-/* FORM NAVIGATION */
+/* PAGE NAVIGATION */
 
 function nextPage(){
 
- const fields=document.querySelectorAll("#page1 input");
-
- for(const field of fields){
+ for(const field of document.querySelectorAll("#page1 input")){
   if(!field.reportValidity())return;
  }
 
  document.getElementById("page1").classList.remove("active");
  document.getElementById("page2").classList.add("active");
+
  document.getElementById("step1").classList.remove("active");
  document.getElementById("step2").classList.add("active");
 }
 
 function previousPage(){
+
  document.getElementById("page2").classList.remove("active");
  document.getElementById("page1").classList.add("active");
+
  document.getElementById("step2").classList.remove("active");
  document.getElementById("step1").classList.add("active");
 }
 
-/* DIRECT WHATSAPP REQUEST */
+/* PAYMENT TAB SWITCHING */
+
+function choosePayment(method){
+
+ const qrSelected = method === "QR";
+
+ document.getElementById("qrChoice").classList.toggle(
+  "selected",qrSelected
+ );
+
+ document.getElementById("upiChoice").classList.toggle(
+  "selected",!qrSelected
+ );
+
+ document.getElementById("qrPanel").classList.toggle(
+  "active",qrSelected
+ );
+
+ document.getElementById("upiPanel").classList.toggle(
+  "active",!qrSelected
+ );
+}
+
+/* WHATSAPP REGISTRATION */
 
 document.getElementById("regForm").addEventListener("submit",function(e){
 
@@ -651,7 +732,6 @@ PLAYER NAME: ${document.getElementById("player").value.trim()}
 GAME NAME: ${document.getElementById("game").value.trim()}
 FREE FIRE UID: ${document.getElementById("uid").value.trim()}
 WHATSAPP: ${document.getElementById("phone").value.trim()}
-REFERENCE: ${document.getElementById("reference").value.trim()||"Not provided"}
 
 STATUS: Registration request only. Not verified.`;
 
