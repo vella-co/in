@@ -3,150 +3,93 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>SG ELITE Tournament</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-
 body{
  font-family:Arial,sans-serif;
- background:linear-gradient(135deg,#fff,#f5ecd9,#fff);
- color:#29241b;
- min-height:100vh;
- padding:18px 12px;
+ background:linear-gradient(135deg,#fff,#f4ead3,#fff);
+ color:#29241b;padding:15px 12px;min-height:100vh
 }
-
-.container{max-width:460px;margin:auto}
-
+.container{max-width:480px;margin:auto}
 .glass{
- background:rgba(255,255,255,.65);
+ background:rgba(255,255,255,.68);
  backdrop-filter:blur(18px);
  -webkit-backdrop-filter:blur(18px);
- border:1px solid rgba(255,255,255,.9);
- box-shadow:0 12px 35px rgba(120,90,30,.13);
- border-radius:22px;
+ border:1px solid white;border-radius:22px;
+ box-shadow:0 12px 35px #80602020
 }
-
 header{
- padding:18px;
- display:flex;
- justify-content:space-between;
- align-items:center;
- margin-bottom:16px;
+ padding:17px;display:flex;align-items:center;
+ justify-content:space-between;margin-bottom:16px
 }
-
 .logo{font-size:21px;font-weight:900;color:#a47725}
 .tag{font-size:9px;letter-spacing:2px;color:#8c806b;margin-top:4px}
-
 .live{
- padding:10px 12px;
- border-radius:30px;
- border:1px solid #c49a45;
- color:#90651e;
- font-size:11px;
- font-weight:bold;
+ padding:10px 13px;border-radius:30px;
+ border:1px solid #c49a45;color:#90651e;
+ font-size:11px;font-weight:bold;text-decoration:none
 }
-
-.hero{
- text-align:center;
- padding:28px 15px;
- margin-bottom:16px;
-}
-
-.hero h1{font-size:29px;margin:12px 0;color:#31291b}
-.gold{color:#b48731}
+.hero{text-align:center;padding:25px 15px;margin-bottom:16px}
+.gold{color:#a77a27;font-weight:bold;letter-spacing:2px;font-size:11px}
+.hero h1{font-size:29px;margin:10px 0;color:#302819}
 .sub{font-size:12px;color:#80786b;line-height:1.6}
-.rules-link{display:inline-block;margin-top:14px;color:#987022;font-size:12px;font-weight:bold}
-
+.rules-link{display:inline-block;margin-top:13px;color:#987022;font-size:12px;font-weight:bold}
+.live-card{padding:18px;margin-bottom:16px}
+.live-card h2{font-size:18px;margin-bottom:12px}
+.video-box{
+ width:100%;aspect-ratio:16/9;background:#171717;
+ border-radius:15px;overflow:hidden
+}
+.video-box iframe{width:100%;height:100%;border:0}
+.video-title{font-size:14px;font-weight:bold;margin-top:12px}
+.video-status{font-size:11px;color:#8c6b2e;margin-top:5px}
 .card{padding:22px;margin-bottom:16px}
-
-.steps{display:flex;gap:10px;margin-bottom:22px}
+.steps{display:flex;gap:10px;margin-bottom:20px}
 .step{
- flex:1;text-align:center;padding:12px 5px;
+ flex:1;text-align:center;padding:11px 5px;
  background:#eee9df;border-radius:12px;
- color:#8b8376;font-size:11px;font-weight:bold;
+ color:#8b8376;font-size:11px;font-weight:bold
 }
 .step.active{background:linear-gradient(120deg,#f8e8b9,#d6b15b);color:#493510}
-
 .page{display:none}
 .page.active{display:block}
-
 h2{font-size:19px;margin-bottom:8px}
-
-label{
- display:block;font-size:12px;
- font-weight:bold;color:#65563c;
- margin:16px 0 7px;
-}
-
+label{display:block;font-size:12px;font-weight:bold;color:#65563c;margin:15px 0 7px}
 input{
- width:100%;padding:14px;
- border:1px solid #e2d2ae;
- border-radius:12px;
- background:rgba(255,255,255,.8);
- outline:none;font-size:14px;
+ width:100%;padding:14px;border:1px solid #e2d2ae;
+ border-radius:12px;background:#ffffffd9;outline:none;font-size:14px
 }
-
 input:focus{border-color:#bd903a}
-
 .btn{
- width:100%;padding:15px;
- border:0;border-radius:13px;
- margin-top:17px;
- background:linear-gradient(110deg,#aa7c29,#f0d58c);
- color:#30230d;font-weight:900;
- font-size:13px;cursor:pointer;
+ width:100%;padding:15px;border:0;border-radius:13px;
+ margin-top:16px;background:linear-gradient(110deg,#aa7c29,#f0d58c);
+ color:#30230d;font-weight:900;font-size:13px;cursor:pointer
 }
-
 .back{background:#fff;color:#87621e;border:1px solid #ddc797}
-
-.fee{font-size:31px;font-weight:900;color:#987022;margin:16px 0}
-
+.fee{font-size:30px;font-weight:900;color:#987022;margin:15px 0}
 .methods{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-
 .method{
- padding:18px 8px;text-align:center;
- border:1px solid #dfc995;border-radius:15px;
- background:rgba(255,255,255,.7);cursor:pointer;
+ padding:17px 8px;text-align:center;border:1px solid #dfc995;
+ border-radius:15px;background:#ffffffb3;cursor:pointer
 }
-
 .method.selected{border:2px solid #b78b37;background:#fff7e4}
-
-.method b{display:block;margin-top:8px}
-
+.method b{display:block;margin-top:7px}
 .qr{
- width:190px;height:190px;
- border:2px dashed #c49a45;
- border-radius:17px;
- display:flex;align-items:center;justify-content:center;
- text-align:center;margin:20px auto;
- color:#95702d;background:#fffaf0;
- font-size:13px;padding:15px;
+ width:185px;height:185px;border:2px dashed #c49a45;
+ border-radius:17px;display:flex;align-items:center;
+ justify-content:center;text-align:center;margin:18px auto;
+ color:#95702d;background:#fffaf0;font-size:13px;padding:15px
 }
-
-.note{font-size:11px;color:#81796d;line-height:1.6;text-align:center;margin:13px 0}
-
+.note{font-size:11px;color:#81796d;line-height:1.6;text-align:center;margin:12px 0}
 footer{text-align:center;padding:20px}
 .social{display:flex;justify-content:center;gap:12px;margin:13px}
 .social a{
- padding:11px 17px;border-radius:30px;
- background:#fff8e8;border:1px solid #e5d3a8;
- color:#8c641e;font-size:12px;font-weight:bold;
- text-decoration:none;
-}
-
-#success{display:none;text-align:center;padding:28px 18px}
-.check{
- width:65px;height:65px;border-radius:50%;
- display:grid;place-items:center;margin:0 auto 16px;
- background:linear-gradient(120deg,#f5e5b7,#c49a45);
- color:white;font-size:32px;
- animation:pop .5s ease;
-}
-@keyframes pop{
- from{transform:scale(.5);opacity:0}
- to{transform:scale(1);opacity:1}
+ padding:11px 16px;border-radius:30px;background:#fff8e8;
+ border:1px solid #e5d3a8;color:#8c641e;
+ font-size:12px;font-weight:bold;text-decoration:none
 }
 </style>
 </head>
@@ -159,18 +102,38 @@ footer{text-align:center;padding:20px}
   <div class="logo">ᏚᏩ_Ꭼʟɪᴛᴇ⚠</div>
   <div class="tag">OFFICIAL TOURNAMENT</div>
  </div>
- <a class="live" id="liveLink" href="#">● YT LIVE</a>
+ <a class="live" href="#youtubeLive">● YT LIVE</a>
 </header>
 
 <section class="glass hero">
- <div class="gold">WELCOME PLAYERS</div>
+ <div class="gold">OFFICIAL GAMING EVENT</div>
  <h1>SG ELITE<br>TOURNAMENT</h1>
- <p class="sub">Register yourself and get ready for the battle.</p>
- <a class="rules-link" href="rules.html">READ TOURNAMENT RULES ↗</a>
+ <p class="sub">COMPETE • PLAY • WIN</p>
+ <a class="rules-link" href="rules.html">TOURNAMENT RULES ↗</a>
 </section>
 
-<section class="glass card" id="formCard">
+<!-- YOUTUBE LIVE SECTION -->
 
+<section class="glass live-card" id="youtubeLive">
+ <h2>▶ TOURNAMENT LIVE</h2>
+ <div class="video-box">
+  <iframe id="youtubeFrame"
+   src=""
+   title="SG ELITE YouTube Live"
+   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+   allowfullscreen>
+  </iframe>
+ </div>
+ <div class="video-title" id="videoTitle">SG ELITE - YouTube Live</div>
+ <div class="video-status" id="videoStatus">YouTube Live Preview</div>
+ <a id="watchYoutube" class="rules-link" href="#" target="_blank">
+  WATCH ON YOUTUBE ↗
+ </a>
+</section>
+
+<!-- REGISTRATION -->
+
+<section class="glass card">
  <div class="steps">
   <div class="step active" id="s1">01 REGISTER</div>
   <div class="step" id="s2">02 ENTRY FEE</div>
@@ -178,17 +141,15 @@ footer{text-align:center;padding:20px}
 
  <form id="regForm">
 
-  <!-- PAGE 1 -->
-
   <div class="page active" id="page1">
    <h2>Player Registration</h2>
    <p class="sub">Enter your correct player details.</p>
 
    <label>PLAYER NAME</label>
-   <input id="player" required placeholder="Enter your name">
+   <input id="player" required maxlength="50" placeholder="Your name">
 
    <label>FREE FIRE NAME</label>
-   <input id="game" required placeholder="Enter your game name">
+   <input id="game" required maxlength="50" placeholder="Your game name">
 
    <label>FREE FIRE UID</label>
    <input id="uid" required pattern="[0-9]{5,15}"
@@ -203,84 +164,52 @@ footer{text-align:center;padding:20px}
    </button>
   </div>
 
-  <!-- PAGE 2 -->
-
   <div class="page" id="page2">
    <h2>Entry Fee</h2>
-   <p class="sub">Select your preferred payment option.</p>
-
-   <div class="fee">₹50 <small style="font-size:12px">ENTRY FEE</small></div>
+   <p class="sub">Payment selection demo.</p>
+   <div class="fee">₹50 <small style="font-size:12px">ENTRY</small></div>
 
    <div class="methods">
-    <div class="method selected" id="qrChoice"
-    onclick="choose('QR')">
-     <div style="font-size:25px">▦</div>
+    <div class="method selected" id="qrChoice" onclick="choose('QR')">
+     <div style="font-size:24px">▦</div>
      <b>QR CODE</b>
-     <small>Scan option</small>
     </div>
-
-    <div class="method" id="upiChoice"
-    onclick="choose('UPI')">
-     <div style="font-size:25px">₹</div>
+    <div class="method" id="upiChoice" onclick="choose('UPI')">
+     <div style="font-size:24px">₹</div>
      <b>UPI ID</b>
-     <small>UPI option</small>
     </div>
    </div>
 
    <div id="qrPanel">
-    <div class="qr">
-     QR CODE<br>PLACEHOLDER<br><br>NOT ACTIVE
-    </div>
+    <div class="qr">QR CODE<br>PLACEHOLDER<br>NOT ACTIVE</div>
    </div>
 
    <div id="upiPanel" style="display:none">
     <label>UPI ID</label>
-    <input disabled placeholder="UPI ID will be added later">
+    <input disabled placeholder="Demo only">
    </div>
 
    <label>TRANSACTION REFERENCE</label>
    <input id="reference" placeholder="Optional demo field">
 
    <p class="note">
-    Payment is disabled in this demo. Do not transfer money
-    using placeholder details. Registration is not confirmed
-    until separately verified by the organizer.
+    QR and UPI are inactive placeholders. Do not transfer money.
+    This demo does not process or verify payments.
    </p>
 
-   <button class="btn" type="submit">
-    SUBMIT REGISTRATION
-   </button>
-
-   <button class="btn back" type="button" onclick="previousPage()">
-    ← BACK
-   </button>
+   <button type="submit" class="btn">SUBMIT REGISTRATION →</button>
+   <button type="button" class="btn back" onclick="previousPage()">← BACK</button>
   </div>
 
  </form>
 </section>
 
-<!-- SUCCESS PAGE -->
-
-<section class="glass" id="success">
- <div class="check">✓</div>
- <h2>Registration Ready!</h2>
- <p class="sub">
-  Your registration message is ready.
-  Open WhatsApp and press Send to submit it.
- </p>
-
- <button class="btn" id="whatsappBtn">OPEN WHATSAPP</button>
- <button class="btn back" onclick="location.reload()">NEW REGISTRATION</button>
-</section>
-
 <footer class="glass">
- <div class="gold"><b>FOLLOW SG ELITE</b></div>
-
+ <div class="gold">FOLLOW SG ELITE</div>
  <div class="social">
-  <a id="youtube" href="#">▶ YouTube</a>
-  <a id="instagram" href="#">◎ Instagram</a>
+  <a id="youtube" href="#" target="_blank">▶ YouTube</a>
+  <a id="instagram" href="#" target="_blank">◎ Instagram</a>
  </div>
-
  <p class="note">© SG ELITE TOURNAMENT</p>
 </footer>
 
@@ -288,26 +217,64 @@ footer{text-align:center;padding:20px}
 
 <script>
 
-// ADD YOUR LINKS HERE
+// APNE LINKS YAHAN PASTE KARO
 
 const WHATSAPP_NUMBER="YOUR_WHATSAPP_NUMBER";
 const YOUTUBE_CHANNEL="YOUR_YOUTUBE_CHANNEL_URL";
-const YOUTUBE_LIVE="YOUR_YOUTUBE_LIVE_URL";
+const YOUTUBE_LIVE="PASTE_YOUR_YOUTUBE_LIVE_LINK_HERE";
 const INSTAGRAM="YOUR_INSTAGRAM_URL";
+
+// SOCIAL LINKS
 
 document.getElementById("youtube").href=YOUTUBE_CHANNEL;
 document.getElementById("instagram").href=INSTAGRAM;
-document.getElementById("liveLink").href=YOUTUBE_LIVE;
+
+// YOUTUBE LINK PREVIEW
+
+function getVideoId(url){
+ try{
+  const u=new URL(url);
+  if(u.hostname.includes("youtu.be"))return u.pathname.slice(1);
+  if(u.pathname.includes("/live/"))return u.pathname.split("/live/")[1].split("/")[0];
+  if(u.pathname.includes("/shorts/"))return u.pathname.split("/shorts/")[1].split("/")[0];
+  if(u.pathname.includes("/embed/"))return u.pathname.split("/embed/")[1].split("/")[0];
+  return u.searchParams.get("v");
+ }catch(e){return null}
+}
+
+async function loadYoutube(){
+ const id=getVideoId(YOUTUBE_LIVE);
+ if(!id || YOUTUBE_LIVE.includes("PASTE_"))return;
+
+ document.getElementById("youtubeFrame").src=
+  "https://www.youtube-nocookie.com/embed/"+id;
+
+ document.getElementById("watchYoutube").href=YOUTUBE_LIVE;
+
+ try{
+  const response=await fetch(
+   "https://www.youtube.com/oembed?url="+
+   encodeURIComponent("https://www.youtube.com/watch?v="+id)+
+   "&format=json"
+  );
+  if(!response.ok)throw new Error("Title unavailable");
+  const data=await response.json();
+  document.getElementById("videoTitle").textContent=data.title;
+ }catch(e){
+  document.getElementById("videoTitle").textContent="SG ELITE YouTube Live";
+ }
+
+ document.getElementById("videoStatus").textContent="YouTube video preview";
+}
+
+loadYoutube();
 
 let payment="QR";
 
 function nextPage(){
- const fields=document.querySelectorAll("#page1 input");
-
- for(let f of fields){
-  if(!f.reportValidity())return;
+ for(const field of document.querySelectorAll("#page1 input")){
+  if(!field.reportValidity())return;
  }
-
  document.getElementById("page1").classList.remove("active");
  document.getElementById("page2").classList.add("active");
  document.getElementById("s1").classList.remove("active");
@@ -323,42 +290,39 @@ function previousPage(){
 
 function choose(option){
  payment=option;
-
  document.getElementById("qrChoice").classList.toggle("selected",option==="QR");
  document.getElementById("upiChoice").classList.toggle("selected",option==="UPI");
-
  document.getElementById("qrPanel").style.display=option==="QR"?"block":"none";
  document.getElementById("upiPanel").style.display=option==="UPI"?"block":"none";
 }
 
+// SUBMIT = DIRECT WHATSAPP CHAT
+
 document.getElementById("regForm").addEventListener("submit",function(e){
  e.preventDefault();
 
+ if(WHATSAPP_NUMBER==="YOUR_WHATSAPP_NUMBER"){
+  alert("First add your WhatsApp number in the code.");
+  return;
+ }
+
  const message=
-`SG ELITE TOURNAMENT REGISTRATION
+`SG ELITE TOURNAMENT - REGISTRATION
 
-Player Name: ${document.getElementById("player").value}
-Game Name: ${document.getElementById("game").value}
-UID: ${document.getElementById("uid").value}
-WhatsApp: ${document.getElementById("phone").value}
-Payment Option: ${payment}
-Reference: ${document.getElementById("reference").value||"Not provided"}
+Player Name: ${document.getElementById("player").value.trim()}
+Game Name: ${document.getElementById("game").value.trim()}
+UID: ${document.getElementById("uid").value.trim()}
+WhatsApp: ${document.getElementById("phone").value.trim()}
+Payment Option Selected: ${payment}
+Reference: ${document.getElementById("reference").value.trim()||"Not provided"}
 
-Status: Registration request only. Payment not verified.`;
+Status: Registration request only. Not verified.`;
 
- const whatsappURL="https://wa.me/"+WHATSAPP_NUMBER+
+ const whatsappURL=
+ "https://wa.me/"+WHATSAPP_NUMBER+
  "?text="+encodeURIComponent(message);
 
- document.getElementById("formCard").style.display="none";
- document.getElementById("success").style.display="block";
-
- document.getElementById("whatsappBtn").onclick=function(){
-  if(WHATSAPP_NUMBER==="YOUR_WHATSAPP_NUMBER"){
-   alert("First add your WhatsApp number in the code.");
-   return;
-  }
-  window.open(whatsappURL,"_blank");
- };
+ window.location.href=whatsappURL;
 });
 
 </script>
