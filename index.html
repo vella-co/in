@@ -4,204 +4,194 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SG ELITE | Tournament Upcoming</title>
-
+<title>SG ELITE Tournament Registration</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Rajdhani:wght@400;600;700&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#090909;
+  color:white;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
 }
-
-body {
-    min-height: 100vh;
-    background: #050505;
-    color: white;
-    font-family: 'Rajdhani', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+.container{
+  width:100%;
+  max-width:440px;
+  background:#141414;
+  border:1px solid #b58b35;
+  border-radius:18px;
+  padding:25px;
+  box-shadow:0 0 30px #b58b3520;
 }
-
-/* Background */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background:
-    radial-gradient(circle at 50% 45%, #38290d 0%, transparent 35%),
-    linear-gradient(135deg, #080808, #11100c, #030303);
-    z-index: -2;
+.logo{text-align:center;color:#e6bd62;font-size:27px;font-weight:900}
+.subtitle{text-align:center;color:#aaa;font-size:12px;letter-spacing:2px}
+.steps{display:flex;gap:8px;margin:25px 0}
+.step{
+  flex:1;text-align:center;padding:10px;
+  border-radius:8px;background:#292929;color:#999;font-size:12px
 }
-
-.grid {
-    position: fixed;
-    inset: 0;
-    background-image:
-    linear-gradient(#d6a6420c 1px, transparent 1px),
-    linear-gradient(90deg, #d6a6420c 1px, transparent 1px);
-    background-size: 45px 45px;
-    mask-image: linear-gradient(transparent, black, transparent);
-    z-index: -1;
+.step.active{background:#b58b35;color:#111;font-weight:bold}
+h2{font-size:19px;color:#e6bd62}
+label{display:block;margin:15px 0 7px;font-size:13px;color:#ddd}
+input{
+  width:100%;padding:14px;border-radius:8px;
+  border:1px solid #444;background:#202020;
+  color:white;outline:none;font-size:14px
 }
-
-/* Main Card */
-.container {
-    width: 90%;
-    max-width: 850px;
-    padding: 65px 20px;
-    text-align: center;
-    border: 1px solid #b58b36;
-    background: linear-gradient(145deg, #14120d, #080808 60%);
-    box-shadow: 0 0 50px #c99a3520,
-                inset 0 0 35px #c99a3510;
-    position: relative;
+input:focus{border-color:#d6aa4b}
+button{
+  width:100%;padding:15px;border:0;border-radius:8px;
+  background:linear-gradient(100deg,#a87925,#f0d17c);
+  color:#111;font-weight:bold;font-size:15px;
+  margin-top:20px;cursor:pointer
 }
-
-.container::before,
-.container::after {
-    content: "";
-    position: absolute;
-    width: 45px;
-    height: 45px;
-    border-color: #e6bd62;
-    border-style: solid;
+.secondary{background:#333;color:white}
+.page{display:none}
+.page.active{display:block}
+.qr{
+  width:190px;height:190px;margin:20px auto;
+  border:2px dashed #b58b35;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  color:#c7a75c;text-align:center;padding:15px
 }
-
-.container::before {
-    top: -1px;
-    left: -1px;
-    border-width: 2px 0 0 2px;
-}
-
-.container::after {
-    bottom: -1px;
-    right: -1px;
-    border-width: 0 2px 2px 0;
-}
-
-.tag {
-    color: #cba34e;
-    letter-spacing: 6px;
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 28px;
-}
-
-.logo {
-    font-family: 'Orbitron', sans-serif;
-    font-size: clamp(35px, 8vw, 75px);
-    font-weight: 900;
-    color: #f5d58a;
-    text-shadow: 0 0 20px #c18b36;
-    letter-spacing: 2px;
-}
-
-.line {
-    width: 130px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #e5bd65, transparent);
-    margin: 25px auto;
-}
-
-.heading {
-    font-family: 'Orbitron', sans-serif;
-    font-size: clamp(22px, 5vw, 38px);
-    font-weight: 800;
-    letter-spacing: 5px;
-    color: #ffffff;
-}
-
-.heading span {
-    color: #e6b957;
-}
-
-.subtitle {
-    margin-top: 18px;
-    color: #999;
-    font-size: 17px;
-    letter-spacing: 3px;
-}
-
-.status {
-    display: inline-block;
-    margin-top: 35px;
-    padding: 12px 30px;
-    border: 1px solid #c99b44;
-    color: #eac56d;
-    letter-spacing: 4px;
-    font-weight: 700;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0%,100% {
-        box-shadow: 0 0 5px #c99b4440;
-    }
-    50% {
-        box-shadow: 0 0 25px #c99b4480;
-    }
-}
-
-.footer {
-    margin-top: 45px;
-    font-size: 12px;
-    color: #777;
-    letter-spacing: 4px;
-}
-
-@media(max-width: 500px) {
-    .container {
-        padding: 55px 12px;
-    }
-
-    .tag {
-        letter-spacing: 3px;
-    }
-
-    .heading {
-        letter-spacing: 2px;
-    }
-
-    .subtitle {
-        font-size: 14px;
-    }
-}
+.note{font-size:12px;color:#aaa;line-height:1.6;text-align:center}
 </style>
 </head>
-
 <body>
 
-<div class="grid"></div>
-
 <div class="container">
+  <div class="logo">ᏚᏩ_Ꭼʟɪᴛᴇ⚠</div>
+  <div class="subtitle">OFFICIAL TOURNAMENT REGISTRATION</div>
 
-    <div class="tag">OFFICIAL ESPORTS EVENT</div>
+  <div class="steps">
+    <div class="step active" id="s1">01. REGISTER</div>
+    <div class="step" id="s2">02. DETAILS</div>
+  </div>
 
-    <div class="logo">ᏚᏩ_Ꭼʟɪᴛᴇ</div>
+  <form id="registrationForm">
+    <section class="page active" id="page1">
+      <h2>Player Registration</h2>
 
-    <div class="line"></div>
+      <label>Player Name</label>
+      <input id="player" required placeholder="Enter your name">
 
-    <div class="heading">
-        TOURNAMENT <span>UPCOMING</span>
-    </div>
+      <label>Free Fire In-Game Name</label>
+      <input id="gameName" required placeholder="Enter game name">
 
-    <div class="subtitle">
-        THE BATTLE IS ABOUT TO BEGIN
-    </div>
+      <label>Free Fire UID</label>
+      <input id="uid" required inputmode="numeric"
+      pattern="[0-9]{5,15}" placeholder="Enter your UID">
 
-    <div class="status">
-        ● COMING SOON
-    </div>
+      <label>WhatsApp Number</label>
+      <input id="phone" required type="tel"
+      pattern="[0-9+ ]{10,16}" placeholder="Your contact number">
 
-    <div class="footer">
-        SG ELITE ESPORTS © 2026
-    </div>
+      <label>Age</label>
+      <input id="age" type="number" min="13" max="99" required
+      placeholder="Enter age">
 
+      <button type="button" onclick="nextPage()">CONTINUE →</button>
+    </section>
+
+    <section class="page" id="page2">
+      <h2>Registration Details</h2>
+
+      <p class="note">
+        SG ELITE SOLO TOURNAMENT<br><br>
+        Total Slots: 48<br>
+        Prize Pool: ₹1,500<br>
+        1st Prize: ₹1,000<br>
+        2nd Prize: ₹500
+      </p>
+
+      <div class="qr">
+        QR CODE PLACEHOLDER
+      </div>
+
+      <p class="note">
+        Payment feature is currently inactive.
+        Do not send money using this demo page.
+      </p>
+
+      <label>UPI ID (Not Active)</label>
+      <input disabled placeholder="UPI ID will be added later">
+
+      <label>
+        <input type="checkbox" id="agree" required
+        style="width:auto">
+        I agree to the tournament rules.
+      </label>
+
+      <button type="submit">SUBMIT REGISTRATION</button>
+      <button type="button" class="secondary"
+      onclick="previousPage()">← BACK</button>
+    </section>
+  </form>
+
+  <p class="note">POWERED BY SG ELITE</p>
 </div>
 
+<script>
+function nextPage(){
+  const form=document.getElementById("registrationForm");
+  const page1=document.getElementById("page1");
+
+  for(const field of page1.querySelectorAll("input")){
+    if(!field.reportValidity()) return;
+  }
+
+  page1.classList.remove("active");
+  document.getElementById("page2").classList.add("active");
+  document.getElementById("s1").classList.remove("active");
+  document.getElementById("s2").classList.add("active");
+}
+
+function previousPage(){
+  document.getElementById("page2").classList.remove("active");
+  document.getElementById("page1").classList.add("active");
+  document.getElementById("s2").classList.remove("active");
+  document.getElementById("s1").classList.add("active");
+}
+
+document.getElementById("registrationForm")
+.addEventListener("submit",function(e){
+  e.preventDefault();
+
+  const data={
+    player:document.getElementById("player").value,
+    gameName:document.getElementById("gameName").value,
+    uid:document.getElementById("uid").value,
+    phone:document.getElementById("phone").value,
+    age:document.getElementById("age").value
+  };
+
+  const whatsappNumber="YOUR_WHATSAPP_NUMBER";
+
+  const message=
+`SG ELITE TOURNAMENT REGISTRATION
+
+Player: ${data.player}
+Game Name: ${data.gameName}
+UID: ${data.uid}
+WhatsApp: ${data.phone}
+Age: ${data.age}
+
+Status: Registration request`;
+
+  if(whatsappNumber==="YOUR_WHATSAPP_NUMBER"){
+    alert("Demo complete! Add your WhatsApp number in the code to enable WhatsApp.");
+    return;
+  }
+
+  const url="https://wa.me/"+whatsappNumber+
+    "?text="+encodeURIComponent(message);
+
+  window.open(url,"_blank");
+});
+</script>
 </body>
 </html>
